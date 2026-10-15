@@ -4018,8 +4018,14 @@ const PROFESSORS = [
   }
 ];
 
+const PROFESSOR_TIERS = [
+  { tier: "A", label: "Tier A — High Priority", desc: "Direct research fit with verified papers and active graduate supervision" },
+  { tier: "B", label: "Tier B — Strong Alternative", desc: "Relevant research in macro-finance, fixed income, or econometrics" },
+  { tier: "C", label: "Tier C — Exploratory / Secondary", desc: "Related research or administrative / departmental contacts" }
+];
+
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { PROFESSORS };
+  module.exports = { PROFESSORS, PROFESSOR_TIERS };
 }
 
 
