@@ -799,11 +799,29 @@ a:hover {
   border-radius: var(--r-md);
   background: rgba(0,0,0,.22);
   border:1px solid var(--border-1);
+  cursor: pointer;
+  transition: transform var(--dur-fast), background var(--dur-fast), border-color var(--dur-fast);
 }
+.cd:hover { transform: translateY(-2px); border-color: var(--accent); background: var(--surface-3); }
 .cd-days { font-size: var(--fs-xl); font-weight: var(--fw-black); font-variant-numeric: tabular-nums; line-height:1.1; }
 .cd-name { margin-top:3px; font-size: var(--fs-2xs); color: var(--text-3); font-weight: var(--fw-semi); }
 .cd.urgent { border-color: var(--bad-br); background: var(--bad-bg); }
+.cd.urgent:hover { border-color: var(--bad-st); }
 .cd.urgent .cd-days { color: var(--bad-tx); }
+
+.hz-row { cursor: pointer; padding: 6px 8px; border-radius: var(--r-sm); transition: background var(--dur-fast); }
+.hz-row:hover { background: var(--surface-3); }
+
+.tl-row { position:relative; padding: var(--sp-4) 8px; border-bottom:1px solid var(--border-1); cursor: pointer; border-radius: var(--r-sm); transition: background var(--dur-fast); }
+.tl-row:hover { background: var(--surface-3); }
+
+.doc { cursor: pointer; transition: background var(--dur-fast); }
+.doc:hover { background: var(--surface-3); }
+
+.de-row { cursor: pointer; transition: background var(--dur-fast); padding: 8px; border-radius: var(--r-sm); }
+.de-row:hover { background: var(--surface-3); }
+
+.excel-th:hover { background: var(--surface-3) !important; color: var(--accent) !important; }
 
 /* ---------------- MISSION ---------------- */
 .mission {
@@ -9372,6 +9390,8 @@ async function boot() {
       api('/api/state'), api('/api/content'), api('/api/missions'),
       api('/api/universities'), api('/api/professors'), api('/api/citations'), api('/api/research'), api('/api/excel')
     ]);
+    const initHash = (typeof window !== 'undefined' && window.location && window.location.hash) ? window.location.hash.replace(/^#/, '') : '';
+    if (VIEW_META[initHash]) app.view = initHash;
     wireShell();
     renderChrome();
     renderView();
@@ -9408,6 +9428,15 @@ const VIEW_META = {
 function wireShell() {
   $$('#nav .nav-item').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
 
+  if (typeof window !== 'undefined' && window.addEventListener) {
+    window.addEventListener('hashchange', () => {
+      const h = (window.location && window.location.hash) ? window.location.hash.replace(/^#/, '') : '';
+      if (VIEW_META[h] && h !== app.view) {
+        go(h, false);
+      }
+    });
+  }
+
   $('#themeBtn').addEventListener('click', () => {
     const cur = document.documentElement.getAttribute('data-theme');
     setTheme(cur === 'dark' ? 'light' : 'dark');
@@ -9442,12 +9471,24 @@ function setTheme(t) {
   if (b) b.textContent = t === 'dark' ? '🌙' : '☀️';
 }
 
-function go(view) {
+function go(view, updateHash = true) {
   if (!VIEW_META[view]) return;
   app.view = view;
-  $('#rail').classList.remove('is-open');
+  if (updateHash && typeof window !== 'undefined' && window.location) {
+    if (window.location.hash !== '#' + view) {
+      if (typeof history !== 'undefined' && history.pushState) {
+        history.pushState(null, '', '#' + view);
+      } else {
+        window.location.hash = '#' + view;
+      }
+    }
+  }
+  const rail = $('#rail');
+  if (rail) rail.classList.remove('is-open');
   swapView(() => { renderChrome(); renderView(); });
-  window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' });
+  if (typeof window !== 'undefined' && window.scrollTo) {
+    window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' });
+  }
 }
 
 function renderChrome() {
@@ -9488,12 +9529,27 @@ function renderChrome() {
 function paletteIndex() {
   const items = [];
   Object.entries(VIEW_META).forEach(([k, [t, s]]) => items.push({ kind: 'View', label: t, sub: s, run: () => go(k) }));
-  app.content.targets.forEach(t => items.push({ kind: 'Target', label: t.name, sub: t.country, run: () => { go('targets'); openTarget(t.id); } }));
-  app.profs.professors.forEach(p => items.push({ kind: 'Professor', label: p.name, sub: p.university, run: () => { go('professors'); } }));
-  app.missions.missions.forEach(m => items.push({ kind: 'Mission', label: m.title, sub: `${m.xp} XP`, run: () => { go('missions'); } }));
-  app.unis.universities.forEach(u => items.push({ kind: 'University', label: u.name, sub: u.country || 'Canada', run: () => { go('universities'); } }));
+  (app.content.targets || []).forEach(t => items.push({ kind: 'Target', label: t.name, sub: t.country, run: () => { go('targets'); openTarget(t.id); } }));
+  (app.profs.professors || []).forEach(p => {
+    items.push({ kind: 'Professor', label: p.name, sub: p.university, run: () => { go('professors'); openProfModal(p); } });
+    if (p.deep && p.deep.papers) {
+      p.deep.papers.forEach(pp => {
+        items.push({
+          kind: 'Paper',
+          label: pp.title,
+          sub: `${p.name} · ${p.university}`,
+          run: () => { go('professors'); openProfModal(p); }
+        });
+      });
+    }
+  });
+  (app.missions.missions || []).forEach(m => items.push({ kind: 'Mission', label: m.title, sub: `${m.xp} XP · ${m.category}`, run: () => { go('missions'); } }));
+  (app.content.documents || []).forEach(d => items.push({ kind: 'Document', label: d.name, sub: `${d.type} · ${d.status.toUpperCase()}`, run: () => { go('documents'); openDocModal(d); } }));
+  (app.content.playbook || []).forEach(pb => items.push({ kind: 'Playbook', label: pb.title, sub: pb.summary ? pb.summary.slice(0, 60) + '…' : 'Guide', run: () => { go('playbook'); app.playbookOpen = pb.id; renderPlaybook(); } }));
+  (app.content.deadEnds || []).forEach(de => items.push({ kind: 'Dead End', label: de.name, sub: de.why ? de.why.slice(0, 60) + '…' : 'Disqualified', run: () => { go('funding'); openDeadEndModal(de); } }));
+  (app.unis.universities || []).forEach(u => items.push({ kind: 'University', label: u.name, sub: u.country || 'Canada', run: () => { go('universities'); } }));
   if (app.res) {
-    (app.res.uniCensus || []).forEach(u => items.push({ kind: 'University', label: u[0], sub: u[1] + ' · ' + u[3], run: () => { go('universities'); app.filters.uniMode = 'census'; renderUniversities(); } }));
+    (app.res.uniCensus || []).forEach(u => items.push({ kind: 'University', label: u[0], sub: u[1] + ' · Gate: ' + u[3], run: () => { go('universities'); openUniModal(u); } }));
     (app.res.subjectOptions || []).forEach(o => items.push({ kind: 'Subject', label: o.subject, sub: o.verdict, run: () => go('subjects') }));
     (app.res.fundingSchemes || []).forEach(f => items.push({ kind: 'Funding', label: f.name, sub: f.kind, run: () => go('funding') }));
   }
@@ -9558,6 +9614,171 @@ function openTarget(id) {
     ${t.corrections ? `<div class="field"><div class="field-lab">Corrections</div>${list(t.corrections)}</div>` : ''}
     ${t.nextAction ? `<div class="notice notice-gold" style="margin-top:18px"><span class="notice-ico">▶</span><div><strong>Next action</strong><br>${esc(t.nextAction)}</div></div>` : ''}
     ${t.source ? `<div class="field"><div class="field-lab">Source</div><div class="field-val mono">${esc(t.source)}</div></div>` : ''}`);
+}
+
+function openDocModal(d) {
+  openModal(`
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div style="font-size:28px">${d.status === 'missing' ? '🔴' : '✅'}</div>
+      <div style="flex:1;min-width:0">
+        <h2>${esc(d.name)}</h2>
+        <div class="modal-sub">${esc(d.type || 'Official Document')} · Owner: <strong>${esc(d.owner || 'You')}</strong></div>
+      </div>
+    </div>
+
+    <div class="modal-tag-row" style="margin-top:14px">
+      <span class="badge ${d.status === 'missing' ? 'badge-bad' : 'badge-ok'}">${esc(d.status.toUpperCase())}</span>
+      ${d.blocker ? '<span class="badge badge-warn">HARD BLOCKER</span>' : '<span class="badge badge-mute">STANDARD REQUIREMENT</span>'}
+      ${d.deadline ? `<span class="badge badge-info">DEADLINE: ${fmtDate(d.deadline)}</span>` : ''}
+    </div>
+
+    <div class="field" style="margin-top:16px">
+      <div class="field-lab">Specification &amp; Format Required</div>
+      <div class="field-val" style="background:var(--surface-3);padding:12px;border-radius:var(--r-md);border:1px solid var(--border-1);line-height:var(--lh-relaxed)">
+        ${esc(d.spec || 'Official institutional document required for master admission and visa verification.')}
+      </div>
+    </div>
+
+    ${d.note ? `
+      <div class="notice notice-gold" style="margin-top:14px">
+        <span class="notice-ico">ℹ️</span>
+        <div><strong>Action Advice:</strong> ${esc(d.note)}</div>
+      </div>
+    ` : ''}
+
+    <div style="margin-top:20px;display:flex;gap:10px;justify-content:flex-end">
+      <button class="btn btn-primary" id="btnToggleDocStatus" type="button">
+        ${d.status === 'missing' ? '✓ Mark as Acquired (HAVE)' : '↩ Mark as Pending (MISSING)'}
+      </button>
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
+    </div>
+  `);
+
+  $('#btnToggleDocStatus').onclick = () => {
+    d.status = d.status === 'missing' ? 'have' : 'missing';
+    toast(d.status === 'have' ? '✅' : '↩️', d.name, d.status === 'have' ? 'Marked as Acquired' : 'Marked as Pending');
+    closeModal();
+    renderChrome();
+    renderDocuments();
+  };
+}
+
+function openUniModal(u) {
+  const [name, prov, cat, gate, prog, note] = u;
+  const CAT = { U15: 'U15 Research Intensive', MD: 'Medical/Doctoral', COMP: 'Comprehensive', PU: 'Primarily Undergraduate', SPEC: 'Specialised', FR: 'Francophone' };
+  const allFaculty = (app.profs ? app.profs.professors : []);
+  const matched = allFaculty.filter(p => p.university.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(p.university.toLowerCase()));
+  const g = (gate || 'UNVERIFIED').toUpperCase();
+
+  openModal(`
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div style="font-size:28px">🏛️</div>
+      <div style="flex:1;min-width:0">
+        <h2>${esc(name)}</h2>
+        <div class="modal-sub">${esc(prov)} · ${esc(CAT[cat] || cat)}</div>
+      </div>
+    </div>
+
+    <div class="modal-tag-row" style="margin-top:14px">
+      <span class="badge ${g === 'PASS' ? 'badge-ok' : g === 'FAIL' ? 'badge-bad' : g === 'PARTIAL' ? 'badge-warn' : 'badge-mute'}">
+        ${g === 'PASS' ? '✅ 16+ MONTHS (OWP PASS)' : g === 'FAIL' ? '🔴 FAILS GATE (<16 MO / UNCLAIMED)' : g === 'PARTIAL' ? '🟡 PARTIAL GATE' : '⚪ UNVERIFIED'}
+      </span>
+      <span class="badge badge-mute">${esc(cat)}</span>
+      ${matched.length ? `<span class="badge badge-info">${matched.length} FACULTY TRACKED</span>` : ''}
+    </div>
+
+    <div class="field" style="margin-top:16px">
+      <div class="field-lab">Degree Programs Audited</div>
+      <div class="field-val" style="background:var(--surface-3);padding:12px;border-radius:var(--r-md);border:1px solid var(--border-1);line-height:var(--lh-relaxed);font-weight:var(--fw-semi)">
+        ${esc(prog || 'Research-stream and coursework graduate degrees')}
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:14px">
+      <div class="field-lab">Gate Verdict &amp; Funding Realities</div>
+      <div class="field-val" style="line-height:var(--lh-relaxed);color:var(--text-2)">
+        ${esc(note || 'Program duration and departmental research funding verified against official graduate calendar.')}
+      </div>
+    </div>
+
+    ${matched.length ? `
+      <div class="field" style="margin-top:16px">
+        <div class="field-lab">Tracked Faculty Members with Research Dossiers</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+          ${matched.map(p => `
+            <button class="btn btn-sm btn-primary" type="button" data-modalprof="${esc(p.name)}" style="font-size:12px;padding:6px 10px">
+              ${esc(p.name)} ${p.deep ? '★' : ''} → View 10-Paper Dossier
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    <div style="margin-top:20px;display:flex;justify-content:flex-end">
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
+    </div>
+  `);
+
+  $$('#modalInner [data-modalprof]').forEach(b => {
+    b.onclick = () => {
+      const pName = b.dataset.modalprof;
+      const pObj = allFaculty.find(x => x.name === pName);
+      if (pObj) openProfModal(pObj);
+    };
+  });
+}
+
+function openDeadEndModal(d) {
+  openModal(`
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div style="font-size:28px">🚫</div>
+      <div style="flex:1;min-width:0">
+        <h2>${esc(d.name)}</h2>
+        <div class="modal-sub">Disqualified Scheme / Dead End</div>
+      </div>
+    </div>
+
+    <div class="modal-tag-row" style="margin-top:14px">
+      <span class="badge badge-bad">DISQUALIFIED</span>
+      <span class="badge badge-mute">DO NOT PURSUE</span>
+    </div>
+
+    <div class="notice notice-bad" style="margin-top:16px">
+      <span class="notice-ico">⚠️</span>
+      <div><strong>Why this is disqualified:</strong><br>${esc(d.why || d.note || '')}</div>
+    </div>
+
+    <div style="margin-top:20px;display:flex;justify-content:flex-end">
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
+    </div>
+  `);
+}
+
+function openExcelRowModal(sheetName, headers, rowVals) {
+  openModal(`
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div style="font-size:28px">📊</div>
+      <div style="flex:1;min-width:0">
+        <h2>${esc(rowVals[1] || rowVals[0] || 'Record Details')}</h2>
+        <div class="modal-sub">Master Excel Sheet: <strong>${esc(sheetName)}</strong></div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px;max-height:60vh;overflow-y:auto">
+      ${headers.map((h, i) => `
+        <div class="field" style="margin-bottom:0">
+          <div class="field-lab">${esc(h)}</div>
+          <div class="field-val" style="background:var(--surface-3);padding:8px 12px;border-radius:var(--r-sm);border:1px solid var(--border-1);white-space:pre-wrap">
+            ${esc(rowVals[i] || '—')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div style="margin-top:20px;display:flex;justify-content:flex-end">
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
+    </div>
+  `);
 }
 
 /* ============================================================================
@@ -9704,7 +9925,7 @@ function renderDashboard() {
         ${ringSVG(pct)}
       </div>
       <div class="countdown-strip">
-        ${cds.map(c => `<div class="cd ${c.d < 40 ? 'urgent' : ''}" data-tip="${esc(c.name)}">
+        ${cds.map(c => `<div class="cd ${c.d < 40 ? 'urgent' : ''}" data-tip="${esc(c.name)}" data-cdname="${esc(c.name)}">
           <div class="cd-days">${c.d}<span style="font-size:var(--fs-sm);font-weight:var(--fw-medium);color:var(--text-3)"> days</span></div>
           <div class="cd-name">${esc(c.name)}</div>
         </div>`).join('')}
@@ -9712,27 +9933,27 @@ function renderDashboard() {
     </div>
 
     <div class="grid-kpi" style="margin-top:var(--sp-6)">
-      <div class="kpi" data-tip="${done} of ${total} missions complete">
+      <div class="kpi" data-tip="${done} of ${total} missions complete" style="cursor:pointer">
         <div class="kpi-lab">Progress</div>
         <div class="kpi-val">${pct}%</div>
         <div class="kpi-sub">${done} of ${total} missions</div>
       </div>
-      <div class="kpi" data-tip="${toNext} XP to the next level">
+      <div class="kpi" data-tip="${toNext} XP to the next level" style="cursor:pointer">
         <div class="kpi-lab">Stage</div>
         <div class="kpi-val">${st.level}</div>
         <div class="kpi-sub">${esc(lv.title)}${nextLv ? ` · ${toNext} XP to go` : ' · max'}</div>
       </div>
-      <div class="kpi" data-tip="Earned from completed tasks">
+      <div class="kpi" data-tip="Earned from completed tasks" style="cursor:pointer">
         <div class="kpi-lab">Experience</div>
         <div class="kpi-val">${st.xp}</div>
         <div class="kpi-sub">${st.achievements.length} milestones logged</div>
       </div>
-      <div class="kpi" data-tip="Schemes open for application">
+      <div class="kpi" data-tip="Schemes open for application" style="cursor:pointer">
         <div class="kpi-lab">Open Targets</div>
         <div class="kpi-val">${openT}</div>
         <div class="kpi-sub">of ${app.content.targets.length} verified schemes</div>
       </div>
-      <div class="kpi" data-tip="Current active streak: ${st.streak || 0} days">
+      <div class="kpi" data-tip="Current active streak: ${st.streak || 0} days" style="cursor:pointer">
         <div class="kpi-lab">Cadence</div>
         <div class="kpi-val">${st.streak || 0}</div>
         <div class="kpi-sub">best: ${st.longestStreak || 0} days</div>
@@ -9747,7 +9968,7 @@ function renderDashboard() {
             ${horizon.map(h => {
               const w = Math.min(100, Math.max(3, (h.d / HMAX) * 100));
               const cls = h.d < 40 ? 'hz-red' : h.d < 90 ? 'hz-amber' : 'hz-green';
-              return `<div class="hz-row ${cls}">
+              return `<div class="hz-row ${cls}" data-hzname="${esc(h.name)}">
                 <div><div class="hz-name">${esc(h.name)}</div><div class="hz-date">${fmtDate(h.date)}</div></div>
                 <div class="hz-days">${h.d}d</div>
                 <div class="hz-bar"><i style="width:${w}%"></i></div>
@@ -9762,7 +9983,7 @@ function renderDashboard() {
         <div class="card-body">
           ${cats.map(([name, c]) => {
             const w = Math.round((c.done / c.total) * 100);
-            return `<div style="margin-bottom:var(--sp-4)">
+            return `<div class="cat-progress-row" data-catname="${esc(name)}" style="margin-bottom:var(--sp-4);cursor:pointer;padding:4px 6px;border-radius:var(--r-sm)">
               <div class="row-between" style="margin-bottom:6px">
                 <span style="font-size:var(--fs-sm);font-weight:var(--fw-semi)">${esc(name)}</span>
                 <span class="mono muted">${c.done}/${c.total} · ${c.earned}/${c.xp} XP</span>
@@ -9827,7 +10048,7 @@ function renderDashboard() {
 
     <div class="sec-title"><h2>Disqualified Schemes &amp; Dead Ends</h2><div class="rule"></div></div>
     <div class="grid-cards">
-      ${app.content.deadEnds.slice(0, 6).map(d => `<div class="card reveal"><div class="card-body">
+      ${app.content.deadEnds.slice(0, 6).map((d, i) => `<div class="card reveal" data-deadend="${i}" style="cursor:pointer"><div class="card-body">
         <div style="font-size:var(--fs-sm);font-weight:var(--fw-semi);color:var(--bad-tx)">${esc(d.name)}</div>
         <div class="muted" style="margin-top:6px;font-size:var(--fs-xs);line-height:var(--lh-relaxed)">${esc((d.why || d.note || '').slice(0, 220))}</div>
       </div></div>`).join('')}
@@ -9837,6 +10058,56 @@ function renderDashboard() {
   const p2 = $('#dashPalette'); if (p2) p2.onclick = openPalette;
   const bAud = $('#btnGoCreditAudit'); if (bAud) bAud.onclick = () => { go('missions'); app.filters.mission = 'Eligibility'; renderMissions(); };
   const bPb = $('#btnGoPlaybookEpos'); if (bPb) bPb.onclick = () => { go('playbook'); app.playbookOpen = 'epos'; renderPlaybook(); };
+
+  // Wire countdown clicks
+  $$('#dashBody .cd').forEach(el => {
+    el.onclick = () => {
+      const tip = el.dataset.cdname || el.dataset.tip;
+      const tgt = (app.content.targets || []).find(t => t.name.toLowerCase().includes(tip.toLowerCase()) || tip.toLowerCase().includes(t.name.toLowerCase()));
+      if (tgt) openTarget(tgt.id);
+      else go('targets');
+    };
+  });
+
+  // Wire horizon clicks
+  $$('#dashBody .hz-row').forEach(el => {
+    el.onclick = () => {
+      const name = el.dataset.hzname;
+      const tgt = (app.content.targets || []).find(t => t.name.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(t.name.toLowerCase()));
+      if (tgt) openTarget(tgt.id);
+      else go('targets');
+    };
+  });
+
+  // Wire KPI card clicks
+  const kpis = $$('#dashBody .kpi');
+  if (kpis[0]) kpis[0].onclick = () => go('missions');
+  if (kpis[1]) kpis[1].onclick = () => go('profile');
+  if (kpis[2]) kpis[2].onclick = () => go('missions');
+  if (kpis[3]) kpis[3].onclick = () => { app.filters.target = 'all'; go('targets'); };
+  if (kpis[4]) kpis[4].onclick = () => go('calendar');
+
+  // Wire category progress rows
+  $$('#dashBody [data-catname]').forEach(el => {
+    el.onclick = () => {
+      app.filters.mission = el.dataset.catname;
+      go('missions');
+    };
+  });
+
+  // Wire recent feed item clicks
+  $$('#dashBody .feed-item').forEach(el => {
+    el.onclick = () => go('missions');
+  });
+
+  // Wire dead end clicks
+  $$('#dashBody [data-deadend]').forEach(el => {
+    el.onclick = () => {
+      const idx = parseInt(el.dataset.deadend, 10);
+      const de = app.content.deadEnds[idx];
+      if (de) openDeadEndModal(de);
+    };
+  });
 }
 
 /* progress ring — circumference passed as a custom property so the CSS
@@ -10121,13 +10392,17 @@ function renderCalendar() {
 /* ---------------- TIMELINE ---------------- */
 function renderTimeline() {
   const rows = [
-    ...app.content.targets.map(t => ({ date: t.deadline, name: t.name, kind: 'Target', country: t.country, flag: t.flag, status: t.status, open: () => openTarget(t.id) })),
-    ...app.content.documents.filter(d => d.deadline).map(d => ({ date: d.deadline, name: d.name, kind: 'Document', country: '', flag: '📦', status: 'open' })),
-    ...app.missions.missions.filter(m => m.deadline).map(m => ({ date: m.deadline, name: m.title, kind: 'Mission', country: '', flag: '🎯', status: m.urgency === 'critical' ? 'open' : 'opening_soon' }))
+    ...app.content.targets.map(t => ({ date: t.deadline, name: t.name, kind: 'Target', country: t.country, flag: t.flag, status: t.status, obj: t })),
+    ...app.content.documents.filter(d => d.deadline).map(d => ({ date: d.deadline, name: d.name, kind: 'Document', country: '', flag: '📦', status: 'open', obj: d })),
+    ...app.missions.missions.filter(m => m.deadline).map(m => ({ date: m.deadline, name: m.title, kind: 'Mission', country: '', flag: '🎯', status: m.urgency === 'critical' ? 'open' : 'opening_soon', obj: m }))
   ].filter(r => r.date).sort((a, b) => a.date.localeCompare(b.date));
 
   const groups = {};
-  rows.forEach(r => { const k = r.date.slice(0, 7); (groups[k] = groups[k] || []).push(r); });
+  rows.forEach((r, idx) => {
+    r._idx = idx;
+    const k = r.date.slice(0, 7);
+    (groups[k] = groups[k] || []).push(r);
+  });
 
   $('#timelineBody').innerHTML = Object.entries(groups).map(([month, items]) => {
     const label = new Date(month + '-01T00:00:00').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
@@ -10137,18 +10412,31 @@ function renderTimeline() {
         ${items.map(r => {
           const d = daysUntil(r.date);
           const cls = d !== null && d < 30 ? (d < 0 ? '' : 'urgent') : d !== null && d < 90 ? 'soon' : '';
-          return `<div class="tl-row ${cls}">
+          return `<div class="tl-row ${cls}" data-tlidx="${r._idx}">
             <span class="tl-dot"></span>
             <div class="tl-date">${fmtDate(r.date)} · ${d !== null ? (d < 0 ? Math.abs(d) + ' days ago' : d + ' days') : ''}</div>
             <div class="tl-name">${r.flag || ''} ${esc(r.name)}</div>
             <div class="tl-meta">
               <span class="badge badge-mute">${esc(r.kind)}</span>
               ${r.country ? `<span class="badge badge-mute">${esc(r.country)}</span>` : ''}
+              <span class="badge badge-info">Details →</span>
             </div>
           </div>`;
         }).join('')}
       </div></div></div>`;
   }).join('');
+
+  // Wire timeline clicks
+  $$('#timelineBody .tl-row').forEach(el => {
+    el.onclick = () => {
+      const idx = parseInt(el.dataset.tlidx, 10);
+      const item = rows[idx];
+      if (!item) return;
+      if (item.kind === 'Target') openTarget(item.obj.id);
+      else if (item.kind === 'Document') openDocModal(item.obj);
+      else if (item.kind === 'Mission') go('missions');
+    };
+  });
 }
 
 /* ---------------- MISSIONS ---------------- */
@@ -10238,7 +10526,7 @@ function renderDocuments() {
   list = list.slice().sort((a, b) => (a.status === 'missing' ? 0 : 1) - (b.status === 'missing' ? 0 : 1));
 
   $('#docList').innerHTML = `<div class="card reveal">${list.map(d => `
-    <div class="doc">
+    <div class="doc" data-docname="${esc(d.name)}" style="cursor:pointer">
       <div class="doc-ic">${d.status === 'missing' ? '🔴' : d.status === 'have' ? '✅' : '📄'}</div>
       <div class="doc-body">
         <div class="doc-name">${esc(d.name)}</div>
@@ -10248,9 +10536,19 @@ function renderDocuments() {
           ${d.type ? `<span class="badge badge-mute">${esc(d.type)}</span>` : ''}
           ${d.blocker ? '<span class="badge badge-warn">BLOCKER</span>' : ''}
           ${d.owner ? `<span class="badge badge-mute">${esc(d.owner)}</span>` : ''}
+          <span class="badge badge-info" style="margin-left:auto">Manage &rarr;</span>
         </div>
       </div>
     </div>`).join('')}</div>`;
+
+  // Wire document clicks
+  $$('#docList .doc').forEach(el => {
+    el.onclick = () => {
+      const docName = el.dataset.docname;
+      const d = docs.find(x => x.name === docName);
+      if (d) openDocModal(d);
+    };
+  });
 }
 
 /* ---------------- MASTER EXCEL VIEW ---------------- */
@@ -10272,6 +10570,26 @@ function renderExcel() {
   const q = (app.filters.excelQuery || '').toLowerCase().trim();
   if (q) {
     dataRows = dataRows.filter(r => r.some(cell => String(cell || '').toLowerCase().includes(q)));
+  }
+
+  app.excelSort = app.excelSort || { col: 0, asc: true };
+
+  // Sort rows based on active sort column
+  if (app.excelSort.col != null) {
+    const sc = app.excelSort.col;
+    dataRows.sort((a, b) => {
+      const va = (a[sc] != null ? String(a[sc]) : '').trim();
+      const vb = (b[sc] != null ? String(b[sc]) : '').trim();
+      const na = parseFloat(va);
+      const nb = parseFloat(vb);
+      let res = 0;
+      if (!isNaN(na) && !isNaN(nb) && !/[a-zA-Z]/.test(va) && !/[a-zA-Z]/.test(vb)) {
+        res = na - nb;
+      } else {
+        res = va.localeCompare(vb, undefined, { numeric: true, sensitivity: 'base' });
+      }
+      return app.excelSort.asc ? res : -res;
+    });
   }
 
   $('#excelStats').innerHTML = `
@@ -10325,22 +10643,26 @@ function renderExcel() {
     <div class="card" style="overflow:hidden">
       <div class="card-head" style="background:var(--surface-3)">
         <h2 style="font-size:var(--fs-sm);font-family:var(--font-mono)">${esc(activeSheet)} (${dataRows.length} rows)</h2>
-        <span class="hint">Scroll horizontally to inspect full dataset</span>
+        <span class="hint">Click column to sort · Click row to inspect record</span>
       </div>
       <div class="card-body" style="padding:0;overflow-x:auto;max-height:68vh;overflow-y:auto">
         <table class="tbl" style="font-size:11px">
           <thead style="position:sticky;top:0;background:var(--surface-1);z-index:2">
             <tr>
-              ${headerRow.map((h, i) => `
-                <th style="background:var(--surface-2);color:var(--text-1);border-bottom:2px solid var(--border-3);padding:8px 10px;white-space:nowrap">
-                  ${esc(h)}
-                </th>
-              `).join('')}
+              ${headerRow.map((h, i) => {
+                const isSorted = app.excelSort.col === i;
+                const arrow = isSorted ? (app.excelSort.asc ? ' ▲' : ' ▼') : '';
+                return `
+                  <th class="excel-th" data-colidx="${i}" style="background:var(--surface-2);color:var(--text-1);border-bottom:2px solid var(--border-3);padding:8px 10px;white-space:nowrap;cursor:pointer;user-select:none" title="Click to sort">
+                    ${esc(h)}<span style="font-size:10px;color:var(--accent);font-weight:bold">${arrow}</span>
+                  </th>
+                `;
+              }).join('')}
             </tr>
           </thead>
           <tbody>
             ${dataRows.map((r, rIdx) => `
-              <tr style="background:${rIdx % 2 === 1 ? 'var(--surface-2)' : 'transparent'}">
+              <tr data-excelrow="${rIdx}" style="background:${rIdx % 2 === 1 ? 'var(--surface-2)' : 'transparent'};cursor:pointer">
                 ${r.map((cell, cIdx) => {
                   const val = String(cell || '');
                   const isPass = val.includes('PASS') || val === 'YES';
@@ -10366,7 +10688,31 @@ function renderExcel() {
     btn.onclick = () => {
       app.filters.excelSheet = btn.dataset.sheet;
       app.filters.excelQuery = '';
+      app.excelSort = { col: 0, asc: true };
       renderExcel();
+    };
+  });
+
+  // Wire column sorting
+  $$('#excelBody .excel-th').forEach(th => {
+    th.onclick = () => {
+      const col = parseInt(th.dataset.colidx, 10);
+      if (app.excelSort.col === col) {
+        app.excelSort.asc = !app.excelSort.asc;
+      } else {
+        app.excelSort.col = col;
+        app.excelSort.asc = true;
+      }
+      renderExcel();
+    };
+  });
+
+  // Wire row click to open detailed modal
+  $$('#excelBody tbody tr[data-excelrow]').forEach(tr => {
+    tr.onclick = () => {
+      const rIdx = parseInt(tr.dataset.excelrow, 10);
+      const rowData = dataRows[rIdx];
+      if (rowData) openExcelRowModal(activeSheet, headerRow, rowData);
     };
   });
 
@@ -10475,7 +10821,7 @@ function renderUniversities() {
       const allFaculty = (app.profs ? app.profs.professors : []);
       const matched = allFaculty.filter(p => p.university.toLowerCase().includes(r.name.toLowerCase()) || r.name.toLowerCase().includes(p.university.toLowerCase()));
       return `
-      <div class="card reveal" style="border-left:3px solid var(--gold-st)">
+      <div class="card reveal uni-card-interactive" data-uniname="${esc(r.name)}" style="border-left:3px solid var(--gold-st);cursor:pointer">
         <div class="card-body">
           <div class="uni-head">
             <div class="uni-rank" style="background:var(--gold-bg);color:var(--gold-tx)">${r.rank}</div>
@@ -10488,6 +10834,7 @@ function renderUniversities() {
             <span class="badge badge-ok">${esc(r.gate)}</span>
             <span class="badge badge-gold">RANKED FOR YOU</span>
             ${matched.length ? `<span class="badge badge-info">${matched.length} FACULTY TRACKED</span>` : ''}
+            <span class="badge badge-info" style="margin-left:auto">Dossier →</span>
           </div>
           <div class="field-val" style="margin-top:12px;font-size:var(--fs-sm)">${esc(r.why)}</div>
           ${matched.length ? `
@@ -10515,6 +10862,16 @@ function renderUniversities() {
         if (pObj) openProfModal(pObj);
       };
     });
+
+    // Wire university card clicks
+    $$('#uniList .uni-card-interactive').forEach(card => {
+      card.onclick = (e) => {
+        if (e.target.closest('button') || e.target.closest('a')) return;
+        const uName = card.dataset.uniname;
+        const uObj = census.find(x => x[0].toLowerCase().includes(uName.toLowerCase()) || uName.toLowerCase().includes(x[0].toLowerCase())) || [uName, 'Canada', 'U15', 'PASS', '', ''];
+        openUniModal(uObj);
+      };
+    });
     return;
   }
 
@@ -10536,7 +10893,7 @@ function renderUniversities() {
     const g = gateOf(gate);
     const allFaculty = (app.profs ? app.profs.professors : []);
     const matched = allFaculty.filter(p => p.university.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(p.university.toLowerCase()));
-    return `<div class="card reveal" style="border-left:3px solid ${g === 'PASS' ? 'var(--ok-st)' : g === 'FAIL' ? 'var(--bad-st)' : g === 'PARTIAL' ? 'var(--warn-st)' : 'var(--text-4)'}">
+    return `<div class="card reveal uni-card-interactive" data-uniname="${esc(name)}" style="border-left:3px solid ${g === 'PASS' ? 'var(--ok-st)' : g === 'FAIL' ? 'var(--bad-st)' : g === 'PARTIAL' ? 'var(--warn-st)' : 'var(--text-4)'};cursor:pointer">
       <div class="card-body">
         <div class="uni-head">
           <div style="flex:1;min-width:0">
@@ -10547,6 +10904,7 @@ function renderUniversities() {
         <div class="m-meta" style="margin-top:12px">
           <span class="badge ${GATE_BADGE[g]}">${g === 'PASS' ? '✅ 16+ MONTHS' : g === 'FAIL' ? '🔴 FAILS GATE' : g === 'PARTIAL' ? '🟡 PARTIAL' : '⚪ UNVERIFIED'}</span>
           ${matched.length ? `<span class="badge badge-info">${matched.length} FACULTY TRACKED</span>` : ''}
+          <span class="badge badge-info" style="margin-left:auto">Dossier →</span>
         </div>
         ${prog ? `<div class="field-val" style="margin-top:12px;font-size:var(--fs-xs)">${esc(prog)}</div>` : ''}
         ${note ? `<div class="muted" style="margin-top:8px;font-size:var(--fs-xs);line-height:var(--lh-relaxed)">${esc(note)}</div>` : ''}
@@ -10566,6 +10924,16 @@ function renderUniversities() {
       const pName = b.dataset.viewprof;
       const pObj = (app.profs ? app.profs.professors : []).find(x => x.name === pName);
       if (pObj) openProfModal(pObj);
+    };
+  });
+
+  // Wire university card clicks for census mode
+  $$('#uniList .uni-card-interactive').forEach(card => {
+    card.onclick = (e) => {
+      if (e.target.closest('button') || e.target.closest('a')) return;
+      const uName = card.dataset.uniname;
+      const uObj = census.find(x => x[0].toLowerCase() === uName.toLowerCase()) || [uName, 'Canada', 'U15', 'PASS', '', ''];
+      openUniModal(uObj);
     };
   });
 }
@@ -10598,7 +10966,7 @@ function renderSubjects() {
 
     <div class="sec-title"><h2>🏆 Target these three, in this order</h2><div class="rule"></div></div>
     <div class="grid-cards">
-      ${ranked.map(r => `<div class="card reveal" style="border-left:3px solid var(--gold-st)">
+      ${ranked.map(r => `<div class="card reveal" data-subtarget="${esc(r.target)}" style="border-left:3px solid var(--gold-st);cursor:pointer">
         <div class="card-body">
           <div class="uni-head">
             <div class="uni-rank" style="background:var(--gold-bg);color:var(--gold-tx)">${r.rank}</div>
@@ -10608,6 +10976,9 @@ function renderSubjects() {
             </div>
           </div>
           <div class="field-val" style="margin-top:12px;font-size:var(--fs-sm)">${esc(r.why)}</div>
+          <div style="margin-top:12px;display:flex;justify-content:flex-end">
+            <span class="badge badge-info">View Universities &amp; Faculty →</span>
+          </div>
         </div>
       </div>`).join('')}
     </div>
@@ -10638,6 +11009,25 @@ function renderSubjects() {
     <div class="card"><div class="card-body stack-sm">
       ${fb.map(f => `<div style="display:flex;gap:10px"><span style="color:var(--accent);font-weight:800">›</span><div style="font-size:var(--fs-sm)">${esc(f)}</div></div>`).join('')}
     </div></div>`;
+
+  // Wire ranked subject targets to universities & professors
+  $$('#subjectBody [data-subtarget]').forEach(el => {
+    el.onclick = () => {
+      const target = el.dataset.subtarget;
+      if (target.includes('Waterloo')) {
+        app.filters.uniQuery = 'Waterloo';
+        go('universities');
+      } else if (target.includes('HEC')) {
+        app.filters.uniQuery = 'HEC';
+        go('universities');
+      } else if (target.includes('SFU') || target.includes('Simon Fraser')) {
+        app.filters.uniQuery = 'Simon Fraser';
+        go('universities');
+      } else {
+        go('universities');
+      }
+    };
+  });
 }
 
 /* ---------------- FUNDING ---------------- */
@@ -10701,11 +11091,20 @@ function renderFunding() {
 
     <div class="sec-title"><h2>🚫 Dead ends — do not waste a year on these</h2><div class="rule"></div></div>
     <div class="card"><div class="card-body">
-      ${DE.map(d => `<div class="de-row">
+      ${DE.map(d => `<div class="de-row" data-dename="${esc(d.name)}" style="cursor:pointer">
         <span class="de-x">✕</span>
         <div class="de-body"><strong>${esc(d.name)}</strong><span>${esc(d.why)}</span></div>
       </div>`).join('')}
     </div></div>`;
+
+  // Wire dead ends clicks
+  $$('#fundingBody .de-row').forEach(el => {
+    el.onclick = () => {
+      const name = el.dataset.dename;
+      const de = DE.find(d => d.name === name);
+      if (de) openDeadEndModal(de);
+    };
+  });
 }
 
 /* ---------------- PROFESSORS ---------------- */
