@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0f1f38">
+<title>ScholarVerse</title>
+<meta name="description" content="ScholarVerse: the command centre for a fully funded master's. Deadlines, missions, targets, supervisors and funding in one place.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230a7470'/%3E%3Cpath d='M4 17h16M6 17l3.5-8 3 5 3-3 3 6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem('sv-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){}</script>
+<style>
+/*{{STYLES}}*/
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail" id="rail" aria-label="Main navigation">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18"/><path d="M5 17l4-9 3 5 3-3 4 7"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">ScholarVerse</div>
+        <div class="brand-sub">Funded master's, 2027 intake</div>
+      </div>
+    </div>
+    <button class="search-btn" id="paletteOpen" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      Search everything <kbd>Ctrl K</kbd>
+    </button>
+    <nav class="nav" id="nav"></nav>
+    <div class="rail-foot">
+      <div class="lvl-row"><span class="lvl-title" id="lvlTitle">Applicant</span><span class="lvl-xp" id="xpText">0 XP</span></div>
+      <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
+      <div class="rail-meta"><span id="streakText">No streak yet</span><button class="theme-btn" id="themeBtn" type="button">Dark</button></div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn" id="burger" type="button" aria-label="Open navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <span class="brand-name">ScholarVerse</span>
+      <button class="icon-btn" id="paletteOpen2" type="button" aria-label="Search" style="margin-left:auto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      </button>
+    </header>
+    <main class="page" id="page" tabindex="-1">
+      <div class="empty">Loading your campaign…</div>
+    </main>
+  </div>
+</div>
+
+<div class="overlay" id="modal" role="dialog" aria-modal="true">
+  <div class="dialog" id="modalInner"></div>
+</div>
+
+<div class="overlay palette" id="palette" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="dialog">
+    <input class="pal-input" id="paletteInput" type="text" placeholder="Search targets, professors, missions, universities…" autocomplete="off">
+    <div class="pal-list" id="paletteList"></div>
+    <div class="pal-foot"><span>↑↓ to move</span><span>Enter to open</span><span>Esc to close</span></div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script>
+/*{{DATA}}*/
+</script>
+<script>
+/*{{OFFLINE_API}}*/
+</script>
+<script>
+/*{{APP}}*/
+</script>
+</body>
+</html>
