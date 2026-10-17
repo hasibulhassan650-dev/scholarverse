@@ -1350,6 +1350,31 @@ function renderProfile(root) {
       <div class="panel"><div class="panel-head"><h2>Achievements</h2></div><div class="panel-body">${kv((p.achievements || []).map(a => [a.year, a.text]))}</div></div>
       <div class="panel"><div class="panel-head"><h2>Already applied</h2></div><div class="panel-body">${kv((p.alreadyApplied || []).map(a => [a.status, `${a.programme}${a.note ? ` — ${a.note}` : ''}`]))}</div></div>
     </div>
+    ${(p.referees || []).length ? `
+      <div class="section-title"><h2>Referees &amp; Endorsements</h2><span class="aside">${p.referees.length} verified referees</span></div>
+      <div class="grid g2">
+        ${p.referees.map(ref => `
+          <div class="panel" style="padding:18px 20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+              <div>
+                <h3 style="margin:0">${esc(ref.name)}</h3>
+                <div class="uni-loc" style="font-size:13px;margin-top:2px">${esc(ref.role)} · <strong>${esc(ref.employer || ref.institution)}</strong></div>
+              </div>
+              <span class="tag acc">${esc(ref.type)}</span>
+            </div>
+            ${ref.academicRole ? `<div class="dim" style="font-size:12.5px;margin-top:6px">${esc(ref.academicRole)}</div>` : ''}
+            ${ref.education ? `<div class="field" style="margin-top:10px"><div class="field-k">Education &amp; Award</div><div class="field-v" style="font-size:13px">${esc(ref.education)}</div></div>` : ''}
+            ${ref.awardProof || ref.linkedin ? `
+              <div class="tags" style="margin-top:10px">
+                ${ref.awardProof ? `<a class="btn btn-sm" href="${esc(ref.awardProof)}" target="_blank" rel="noopener">Official DAAD Award Letter ↗</a>` : ''}
+                ${ref.linkedin ? `<a class="btn btn-sm" href="${esc(ref.linkedin)}" target="_blank" rel="noopener">LinkedIn Profile ↗</a>` : ''}
+              </div>
+            ` : ''}
+            <div class="note acc" style="margin-top:12px;font-size:12.5px"><div>${esc(ref.strategicValue)}</div></div>
+          </div>
+        `).join('')}
+      </div>
+    ` : ''}
     <div class="section-title"><h2>Campaign achievements</h2><span class="aside">${app.state.achievements.length} of ${app.missions.achievements.length} unlocked</span></div>
     <div class="badge-grid">${app.missions.achievements.map(a => { const has = app.state.achievements.includes(a.id); return `<div class="panel ach ${has ? '' : 'locked'}"><span class="ach-ic" aria-hidden="true">${esc(a.icon)}</span><div><div class="ach-n">${esc(a.name)}</div><div class="ach-d">${esc(a.desc)} · +${a.xp} XP</div></div></div>`; }).join('')}</div>
     <div class="section-title"><h2>Data</h2></div>

@@ -146,6 +146,34 @@ const MISSIONS = [
     ]
   },
   {
+    id: "referee-karimul",
+    title: "Request DAAD Alumnus Recommendation from Molla Karimul Islam",
+    detail: "Request a second recommendation letter from Molla Karimul Islam, SAVP & Operational Head of Sustainable Finance Department at City Bank, Adjunct Faculty at BRAC University, and former DAAD Scholar (M.Sc., Universität Greifswald, Germany).",
+    why: "⭐ STRATEGIC FORCE-MULTIPLIER FOR DAAD EPOS. A recommendation from a senior vice president at your employer who is HIMSELF an alumnus of the DAAD scholarship programme carries immense credibility with German selection committees. He can speak to both your professional Treasury contribution and your long-term developmental impact on Bangladesh's green & sustainable financial sector.",
+    xp: 120,
+    targets: ["goettingen", "hohenheim", "sisgp", "emjm"],
+    owner: "Molla Karimul Islam",
+    deadline: "2026-10-24",
+    urgency: "critical",
+    category: "Documents",
+    actionUrl: "https://www.dropbox.com/s/972ct8vrgyhm61k/DAAD%20Award%20Letter.pdf?dl=0",
+    actionLabel: "📜 Molla Karimul Islam DAAD Award Letter",
+    portalUrl: "https://www.linkedin.com/in/karimul/",
+    portalLabel: "👔 Molla Karimul Islam LinkedIn",
+    submissionGuide: "Where & how: Approach Karimul Bhai with your CV, BUP transcript, and EPOS motivation draft. Request that he mention his own DAAD Greifswald scholarship in the letter's opening, your work at City Bank, and your high potential to bridge quantitative Treasury models with national sustainable development.",
+    sources: [
+      { label: "Molla Karimul Islam DAAD Scholarship Award Proof (PDF)", url: "https://www.dropbox.com/s/972ct8vrgyhm61k/DAAD%20Award%20Letter.pdf?dl=0" },
+      { label: "DAAD EPOS Guidelines on Professional References", url: "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777" }
+    ],
+    checklist: [
+      "Share your CV and Göttingen/Hohenheim target descriptions with Karimul Bhai",
+      "Highlight his DAAD Greifswald alumnus status in the reference header",
+      "Connect your ALM/Treasury work with Sustainable Finance and Bangladesh developmental priorities",
+      "Get signed on official letterhead with contact details, date, and designation",
+      "Scan unsealed in color at 300 DPI"
+    ]
+  },
+  {
     id: "ranking-letter",
     title: "Request ranking letter from BUP",
     detail: "Ask BUP to certify your class standing — top half or better if true. Also request an ECTS equivalence statement.",

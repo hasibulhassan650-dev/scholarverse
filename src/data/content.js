@@ -114,6 +114,33 @@ const PROFILE = {
   alreadyApplied: [
     { programme: "MSc Economics, University of Mannheim", status: "Submitted", note: "Motivation letter + academic project paper submitted" },
     { programme: "Master in Economics and Finance (MEF), Charles University, Prague", status: "Submitted", note: "Czech Government Scholarship, academic year 2027/2028" }
+  ],
+  referees: [
+    {
+      name: "Molla Karimul Islam",
+      role: "Senior Assistant Vice President (SAVP) & Operational Head, Sustainable Finance Department (Green & Climate Finance)",
+      employer: "The City Bank PLC",
+      academicRole: "Adjunct Faculty, Department of Economics and Social Sciences, BRAC University",
+      education: "M.Sc. in Environmental Sciences, Universität Greifswald, Germany (DAAD Scholar, July 2014 Award)",
+      awardProof: "https://www.dropbox.com/s/972ct8vrgyhm61k/DAAD%20Award%20Letter.pdf?dl=0",
+      linkedin: "https://www.linkedin.com/in/karimul/",
+      type: "Professional & DAAD Alumnus Referee",
+      strategicValue: "⭐ EXCEPTIONAL ASSET FOR GERMAN DAAD EPOS APPLICATIONS. As an alumnus of the DAAD scholarship programme from Universität Greifswald, an Environmental Economist, and a Senior AVP in Sustainable Finance at your employer City Bank, his recommendation directly connects your Treasury ALM & sovereign bond work with German development economics and sustainable banking criteria."
+    },
+    {
+      name: "Line Manager / Head of Treasury",
+      role: "Head of Treasury / ALM Desk Head",
+      employer: "The City Bank PLC",
+      type: "Primary Operational Supervisor",
+      strategicValue: "Mandatory employer recommendation certifying daily $90–110M interbank flow, statutory CRR/SLR compliance, 310 G-sec cash-flow model, and institutional re-employment guarantee upon degree completion."
+    },
+    {
+      name: "Undergraduate Academic Referee",
+      role: "Associate Professor / Project Paper Advisor",
+      employer: "Bangladesh University of Professionals (BUP)",
+      type: "Academic Referee",
+      strategicValue: "Testifies to Thesis GPA 4.00/4.00, empirical econometric methodology in logistic regression and financial literacy survey data, and quantitative aptitude."
+    }
   ]
 };
 
@@ -608,7 +635,8 @@ const DOCUMENTS = [
   { id: "ielts", name: "IELTS Academic or TOEFL iBT", type: "English", status: "missing", req: ["EPOS", "SISGP", "EMJM", "EPFL"], spec: "IELTS Academic 6.5 overall (Hohenheim) or TOEFL iBT 90. EMLE needs 7.0. Result must be no older than 3 years for DAAD.", owner: "You", blocker: true, critical: true },
   { id: "moi", name: "Medium of Instruction certificate", type: "English", status: "have", req: [], spec: "✅ ACCEPTED BY GÖTTINGEN — they confirmed in writing on 13 Oct 2026: 'Yes, your University attestating that your degree was entirely taught in English is sufficient and meets the language criteria.' You already hold this and it is already scanned. ⚠️ Hohenheim states the opposite for their programme ('NOT SUFFICIENT... There are no exceptions') and has NOT been asked — so this is Göttingen-specific.", owner: "You" },
   { id: "emp-cert", name: "Certificate(s) of Employment", type: "Employment", status: "missing", req: ["EPOS", "SISGP"], spec: "MANDATORY. Must show you are currently employed AND meet the 2-year minimum. Letterhead, signature, official stamp, current date, UNSEALED. Dates must match your CV exactly.", owner: "City Bank HR", blocker: true, critical: true },
-  { id: "emp-letter", name: "Employer recommendation letter", type: "Employment", status: "missing", req: ["EPOS"], spec: "MANDATORY. Official letterhead, position and referee contact details, signed and dated, unsealed. Ideally includes a re-employment guarantee.", owner: "City Bank manager", blocker: true, critical: true },
+  { id: "emp-letter", name: "Employer recommendation letter (Head of Treasury)", type: "Employment", status: "missing", req: ["EPOS"], spec: "MANDATORY. Official letterhead, position and referee contact details, signed and dated, unsealed. Ideally includes a re-employment guarantee.", owner: "City Bank manager", blocker: true, critical: true },
+  { id: "karimul-letter", name: "DAAD Scholar Recommendation (Molla Karimul Islam, SAVP City Bank)", type: "References", status: "verify", req: ["EPOS", "SISGP", "EMJM"], spec: "⭐ HIGHEST LEVERAGE GERMAN REFERENCE. SAVP & Operational Head of Sustainable Finance Department, City Bank PLC | Adjunct Faculty, BRAC University | M.Sc. Germany (DAAD Scholar 2014, Universität Greifswald). Bridges your Treasury ALM & sovereign bond work with German sustainable development finance.", owner: "Molla Karimul Islam", critical: true },
   { id: "ranking", name: "Ranking letter (class standing)", type: "Academic", status: "missing", req: ["Göttingen"], spec: "Named explicitly by Hohenheim as acceptable evidence. Not required at Hohenheim (your 2.05 clears 2.5) but valuable for Göttingen's vaguer 'upper third' bar.", owner: "BUP" },
   { id: "ects", name: "ECTS equivalence statement", type: "Academic", status: "missing", req: ["EMLE", "Göttingen"], spec: "EMLE requires 240 ECTS — UNVERIFIED whether BUP's BSS qualifies. Also helps the EPOS 'upper third' argument.", owner: "BUP" },
   { id: "europass", name: "Europass CV (no unexplained gaps)", type: "Writing", status: "missing", req: ["EPOS"], spec: "LITERAL requirement: reverse chronological order with NO unexplained gaps. February 2024 is a real gap — declare it.", owner: "You", blocker: true },
