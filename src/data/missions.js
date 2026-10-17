@@ -104,12 +104,20 @@ const MISSIONS = [
     deadline: "2026-10-14",
     urgency: "critical",
     category: "Documents",
+    actionUrl: "https://www.thecitybank.com",
+    actionLabel: "City Bank Portal",
+    submissionGuide: "Where & how: Request from City Bank HR Operations (Dhaka). Ensure letterhead includes date of issue, official company seal, and physical or code-certified digital signature by HR Manager. Required for upload in Göttingen portal and Hohenheim application package.",
+    sources: [
+      { label: "DAAD EPOS Checklist - Section: Professional Experience", url: "https://www.static.tu.berlin/fileadmin/www/40000121/Dokumente_Formulare/EPOS_Checklist_2023.pdf" },
+      { label: "Göttingen EPOS Document Requirements #11", url: "https://www.uni-goettingen.de/en/572463.html" },
+      { label: "Hohenheim AgEcon Required Documents - Employment Certificate", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+    ],
     checklist: [
       "Email City Bank HR requesting the certificate",
-      "Specify both roles with exact start/end months",
+      "Specify both roles with exact start/end months (MT Mar 2024–Feb 2025; AM Mar 2025–present)",
       "Request bKash certificate for Oct 2023 – Jan 2024",
       "Confirm letterhead, signature, official stamp, current date",
-      "NOT in a sealed envelope",
+      "NOT in a sealed envelope (you must scan it)",
       "Check the dates match your CV to the month"
     ]
   },
@@ -124,12 +132,17 @@ const MISSIONS = [
     deadline: "2026-10-16",
     urgency: "critical",
     category: "Documents",
+    submissionGuide: "Where & how: Have your direct supervisor / Head of Treasury sign on official bank letterhead with direct corporate email and phone. Do not seal; scan to PDF for direct upload.",
+    sources: [
+      { label: "DAAD EPOS Regulations on Recommendation Letters", url: "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777" },
+      { label: "Hohenheim Official AgEcon Recommendation Rules", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+    ],
     checklist: [
       "Ask your line manager (or Head of Treasury)",
       "Share your CV and the EPOS criteria with them",
       "Request: letterhead, position, contact details, signature, date",
-      "Ask for a re-employment guarantee if possible",
-      "Keep it unsealed"
+      "Ask for a re-employment guarantee if possible ('Mr. Hasan is expected to resume his duties upon completion...')",
+      "Keep it unsealed and scan in color at 300 DPI"
     ]
   },
   {
@@ -143,6 +156,13 @@ const MISSIONS = [
     deadline: "2026-10-20",
     urgency: "high",
     category: "Documents",
+    actionUrl: "https://bup.edu.bd",
+    actionLabel: "BUP Registrar Portal",
+    submissionGuide: "Where & how: Apply to BUP Controller of Examinations / Registrar Office. Request letter stating either class rank (e.g. top 20%) or that 3.30 is in the upper third of the graduating cohort.",
+    sources: [
+      { label: "Hohenheim Ranking Letter Requirement (Clause 2.5)", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" },
+      { label: "DAAD EPOS Upper-Third Grade Standard", url: "https://www.static.tu.berlin/fileadmin/www/40000121/Dokumente_Formulare/EPOS_Checklist_2023.pdf" }
+    ],
     checklist: [
       "Request a ranking letter (top half / upper third if true)",
       "Request an ECTS equivalence statement for the BSS degree",
@@ -153,22 +173,39 @@ const MISSIONS = [
   {
     id: "epos-form",
     title: "Download, print, sign and rescan the EPOS checklist + form",
-    detail: "Download the EPOS checklist and application form. Print them, sign with an actual pen, then rescan.",
-    why: "It sounds absurd but it is a LITERAL requirement. An unsigned or digitally-signed checklist can invalidate the application.",
+    detail: "Download the official DAAD EPOS checklist and application form. Fill the form, print both, sign with an ink pen (original physical signature), and scan to PDF. Keep local copies ready for both university portal submission and DAAD portal upload.",
+    why: "It sounds absurd but it is a LITERAL requirement stated on the DAAD form: 'Checklist: mandatory documents... original signature (no inserted scan)'. An unsigned, digitally typed, or digitally pasted signature can invalidate the application at the formal screening stage.",
     xp: 60,
     targets: ["goettingen", "hohenheim"],
     owner: "You",
     deadline: "2026-10-18",
     urgency: "high",
     category: "Application",
+    actionUrl: "downloads/EPOS_Checklist.pdf",
+    actionLabel: "📥 Download Official EPOS Checklist (PDF)",
+    actionUrl2: "downloads/EPOS_Application_Form.docx",
+    actionLabel2: "📥 Download DAAD Application Form (DOCX)",
+    portalUrl: "https://www.uni-goettingen.de/en/572462.html",
+    portalLabel: "🏛️ Göttingen EPOS Application Portal",
     checklist: [
-      "Download the EPOS checklist",
-      "Download the EPOS application form",
-      "Print both",
-      "Sign with a pen",
-      "Rescan to PDF",
-      "Keep copies of everything — you re-upload to the DAAD Portal if proposed"
-    ]
+      "Download the official EPOS Checklist PDF (link above or local download)",
+      "Download the official DAAD Application Form (DOCX / fillable format)",
+      "Fill Table 1 (Personal data: Hasibul Hasan, BUP BSS Economics, CFA charter)",
+      "Fill Table 2 (1st Choice: Göttingen M.Sc. Development Economics; 2nd Choice: Hohenheim M.Sc. Agricultural Economics)",
+      "Fill Table 3 (Current: Associate Manager, Treasury ALM, City Bank PLC)",
+      "Print both documents physically on A4 paper",
+      "Sign both by hand with a blue or black ink pen (with date and place: Dhaka, Bangladesh)",
+      "Scan to high-resolution clean PDFs (color or clear grayscale, 300 DPI)",
+      "Keep copies of everything — you re-upload to the DAAD Portal if nominated"
+    ],
+    sources: [
+      { label: "DAAD Official EPOS Checklist PDF", url: "https://www.static.tu.berlin/fileadmin/www/40000121/Dokumente_Formulare/EPOS_Checklist_2023.pdf" },
+      { label: "Hohenheim Official DAAD EPOS Form (DOCX)", url: "https://www.uni-hohenheim.de/fileadmin/uni_hohenheim/Studiengaenge/Agrar/Master/agecon/EPOS_2025_EN_FINAL.docx" },
+      { label: "Göttingen EPOS Application Guidelines", url: "https://www.uni-goettingen.de/en/572462.html" },
+      { label: "Göttingen Required Documents Regulations", url: "https://www.uni-goettingen.de/en/572463.html" },
+      { label: "Hohenheim EPOS Scholarship Regulations", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+    ],
+    submissionGuide: "Where to submit:\n1. Göttingen: Upload PDF in Step 3 of the online portal (https://www.uni-goettingen.de/en/572462.html) before 15 November 2026.\n2. Hohenheim: Email to agecon@uni-hohenheim.de (Subject: 'DAAD - [HohCampus No.] - Hasibul Hasan') AND submit HohCampus portal before 15 December 2026."
   },
   {
     id: "europass-cv",
@@ -181,12 +218,19 @@ const MISSIONS = [
     deadline: "2026-10-22",
     urgency: "high",
     category: "Writing",
+    actionUrl: "https://europa.eu/europass/eportfolio/screen/cv-editor?lang=en",
+    actionLabel: "🌐 Official Europass CV Editor",
+    sources: [
+      { label: "European Union Official Europass Portal", url: "https://europa.eu/europass/en" },
+      { label: "DAAD EPOS Checklist - Section: CV Format", url: "https://www.static.tu.berlin/fileadmin/www/40000121/Dokumente_Formulare/EPOS_Checklist_2023.pdf" }
+    ],
+    submissionGuide: "Where to create & submit: Create online at europa.eu/europass, export as clean PDF, and upload in Step 3 of the Göttingen Application Portal and attach to Hohenheim application email.",
     checklist: [
-      "Use the Europass template",
+      "Use the official Europass online builder",
       "Reverse chronological order",
       "Declare Feb 2024 as a transition gap",
       "Add a Publications/Research section",
-      "Include the CFA charter prominently",
+      "Include the CFA charter prominently (EQF Level 7)",
       "Add a note: 3.30/4.00 converts to German 2.05; thesis GPA 4.00/4.00"
     ]
   },
@@ -201,6 +245,13 @@ const MISSIONS = [
     deadline: "2026-10-28",
     urgency: "high",
     category: "Writing",
+    actionUrl: "https://www.uni-goettingen.de/en/572462.html",
+    actionLabel: "Göttingen EPOS Motivation Guide",
+    sources: [
+      { label: "DAAD Motivation Letter Regulation", url: "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777" },
+      { label: "Hohenheim Priority Ranking Letter Rules", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+    ],
+    submissionGuide: "Where & how: Type in English, maximum 2 pages, sign and date at the bottom. Upload to Göttingen portal and email to Hohenheim.",
     checklist: [
       "Max 2 pages, dated",
       "Cover academic, professional and personal reasons",
@@ -223,6 +274,11 @@ const MISSIONS = [
     deadline: "2026-10-25",
     urgency: "high",
     category: "Documents",
+    submissionGuide: "Where & how: Contact an authorized notary or official certified translation agency in Dhaka. BUP degree and transcript are in English, but HSC certificate/mark sheet issued in Bengali requires a certified notary English translation with official stamp and seal.",
+    sources: [
+      { label: "Göttingen Document Translation Clause", url: "https://www.uni-goettingen.de/en/572463.html" },
+      { label: "DAAD Translation Certification Standards", url: "https://www.daad.de/en/studying-in-germany/requirements/application-process/" }
+    ],
     checklist: [
       "Check whether degree and transcript are already in English",
       "HSC is likely Bengali — needs certified translation",
@@ -242,6 +298,13 @@ const MISSIONS = [
     deadline: "2026-11-15",
     urgency: "critical",
     category: "Submission",
+    actionUrl: "https://www.uni-goettingen.de/en/572462.html",
+    actionLabel: "🏛️ Göttingen Online Application Portal",
+    submissionGuide: "Where & how: Portal opens Oct 1 – Nov 15. Create account, select 'Regular Procedure' -> 'Development Economics with DAAD EPOS SCHOLARSHIP'. Complete Step 1 (Acquired skills), Step 2 (Declarations), Step 3 (Upload all PDF documents), then click 'Submit Application'.",
+    sources: [
+      { label: "Göttingen EPOS Application Portal", url: "https://www.uni-goettingen.de/en/572462.html" },
+      { label: "Göttingen Application Guide PDF", url: "https://www.uni-goettingen.de/de/document/download/286b93d1993ca230ab1a72d483aa26ec.pdf/Application%20Guide_2026_v2.pdf" }
+    ],
     checklist: [
       "Signed EPOS checklist",
       "EPOS application form",
@@ -249,7 +312,6 @@ const MISSIONS = [
       "Motivation letter with ranking paragraph",
       "Employer recommendation letter",
       "Certificate(s) of Employment",
-      "IELTS or TOEFL",
       "Degree certificates + certified translations",
       "Full transcripts + grading scale explanation",
       "HSC + certified translation",
@@ -269,6 +331,13 @@ const MISSIONS = [
     deadline: "2027-01-15",
     urgency: "critical",
     category: "Submission",
+    actionUrl: "https://www.universityadmissions.se/intl/start",
+    actionLabel: "🏛️ UniversityAdmissions.se Sweden Portal",
+    submissionGuide: "Where & how: Register on universityadmissions.se (Sweden's national central portal). Select up to 4 eligible master's programmes in Economics/Finance (Stockholm University, Lund, Uppsala, Gothenburg). Pay 900 SEK application fee and upload transcripts by late January deadline.",
+    sources: [
+      { label: "UniversityAdmissions.se Swedish Central Portal", url: "https://www.universityadmissions.se/intl/start" },
+      { label: "Swedish Institute Scholarship Application Procedure", url: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/" }
+    ],
     checklist: [
       "Create a universityadmissions.se account",
       "Shortlist 3–4 programmes from the eligible list",
@@ -289,6 +358,12 @@ const MISSIONS = [
     deadline: "2026-12-01",
     urgency: "high",
     category: "Documents",
+    actionUrl: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/",
+    actionLabel: "🌐 Swedish Institute Leadership Requirements",
+    submissionGuide: "Where & how: Assemble written verification letters using the official Swedish Institute template. Have your City Bank line manager or BUP faculty sign confirming your leadership roles.",
+    sources: [
+      { label: "Swedish Institute Leadership Criteria", url: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/" }
+    ],
     checklist: [
       "Derivatives course you teach to treasury colleagues — get evidence",
       "BAFEDA/BAMDA representation on behalf of City Bank",
@@ -309,6 +384,12 @@ const MISSIONS = [
     deadline: "2027-02-25",
     urgency: "critical",
     category: "Submission",
+    actionUrl: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/",
+    actionLabel: "🇸🇪 Swedish Institute Portal",
+    submissionGuide: "Where & how: Apply online on the Swedish Institute scholarship portal in February (portal open ~9–25 Feb). Submit SI Europass CV, Proof of Work (City Bank + bKash), and Proof of Leadership. Must have application number from universityadmissions.se.",
+    sources: [
+      { label: "Swedish Institute Global Professionals Call", url: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/" }
+    ],
     checklist: [
       "Confirm you are admitted to an eligible programme",
       "Complete the SI work-experience certification forms (their template)",
@@ -321,14 +402,27 @@ const MISSIONS = [
   {
     id: "agecon-pretest",
     title: "Complete the AgEcon PreTest",
-    detail: "Complete Hohenheim's AgEcon PreTest (self-evaluation).",
-    why: "Hohenheim requires proof of self-evaluation as part of the application.",
+    detail: "Complete Hohenheim's AgEcon PreTest (self-evaluation online quiz) and save the completion confirmation certificate.",
+    why: "Hohenheim requires proof of self-evaluation through the AgEcon PreTest as a mandatory admission document for MSc Agricultural Economics.",
     xp: 50,
     targets: ["hohenheim"],
     owner: "You",
     deadline: "2026-12-05",
     urgency: "medium",
-    category: "Application"
+    category: "Application",
+    actionUrl: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test",
+    actionLabel: "📝 Open AgEcon PreTest Portal",
+    submissionGuide: "Where & how: Complete the online self-test at Hohenheim's portal. Print or save the resulting PDF certificate. Attach it to your application email to agecon@uni-hohenheim.de.",
+    sources: [
+      { label: "Hohenheim AgEcon PreTest Regulation", url: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test" },
+      { label: "Hohenheim AgEcon Scholarship Requirements", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+    ],
+    checklist: [
+      "Access Hohenheim AgEcon PreTest page",
+      "Complete the self-evaluation test in economics & statistics",
+      "Save the confirmation result as PDF",
+      "Include with application documents"
+    ]
   },
   {
     id: "hohcampus",
@@ -340,7 +434,20 @@ const MISSIONS = [
     owner: "You",
     deadline: "2026-11-20",
     urgency: "high",
-    category: "Application"
+    category: "Application",
+    actionUrl: "https://hohcampus.verw.uni-hohenheim.de",
+    actionLabel: "🏛️ Open HohCampus Portal",
+    submissionGuide: "Where & how: Register on hohcampus.verw.uni-hohenheim.de. Note that HohCampus opens for Winter semester in mid-November. Create application, obtain HohCampus Application Number, and quote this number in your email to agecon@uni-hohenheim.de.",
+    sources: [
+      { label: "HohCampus Application Portal", url: "https://hohcampus.verw.uni-hohenheim.de" },
+      { label: "Hohenheim Application Guide", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+    ],
+    checklist: [
+      "Create account on HohCampus",
+      "Start application for MSc Agricultural Economics",
+      "Note the generated application number",
+      "Quote application number in DAAD email subject"
+    ]
   },
   {
     id: "submit-hohenheim",
@@ -353,14 +460,24 @@ const MISSIONS = [
     deadline: "2026-12-15",
     urgency: "critical",
     category: "Submission",
+    actionUrl: "mailto:agecon@uni-hohenheim.de",
+    actionLabel: "✉️ Email Documents to agecon@uni-hohenheim.de",
+    portalUrl: "https://hohcampus.verw.uni-hohenheim.de",
+    portalLabel: "🏛️ HohCampus Portal",
+    submissionGuide: "Where & how: 1. Send email to agecon@uni-hohenheim.de with subject 'DAAD - [HohCampus Number] - Hasan Hasibul'. Attach separate PDFs named '1 - Hasan Hasibul - DAAD Application Form.pdf', '2 - Hasan Hasibul - Motivation Letter.pdf', etc.\n2. Submit corresponding online application on HohCampus before 15 December 2026.",
+    sources: [
+      { label: "Hohenheim AgEcon Scholarship Regulations", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" },
+      { label: "Hohenheim AgEcon Admission Regulations PDF", url: "https://www.uni-hohenheim.de/fileadmin/uni_hohenheim/Studiengaenge/Agrar/Master/ZS_msc_Agrar_englisch_EN.pdf" }
+    ],
     checklist: [
-      "Same uniform motivation letter + ranking justification",
-      "Employer certificate + recommendation letter",
-      "Certified translations of degree, transcript AND HSC",
-      "AgEcon PreTest completed",
-      "Email to agecon@uni-hohenheim.de",
-      "Submit via HohCampus",
-      "Correct file naming convention"
+      "Ensure HohCampus application is completed",
+      "Format PDFs with exact naming standard: 'Number - Surname Name - Document Type'",
+      "Attach signed EPOS checklist and DAAD form",
+      "Attach Europass CV and Motivation letter",
+      "Attach City Bank Certificate of Employment and Recommendation letter",
+      "Attach Degree, Transcripts, and translations",
+      "Attach PreTest confirmation",
+      "Send email to agecon@uni-hohenheim.de before 15 December 2026"
     ]
   },
 

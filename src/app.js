@@ -249,13 +249,42 @@ function openMission(id) {
       ${m.deadline ? `<span class="tag ${d < 0 ? 'bad' : d <= 30 ? 'warn' : 'plain'}">Due ${fmt(m.deadline)} · ${dueText(d)}</span>` : ''}
       ${m.urgency === 'critical' ? '<span class="tag bad">Critical</span>' : ''}
     </div>
+
+    ${(m.actionUrl || m.actionUrl2 || m.portalUrl) ? `
+      <div class="field" style="margin-top:16px">
+        <div class="field-k">Direct Downloads &amp; Official Portals</div>
+        <div class="tags" style="gap:8px;margin-top:6px">
+          ${m.actionUrl ? `<a class="btn btn-primary btn-sm" href="${esc(m.actionUrl)}" target="_blank" rel="noopener" download>${esc(m.actionLabel || 'Download File / Open Site')}</a>` : ''}
+          ${m.actionUrl2 ? `<a class="btn btn-primary btn-sm" href="${esc(m.actionUrl2)}" target="_blank" rel="noopener" download>${esc(m.actionLabel2 || 'Download Secondary File')}</a>` : ''}
+          ${m.portalUrl ? `<a class="btn btn-sm" href="${esc(m.portalUrl)}" target="_blank" rel="noopener">${esc(m.portalLabel || 'Official Portal ↗')}</a>` : ''}
+        </div>
+      </div>
+    ` : ''}
+
     ${m.detail ? `<div class="field"><div class="field-k">What to do</div><div class="field-v">${esc(m.detail)}</div></div>` : ''}
+
+    ${m.submissionGuide ? `
+      <div class="note acc" style="margin:14px 0">
+        <div><strong>Where &amp; How to Submit:</strong><br><span style="white-space:pre-wrap">${esc(m.submissionGuide)}</span></div>
+      </div>
+    ` : ''}
+
     ${m.why ? `<div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(m.why)}</div></div>` : ''}
     ${m.checklist?.length ? `<div class="field"><div class="field-k">Checklist</div><ul class="list">${m.checklist.map(c => `<li>${esc(c)}</li>`).join('')}</ul></div>` : ''}
+
+    ${(m.sources || []).length ? `
+      <div class="field">
+        <div class="field-k">Verified Primary Sources &amp; Guidelines</div>
+        <ul class="list" style="margin-top:4px">
+          ${m.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener"><strong>${esc(s.label)}</strong> ↗</a></li>`).join('')}
+        </ul>
+      </div>
+    ` : ''}
+
     ${tgts.length ? `<div class="field"><div class="field-k">Unlocks</div><div class="tags">${tgts.map(t => `<span class="tag plain">${t.flag || ''} ${esc(t.short || t.name)}</span>`).join('')}</div></div>` : ''}
     <div style="display:flex;gap:8px;margin-top:22px;flex-wrap:wrap">
       <button class="btn btn-primary" id="mToggle" type="button">${isDone(id) ? 'Reopen mission' : `Mark done · +${m.xp} XP`}</button>
-      ${m.actionUrl ? `<a class="btn" href="${esc(m.actionUrl)}" target="_blank" rel="noopener">Open the site</a>` : ''}
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
     </div>`);
   $('#mToggle').onclick = async () => { closeModal(); await toggleMission(id); };
 }
