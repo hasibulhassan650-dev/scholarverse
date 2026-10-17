@@ -11,6 +11,7 @@ const app = {
        profTier: 'all', profStatus: 'all', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
   calDate: null
 };
+if (typeof window !== 'undefined') window.app = app;
 
 /* ---------------- helpers ---------------- */
 const $  = (s, r = document) => r.querySelector(s);
@@ -211,8 +212,8 @@ function renderView() {
   fn($('#view-' + app.view));
 }
 
-const stats = (items) => `<div class="stats">${items.map(([k, v, s, cls]) =>
-  `<div class="stat"><div class="stat-k">${esc(k)}</div><div class="stat-v ${cls || ''}">${v}</div>${s ? `<div class="stat-s">${esc(s)}</div>` : ''}</div>`).join('')}</div>`;
+const stats = (items) => `<div class="stats">${items.map(([k, v, s, cls, linkView, filterKey, filterVal]) =>
+  `<div class="stat ${linkView ? 'stat-link' : ''}" ${linkView ? `data-goview="${linkView}" ${filterKey ? `data-fkey="${filterKey}" data-fval="${filterVal}"` : ''} style="cursor:pointer" title="Open ${linkView}"` : ''}><div class="stat-k">${esc(k)}</div><div class="stat-v ${cls || ''}">${v}</div>${s ? `<div class="stat-s">${esc(s)}</div>` : ''}</div>`).join('')}</div>`;
 const chips = (id, opts, cur) => `<div class="chips" id="${id}">${opts.map(([k, l]) =>
   `<button class="chip" type="button" data-k="${esc(k)}" aria-pressed="${cur === k}">${esc(l)}</button>`).join('')}</div>`;
 const wireChips = (root, id, fn) => $$(`#${id} .chip`, root).forEach(b => b.onclick = () => fn(b.dataset.k));
@@ -334,17 +335,26 @@ function layoutRunway(root) {
   });
   const AXIS = TOP + lanes.length * LANE_H + 26;
   inner.style.height = (AXIS + 32) + 'px';
-  $('.axis-line', inner).style.top = $('.axis-elapsed', inner).style.top = AXIS + 'px';
-  $$('.axis-month', inner).forEach(m => m.style.top = (AXIS + 14) + 'px');
-  $('.axis-today', inner).style.height = (AXIS + 6) + 'px';
+  const axLine = $('.axis-line', inner);
+  const axElapsed = $('.axis-elapsed', inner);
+  if (axLine) axLine.style.top = AXIS + 'px';
+  if (axElapsed) axElapsed.style.top = AXIS + 'px';
+  $$('.axis-month', inner).forEach(m => { if (m) m.style.top = (AXIS + 14) + 'px'; });
+  const axToday = $('.axis-today', inner);
+  if (axToday) axToday.style.height = (AXIS + 6) + 'px';
   ticks.forEach(t => {
+    if (!t.el) return;
     const top = TOP + t.lane * LANE_H;
     t.el.style.top = top + 'px';
-    $('.tick-label', t.el).style.transform = t.shift ? `translateX(${t.shift}px)` : '';
-    $('.tick-stem', t.el).style.height = Math.max(2, AXIS - top - $('.tick-label', t.el).offsetHeight - 5) + 'px';
+    const tLbl = $('.tick-label', t.el);
+    if (tLbl) tLbl.style.transform = t.shift ? `translateX(${t.shift}px)` : '';
+    const tStem = $('.tick-stem', t.el);
+    if (tStem) tStem.style.height = Math.max(2, AXIS - top - (tLbl ? tLbl.offsetHeight : 0) - 5) + 'px';
   });
 }
-window.addEventListener('resize', () => { if (app.view === 'dashboard') layoutRunway(document); });
+if (typeof window !== 'undefined' && window.addEventListener) {
+  window.addEventListener('resize', () => { if (app.view === 'dashboard') layoutRunway(document); });
+}
 
 function renderDashboard(root) {
   const st = app.state;
@@ -392,11 +402,11 @@ function renderDashboard(root) {
     </div>
 
     <div style="margin-top:22px">${stats([
-      ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`],
-      ['Experience', st.xp, `${st.achievements.length} achievements`, 'acc'],
-      ['Open schemes', openT, `of ${app.content.targets.length} verified targets`, 'ok'],
-      ['Documents missing', docsMissing, 'need chasing', docsMissing ? 'bad' : 'ok'],
-      ['Streak', st.streak || 0, `best ${st.longestStreak || 0} days`]
+      ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
+      ['Experience', st.xp, `${st.achievements.length} achievements`, 'acc', 'profile'],
+      ['Open schemes', openT, `of ${app.content.targets.length} verified targets`, 'ok', 'targets', 'target', 'open'],
+      ['Documents missing', docsMissing, 'need chasing', docsMissing ? 'bad' : 'ok', 'documents', 'doc', 'missing'],
+      ['Streak', st.streak || 0, `best ${st.longestStreak || 0} days`, '', 'calendar']
     ])}</div>
 
     <div class="grid split">
@@ -428,7 +438,7 @@ function renderDashboard(root) {
       <div class="panel">
         <div class="panel-head"><h2>Progress by track</h2></div>
         <div class="panel-body">
-          ${cats.map(([n, c]) => `<div class="cat-row"><span>${esc(n)}</span><div class="bar"><i style="width:${Math.round(c.d / c.t * 100)}%"></i></div><span class="num">${c.d}/${c.t}</span></div>`).join('')}
+          ${cats.map(([n, c]) => `<div class="cat-row" data-track="${esc(n)}" style="cursor:pointer" title="View ${esc(n)} missions"><span>${esc(n)}</span><div class="bar"><i style="width:${Math.round(c.d / c.t * 100)}%"></i></div><span class="num">${c.d}/${c.t}</span></div>`).join('')}
         </div>
       </div>
       <div class="panel">
@@ -449,7 +459,7 @@ function renderDashboard(root) {
 
     <div class="section-title"><h2>Ruled out</h2><span class="aside">Checked and closed, so you don't spend time on them again</span></div>
     <div class="panel"><div class="panel-body grid g2" style="gap:0 32px">
-      ${app.content.deadEnds.slice(0, 8).map(d => `<div class="dead"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.reason || d.why || '')}</div></div></div>`).join('')}
+      ${app.content.deadEnds.slice(0, 8).map((d, i) => `<div class="dead" data-dead="${i}" style="cursor:pointer" title="Click to view reason"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.reason || d.why || '')}</div></div></div>`).join('')}
     </div></div>
     ${app.content.deadEnds.length > 8 ? `<p style="margin-top:10px"><button class="btn btn-sm" type="button" data-go="targets">See all ${app.content.deadEnds.length} on Targets</button></p>` : ''}
   `;
@@ -463,6 +473,12 @@ function renderDashboard(root) {
   $$('[data-up]', root).forEach(b => b.onclick = () => upcoming[+b.dataset.up]?.open?.());
   $$('[data-toggle]', root).forEach(b => b.onclick = () => toggleMission(b.dataset.toggle));
   $$('[data-mission]', root).forEach(b => b.onclick = () => openMission(b.dataset.mission));
+  $$('[data-track]', root).forEach(el => el.onclick = () => { app.f.mission = el.dataset.track; go('missions'); });
+  $$('[data-dead]', root).forEach(el => el.onclick = () => { const d = app.content.deadEnds[+el.dataset.dead]; if (d) openDeadModal(d); });
+  const upcomingEvs = evs.filter(e => e.d >= 0);
+  const nextEv = upcomingEvs.find(e => e.kind !== 'session') || upcomingEvs[0];
+  const rb = $('.runway-big', root);
+  if (rb && nextEv) rb.onclick = () => nextEv.open?.();
   $$('[data-go]', root).forEach(b => b.onclick = () => go(b.dataset.go));
   $('#dPal').onclick = openPalette;
   $('#dZoom').onclick = openZoom;
@@ -488,6 +504,16 @@ function openZoom() {
       <li>Confirm the 126-credit BSS with 27 credits in maths and statistics and 87 in economics satisfies the quantitative requirement.</li>
       <li>Confirm the medium-of-instruction certificate already in the portal covers every language requirement.</li>
     </ul></div>`);
+}
+
+function openDeadModal(d) {
+  openModal(`<h2>🚫 ${esc(d.name)}</h2>
+    <div class="dialog-sub">Disqualified Scheme / Dead End</div>
+    <div class="tags" style="margin-top:10px"><span class="tag bad">Ruled Out</span><span class="tag plain">Do Not Re-tread</span></div>
+    <div class="field" style="margin-top:16px"><div class="field-k">Why this is disqualified</div><div class="field-v" style="color:var(--ink-2);line-height:1.6">${esc(d.reason || d.why || '')}</div></div>
+    <div style="margin-top:20px;display:flex;justify-content:flex-end">
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
+    </div>`);
 }
 
 /* ============================================================================
@@ -987,9 +1013,11 @@ function renderSubjects(root) {
       <p>The degree that sounds least like finance is the one most likely to be funded, and it also clears the 16-month gate the spousal work permit depends on.</p>
     </div>
     <div class="section-title"><h2>Target these, in this order</h2></div>
-    <div class="grid g3">${(R.subjectRanked || []).map(r => `<div class="panel" style="padding:18px 20px">
+    <div class="grid g3">${(R.subjectRanked || []).map(r => `<div class="panel" data-subtarget="${esc(r.target)}" style="padding:18px 20px;cursor:pointer" title="Find universities for ${esc(r.target)}">
       <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px"><span class="rank">${r.rank}</span><div><div class="uni-name">${esc(r.target)}</div><div class="uni-loc">${esc(r.gate)}</div></div></div>
-      <p style="font-size:14px;margin:12px 0 0">${esc(r.why)}</p></div>`).join('')}</div>
+      <p style="font-size:14px;margin:12px 0 0">${esc(r.why)}</p>
+      <div style="margin-top:12px"><span class="tag acc">Explore Universities →</span></div>
+    </div>`).join('')}</div>
     <div class="section-title"><h2>Every option, assessed</h2></div>
     <div class="grid g2">${(R.subjectOptions || []).map(o => `<div class="panel subject" style="padding:20px 22px">
       <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><h3>${esc(o.subject)}</h3><span class="tag ${V[o.verdict] || 'plain'}">${esc(o.verdict.charAt(0) + o.verdict.slice(1).toLowerCase())}</span></div>
@@ -1002,6 +1030,18 @@ function renderSubjects(root) {
       <div class="verdict-line"><b>Verdict.</b> ${esc(o.note)}</div>
     </div>`).join('')}</div>
     ${fb.length ? `<div class="section-title"><h2>Fallbacks</h2></div><div class="panel"><div class="panel-body"><ul class="list">${fb.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div></div>` : ''}`;
+
+  $$('[data-subtarget]', root).forEach(el => {
+    el.onclick = () => {
+      const target = el.dataset.subtarget;
+      if (target.includes('Waterloo')) app.f.uniQuery = 'Waterloo';
+      else if (target.includes('HEC')) app.f.uniQuery = 'HEC';
+      else if (target.includes('SFU') || target.includes('Simon Fraser')) app.f.uniQuery = 'Simon Fraser';
+      else app.f.uniQuery = '';
+      app.f.uniMode = 'ranked';
+      go('universities');
+    };
+  });
 }
 
 /* ============================================================================
@@ -1026,7 +1066,14 @@ function renderFunding(root) {
       </tr>`).join('')}</tbody></table>
     </div></div>
     <div class="section-title"><h2>Dead ends</h2><span class="aside">Look open, but exclude you</span></div>
-    <div class="panel"><div class="panel-body grid g2" style="gap:0 32px">${DE.map(d => `<div class="dead"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.why || d.reason || '')}</div></div></div>`).join('')}</div></div>`;
+    <div class="panel"><div class="panel-body grid g2" style="gap:0 32px">${DE.map((d, i) => `<div class="dead" data-dead="${i}" style="cursor:pointer" title="Click to view reason"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.why || d.reason || '')}</div></div></div>`).join('')}</div></div>`;
+
+  $$('[data-dead]', root).forEach(el => {
+    el.onclick = () => {
+      const d = DE[+el.dataset.dead];
+      if (d) openDeadModal(d);
+    };
+  });
 }
 
 /* ============================================================================
@@ -1124,11 +1171,39 @@ function openProf(p) {
   });
 }
 
+function copyText(txt) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(txt);
+  }
+  return new Promise((resolve, reject) => {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (ok) resolve(); else reject(new Error('execCommand returned false'));
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 document.addEventListener('click', (e) => {
+  const g = e.target.closest('[data-goview]');
+  if (g) {
+    const v = g.dataset.goview;
+    if (g.dataset.fkey && g.dataset.fval) app.f[g.dataset.fkey] = g.dataset.fval;
+    go(v);
+    return;
+  }
   const b = e.target.closest('[data-copy]'); if (!b) return;
   const box = document.getElementById(b.dataset.copy); if (!box) return;
   const txt = box.textContent.replace(/Copy$/, '').trim();
-  (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(() => toast('Copied to clipboard')).catch(() => toast('Copy failed', 'Select the text and copy it manually'));
+  copyText(txt).then(() => toast('Copied to clipboard')).catch(() => toast('Copy failed', 'Select the text and copy it manually'));
 });
 
 /* ============================================================================
@@ -1150,13 +1225,14 @@ function renderCitations(root) {
       ['Must fix', C.filter(c => ['WRONG_AUTHOR', 'PAPER_MISSING'].includes(c.status)).length, 'wrong or missing', 'bad'], ['Fabricated', 0, 'none invented', 'ok']])}
     <div class="toolbar">${chips('cF', [['all', 'All'], ...present.map(k => [k, CIT[k][1]])], app.f.citStatus)}</div>
     <div class="grid g2">${list.map(c => { const [cls, lab] = CIT[c.status] || ['plain', c.status]; return `<div class="panel" style="padding:18px 20px">
-      <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline"><div class="uni-name">${esc(c.professor)}</div><span class="tag ${cls}">${lab}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline"><div class="uni-name" data-prof="${esc(c.professor)}" style="cursor:pointer" title="View ${esc(c.professor)} dossier">${esc(c.professor)} <span style="font-size:12px;color:var(--teal)">→</span></div><span class="tag ${cls}">${lab}</span></div>
       <div class="cite">${esc(c.citation)}${c.doi ? `<small>doi:${esc(c.doi)}</small>` : ''}</div>
       ${c.abstractNote && c.abstractNote !== '—' ? `<div class="field"><div class="field-k">What the paper says</div><div class="field-v">${esc(c.abstractNote)}</div></div>` : ''}
       ${(c.findings || []).length ? `<div class="field"><div class="field-k">Checks</div><ul class="list">${c.findings.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>` : ''}
       <div class="note ${cls === 'acc' ? 'acc' : cls}" style="margin-top:14px"><div><strong>${esc(c.verdict)}</strong></div></div>
     </div>`; }).join('')}</div>`;
   wireChips(root, 'cF', k => { app.f.citStatus = k; renderCitations(root); });
+  wireProfLinks(root);
 }
 
 /* ============================================================================
@@ -1182,6 +1258,11 @@ function renderAgents(root) {
       app.state = await api('/api/state');
       out.hidden = false; out.textContent = r.report;
       toast(`${r.agent?.name || 'Agent'} finished`, 'Report saved to history');
+      const logBox = $('#agentLog', root);
+      if (logBox) {
+        const log = app.state.agentLog || [];
+        logBox.innerHTML = log.length ? log.map(l => `<details class="log-row" open><summary><span><b>${esc(l.agent)}</b></span><span class="dim num">${new Date(l.at).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</span></summary><div class="agent-out" style="margin-top:10px">${esc(l.report)}</div></details>`).join('') : '<div class="empty">Run an agent and its report is saved here.</div>';
+      }
     } catch (e) { toast('Agent failed', e.message); }
     b.disabled = false; b.textContent = 'Run again';
   });
