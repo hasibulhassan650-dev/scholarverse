@@ -27,7 +27,7 @@
       profile: (typeof PROFILE !== 'undefined') ? PROFILE : null,
       missions: (typeof MISSIONS !== 'undefined' ? MISSIONS : []).map(m => ({ id: m.id, status: 'todo', completedAt: null })),
       xp: 0, level: 1, streak: 0, longestStreak: 0, lastActiveDate: null,
-      achievements: [], notes: {}, agentLog: [],
+      achievements: [], notes: {}, agentLog: [], docFiles: {},
       createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
     };
   }
@@ -42,6 +42,7 @@
       if (!raw && MEM) raw = JSON.stringify(MEM);
       if (!raw) return defaultState();
       const s = JSON.parse(raw);
+      if (!s.docFiles) s.docFiles = {};
       const known = new Set((s.missions || []).map(m => m.id));
       for (const m of (typeof MISSIONS !== 'undefined' ? MISSIONS : [])) {
         if (!known.has(m.id)) s.missions.push({ id: m.id, status: 'todo', completedAt: null });
@@ -234,6 +235,20 @@
       uniCensus:       (typeof UNI_CENSUS       !== 'undefined') ? UNI_CENSUS       : [],
       uniRanked:       (typeof UNI_RANKED       !== 'undefined') ? UNI_RANKED       : []
     };
+    if (url === '/api/doc/attach') {
+      const s = loadState();
+      s.docFiles = s.docFiles || {};
+      s.docFiles[body.docId] = body.fileMeta;
+      saveState(s);
+      return { ok: true, state: s };
+    }
+    if (url === '/api/doc/remove') {
+      const s = loadState();
+      s.docFiles = s.docFiles || {};
+      delete s.docFiles[body.docId];
+      saveState(s);
+      return { ok: true, state: s };
+    }
     if (url === '/api/mission/complete') return completeMission(body.missionId);
     if (url === '/api/agent/run') return agentRun(body.agentId);
     if (url === '/api/note') { const s = loadState(); s.notes[body.key] = body.value; saveState(s); return { ok: true }; }

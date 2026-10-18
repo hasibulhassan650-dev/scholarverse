@@ -236,10 +236,195 @@ async function toggleMission(id) {
   } catch (e) { toast('Could not save', e.message); }
 }
 
+/* ============================================================================
+   DOCUMENT VAULT & STORAGE (IndexedDB + App State)
+   ============================================================================ */
+function fmtBytes(bytes) {
+  if (!bytes || isNaN(bytes)) return '';
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+const MISSION_DOC_MAP = {
+  'employer-cert': 'emp-cert',
+  'employer-letter': 'emp-letter',
+  'referee-karimul': 'karimul-letter',
+  'ranking-letter': 'ranking',
+  'certified-translations': 'hsc',
+  'epos-form': 'epos-form',
+  'europass-cv': 'europass',
+  'epos-motivation': 'motivation',
+  'confirm-passport': 'passport',
+  'credit-audit': 'transcript',
+  'book-ielts': 'ielts'
+};
+
+const DocStore = {
+  dbName: 'ScholarVerseVaultDB',
+  storeName: 'attachments',
+  _db: null,
+  async openDB() {
+    if (this._db) return this._db;
+    if (typeof window === 'undefined' || typeof indexedDB === 'undefined') return null;
+    return new Promise((resolve) => {
+      try {
+        const req = indexedDB.open(this.dbName, 1);
+        req.onupgradeneeded = (e) => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains(this.storeName)) {
+            db.createObjectStore(this.storeName, { keyPath: 'id' });
+          }
+        };
+        req.onsuccess = (e) => {
+          this._db = e.target.result;
+          resolve(this._db);
+        };
+        req.onerror = () => resolve(null);
+      } catch (err) {
+        resolve(null);
+      }
+    });
+  },
+  async save(docId, file) {
+    const db = await this.openDB();
+    if (!db) return null;
+    return new Promise((resolve, reject) => {
+      try {
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const tx = db.transaction(this.storeName, 'readwrite');
+            const store = tx.objectStore(this.storeName);
+            const record = {
+              id: docId,
+              name: file.name,
+              size: file.size,
+              type: file.type || 'application/pdf',
+              date: new Date().toISOString(),
+              buffer: reader.result
+            };
+            const putReq = store.put(record);
+            putReq.onsuccess = () => resolve(record);
+            putReq.onerror = () => reject(putReq.error);
+          } catch (e) {
+            reject(e);
+          }
+        };
+        reader.onerror = () => reject(reader.error);
+        reader.readAsArrayBuffer(file);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  },
+  async get(docId) {
+    const db = await this.openDB();
+    if (!db) return null;
+    return new Promise((resolve) => {
+      try {
+        const tx = db.transaction(this.storeName, 'readonly');
+        const store = tx.objectStore(this.storeName);
+        const req = store.get(docId);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => resolve(null);
+      } catch (e) {
+        resolve(null);
+      }
+    });
+  },
+  async delete(docId) {
+    const db = await this.openDB();
+    if (!db) return true;
+    return new Promise((resolve) => {
+      try {
+        const tx = db.transaction(this.storeName, 'readwrite');
+        const store = tx.objectStore(this.storeName);
+        const req = store.delete(docId);
+        req.onsuccess = () => resolve(true);
+        req.onerror = () => resolve(false);
+      } catch (e) {
+        resolve(false);
+      }
+    });
+  },
+  async download(docId, fallbackName) {
+    const record = await this.get(docId);
+    if (!record || !record.buffer) {
+      toast('File not found in local vault', 'Attach the file on this device first');
+      return;
+    }
+    const blob = new Blob([record.buffer], { type: record.type || 'application/octet-stream' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = record.name || fallbackName || (docId + '.pdf');
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 2000);
+    toast('Downloading ' + (record.name || 'document'));
+  },
+  async view(docId) {
+    const record = await this.get(docId);
+    if (!record || !record.buffer) {
+      toast('File not found in local vault', 'Attach the file on this device first');
+      return;
+    }
+    const blob = new Blob([record.buffer], { type: record.type || 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+    setTimeout(() => URL.revokeObjectURL(url), 120000);
+  }
+};
+
+async function attachFileToDoc(docId, file) {
+  if (!file) return;
+  try {
+    await DocStore.save(docId, file);
+    const fileMeta = {
+      name: file.name,
+      size: file.size,
+      type: file.type || 'application/pdf',
+      date: new Date().toISOString()
+    };
+    app.state.docFiles = app.state.docFiles || {};
+    app.state.docFiles[docId] = fileMeta;
+
+    const doc = (app.content.documents || []).find(d => d.id === docId);
+    if (doc) doc.status = 'have';
+
+    await post('/api/doc/attach', { docId, fileMeta });
+    toast('Attached ' + file.name, 'Document is now saved in your vault');
+    render();
+  } catch (err) {
+    toast('Attachment failed', err.message);
+  }
+}
+
+async function removeFileFromDoc(docId) {
+  try {
+    await DocStore.delete(docId);
+    if (app.state.docFiles) delete app.state.docFiles[docId];
+
+    const doc = (app.content.documents || []).find(d => d.id === docId);
+    if (doc) doc.status = 'missing';
+
+    await post('/api/doc/remove', { docId });
+    toast('Attachment removed', 'File cleared from vault');
+    render();
+  } catch (err) {
+    toast('Remove failed', err.message);
+  }
+}
+
 function openMission(id) {
   const m = missionMeta(id); if (!m) return;
   const d = daysUntil(m.deadline);
   const tgts = (m.targets || []).map(t => app.content.targets.find(x => x.id === t)).filter(Boolean);
+  const linkedDocId = MISSION_DOC_MAP[id];
+  const linkedDoc = linkedDocId ? (app.content.documents || []).find(x => x.id === linkedDocId) : null;
+  const attachedFile = linkedDocId && app.state.docFiles && app.state.docFiles[linkedDocId];
+
   openModal(`
     <h2>${esc(m.title)}</h2>
     <div class="dialog-sub">${esc(m.category || '')}${m.owner ? ` · owner: ${esc(m.owner)}` : ''}</div>
@@ -249,6 +434,35 @@ function openMission(id) {
       ${m.deadline ? `<span class="tag ${d < 0 ? 'bad' : d <= 30 ? 'warn' : 'plain'}">Due ${fmt(m.deadline)} · ${dueText(d)}</span>` : ''}
       ${m.urgency === 'critical' ? '<span class="tag bad">Critical</span>' : ''}
     </div>
+
+    ${linkedDoc ? `
+      <div class="vault-card">
+        <div class="vault-header">
+          <h4>📎 Document Vault: ${esc(linkedDoc.name)}</h4>
+          <span class="dim" style="font-size:12px">${attachedFile ? 'File Saved' : 'No File Attached'}</span>
+        </div>
+        ${attachedFile ? `
+          <div class="file-meta-box">
+            <div>
+              <div style="font-weight:600;font-size:13.5px;color:var(--teal)">📎 ${esc(attachedFile.name)}</div>
+              <div class="dim" style="font-size:12px;margin-top:2px">${fmtBytes(attachedFile.size)} · Saved in vault on ${fmt(attachedFile.date)}</div>
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <button class="btn btn-sm btn-primary" type="button" id="mMissionDocView">👁️ View</button>
+              <button class="btn btn-sm btn-primary" type="button" id="mMissionDocDown">📥 Download</button>
+              <label class="btn btn-sm" style="cursor:pointer">🔄 Replace<input type="file" id="mMissionDocReplace" accept=".pdf,.docx,.doc,.jpg,.jpeg,.png" hidden></label>
+            </div>
+          </div>
+        ` : `
+          <label class="drop-zone" style="display:block">
+            <div style="font-size:22px;margin-bottom:2px">📎</div>
+            <div style="font-weight:600;font-size:13px">Attach official ${esc(linkedDoc.name)}</div>
+            <div class="dim" style="font-size:11.5px;margin-top:2px">Upload PDF, Word, or Scanned Image so you can view, download, and bring it when applying anywhere</div>
+            <input type="file" id="mMissionDocUpload" accept=".pdf,.docx,.doc,.jpg,.jpeg,.png" hidden>
+          </label>
+        `}
+      </div>
+    ` : ''}
 
     ${(m.actionUrl || m.actionUrl2 || m.portalUrl) ? `
       <div class="field" style="margin-top:16px">
@@ -286,6 +500,29 @@ function openMission(id) {
       <button class="btn btn-primary" id="mToggle" type="button">${isDone(id) ? 'Reopen mission' : `Mark done · +${m.xp} XP`}</button>
       <button class="btn" onclick="closeModal()" type="button">Close</button>
     </div>`);
+
+  if (linkedDoc) {
+    if (attachedFile) {
+      const vBtn = $('#mMissionDocView');
+      if (vBtn) vBtn.onclick = () => DocStore.view(linkedDocId);
+      const dBtn = $('#mMissionDocDown');
+      if (dBtn) dBtn.onclick = () => DocStore.download(linkedDocId, linkedDoc.name);
+      const repInp = $('#mMissionDocReplace');
+      if (repInp) repInp.onchange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+          attachFileToDoc(linkedDocId, e.target.files[0]).then(() => openMission(id));
+        }
+      };
+    } else {
+      const upInp = $('#mMissionDocUpload');
+      if (upInp) upInp.onchange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+          attachFileToDoc(linkedDocId, e.target.files[0]).then(() => openMission(id));
+        }
+      };
+    }
+  }
+
   $('#mToggle').onclick = async () => { closeModal(); await toggleMission(id); };
 }
 
@@ -689,6 +926,7 @@ const DOC_STATUS = {
 function renderDocuments(root) {
   const D = app.content.documents;
   const cnt = (ss) => D.filter(d => ss.includes(d.status)).length;
+  const docsAttached = Object.keys(app.state.docFiles || {}).length;
   const types = ['all', ...new Set(D.map(d => d.type))];
   const order = { missing: 0, not_started: 1, partial: 2, unconfirmed: 3, verify: 4, have: 5 };
   let list = app.f.doc === 'all' ? D.slice() : D.filter(d => d.type === app.f.doc);
@@ -696,49 +934,165 @@ function renderDocuments(root) {
   const tName = (id) => { const t = app.content.targets.find(x => x.id === id); return t ? (t.short || t.name) : id; };
 
   root.innerHTML = `${pageHead()}
-    ${stats([['Required', D.length, 'across all applications'], ['Ready', cnt(['have']), 'in hand', 'ok'],
-      ['Needs checking', cnt(['partial', 'verify', 'unconfirmed']), 'partial or unconfirmed', 'warn'],
-      ['Missing', cnt(['missing', 'not_started']), 'not started yet', 'bad'], ['Blockers', D.filter(d => d.blocker).length, 'stop an application']])}
+    ${stats([
+      ['Required', D.length, 'across all applications'],
+      ['Ready', cnt(['have']), 'in hand', 'ok'],
+      ['Files in Vault', docsAttached, 'download anytime', 'acc'],
+      ['Missing', cnt(['missing', 'not_started']), 'not started yet', 'bad'],
+      ['Blockers', D.filter(d => d.blocker).length, 'stop an application']
+    ])}
     <div class="toolbar">${chips('dF', types.map(t => [t, t === 'all' ? 'All types' : t]), app.f.doc)}</div>
     <div class="panel rows">
-      ${list.map(d => { const [c, l] = DOC_STATUS[d.status] || ['plain', d.status]; return `<div class="doc-row" style="cursor:pointer" data-doc="${esc(d.id)}">
-        <span class="doc-dot ${c}" aria-hidden="true"></span>
-        <div><div class="doc-name">${esc(d.name)}</div>${d.spec ? `<div class="doc-spec">${esc(d.spec)}</div>` : ''}</div>
-        <div class="doc-for">${(d.req || []).length ? `For ${esc(d.req.map(tName).join(', '))}` : ''}${d.owner ? `<br><span class="dim">From: ${esc(d.owner)}</span>` : ''}</div>
-        <div class="tags" style="justify-content:flex-end"><span class="tag ${c}">${esc(l)}</span>${d.blocker ? '<span class="tag bad plain">Blocker</span>' : ''}<span class="tag plain">${esc(d.type)}</span></div>
-      </div>`; }).join('')}
+      ${list.map(d => {
+        const [c, l] = DOC_STATUS[d.status] || ['plain', d.status];
+        const attached = app.state.docFiles && app.state.docFiles[d.id];
+        return `<div class="doc-row" style="cursor:pointer" data-doc="${esc(d.id)}">
+          <span class="doc-dot ${c}" aria-hidden="true"></span>
+          <div>
+            <div class="doc-name">${esc(d.name)}</div>
+            ${d.spec ? `<div class="doc-spec">${esc(d.spec)}</div>` : ''}
+            ${attached ? `
+              <div style="margin-top:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+                <span class="doc-attach-pill">📎 ${esc(attached.name)} (${fmtBytes(attached.size)})</span>
+                <button class="doc-attach-btn" type="button" data-viewdoc="${esc(d.id)}" title="Preview file in new tab">👁️ View</button>
+                <button class="doc-attach-btn" type="button" data-downdoc="${esc(d.id)}" title="Download file to computer/phone">📥 Download</button>
+              </div>
+            ` : ''}
+          </div>
+          <div class="doc-for">
+            ${(d.req || []).length ? `For ${esc(d.req.map(tName).join(', '))}` : ''}
+            ${d.owner ? `<br><span class="dim">From: ${esc(d.owner)}</span>` : ''}
+          </div>
+          <div class="tags" style="justify-content:flex-end">
+            ${attached ? '<span class="tag acc">Attached in Vault</span>' : `
+              <label class="doc-attach-btn" style="cursor:pointer" title="Attach file to ${esc(d.name)}" onclick="event.stopPropagation()">
+                📎 Attach File
+                <input type="file" data-attachinput="${esc(d.id)}" accept=".pdf,.docx,.doc,.jpg,.jpeg,.png" hidden>
+              </label>
+            `}
+            <span class="tag ${c}">${esc(l)}</span>
+            ${d.blocker ? '<span class="tag bad plain">Blocker</span>' : ''}
+            <span class="tag plain">${esc(d.type)}</span>
+          </div>
+        </div>`;
+      }).join('')}
     </div>`;
+
   wireChips(root, 'dF', k => { app.f.doc = k; renderDocuments(root); });
+
   $$('[data-doc]', root).forEach(el => {
     el.onclick = () => {
       const d = D.find(x => x.id === el.dataset.doc);
       if (d) openDocModal(d);
     };
   });
+
+  $$('[data-viewdoc]', root).forEach(b => {
+    b.onclick = (e) => {
+      e.stopPropagation();
+      DocStore.view(b.dataset.viewdoc);
+    };
+  });
+
+  $$('[data-downdoc]', root).forEach(b => {
+    b.onclick = (e) => {
+      e.stopPropagation();
+      const doc = D.find(x => x.id === b.dataset.downdoc);
+      DocStore.download(b.dataset.downdoc, doc ? doc.name : '');
+    };
+  });
+
+  $$('[data-attachinput]', root).forEach(inp => {
+    inp.onclick = (e) => e.stopPropagation();
+    inp.onchange = (e) => {
+      e.stopPropagation();
+      if (e.target.files && e.target.files[0]) {
+        attachFileToDoc(inp.dataset.attachinput, e.target.files[0]);
+      }
+    };
+  });
 }
 
 function openDocModal(d) {
   const [c, l] = DOC_STATUS[d.status] || ['plain', d.status];
+  const attached = app.state.docFiles && app.state.docFiles[d.id];
+
   openModal(`
     <h2>${esc(d.name)}</h2>
     <div class="dialog-sub">${esc(d.type || 'Official Document')} · Owner: <strong>${esc(d.owner || 'You')}</strong></div>
     <div class="tags" style="margin-top:10px">
       <span class="tag ${c}">${esc(l)}</span>
+      ${attached ? '<span class="tag acc">Attached in Vault</span>' : '<span class="tag plain">No File Attached</span>'}
       ${d.blocker ? '<span class="tag bad plain">Hard Blocker</span>' : '<span class="tag plain">Standard Requirement</span>'}
       ${d.deadline ? `<span class="tag plain">Deadline: ${fmt(d.deadline)}</span>` : ''}
     </div>
+
+    <!-- DOCUMENT VAULT & ATTACHMENT CARD -->
+    <div class="vault-card">
+      <div class="vault-header">
+        <h4>📎 Document Vault &amp; Direct Export</h4>
+        <span class="dim" style="font-size:12px">${attached ? 'Stored in Vault' : 'Attach file to store permanently'}</span>
+      </div>
+      ${attached ? `
+        <div class="file-meta-box">
+          <div>
+            <div style="font-weight:600;font-size:13.5px;color:var(--teal)">📎 ${esc(attached.name)}</div>
+            <div class="dim" style="font-size:12px;margin-top:2px">${fmtBytes(attached.size)} · Saved in vault on ${fmt(attached.date)}</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn btn-sm btn-primary" type="button" id="vaultViewBtn">👁️ View in New Tab</button>
+            <button class="btn btn-sm btn-primary" type="button" id="vaultDownBtn">📥 Download File</button>
+            <label class="btn btn-sm" style="cursor:pointer">🔄 Replace<input type="file" id="vaultReplaceInput" accept=".pdf,.docx,.doc,.jpg,.jpeg,.png" hidden></label>
+            <button class="btn btn-sm" type="button" id="vaultDeleteBtn" style="color:var(--red)">🗑️ Remove</button>
+          </div>
+        </div>
+      ` : `
+        <label class="drop-zone" style="display:block">
+          <div style="font-size:22px;margin-bottom:2px">📎</div>
+          <div style="font-weight:600;font-size:13.5px">Attach official ${esc(d.name)}</div>
+          <div class="dim" style="font-size:12px;margin-top:2px">Select PDF, Word, or Scanned Image from your computer or phone (up to 50MB) to access, preview, and download anytime</div>
+          <input type="file" id="vaultUploadInput" accept=".pdf,.docx,.doc,.jpg,.jpeg,.png" hidden>
+        </label>
+      `}
+    </div>
+
     <div class="field" style="margin-top:16px">
       <div class="field-k">Specification &amp; Required Format</div>
       <div class="field-v">${esc(d.spec || 'Official documentation required for university admission and study permit issuance.')}</div>
     </div>
     ${d.note ? `<div class="note warn" style="margin-top:14px"><div><strong>Action Guidance:</strong> ${esc(d.note)}</div></div>` : ''}
     <div style="display:flex;gap:10px;margin-top:22px;justify-content:flex-end">
-      <button class="btn btn-primary" id="docToggleBtn" type="button">
+      <button class="btn" id="docToggleBtn" type="button">
         ${d.status === 'have' ? 'Mark as Missing' : 'Mark as Ready / Acquired'}
       </button>
       <button class="btn" onclick="closeModal()" type="button">Close</button>
     </div>
   `);
+
+  if (attached) {
+    const vBtn = $('#vaultViewBtn');
+    if (vBtn) vBtn.onclick = () => DocStore.view(d.id);
+    const dBtn = $('#vaultDownBtn');
+    if (dBtn) dBtn.onclick = () => DocStore.download(d.id, d.name);
+    const repInp = $('#vaultReplaceInput');
+    if (repInp) repInp.onchange = (e) => {
+      if (e.target.files && e.target.files[0]) {
+        attachFileToDoc(d.id, e.target.files[0]).then(() => openDocModal(d));
+      }
+    };
+    const delBtn = $('#vaultDeleteBtn');
+    if (delBtn) delBtn.onclick = () => {
+      removeFileFromDoc(d.id).then(() => openDocModal(d));
+    };
+  } else {
+    const upInp = $('#vaultUploadInput');
+    if (upInp) upInp.onchange = (e) => {
+      if (e.target.files && e.target.files[0]) {
+        attachFileToDoc(d.id, e.target.files[0]).then(() => openDocModal(d));
+      }
+    };
+  }
+
   const btn = $('#docToggleBtn');
   if (btn) {
     btn.onclick = () => {
