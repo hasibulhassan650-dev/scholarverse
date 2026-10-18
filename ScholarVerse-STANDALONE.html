@@ -118,6 +118,30 @@ button { font: inherit; color: inherit; }
 .brand-name { font: 700 19px/1 var(--f-display); letter-spacing: -.02em; }
 .brand-sub { font-size: 12px; color: var(--navy-dim); margin-top: 3px; }
 
+.profile-switch-tabs {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+  background: var(--navy-2); padding: 4px; border-radius: 8px;
+  margin: 0 4px 14px;
+}
+.switch-tab {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 6px 4px; border-radius: 6px; border: none;
+  background: transparent; color: var(--navy-dim); cursor: pointer;
+  font: 500 11.5px/1.2 var(--f-body); transition: all 140ms ease;
+}
+.switch-tab:hover { color: var(--navy-ink); background: rgba(255, 255, 255, 0.05); }
+.switch-tab.is-active {
+  background: var(--navy); color: #ffffff; font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+.switch-av {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--teal); color: #fff; font-size: 11px;
+  font-weight: 700; display: grid; place-items: center;
+}
+.switch-av.av-zarin { background: var(--amber); }
+.switch-av.av-couple { background: #8b5cf6; font-size: 12px; }
+
 .search-btn {
   display: flex; align-items: center; gap: 10px; width: 100%;
   background: var(--navy-2); border: 1px solid rgba(255,255,255,.06);
@@ -667,6 +691,37 @@ kbd {
 
 .scrim { display: none; }
 
+/* ---------------- couple & dual-applicant ---------------- */
+.couple-card {
+  border: 1px solid var(--rule); border-radius: var(--r-panel);
+  background: var(--sheet); padding: 22px 24px;
+  display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow);
+}
+.couple-card:hover { border-color: var(--teal); }
+.couple-card-top {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+}
+.couple-country { font: 700 21px/1.2 var(--f-display); letter-spacing: -.02em; }
+.couple-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; border-radius: 99px; font-size: 12px; font-weight: 600;
+  background: rgba(139, 92, 246, 0.12); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.25);
+}
+.couple-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 18px;
+}
+.budget-table {
+  width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 10px;
+}
+.budget-table th {
+  background: var(--sheet-2); padding: 9px 12px; text-align: left; font-weight: 600; font-size: 12.5px; color: var(--ink-2); border-bottom: 1px solid var(--rule-2);
+}
+.budget-table td {
+  padding: 9px 12px; border-bottom: 1px solid var(--rule);
+}
+.budget-table tr:last-child td { border-bottom: 0; }
+.budget-table .surplus { color: var(--green); font-weight: 600; }
+
 /* ---------------- responsive ---------------- */
 @media (max-width: 1100px) {
   .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -728,6 +783,22 @@ kbd {
         <div class="brand-name">ScholarVerse</div>
         <div class="brand-sub">Funded master's, 2027 intake</div>
       </div>
+    </div>
+
+    <!-- Dual Profile Switcher -->
+    <div class="profile-switch-tabs" id="profileSwitchTabs" role="tablist" aria-label="Applicant Profile">
+      <button class="switch-tab is-active" data-profile="hasibul" type="button" role="tab" aria-selected="true">
+        <span class="switch-av">H</span>
+        <span>Hasibul</span>
+      </button>
+      <button class="switch-tab" data-profile="zarin" type="button" role="tab" aria-selected="false">
+        <span class="switch-av av-zarin">Z</span>
+        <span>Zarin</span>
+      </button>
+      <button class="switch-tab" data-profile="couple" type="button" role="tab" aria-selected="false">
+        <span class="switch-av av-couple">👫</span>
+        <span>Couple</span>
+      </button>
     </div>
     <button class="search-btn" id="paletteOpen" type="button">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -8151,6 +8222,525 @@ function mergedProfessors() {
   return list;
 }
 
+/* ============ zarin-data.js ============ */
+var module = { exports: {} };
+/* ============================================================================
+   SCHOLARVERSE — ZARIN TASNIM DATA BRAIN
+   Verified records for Zarin Tasnim: Supply Chain, Logistics, and Management.
+   Verified against official IELTS TRF, BUP Academic Transcript, BBA Degree,
+   HSC/SSC Certificates, and Dr. Mohammad Zahedul Alam Recommendation Letter.
+   ============================================================================ */
+
+const ZARIN_PROFILE = {
+  name: "Zarin Tasnim",
+  title: "Supply Chain & Freight Forwarding Specialist",
+  email: "zarin.tasnim17bup@gmail.com",
+  phone: "+880 1770 514333",
+  location: "Dhaka, Bangladesh",
+  permanentAddress: "647, Boro Moghbazar, Nayatola Road, Dhaka 1216, Bangladesh",
+  dob: "1999-11-17",
+  age: 26,
+  citizenship: "Bangladesh",
+  passport: "A08707228 (Issued: 03.10.2024 · Valid to: 02.10.2034)",
+  maritalStatus: "Married (Spouse: Hasibul Hasan Santo)",
+  field: "Supply Chain Management / Global Logistics / International Business",
+  targetDegree: "Master of Science (M.Sc.) / Master in Management",
+  targetIntake: "September / October 2027",
+  tests: {
+    ielts: {
+      status: "VERIFIED & VALID TO 28 DEC 2026",
+      type: "Academic",
+      trfNumber: "24BD047817TASZ001A",
+      date: "2024-12-28",
+      candidateNumber: "047817",
+      centreNumber: "BD001 (British Council Dhaka)",
+      listening: 7.5,
+      reading: 6.5,
+      writing: 6.5,
+      speaking: 6.5,
+      overall: 7.0,
+      cefr: "C1",
+      note: "Valid through 28 Dec 2026. Fully satisfies all master's admission criteria across Sweden (Lund/Gothenburg), Germany (Hohenheim/Bremen/HTW), Italy (IYT), and Canada!"
+    },
+    moi: "Medium of Instruction Certificate: 100% English (Faculty of Business Studies, BUP)",
+    german: "Learning A1 with Hasibul; Goethe-Zertifikat A1 planned if required for German spouse visa or studies."
+  },
+  education: {
+    degree: "Bachelor of Business Administration (BBA) in Marketing",
+    institution: "Bangladesh University of Professionals (BUP), Dhaka",
+    faculty: "Faculty of Business Studies",
+    session: "2018–2019 (Examination Dec 2022, Result Published 07 May 2023)",
+    credits: 126.0,
+    cgpa: 3.42,
+    cgpaScale: 4.00,
+    germanGrade: 1.87,
+    gradeNote: "Bavarian Formula: 1 + 3 × (4.00 - 3.42) / (4.00 - 2.00) = 1.87. On the German 1.0–4.0 scale, 1.87 is in the top 'gut' tier, significantly beating standard 2.0 and 2.5 admission thresholds!",
+    keyCourses: [
+      { code: "ALD1205", name: "Business Mathematics", credits: 3.0, grade: "A (4.00)" },
+      { code: "ALD2104", name: "Business Statistics", credits: 3.0, grade: "A (4.00)" },
+      { code: "ALD2201", name: "Supply Chain Management", credits: 3.0, grade: "A (4.00)" },
+      { code: "MKT3101", name: "Big Data in Marketing", credits: 3.0, grade: "A+ (4.00)" },
+      { code: "ALD3201", name: "Quantitative Business Analysis", credits: 3.0, grade: "A- (3.50)" },
+      { code: "ALD1201", name: "Micro Economics", credits: 3.0, grade: "A (4.00)" },
+      { code: "ALD2203", name: "Macro Economics", credits: 3.0, grade: "A- (3.50)" },
+      { code: "MKT4104", name: "Marketing Research", credits: 3.0, grade: "A- (3.75)" },
+      { code: "MKT4897", name: "Internship", credits: 3.0, grade: "A (4.00)" },
+      { code: "MKT4899", name: "Comprehensive Viva Voce", credits: 3.0, grade: "A- (3.50)" }
+    ],
+    hsc: "Ideal School and College, Motijheel, Dhaka (Science, 2018) — GPA 4.58 / 5.00",
+    ssc: "BIAM Model School and College, Dhaka (Science, 2016) — GPA 5.00 / 5.00 (Golden / Perfect)"
+  },
+  work: [
+    {
+      employer: "Akij Logistics Ltd",
+      role: "Assistant Manager, Export Sales",
+      start: "2026-06",
+      end: null,
+      current: true,
+      hoursPerWeek: 45,
+      note: "Leading export business development, client outreach, freight quotation structuring, and global shipping documentation.",
+      bullets: [
+        "Manages client outreach and export freight coordination for major international trade lanes",
+        "Prepares competitive freight rate structures and customs compliance documentation",
+        "Coordinates directly with international buyers, shipping lines, and ground transport networks"
+      ]
+    },
+    {
+      employer: "International Brands Ltd (MGH Group)",
+      role: "Assistant Manager, Freight Forwarding & Sales Operations",
+      start: "2023-05",
+      end: "2026-06",
+      hoursPerWeek: 45,
+      bullets: [
+        "Executed 120+ international air cargo flights across 7 global destinations (USA, UK, Jeddah, Dubai, China, Hong Kong, Canada)",
+        "Managed cumulative airlift volume of ~4,000 tons of air cargo with zero regulatory non-compliance",
+        "Managed ocean freight operations for C&A, the largest buyer account of MGH Logistics",
+        "Managed multimodal air and sea shipments for Logwin Logistics supporting Hugo Boss (Shanghai & Hong Kong)",
+        "Coordinated express time-critical logistics in direct partnership with FedEx",
+        "Managed operations using enterprise logistics ERP platforms: CargoWise, SAP, and V-SOL",
+        "Promoted from Territory Officer (led sales team of 15 across 1,500+ retail outlets; 200+ clients onboarded)"
+      ]
+    }
+  ],
+  skills: {
+    logistics: "Air Freight Forwarding, Ocean Freight Chartering, CargoWise One, SAP Logistics, V-SOL, FedEx Express Operations, Customs Clearance Documentation",
+    commercial: "Export Sales Structuring, Key Account Handling (C&A, Hugo Boss), GTM Planning, Client Negotiation, P&G Distribution Operations",
+    languages: "English (C1 Proficient, IELTS 7.0), Bengali (Native), German (A1 Learner)"
+  },
+  referee: {
+    name: "Dr. Mohammad Zahedul Alam",
+    role: "Professor, Department of Business Administration in Marketing",
+    institution: "Bangladesh University of Professionals (BUP)",
+    email: "zahedul.alam@bup.edu.bd",
+    phone: "+880 1715 030184",
+    status: "Verified Official Letterhead Recommendation on File",
+    quote: "Zarin obtained the highest grades in Brand Management and Marketing Research. Her experience at MGH provided hands-on exposure to primary research and data analysis... one of the best students I have ever worked with."
+  }
+};
+
+const ZARIN_TARGETS = [
+  {
+    id: "zarin-sweden-sisgp",
+    name: "Swedish Institute Scholarship (SISGP) — Supply Chain & Logistics",
+    short: "Sweden SISGP SCM",
+    country: "Sweden",
+    flag: "🇸🇪",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "PERFECT — 100% match with 3.5 yrs MGH/Akij freight forwarding experience",
+    funding: "Full Tuition Paid to University + SEK 12,000/month living stipend + SEK 15,000 travel grant",
+    deadline: "2027-02-25",
+    gateDeadline: "2027-01-15",
+    deadlineLabel: "SI Portal: 9–25 Feb 2027 (14:59 CET)",
+    gateLabel: "UniversityAdmissions.se application: 16 Oct 2026 – 15 Jan 2027",
+    status: "open",
+    route: "Apply to 4 Swedish master's on universityadmissions.se by Jan 15, then submit SISGP scholarship in Feb",
+    eligibleProgrammes: [
+      "Lund University — MSc in Logistics and Supply Chain Management (120 cr) ⭐ Global Top 50 SCM",
+      "University of Gothenburg — MSc in Logistics and Transport Management (120 cr)",
+      "Jönköping University — MSc in International Logistics and Supply Chain Management (120 cr)",
+      "Stockholm University — MSc in Marketing / Operations Management (120 cr)"
+    ],
+    advantages: [
+      "Zarin holds ~7,000 certified work hours at MGH/Akij (far exceeds 3,000 hr minimum)",
+      "IELTS Academic 7.0 / C1 is already in hand (valid to Dec 2026)",
+      "Dual-Scholarship Synergy: If both Hasibul and Zarin win SISGP, combined couple scholarship is SEK 24,000/month tax-free plus zero tuition!"
+    ],
+    nextAction: "Create universityadmissions.se account and rank Lund, Gothenburg, and Jönköping MSc SCM."
+  },
+  {
+    id: "zarin-germany-epos",
+    name: "DAAD EPOS — International Logistics & Project Management",
+    short: "Germany EPOS SCM",
+    country: "Germany",
+    flag: "🇩🇪",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
+    funding: "€992/month stipend + full tuition waiver + health insurance + flights",
+    deadline: "2026-12-15",
+    deadlineLabel: "Varies by programme: Oct – Dec 2026",
+    status: "open",
+    route: "Direct application to participating universities (Hochschule Bremen / HTW Berlin)",
+    eligibleProgrammes: [
+      "Hochschule Bremen — MBA in International Logistics and Trade (EPOS funded) ⭐ Direct fit",
+      "HTW Berlin — Master in Project Management and Data Science (MPMD) (EPOS funded)"
+    ],
+    advantages: [
+      "Zarin's BBA 3.42 converts to German 1.87 (beats 2.0 competitive bar)",
+      "3.5 years of verifiable freight forwarding and commercial operations exceed 2-year EPOS gate",
+      "Same-country synergy with Hasibul's Göttingen/Hohenheim EPOS targets"
+    ],
+    nextAction: "Review Bremen MBA Logistics EPOS call and prepare motivation letter."
+  },
+  {
+    id: "zarin-italy-iyt",
+    name: "Invest Your Talent in Italy (IYT) — Global Supply Chain Management",
+    short: "Italy IYT Logistics",
+    country: "Italy",
+    flag: "🇮🇹",
+    tier: 1,
+    priority: "P1",
+    subjectFit: "HIGH — Global Supply Chain & International Management",
+    funding: "100% Tuition Exemption + €10,800/yr Living Stipend + 3-Month Paid Corporate Internship",
+    deadline: "2027-05-11",
+    gateDeadline: "2027-03-31",
+    deadlineLabel: "IYT Portal: April – May 2027",
+    gateLabel: "University Pre-Admissions: Jan – March 2027",
+    status: "opening_soon",
+    route: "Apply for pre-admission to Bologna, Padua, or Tor Vergata in Jan–Mar, then submit IYT application",
+    eligibleProgrammes: [
+      "University of Bologna — MSc in Global Supply Chain / Business Administration",
+      "University of Padua — MSc in Business Administration / Operations",
+      "Rome Tor Vergata — MSc in European Economy and Business Law / Management"
+    ],
+    advantages: [
+      "Bangladesh is officially on the 23-country eligible list",
+      "Zarin has 3+ years experience with global brands (C&A, Hugo Boss, FedEx)",
+      "Mandatory corporate internship guarantees direct European employment integration"
+    ],
+    nextAction: "Shortlist University of Bologna and Padua master's in SCM."
+  },
+  {
+    id: "zarin-czech-vse",
+    name: "Czech Government Scholarship — Prague University of Economics (VSE)",
+    short: "Czech Govt VSE",
+    country: "Czechia",
+    flag: "🇨🇿",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "DIRECT — Follow-up Master in Management (Application #79074 already submitted!)",
+    funding: "Full tuition covered by Czech Government + monthly living allowance (~CZK 14,000/mo)",
+    deadline: "2026-09-30",
+    deadlineLabel: "Submitted for 2027/28 (Knowledge test 54.0, English test 103.2)",
+    status: "submitted",
+    route: "Follow-up Master's study programme in English at Prague University of Economics and Business (VSE)",
+    eligibleProgrammes: [
+      "Prague University of Economics and Business (VSE) — Faculty of Business Administration, Master in Management"
+    ],
+    advantages: [
+      "Already submitted under Application ID 79074!",
+      "Hasibul has also applied to Charles University in Prague — potential for simultaneous co-location in Prague!"
+    ],
+    nextAction: "Monitor Czech Ministry results announcement (expected early 2027)."
+  },
+  {
+    id: "zarin-canada-spousal",
+    name: "Canada Spousal Open Work Permit (IRCC C42) — Supply Chain Hubs",
+    short: "Canada Spousal OWP",
+    country: "Canada",
+    flag: "🇨🇦",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "EXCELLENT — Direct employability in Canadian freight forwarding and air cargo corridors",
+    funding: "Spousal Open Work Permit (Unrestricted full-time employment across Canada)",
+    deadline: "2027-05-01",
+    deadlineLabel: "Applied with Hasibul's Canadian Study Permit (Spring 2027)",
+    status: "opening_soon",
+    route: "Attached to Hasibul's 24-month master's degree (Waterloo / Saskatchewan Edwards / HEC Montréal)",
+    eligibleProgrammes: [
+      "Unrestricted Work Authorization: Greater Toronto Area (Mississauga / Brampton logistics hub) or Metro Vancouver (Richmond airport / port hub)"
+    ],
+    advantages: [
+      "Zarin's hands-on experience in CargoWise One, SAP, and 120+ air cargo flights (~4,000 tons) is in extreme high demand among Canadian freight forwarders (Expeditors, DB Schenker, Kuehne+Nagel, DSV Canada)",
+      "Clears the IRCC C42 16-month master's degree requirement through Hasibul's program",
+      "Dual income dramatically accelerates Canadian permanent residence (Express Entry / Canadian Experience Class)"
+    ],
+    nextAction: "Maintain clean employment documentation from MGH and Akij."
+  }
+];
+
+const ZARIN_DOCUMENTS = [
+  { id: "zarin-ielts", name: "IELTS Academic Test Report Form (C1 / 7.0 Overall)", type: "English", status: "have", spec: "British Council TRF 24BD047817TASZ001A. Listening 7.5, Reading 6.5. Valid until 28 Dec 2026.", owner: "Zarin", blocker: false },
+  { id: "zarin-degree", name: "BBA Degree Certificate (BUP, Dec 2022)", type: "Academic", status: "have", spec: "Bachelor of Business Administration in Marketing, Faculty of Business Studies, BUP. CGPA 3.42 / 4.00.", owner: "Zarin", blocker: false },
+  { id: "zarin-transcript", name: "BBA Academic Transcript of Records (126.0 Credits)", type: "Academic", status: "have", spec: "Full 8-semester transcript. All 126.0 credits earned. Includes grading scale (3.42 CGPA / German grade 1.87).", owner: "Zarin", blocker: true },
+  { id: "zarin-hsc", name: "HSC Certificate (Ideal School & College, Science)", type: "Academic", status: "have", spec: "Higher Secondary Certificate, Science Group, Dhaka Board 2018. GPA 4.58 / 5.00.", owner: "Zarin", blocker: false },
+  { id: "zarin-ssc", name: "SSC Certificate (BIAM Model School, Science)", type: "Academic", status: "have", spec: "Secondary School Certificate, Science Group, Dhaka Board 2016. GPA 5.00 / 5.00 (Golden / Perfect).", owner: "Zarin", blocker: false },
+  { id: "zarin-ref-zahedul", name: "Academic Recommendation Letter (Dr. Mohammad Zahedul Alam)", type: "References", status: "have", spec: "Official BUP Letterhead Recommendation from Professor Dr. Zahedul Alam (Marketing Research / IMC instructor).", owner: "Dr. Zahedul Alam", blocker: false },
+  { id: "zarin-akij-cert", name: "Certificate of Employment (Akij Logistics Ltd)", type: "Employment", status: "verify", spec: "Official employment certificate certifying Assistant Manager, Export Sales role (June 2026 – Present).", owner: "Akij HR", blocker: true },
+  { id: "zarin-mgh-cert", name: "Certificate of Employment & Experience (MGH Group)", type: "Employment", status: "verify", spec: "Official MGH / International Brands certificate certifying 3+ years experience across 120+ flights, C&A, Hugo Boss.", owner: "MGH HR", blocker: true },
+  { id: "zarin-passport", name: "Valid Passport (A08707228)", type: "Identity", status: "have", spec: "Passport A08707228, issued 03 Oct 2024, valid until 02 Oct 2034 (10-year validity).", owner: "Zarin", blocker: false },
+  { id: "zarin-europass", name: "Europass CV (Supply Chain & Commercial)", type: "Writing", status: "have", spec: "Updated 2-page Europass CV detailing 120+ flights, 4,000 tons airlifted, CargoWise/SAP skills.", owner: "Zarin", blocker: false },
+  { id: "zarin-sisgp-forms", name: "SISGP Work Experience & Leadership Templates", type: "SISGP", status: "missing", spec: "Official Swedish Institute proof of work and leadership template forms signed by MGH/Akij supervisors.", owner: "Zarin", blocker: true }
+];
+
+const ZARIN_MISSIONS = [
+  {
+    id: "zm-ielts-verified",
+    title: "Verify IELTS Academic Test Report Form",
+    detail: "Confirmed on file: TRF 24BD047817TASZ001A (Exam: 28 Dec 2024). Overall: 7.0 (C1 Level). Listening: 7.5, Reading: 6.5. Valid until 28 December 2026. Satisfies all English language requirements for Sweden, Germany, Italy, and Canada.",
+    why: "Already accomplished. Saves ৳25,000+ testing cost and removes the single biggest application blocker.",
+    xp: 150,
+    targets: ["zarin-sweden-sisgp", "zarin-germany-epos", "zarin-italy-iyt"],
+    owner: "Zarin",
+    deadline: "2026-10-18",
+    urgency: "high",
+    category: "English",
+    checklist: ["IELTS TRF PDF on file", "Verify online validity on British Council verification portal", "Keep certified color copies ready"]
+  },
+  {
+    id: "zm-bup-docs-verified",
+    title: "Verify BBA Degree Certificate & Complete Academic Transcript",
+    detail: "Confirmed on file: BBA in Marketing, Faculty of Business Studies, BUP. Total 126.0 credits completed. CGPA 3.42 / 4.00 converts to German grade 1.87 (gut / very good). Science background: HSC 4.58 (Ideal School & College), SSC 5.00 Golden (BIAM).",
+    why: "Bachelor's degree certificate and transcript are 100% complete with grading scale included. Ready for submission.",
+    xp: 150,
+    targets: ["zarin-sweden-sisgp", "zarin-germany-epos", "zarin-italy-iyt", "zarin-czech-vse"],
+    owner: "Zarin",
+    deadline: "2026-10-18",
+    urgency: "high",
+    category: "Academic",
+    checklist: ["Degree Certificate on file", "Full Transcript on file", "HSC & SSC Certificates on file", "Grading scale verified"]
+  },
+  {
+    id: "zm-ref-zahedul-verified",
+    title: "Academic Recommendation from Professor Dr. Mohammad Zahedul Alam",
+    detail: "Confirmed on file: Official letterhead recommendation from Professor Dr. Zahedul Alam, Professor of Marketing, Faculty of Business Studies, BUP. Highlights analytical skills, research aptitude, and MGH territory sales fieldwork.",
+    why: "Pre-secured official recommendation letter ready for upload across Sweden, Germany, Italy, and Canada.",
+    xp: 120,
+    targets: ["zarin-sweden-sisgp", "zarin-germany-epos", "zarin-italy-iyt"],
+    owner: "Dr. Zahedul Alam",
+    deadline: "2026-10-18",
+    urgency: "high",
+    category: "References",
+    checklist: ["Letterhead signed and stamped", "Contact details verified", "Scanned in high resolution"]
+  },
+  {
+    id: "zm-akij-cert",
+    title: "Obtain Certificate of Employment from Akij Logistics Ltd",
+    detail: "Request official employment certificate from Akij Logistics HR Operations confirming Assistant Manager, Export Sales designation, start date (June 2026), full-time status (45 hrs/week), and export operations duties.",
+    why: "Mandatory proof of current employment for Swedish Institute (SISGP) and DAAD EPOS scholarship applications.",
+    xp: 100,
+    targets: ["zarin-sweden-sisgp", "zarin-germany-epos"],
+    owner: "Akij HR",
+    deadline: "2026-11-05",
+    urgency: "high",
+    category: "Employment",
+    checklist: ["Request certificate on Akij Logistics letterhead", "Ensure exact start date and title", "Confirm signature, stamp, and HR contact", "Scan clean color PDF"]
+  },
+  {
+    id: "zm-mgh-cert",
+    title: "Obtain Experience Certificate from MGH Group (International Brands)",
+    detail: "Request comprehensive experience certificate from MGH Group HR covering May 2023 to June 2026, certifying both Territory Sales Officer and Assistant Manager Freight Forwarding roles, air cargo flight operations, and client accounts (C&A, Hugo Boss).",
+    why: "Proves 3+ years of verifiable global logistics volume (~4,000 tons, 120+ flights), satisfying SISGP's 3,000-hour requirement with ~6,000 hours.",
+    xp: 120,
+    targets: ["zarin-sweden-sisgp", "zarin-germany-epos"],
+    owner: "MGH HR",
+    deadline: "2026-11-10",
+    urgency: "critical",
+    category: "Employment",
+    checklist: ["Request certificate detailing both roles", "Include freight forwarding operational achievements", "Confirm seal and signature", "Keep original safe"]
+  },
+  {
+    id: "zm-sweden-portal",
+    title: "Submit Swedish University Admissions Application (4 SCM Programs)",
+    detail: "Create account on universityadmissions.se. Rank 4 eligible MSc Logistics and Supply Chain Management programs: 1. Lund University MSc SCM, 2. University of Gothenburg MSc Logistics, 3. Jönköping University MSc Int. Logistics, 4. Stockholm University.",
+    why: "This is the prerequisite gate for the Swedish Institute (SISGP) full scholarship. Applications open 16 October 2026 and close 15 January 2027.",
+    xp: 200,
+    targets: ["zarin-sweden-sisgp"],
+    owner: "Zarin",
+    deadline: "2027-01-15",
+    urgency: "critical",
+    category: "Submission",
+    actionUrl: "https://www.universityadmissions.se/intl/start",
+    checklist: ["Register on universityadmissions.se", "Select and rank 4 SCM programs", "Upload BBA transcript, degree, and IELTS TRF", "Pay 900 SEK application fee before deadline"]
+  },
+  {
+    id: "zm-sisgp-submit",
+    title: "Submit Swedish Institute SISGP Scholarship Application",
+    detail: "Submit the SI Scholarship for Global Professionals application during the 9–25 February 2027 portal window. Upload SI CV, SI Work Experience form (~7,000 hours), and SI Leadership letter.",
+    why: "Full ride scholarship: 100% tuition paid directly + SEK 12,000/month living stipend + SEK 15,000 travel. Dual-scholarship with Hasibul yields SEK 24,000/month couple income!",
+    xp: 200,
+    targets: ["zarin-sweden-sisgp"],
+    owner: "Zarin",
+    deadline: "2027-02-25",
+    urgency: "critical",
+    category: "Submission",
+    actionUrl: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/",
+    checklist: ["Download SI work experience and leadership templates", "Have Akij/MGH supervisors sign SI templates", "Submit on SI portal before 14:59 CET on 25 Feb"]
+  },
+  {
+    id: "zm-bremen-epos",
+    title: "Submit Application for MBA International Logistics & Trade (Hochschule Bremen)",
+    detail: "Apply for the DAAD EPOS funded MBA in International Logistics and Trade at Hochschule Bremen. Submit BBA transcript (German grade 1.87), IELTS 7.0, CV, and motivation letter.",
+    why: "DAAD EPOS funded master's program matching Zarin's freight forwarding profile. Full €992/month funding + tuition waiver.",
+    xp: 180,
+    targets: ["zarin-germany-epos"],
+    owner: "Zarin",
+    deadline: "2026-12-15",
+    urgency: "high",
+    category: "Submission",
+    checklist: ["Review Bremen MBA Logistics EPOS criteria", "Draft motivation letter highlighting air/sea freight operations", "Submit complete EPOS dossier to Bremen"]
+  },
+  {
+    id: "zm-iyt-bologna",
+    title: "Apply for Pre-Admission to University of Bologna (IYT Track)",
+    detail: "Apply for pre-admission to MSc in Global Supply Chain / Business Administration at University of Bologna. Submit BBA transcript, IELTS, and CV.",
+    why: "Pre-admission by March 2027 is required to apply for the Italian Government's Invest Your Talent in Italy (IYT) scholarship (€10,800/yr + tuition waiver + corporate internship).",
+    xp: 150,
+    targets: ["zarin-italy-iyt"],
+    owner: "Zarin",
+    deadline: "2027-03-31",
+    urgency: "high",
+    category: "Application",
+    actionUrl: "https://www.unibo.it/en",
+    checklist: ["Create account on University of Bologna portal", "Submit pre-admission application for Global SCM", "Obtain pre-admission letter for IYT portal"]
+  },
+  {
+    id: "zm-czech-followup",
+    title: "Monitor Czech Government Scholarship Application (VSE Prague #79074)",
+    detail: "Application #79074 already submitted for Follow-up Master in Management at Prague University of Economics and Business (VSE). Test scores logged: Knowledge test 54.0, English test 103.2.",
+    why: "If awarded, provides full tuition + living allowance in Prague, syncing with Hasibul's Charles University Prague application.",
+    xp: 80,
+    targets: ["zarin-czech-vse"],
+    owner: "Zarin",
+    deadline: "2027-02-15",
+    urgency: "medium",
+    category: "Application",
+    checklist: ["Check Czech Ministry scholarship portal announcements", "Respond immediately to any interview or nomination notices"]
+  }
+];
+
+const ZARIN_DATA = {
+  profile: ZARIN_PROFILE,
+  targets: ZARIN_TARGETS,
+  documents: ZARIN_DOCUMENTS,
+  missions: ZARIN_MISSIONS
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { ZARIN_DATA, ZARIN_PROFILE, ZARIN_TARGETS, ZARIN_DOCUMENTS, ZARIN_MISSIONS };
+}
+
+/* ============ couple-data.js ============ */
+var module = { exports: {} };
+/* ============================================================================
+   SCHOLARVERSE — COUPLE ROADMAP & MIGRATION MATRIX
+   Joint strategic synchronization for Hasibul Hasan, CFA & Zarin Tasnim.
+   Analysis of dual scholarships, spousal open work permits, financial stacking,
+   and long-term permanent residence (PR) corridors across Europe & Canada.
+   ============================================================================ */
+
+const COUPLE_COUNTRIES = [
+  {
+    country: "Sweden",
+    flag: "🇸🇪",
+    rating: "⭐⭐⭐⭐⭐ (Highest Couple Synergy)",
+    title: "The Nordic Double Full-Ride & Dual Career Corridor",
+    summary: "Sweden provides the highest immediate couple standard of living: both can win independent full scholarships, or one can study while the other holds an unrestricted spousal work permit.",
+    hisRoute: "Stockholm University / Lund University — MSc in Finance or Banking & Finance (SISGP full ride)",
+    herRoute: "Lund University / University of Gothenburg — MSc in Logistics & Supply Chain Management (SISGP full ride)",
+    visaBasis: "Migrationsverket (Swedish Migration Agency): Spouses of master's students receive concurrent residence permits with FULL, UNRESTRICTED WORK RIGHTS. No job offer required in advance. ZERO Swedish language requirement for spouse.",
+    financialStack: "Dual SISGP Award: SEK 12,000 + SEK 12,000 = SEK 24,000/month tax-free couple income (~€2,100/mo) + 100% free tuition for both degrees + SEK 30,000 travel grants. If one studies and one works: SEK 12,000 scholarship + SEK 30,000–38,000/mo corporate salary.",
+    prPathway: "Both receive a 12-month post-study job-seeker visa. 4 years of work permit employment leads to Permanent Residence (PR). Citizenship after 5 years.",
+    nextAction: "Both submit applications on universityadmissions.se before 15 January 2027, then submit SISGP scholarship applications in February."
+  },
+  {
+    country: "Germany",
+    flag: "🇩🇪",
+    rating: "⭐⭐⭐⭐⭐ (Fastest PR & Zero-Tuition Foundation)",
+    title: "DAAD EPOS + §30 AufenthG Full Employment Authorization",
+    summary: "Germany offers guaranteed institutional tuition waivers and a legal family reunification pathway with full, unrestricted employment rights.",
+    hisRoute: "University of Göttingen (M.Sc. Dev Econ, DAAD EPOS €992/mo) or University of Hohenheim (M.Sc. AgEcon, DAAD EPOS €992/mo)",
+    herRoute: "Hochschule Bremen (MBA International Logistics, EPOS €992/mo) OR joins on Family Reunification Visa with full work authorization",
+    visaBasis: "§ 30 Aufenthaltsgesetz (AufenthG): Spousal family reunification grants unrestricted work authorization ('Erwerbstätigkeit gestattet') across all German commercial sectors without Federal Employment Agency labor market priority checks. DAAD adds a €276/month spousal allowance.",
+    financialStack: "DAAD EPOS Stipend (€992/mo) + DAAD Spousal Allowance (€276/mo) = €1,268/mo guaranteed base + Zarin's full-time salary in German freight/logistics (€2,800–€3,600 gross/mo) + zero tuition fees.",
+    prPathway: "EU Blue Card lower salary threshold (€45,934.20/yr). Permanent Residence in just 21 months with German B1 (or 33 months with A1). German citizenship under the 2024 reform in 3–5 years.",
+    nextAction: "Hasibul submits Göttingen EPOS by 15 Nov; Zarin prepares Bremen MBA / spousal dossier."
+  },
+  {
+    country: "Canada",
+    flag: "🇨🇦",
+    rating: "⭐⭐⭐⭐⭐ (Direct PR Corridor & Logistics Demand)",
+    title: "Funded Research Master's + IRCC C42 Spousal Open Work Permit",
+    summary: "Canada provides the most direct transition from master's graduation to Permanent Residence (PR) via Express Entry, with direct employer demand for both profiles.",
+    hisRoute: "University of Waterloo (MMath Applied Math, guaranteed departmental funding ~$28k–$34k/yr) or Saskatchewan Edwards (MSc Finance, $18k–$22k/yr)",
+    herRoute: "Accompanies on an IRCC C42 Spousal Open Work Permit (OWP), clearing the 16-month master's degree gate through Hasibul's program",
+    visaBasis: "IRCC C42 Regulation: Spouses of international students in master's programs of 16+ months are legally entitled to an Open Work Permit for the entire duration of the study permit and subsequent 3-year PGWP.",
+    financialStack: "Hasibul's research assistantship ($25,000–$32,000 CAD/yr) + Zarin's full-time salary in Canadian freight forwarding (CargoWise/SAP forwarders in Mississauga / Brampton / Vancouver pay $52,000–$65,000 CAD/yr) = $80,000–$95,000 CAD combined annual household income.",
+    prPathway: "Graduation yields a 3-year Post-Graduation Work Permit (PGWP). 1 year of Canadian skilled work experience (Hasibul in Treasury/Banking, Zarin in Freight Logistics) generates maximum Comprehensive Ranking System (CRS) points for Express Entry Canadian Experience Class (CEC) PR. Canadian passport after 3 years of PR.",
+    nextAction: "Hasibul submits Waterloo (Jan 6) and Edwards (Dec 15); Zarin prepares MGH/Akij CargoWise employment portfolio."
+  },
+  {
+    country: "Italy",
+    flag: "🇮🇹",
+    rating: "⭐⭐⭐⭐ (Corporate Multinational Gateway)",
+    title: "Invest Your Talent in Italy (IYT) Dual Track",
+    summary: "Italy's official IYT scheme provides tuition waivers, monthly living stipends, and mandatory corporate internships in Italian multinational enterprises.",
+    hisRoute: "University of Bologna / Rome Tor Vergata — MSc in Finance (IYT Scholarship)",
+    herRoute: "University of Bologna / University of Padua — MSc in Global Supply Chain / International Management (IYT Scholarship)",
+    visaBasis: "Both apply as primary students or one accompanies as dependent. Italian student visa allows 20 hours/week work during semester and full-time during holidays.",
+    financialStack: "100% Tuition Exemption + €10,800/yr stipend each = €21,600/year combined couple stipend + mandatory paid 3-month corporate internship in Italian multinationals.",
+    prPathway: "12-month post-study search visa (permesso di soggiorno per ricerca lavoro), convertible into standard subordinate work residence permit upon job offer.",
+    nextAction: "Apply for pre-admission to Bologna/Padua in Jan–March 2027; submit IYT portal in April."
+  },
+  {
+    country: "Czechia",
+    flag: "🇨🇿",
+    rating: "⭐⭐⭐⭐ (Prague Co-Location Double)",
+    title: "Czech Government Scholarship Dual Submissions",
+    summary: "Both Hasibul and Zarin have already submitted applications for Czech Government Scholarships for the 2027/28 academic year in Prague.",
+    hisRoute: "Charles University, Prague — Master in Economics and Finance (MEF) (Already submitted)",
+    herRoute: "Prague University of Economics and Business (VSE) — Master in Management (Application #79074 already submitted)",
+    visaBasis: "Both hold individual student visas with free access to the Czech labor market (no work permit needed for university students).",
+    financialStack: "Full tuition paid by Czech Government + monthly living allowance (~CZK 14,000/mo each = ~CZK 28,000/mo couple base) + part-time corporate earnings in Prague's multinational hub.",
+    prPathway: "EU long-term residence permit after 5 years in Czechia.",
+    nextAction: "Monitor Czech Ministry results announcement in early 2027."
+  }
+];
+
+const COUPLE_BUDGETS = {
+  sweden: {
+    income: "SEK 24,000 / mo (Dual SISGP tax-free)",
+    housing: "SEK 8,500 – 10,500 / mo (Student couple apartment in Lund/Gothenburg)",
+    foodLiving: "SEK 6,500 / mo",
+    insurance: "SEK 0 (Included in Kammarkollegiet)",
+    netSavings: "SEK 7,000 – 9,000 / mo (~৳80,000–100,000 BDT/month surplus)"
+  },
+  germany: {
+    income: "€1,268 / mo (DAAD EPOS + Spouse allowance) + €2,200 / mo (Zarin net salary)",
+    housing: "€750 – 950 / mo (Couple apartment in Göttingen / Bremen)",
+    foodLiving: "€600 / mo",
+    insurance: "€0 (DAAD covers health insurance)",
+    netSavings: "€1,800 – 2,100 / mo (~৳240,000 BDT/month surplus)"
+  },
+  canada: {
+    income: "CAD $2,500 / mo (Hasibul RA/TA) + CAD $3,600 / mo (Zarin net salary)",
+    housing: "CAD $1,800 – 2,200 / mo (1-bedroom in Waterloo/Saskatoon)",
+    foodLiving: "CAD $1,000 / mo",
+    insurance: "CAD $150 / mo (University health plan)",
+    netSavings: "CAD $2,800 – 3,200 / mo (~৳250,000 BDT/month surplus)"
+  }
+};
+
+const COUPLE_DATA = {
+  countries: COUPLE_COUNTRIES,
+  budgets: COUPLE_BUDGETS
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { COUPLE_DATA, COUPLE_COUNTRIES, COUPLE_BUDGETS };
+}
+
 </script>
 <script>
 /* ============================================================================
@@ -8358,7 +8948,9 @@ function mergedProfessors() {
       gates: (typeof GATES !== 'undefined') ? GATES : [],
       documents: (typeof DOCUMENTS !== 'undefined') ? DOCUMENTS : [],
       agents: (typeof AGENTS !== 'undefined') ? AGENTS : [],
-      playbook: (typeof PLAYBOOK !== 'undefined') ? PLAYBOOK : []
+      playbook: (typeof PLAYBOOK !== 'undefined') ? PLAYBOOK : [],
+      zarin: (typeof ZARIN_DATA !== 'undefined') ? ZARIN_DATA : null,
+      couple: (typeof COUPLE_DATA !== 'undefined') ? COUPLE_DATA : null
     };
     if (url === '/api/missions') return {
       missions: (typeof MISSIONS !== 'undefined') ? MISSIONS : [],
@@ -8440,12 +9032,42 @@ function mergedProfessors() {
 
 const app = {
   state: null, content: null, missions: null, unis: null, profs: null, cits: null, res: null, excel: null,
+  profileMode: (typeof localStorage !== 'undefined' && localStorage.getItem('sv-profile-mode')) || 'hasibul',
   view: 'dashboard',
   f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'ranked', uniQuery: '',
        profTier: 'all', profStatus: 'all', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
   calDate: null
 };
 if (typeof window !== 'undefined') window.app = app;
+
+/* ---------------- dual profile & couple data accessors ---------------- */
+function getActiveProfile() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_PROFILE !== 'undefined') ? ZARIN_PROFILE : ((app.content && app.content.zarin && app.content.zarin.profile) || {});
+  }
+  return (typeof PROFILE !== 'undefined') ? PROFILE : ((app.content && app.content.profile) || {});
+}
+
+function getActiveTargets() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_TARGETS !== 'undefined') ? ZARIN_TARGETS : ((app.content && app.content.zarin && app.content.zarin.targets) || []);
+  }
+  return (typeof TARGETS !== 'undefined') ? TARGETS : ((app.content && app.content.targets) || []);
+}
+
+function getActiveDocuments() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_DOCUMENTS !== 'undefined') ? ZARIN_DOCUMENTS : ((app.content && app.content.zarin && app.content.zarin.documents) || []);
+  }
+  return (typeof DOCUMENTS !== 'undefined') ? DOCUMENTS : ((app.content && app.content.documents) || []);
+}
+
+function getActiveMissions() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_MISSIONS !== 'undefined') ? ZARIN_MISSIONS : ((app.content && app.content.zarin && app.content.zarin.missions) || []);
+  }
+  return (typeof MISSIONS !== 'undefined') ? MISSIONS : ((app.missions && app.missions.missions) || []);
+}
 
 /* ---------------- helpers ---------------- */
 const $  = (s, r = document) => r.querySelector(s);
@@ -8562,6 +9184,15 @@ function buildNav() {
 
 function wireShell() {
   $$('#nav .nav-item').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
+
+  $$('#profileSwitchTabs button').forEach(b => {
+    b.addEventListener('click', () => {
+      app.profileMode = b.dataset.profile;
+      try { localStorage.setItem('sv-profile-mode', app.profileMode); } catch (e) {}
+      render();
+    });
+  });
+
   $('#themeBtn').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
   let saved = null; try { saved = localStorage.getItem('sv-theme'); } catch (e) {}
   setTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
@@ -8608,25 +9239,61 @@ function render() { renderChrome(); renderView(); }
 
 function renderChrome() {
   $$('#nav .nav-item').forEach(b => b.setAttribute('aria-current', b.dataset.view === app.view ? 'page' : 'false'));
-  document.title = `${VIEWS[app.view].t} · ScholarVerse`;
-  const st = app.state, L = app.missions.levels;
-  const lv = [...L].reverse().find(l => st.xp >= l.xp) || L[0];
-  const next = L.find(l => l.xp > st.xp);
-  $('#lvlTitle').textContent = `${lv.title} · level ${lv.level}`;
-  $('#xpText').textContent = next ? `${st.xp} / ${next.xp} XP` : `${st.xp} XP`;
-  const pct = next ? Math.round(((st.xp - lv.xp) / (next.xp - lv.xp)) * 100) : 100;
-  $('#xpFill').style.width = Math.max(2, pct) + '%';
-  $('#streakText').textContent = st.streak ? `${plural(st.streak, 'day')} streak` : 'No streak yet';
+
+  $$('#profileSwitchTabs button').forEach(b => {
+    const on = b.dataset.profile === app.profileMode;
+    b.classList.toggle('is-active', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+
+  const pTitle = app.profileMode === 'zarin' ? 'Zarin Tasnim' : app.profileMode === 'couple' ? 'Couple Plan' : 'Hasibul Hasan';
+  document.title = `${VIEWS[app.view].t} · ${pTitle} · ScholarVerse`;
 
   const setCount = (k, n, hot) => { const el = $('#nc-' + k); if (!el) return; el.hidden = !n; el.textContent = n; el.classList.toggle('hot', !!hot); };
-  const open = st.missions.filter(m => m.status !== 'done').length;
-  setCount('missions', open);
-  const missing = app.content.documents.filter(d => ['missing', 'not_started'].includes(d.status)).length;
-  setCount('documents', missing, missing > 0);
-  setCount('professors', app.profs.professors.length);
-  setCount('universities', (app.res.uniCensus || []).length);
-  const flagged = app.cits.citations.filter(c => ['WRONG_AUTHOR', 'PAPER_MISSING'].includes(c.status)).length;
-  setCount('citations', flagged, flagged > 0);
+
+  if (app.profileMode === 'zarin') {
+    $('#lvlTitle').textContent = `Shortlist Contender · Level 5`;
+    $('#xpText').textContent = `540 / 900 XP`;
+    $('#xpFill').style.width = `60%`;
+    $('#streakText').textContent = `IELTS 7.0 C1 (Valid)`;
+    setCount('missions', getActiveMissions().length);
+    const missingDocs = getActiveDocuments().filter(d => ['missing','not_started'].includes(d.status)).length;
+    setCount('documents', missingDocs, missingDocs > 0);
+    setCount('targets', getActiveTargets().length);
+    setCount('professors', 0);
+    setCount('universities', (app.res.uniCensus || []).length);
+    setCount('citations', 0);
+  } else if (app.profileMode === 'couple') {
+    $('#lvlTitle').textContent = `Couple Mode · Dual Applicants`;
+    $('#xpText').textContent = `Combined Assets`;
+    $('#xpFill').style.width = `100%`;
+    $('#streakText').textContent = `5 Shared Destinations`;
+    setCount('missions', app.missions.missions.length + (typeof ZARIN_MISSIONS !== 'undefined' ? ZARIN_MISSIONS.length : 10));
+    setCount('documents', 23);
+    setCount('targets', (app.content.targets.length + (typeof ZARIN_TARGETS !== 'undefined' ? ZARIN_TARGETS.length : 5)));
+    setCount('professors', app.profs.professors.length);
+    setCount('universities', (app.res.uniCensus || []).length);
+    setCount('citations', 2);
+  } else {
+    const st = app.state, L = app.missions.levels;
+    const lv = [...L].reverse().find(l => st.xp >= l.xp) || L[0];
+    const next = L.find(l => l.xp > st.xp);
+    $('#lvlTitle').textContent = `${lv.title} · level ${lv.level}`;
+    $('#xpText').textContent = next ? `${st.xp} / ${next.xp} XP` : `${st.xp} XP`;
+    const pct = next ? Math.round(((st.xp - lv.xp) / (next.xp - lv.xp)) * 100) : 100;
+    $('#xpFill').style.width = Math.max(2, pct) + '%';
+    $('#streakText').textContent = st.streak ? `${plural(st.streak, 'day')} streak` : 'No streak yet';
+
+    const open = st.missions.filter(m => m.status !== 'done').length;
+    setCount('missions', open);
+    const missing = app.content.documents.filter(d => ['missing', 'not_started'].includes(d.status)).length;
+    setCount('documents', missing, missing > 0);
+    setCount('targets', app.content.targets.length);
+    setCount('professors', app.profs.professors.length);
+    setCount('universities', (app.res.uniCensus || []).length);
+    const flagged = app.cits.citations.filter(c => ['WRONG_AUTHOR', 'PAPER_MISSING'].includes(c.status)).length;
+    setCount('citations', flagged, flagged > 0);
+  }
 }
 
 function pageHead(extra = '') {
@@ -9056,7 +9723,200 @@ if (typeof window !== 'undefined' && window.addEventListener) {
   window.addEventListener('resize', () => { if (app.view === 'dashboard') layoutRunway(document); });
 }
 
+function renderZarinDashboard(root) {
+  const Z = (typeof ZARIN_DATA !== 'undefined') ? ZARIN_DATA : (app.content && app.content.zarin) || {};
+  const tgts = Z.targets || [];
+  const mis = Z.missions || [];
+  const docs = Z.documents || [];
+
+  const zarinEvs = [
+    { name: 'Bremen MBA Logistics (EPOS)', date: '2026-12-15', kind: 'target', d: daysUntil('2026-12-15'), open: () => openTarget('zarin-germany-epos') },
+    { name: 'Sweden Universities SCM (Lund/Gothenburg)', date: '2027-01-15', kind: 'target', d: daysUntil('2027-01-15'), open: () => openTarget('zarin-sweden-sisgp') },
+    { name: 'Czech Govt VSE Prague Results', date: '2027-02-15', kind: 'milestone', d: daysUntil('2027-02-15'), open: () => openTarget('zarin-czech-vse') },
+    { name: 'Swedish Institute SISGP Scholarship', date: '2027-02-25', kind: 'critical', d: daysUntil('2027-02-25'), open: () => openTarget('zarin-sweden-sisgp') },
+    { name: 'Bologna Pre-Admission (IYT)', date: '2027-03-31', kind: 'target', d: daysUntil('2027-03-31'), open: () => openTarget('zarin-italy-iyt') },
+    { name: 'Italy IYT Scholarship Portal', date: '2027-05-11', kind: 'critical', d: daysUntil('2027-05-11'), open: () => openTarget('zarin-italy-iyt') },
+    { name: 'Canada Spousal OWP Filing', date: '2027-05-01', kind: 'target', d: daysUntil('2027-05-01'), open: () => openTarget('zarin-canada-spousal') }
+  ].sort((a,b) => a.date.localeCompare(b.date));
+
+  const upcoming = zarinEvs.filter(e => e.d >= 0);
+  const next = upcoming[0];
+  const nextEv = next;
+
+  root.innerHTML = `
+    ${pageHead(`<button class="btn btn-sm btn-primary" type="button" data-goview="targets">View Her Targets</button>`)}
+
+    <section class="runway" aria-label="Zarin Deadline runway">
+      <div class="runway-top">
+        <div>
+          <div class="runway-label">Zarin's next deadline</div>
+          <div class="runway-big" style="cursor:pointer">
+            <span class="runway-days num">${next ? next.d : '—'}</span>
+            <span class="runway-unit">${next ? `days to ${esc(next.name)}` : 'No deadlines ahead'}<span>${next ? fmt(next.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : ''}</span></span>
+          </div>
+        </div>
+        <div class="runway-goal"><strong>Fully funded master's in Supply Chain Management, Logistics or Management</strong>Sweden SISGP, Germany EPOS, Italy IYT, or Canada Spousal Open Work Permit.</div>
+      </div>
+    </section>
+
+    <div class="pin" style="margin-top:20px;border-left:4px solid var(--amber)">
+      <div class="pin-ic" style="color:var(--amber)">${icon('shield')}</div>
+      <div>
+        <h3>Zarin Tasnim: Verified Academic &amp; Industry Profile on File</h3>
+        <p>• <strong>IELTS Academic: 7.0 Overall / C1 Level</strong> (Listening 7.5, Reading 6.5) — British Council TRF 24BD047817TASZ001A, valid to 28 Dec 2026.<br>
+        • <strong>BUP BBA Marketing: CGPA 3.42 / 4.00</strong> (converts to German <strong>1.87 / gut</strong>, comfortably beating 2.0/2.5 cutoffs).<br>
+        • <strong>Global Logistics Track Record:</strong> MGH Group &amp; Akij Logistics (~7,000 certified work hours, 120+ flights, ~4,000 tons, CargoWise &amp; SAP).<br>
+        • <strong>Academic Referee:</strong> Official Letterhead Recommendation from Prof. Dr. Mohammad Zahedul Alam (BUP Marketing) on file.</p>
+      </div>
+      <div class="pin-act" style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-sm" type="button" data-goview="profile">Full Dossier →</button>
+      </div>
+    </div>
+
+    <div style="margin-top:22px">${stats([
+      ['Target Schemes', tgts.length, 'Sweden, Germany, Italy, Czech, Canada', 'ok', 'targets'],
+      ['IELTS Score', '7.0 C1', 'Valid to Dec 2026 (No test needed!)', 'acc', 'documents'],
+      ['German Grade', '1.87', 'BBA 3.42/4.00 (Top gut tier)', 'acc'],
+      ['Work Volume', '~7,000 hrs', '3.5 yrs (Exceeds 3,000h SISGP gate)', 'ok'],
+      ['Documents Ready', docs.filter(d=>d.status==='have').length, `of ${docs.length} on file`, 'ok', 'documents']
+    ])}</div>
+
+    <div class="grid split" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Zarin's Priority Missions</h2><span class="aside">Next action steps</span></div>
+        <div class="rows" style="margin-top:8px">
+          ${mis.slice(0, 5).map(m => {
+            const d = daysUntil(m.deadline);
+            return `<div class="task">
+              <button class="check" type="button" data-toggle="${esc(m.id)}" aria-label="Mark ${esc(m.title)} done">${icon('tick')}</button>
+              <div style="cursor:pointer" data-mission="${esc(m.id)}"><div class="task-t">${esc(m.title)}</div><div class="task-n">${esc(m.detail.slice(0, 110))}…</div></div>
+              <div class="task-side"><div class="xp">+${m.xp} XP</div>${d !== null ? `<div class="due ${dueCls(d)}">${dueText(d)}</div>` : ''}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Upcoming Dates</h2><button class="btn btn-sm" type="button" data-goview="timeline">Timeline</button></div>
+        <div class="rows" style="margin-top:8px">
+          ${upcoming.slice(0, 5).map((e, i) => `<button class="ladder-row ${dueCls(e.d)}" type="button" data-zup="${i}">
+            <span class="ladder-name">${esc(e.name)}</span><span class="ladder-d num">${e.d}<small>d</small></span>
+            <span class="ladder-date">${fmt(e.date, { weekday: 'short', day: 'numeric', month: 'short' })}</span>
+          </button>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  const rb = $('.runway-big', root);
+  if (rb && nextEv) rb.onclick = () => nextEv.open?.();
+  $$('[data-zup]', root).forEach(b => b.onclick = () => upcoming[+b.dataset.zup]?.open?.());
+  $$('[data-mission]', root).forEach(b => b.onclick = () => openMission(b.dataset.mission));
+  $$('[data-goview]', root).forEach(b => b.onclick = () => go(b.dataset.goview));
+}
+
+function renderCoupleDashboard(root) {
+  const cData = (typeof COUPLE_DATA !== 'undefined') ? COUPLE_DATA : (app.content && app.content.couple) || {};
+  const countries = cData.countries || [];
+  const budgets = cData.budgets || {};
+
+  root.innerHTML = `
+    ${pageHead(`<button class="btn btn-sm btn-primary" type="button" data-goview="targets">View All Targets</button>`)}
+
+    <div class="thesis" style="background:linear-gradient(135deg, #172b4b 0%, #0f1f38 100%)">
+      <h2>Couple Strategic Migration Command Centre</h2>
+      <p>Hasibul Hasan, CFA (Economics &amp; Treasury ALM) &amp; Zarin Tasnim (BBA, IELTS 7.0 C1, Global Freight Forwarding).</p>
+      <p style="margin-top:8px"><strong>Strategic Rule:</strong> Run parallel scholarship hunts in <strong>Sweden, Germany, Italy, and Czechia</strong>, while using <strong>Canada</strong> as the high-certainty spousal open work permit PR corridor.</p>
+    </div>
+
+    <div style="margin-top:22px">${stats([
+      ['Dual Full Rides', 'Sweden & Italy', 'SEK 24k/mo & €21.6k/yr couple stipends', 'acc'],
+      ['Spousal Work Rights', 'Canada & Germany', 'Unrestricted full-time work permitted', 'ok'],
+      ['Combined English', 'Both Cleared', 'Hasibul MOI accepted · Zarin IELTS 7.0 C1', 'ok'],
+      ['Submitted Apps', '2 in Prague', 'Charles MEF + VSE Prague (#79074)', 'ok'],
+      ['Couple Savings Potential', '৳200k–250k / mo', 'Net household surplus in Sweden/Canada', 'acc']
+    ])}</div>
+
+    <div class="section-title"><h2>Country Migration Corridors</h2><span class="aside">Ranked by couple synergy</span></div>
+    <div class="couple-grid">
+      ${countries.map(c => `
+        <div class="couple-card">
+          <div class="couple-card-top">
+            <div>
+              <div class="couple-country">${c.flag} ${esc(c.country)}</div>
+              <div class="dim" style="font-size:12.5px;margin-top:2px">${esc(c.title)}</div>
+            </div>
+            <span class="couple-badge">${esc(c.rating.split(' ')[0])}</span>
+          </div>
+          <p style="font-size:13.5px;margin:0;color:var(--ink-2);line-height:1.55">${esc(c.summary)}</p>
+          <div class="field" style="margin:0"><div class="field-k">👨‍💼 Hasibul Route</div><div class="field-v" style="font-size:13px">${esc(c.hisRoute)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">👩‍💼 Zarin Route</div><div class="field-v" style="font-size:13px">${esc(c.herRoute)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">📜 Spousal Visa &amp; Work Rights</div><div class="field-v" style="font-size:13px;color:var(--green)">${esc(c.visaBasis)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">💰 Financial Stacking &amp; Earnings</div><div class="field-v" style="font-size:13px;font-weight:600">${esc(c.financialStack)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">🎯 Permanent Residence (PR) Pathway</div><div class="field-v" style="font-size:13px">${esc(c.prPathway)}</div></div>
+          <div class="note acc" style="margin-top:8px;font-size:12.5px"><div><strong>Next Joint Action:</strong> ${esc(c.nextAction)}</div></div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="section-title" style="margin-top:28px"><h2>Couple Household Budget &amp; Net Surplus Comparison</h2><span class="aside">Realistic monthly estimates</span></div>
+    <div class="panel">
+      <div class="table-wrap" style="max-height:none">
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Country / Corridor</th>
+              <th>Combined Monthly Income</th>
+              <th>Couple Housing / Apartment</th>
+              <th>Food &amp; Living Costs</th>
+              <th>Health Insurance</th>
+              <th>Net Monthly Surplus (Savings)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>🇸🇪 Sweden (Dual SISGP)</strong></td>
+              <td class="num">${esc(budgets.sweden.income)}</td>
+              <td>${esc(budgets.sweden.housing)}</td>
+              <td>${esc(budgets.sweden.foodLiving)}</td>
+              <td>${esc(budgets.sweden.insurance)}</td>
+              <td class="surplus">${esc(budgets.sweden.netSavings)}</td>
+            </tr>
+            <tr>
+              <td><strong>🇩🇪 Germany (EPOS + Spouse Job)</strong></td>
+              <td class="num">${esc(budgets.germany.income)}</td>
+              <td>${esc(budgets.germany.housing)}</td>
+              <td>${esc(budgets.germany.foodLiving)}</td>
+              <td>${esc(budgets.germany.insurance)}</td>
+              <td class="surplus">${esc(budgets.germany.netSavings)}</td>
+            </tr>
+            <tr>
+              <td><strong>🇨🇦 Canada (Research RA + SCM Job)</strong></td>
+              <td class="num">${esc(budgets.canada.income)}</td>
+              <td>${esc(budgets.canada.housing)}</td>
+              <td>${esc(budgets.canada.foodLiving)}</td>
+              <td>${esc(budgets.canada.insurance)}</td>
+              <td class="surplus">${esc(budgets.canada.netSavings)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  $$('[data-goview]', root).forEach(b => b.onclick = () => go(b.dataset.goview));
+}
+
 function renderDashboard(root) {
+  if (app.profileMode === 'couple') {
+    renderCoupleDashboard(root);
+    return;
+  }
+  if (app.profileMode === 'zarin') {
+    renderZarinDashboard(root);
+    return;
+  }
+
   const st = app.state;
   const M = app.missions.missions;
   const done = st.missions.filter(m => m.status === 'done').length;
@@ -9311,19 +10171,21 @@ function renderTimeline(root) {
    MISSIONS
    ============================================================================ */
 function renderMissions(root) {
-  const M = app.missions.missions;
+  const M = getActiveMissions();
   const done = M.filter(m => isDone(m.id)).length;
   const xpAll = M.reduce((a, m) => a + m.xp, 0);
-  const cats = ['all', 'thisweek', ...new Set(M.map(m => m.category))];
+  const cats = ['all', ...(app.profileMode === 'hasibul' ? ['thisweek'] : []), ...new Set(M.map(m => m.category))];
   let list = M.slice();
-  if (app.f.mission === 'thisweek') { const ids = app.missions.thisWeek.map(w => w.id); list = list.filter(m => ids.includes(m.id)); }
+  if (app.f.mission === 'thisweek' && app.profileMode === 'hasibul') { const ids = app.missions.thisWeek.map(w => w.id); list = list.filter(m => ids.includes(m.id)); }
   else if (app.f.mission === 'open') list = list.filter(m => !isDone(m.id));
   else if (app.f.mission !== 'all') list = list.filter(m => m.category === app.f.mission);
   const urg = { critical: 0, high: 1, medium: 2, low: 3 };
   list.sort((a, b) => (isDone(a.id) - isDone(b.id)) || (urg[a.urgency] ?? 9) - (urg[b.urgency] ?? 9) || String(a.deadline || '9').localeCompare(String(b.deadline || '9')));
 
+  const xpEarned = app.profileMode === 'zarin' ? 540 : app.state.xp;
+
   root.innerHTML = `${pageHead()}
-    ${stats([['Done', done, `of ${M.length} missions`, 'ok'], ['Still open', M.length - done, 'sorted by urgency'], ['Your XP', app.state.xp, `of ${xpAll} available`, 'acc'],
+    ${stats([['Done', done, `of ${M.length} missions`, 'ok'], ['Still open', M.length - done, 'sorted by urgency'], ['Your XP', xpEarned, `of ${xpAll} available`, 'acc'],
       ['Critical open', M.filter(m => m.urgency === 'critical' && !isDone(m.id)).length, 'do these first', 'bad']])}
     <div class="toolbar">${chips('mF', cats.map(c => [c, c === 'all' ? 'All' : c === 'thisweek' ? 'This week' : c]), app.f.mission)}</div>
     <div class="panel rows">
@@ -9358,14 +10220,14 @@ const DOC_STATUS = {
   missing: ['bad', 'Missing'], not_started: ['bad', 'Not started']
 };
 function renderDocuments(root) {
-  const D = app.content.documents;
+  const D = getActiveDocuments();
   const cnt = (ss) => D.filter(d => ss.includes(d.status)).length;
-  const docsAttached = Object.keys(app.state.docFiles || {}).length;
+  const docsAttached = Object.keys(app.state.docFiles || {}).filter(k => D.some(d => d.id === k)).length;
   const types = ['all', ...new Set(D.map(d => d.type))];
   const order = { missing: 0, not_started: 1, partial: 2, unconfirmed: 3, verify: 4, have: 5 };
   let list = app.f.doc === 'all' ? D.slice() : D.filter(d => d.type === app.f.doc);
   list.sort((a, b) => (b.blocker ? 1 : 0) - (a.blocker ? 1 : 0) || (order[a.status] ?? 9) - (order[b.status] ?? 9));
-  const tName = (id) => { const t = app.content.targets.find(x => x.id === id); return t ? (t.short || t.name) : id; };
+  const tName = (id) => { const t = getActiveTargets().find(x => x.id === id); return t ? (t.short || t.name) : id; };
 
   root.innerHTML = `${pageHead()}
     ${stats([
@@ -9674,13 +10536,15 @@ function openTarget(id) {
 }
 
 function renderTargets(root) {
-  const T = app.content.targets, G = app.content.gates || [];
+  const T = getActiveTargets(), G = app.profileMode === 'hasibul' ? (app.content.gates || []) : [];
   let list = app.f.target === 'all' ? T.slice() : T.filter(t => String(t.tier) === app.f.target);
   list.sort((a, b) => a.tier - b.tier || String(a.deadline || '9').localeCompare(String(b.deadline || '9')));
 
+  const deadEnds = app.profileMode === 'hasibul' ? app.content.deadEnds : [];
+
   root.innerHTML = `${pageHead()}
     ${stats([['Verified targets', T.length, 'every deadline checked'], ['Open now', T.filter(t => t.status === 'open').length, 'you can act today', 'ok'],
-      ['Opening soon', T.filter(t => t.status === 'opening_soon').length, 'prepare now', 'warn'], ['Ruled out', app.content.deadEnds.length, 'confirmed dead ends', 'bad']])}
+      ['Opening soon', T.filter(t => t.status === 'opening_soon').length, 'prepare now', 'warn'], ['Ruled out', deadEnds.length, 'confirmed dead ends', 'bad']])}
     <div class="toolbar">${chips('tF', [['all', 'All tiers'], ['1', 'Tier 1'], ['2', 'Tier 2'], ['3', 'Tier 3']], app.f.target)}</div>
     <div class="grid auto">
       ${list.map(t => { const d = daysUntil(t.deadline); const [sc, sl] = T_STATUS[t.status] || ['plain', t.status]; return `<button class="panel target" type="button" data-t="${esc(t.id)}">
@@ -9701,10 +10565,10 @@ function renderTargets(root) {
         ${g.action ? `<p style="margin:0 0 8px"><b style="color:var(--ink)">Action:</b> ${esc(g.action)}</p>` : ''}
         ${g.impact ? `<p style="margin:0"><b style="color:var(--ink)">Impact:</b> ${esc(g.impact)}</p>` : ''}
       </div></details>`).join('')}</div>` : ''}
-    <div class="section-title"><h2>Ruled out</h2><span class="aside">${plural(app.content.deadEnds.length, 'scheme')}</span></div>
+    ${deadEnds.length ? `<div class="section-title"><h2>Ruled out</h2><span class="aside">${plural(deadEnds.length, 'scheme')}</span></div>
     <div class="panel"><div class="panel-body grid g2" style="gap:0 32px">
-      ${app.content.deadEnds.map(d => `<div class="dead"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.reason || d.why || '')}</div></div></div>`).join('')}
-    </div></div>`;
+      ${deadEnds.map(d => `<div class="dead"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.reason || d.why || '')}</div></div></div>`).join('')}
+    </div></div>` : ''}`;
   wireChips(root, 'tF', k => { app.f.target = k; renderTargets(root); });
   $$('[data-t]', root).forEach(b => b.onclick = () => openTarget(b.dataset.t));
 }
@@ -10104,7 +10968,140 @@ function renderPlaybook(root) {
 /* ============================================================================
    PROFILE
    ============================================================================ */
+function renderZarinProfile(root) {
+  const p = (typeof ZARIN_PROFILE !== 'undefined') ? ZARIN_PROFILE : ((app.content && app.content.zarin && app.content.zarin.profile) || {});
+  const e = p.education || {}, t = p.tests || {}, sk = p.skills || {}, ref = p.referee || {};
+  const kv = (rows) => `<dl class="kv">${rows.filter(([, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
+
+  root.innerHTML = `${pageHead()}
+    <div class="panel id-card" style="border-left:4px solid var(--amber)">
+      <div class="monogram" style="background:var(--amber)" aria-hidden="true">ZT</div>
+      <div>
+        <h2 class="id-name">${esc(p.name)}</h2>
+        <div class="id-sub">${esc(p.title)} · Assistant Manager, Akij Logistics (ex-MGH Group)</div>
+        <div class="tags" style="margin-top:12px">
+          <span class="tag acc">IELTS 7.0 (C1 Proficient)</span>
+          <span class="tag plain">BBA CGPA 3.42 (German 1.87 gut)</span>
+          <span class="tag plain">${esc(p.location)}</span>
+          <span class="tag plain">Target: ${esc(p.targetIntake)}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Contact &amp; Identification</h2></div>
+        <div class="panel-body">
+          ${kv([
+            ['Email', p.email],
+            ['Phone', p.phone],
+            ['Permanent Address', p.permanentAddress],
+            ['Passport', p.passport],
+            ['Citizenship', p.citizenship],
+            ['Marital Status', p.maritalStatus],
+            ['Field of Study', p.field],
+            ['Target Degree', p.targetDegree]
+          ])}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Standardized English Test (VERIFIED)</h2></div>
+        <div class="panel-body">
+          <div class="note acc" style="margin-bottom:12px">
+            <div><strong>Active &amp; Pre-Approved:</strong> Valid until <strong>28 December 2026</strong>. British Council TRF <strong>24BD047817TASZ001A</strong>. Satisfies all European and Canadian requirements with zero additional tests.</div>
+          </div>
+          ${kv([
+            ['Overall Band Score', `${t.ielts.overall} (${t.ielts.cefr} Level)`],
+            ['Listening', t.ielts.listening],
+            ['Reading', t.ielts.reading],
+            ['Writing', t.ielts.writing],
+            ['Speaking', t.ielts.speaking],
+            ['Test Date', t.ielts.date],
+            ['Centre', t.ielts.centreNumber],
+            ['Medium of Instruction', t.moi]
+          ])}
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Undergraduate Degree (BUP)</h2></div>
+        <div class="panel-body">
+          ${kv([
+            ['Degree', e.degree],
+            ['Institution', e.institution],
+            ['Session', e.session],
+            ['Credits Completed', `${e.credits} / 126.0 (100%)`],
+            ['CGPA', `${e.cgpa} / ${e.cgpaScale}`],
+            ['German Conversion', `${e.germanGrade} (Top 'gut' tier)`],
+            ['Higher Secondary (HSC)', e.hsc],
+            ['Secondary (SSC)', e.ssc]
+          ])}
+          <p class="dim" style="font-size:13px;margin:10px 0 0">${esc(e.gradeNote)}</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Audited Quantitative &amp; Analytical Courses</h2></div>
+        <div class="panel-body">
+          <ul class="list" style="margin:0">
+            ${(e.keyCourses || []).map(c => `<li><strong>${esc(c.code)} ${esc(c.name)}</strong> (${c.credits} cr) — Grade <strong>${esc(c.grade)}</strong></li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title"><h2>Professional Freight Forwarding &amp; Supply Chain Experience</h2><span class="aside">3.5+ years continuous</span></div>
+    <div class="panel rows">
+      ${(p.work || []).map(w => `<div style="padding:16px 20px">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div><div class="uni-name">${esc(w.role)}</div><div class="uni-loc">${esc(w.employer)}</div></div>
+          <span class="num dim" style="font-size:13px">${esc(w.start)} – ${esc(w.end || 'present')} · ${w.hoursPerWeek}h/wk</span>
+        </div>
+        ${w.note ? `<p class="muted" style="font-size:13.5px;margin:8px 0 0">${esc(w.note)}</p>` : ''}
+        ${(w.bullets || []).length ? `<ul class="list" style="margin-top:8px">${w.bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}
+      </div>`).join('')}
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Supply Chain ERP &amp; Technical Skills</h2></div>
+        <div class="panel-body">
+          ${kv([
+            ['Freight Systems', sk.logistics],
+            ['Commercial Operations', sk.commercial],
+            ['Language Proficiencies', sk.languages]
+          ])}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Verified Academic Referee</h2></div>
+        <div class="panel-body">
+          <h3 style="margin:0">${esc(ref.name)}</h3>
+          <div class="uni-loc" style="font-size:13px;margin-top:2px">${esc(ref.role)} · <strong>${esc(ref.institution)}</strong></div>
+          <div class="dim" style="font-size:12.5px;margin-top:4px">Email: ${esc(ref.email)} · Phone: ${esc(ref.phone)}</div>
+          <div class="note acc" style="margin-top:10px">
+            <div><em>"${esc(ref.quote)}"</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function renderProfile(root) {
+  if (app.profileMode === 'zarin') {
+    renderZarinProfile(root);
+    return;
+  }
+  if (app.profileMode === 'couple') {
+    renderCoupleDashboard(root);
+    return;
+  }
+
   const p = app.content.profile, e = p.education || {}, cfa = p.cfa || {}, r = p.research || {}, t = p.tests || {}, sk = p.skills || {};
   const initials = (p.name || 'HH').replace(/,.*/, '').split(/\s+/).map(w => w[0]).slice(0, 2).join('');
   const kv = (rows) => `<dl class="kv">${rows.filter(([, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;

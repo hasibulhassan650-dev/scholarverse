@@ -203,7 +203,9 @@
       gates: (typeof GATES !== 'undefined') ? GATES : [],
       documents: (typeof DOCUMENTS !== 'undefined') ? DOCUMENTS : [],
       agents: (typeof AGENTS !== 'undefined') ? AGENTS : [],
-      playbook: (typeof PLAYBOOK !== 'undefined') ? PLAYBOOK : []
+      playbook: (typeof PLAYBOOK !== 'undefined') ? PLAYBOOK : [],
+      zarin: (typeof ZARIN_DATA !== 'undefined') ? ZARIN_DATA : null,
+      couple: (typeof COUPLE_DATA !== 'undefined') ? COUPLE_DATA : null
     };
     if (url === '/api/missions') return {
       missions: (typeof MISSIONS !== 'undefined') ? MISSIONS : [],

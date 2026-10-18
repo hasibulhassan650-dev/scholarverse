@@ -6,12 +6,42 @@
 
 const app = {
   state: null, content: null, missions: null, unis: null, profs: null, cits: null, res: null, excel: null,
+  profileMode: (typeof localStorage !== 'undefined' && localStorage.getItem('sv-profile-mode')) || 'hasibul',
   view: 'dashboard',
   f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'ranked', uniQuery: '',
        profTier: 'all', profStatus: 'all', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
   calDate: null
 };
 if (typeof window !== 'undefined') window.app = app;
+
+/* ---------------- dual profile & couple data accessors ---------------- */
+function getActiveProfile() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_PROFILE !== 'undefined') ? ZARIN_PROFILE : ((app.content && app.content.zarin && app.content.zarin.profile) || {});
+  }
+  return (typeof PROFILE !== 'undefined') ? PROFILE : ((app.content && app.content.profile) || {});
+}
+
+function getActiveTargets() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_TARGETS !== 'undefined') ? ZARIN_TARGETS : ((app.content && app.content.zarin && app.content.zarin.targets) || []);
+  }
+  return (typeof TARGETS !== 'undefined') ? TARGETS : ((app.content && app.content.targets) || []);
+}
+
+function getActiveDocuments() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_DOCUMENTS !== 'undefined') ? ZARIN_DOCUMENTS : ((app.content && app.content.zarin && app.content.zarin.documents) || []);
+  }
+  return (typeof DOCUMENTS !== 'undefined') ? DOCUMENTS : ((app.content && app.content.documents) || []);
+}
+
+function getActiveMissions() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_MISSIONS !== 'undefined') ? ZARIN_MISSIONS : ((app.content && app.content.zarin && app.content.zarin.missions) || []);
+  }
+  return (typeof MISSIONS !== 'undefined') ? MISSIONS : ((app.missions && app.missions.missions) || []);
+}
 
 /* ---------------- helpers ---------------- */
 const $  = (s, r = document) => r.querySelector(s);
@@ -128,6 +158,15 @@ function buildNav() {
 
 function wireShell() {
   $$('#nav .nav-item').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
+
+  $$('#profileSwitchTabs button').forEach(b => {
+    b.addEventListener('click', () => {
+      app.profileMode = b.dataset.profile;
+      try { localStorage.setItem('sv-profile-mode', app.profileMode); } catch (e) {}
+      render();
+    });
+  });
+
   $('#themeBtn').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
   let saved = null; try { saved = localStorage.getItem('sv-theme'); } catch (e) {}
   setTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
@@ -174,25 +213,61 @@ function render() { renderChrome(); renderView(); }
 
 function renderChrome() {
   $$('#nav .nav-item').forEach(b => b.setAttribute('aria-current', b.dataset.view === app.view ? 'page' : 'false'));
-  document.title = `${VIEWS[app.view].t} · ScholarVerse`;
-  const st = app.state, L = app.missions.levels;
-  const lv = [...L].reverse().find(l => st.xp >= l.xp) || L[0];
-  const next = L.find(l => l.xp > st.xp);
-  $('#lvlTitle').textContent = `${lv.title} · level ${lv.level}`;
-  $('#xpText').textContent = next ? `${st.xp} / ${next.xp} XP` : `${st.xp} XP`;
-  const pct = next ? Math.round(((st.xp - lv.xp) / (next.xp - lv.xp)) * 100) : 100;
-  $('#xpFill').style.width = Math.max(2, pct) + '%';
-  $('#streakText').textContent = st.streak ? `${plural(st.streak, 'day')} streak` : 'No streak yet';
+
+  $$('#profileSwitchTabs button').forEach(b => {
+    const on = b.dataset.profile === app.profileMode;
+    b.classList.toggle('is-active', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+
+  const pTitle = app.profileMode === 'zarin' ? 'Zarin Tasnim' : app.profileMode === 'couple' ? 'Couple Plan' : 'Hasibul Hasan';
+  document.title = `${VIEWS[app.view].t} · ${pTitle} · ScholarVerse`;
 
   const setCount = (k, n, hot) => { const el = $('#nc-' + k); if (!el) return; el.hidden = !n; el.textContent = n; el.classList.toggle('hot', !!hot); };
-  const open = st.missions.filter(m => m.status !== 'done').length;
-  setCount('missions', open);
-  const missing = app.content.documents.filter(d => ['missing', 'not_started'].includes(d.status)).length;
-  setCount('documents', missing, missing > 0);
-  setCount('professors', app.profs.professors.length);
-  setCount('universities', (app.res.uniCensus || []).length);
-  const flagged = app.cits.citations.filter(c => ['WRONG_AUTHOR', 'PAPER_MISSING'].includes(c.status)).length;
-  setCount('citations', flagged, flagged > 0);
+
+  if (app.profileMode === 'zarin') {
+    $('#lvlTitle').textContent = `Shortlist Contender · Level 5`;
+    $('#xpText').textContent = `540 / 900 XP`;
+    $('#xpFill').style.width = `60%`;
+    $('#streakText').textContent = `IELTS 7.0 C1 (Valid)`;
+    setCount('missions', getActiveMissions().length);
+    const missingDocs = getActiveDocuments().filter(d => ['missing','not_started'].includes(d.status)).length;
+    setCount('documents', missingDocs, missingDocs > 0);
+    setCount('targets', getActiveTargets().length);
+    setCount('professors', 0);
+    setCount('universities', (app.res.uniCensus || []).length);
+    setCount('citations', 0);
+  } else if (app.profileMode === 'couple') {
+    $('#lvlTitle').textContent = `Couple Mode · Dual Applicants`;
+    $('#xpText').textContent = `Combined Assets`;
+    $('#xpFill').style.width = `100%`;
+    $('#streakText').textContent = `5 Shared Destinations`;
+    setCount('missions', app.missions.missions.length + (typeof ZARIN_MISSIONS !== 'undefined' ? ZARIN_MISSIONS.length : 10));
+    setCount('documents', 23);
+    setCount('targets', (app.content.targets.length + (typeof ZARIN_TARGETS !== 'undefined' ? ZARIN_TARGETS.length : 5)));
+    setCount('professors', app.profs.professors.length);
+    setCount('universities', (app.res.uniCensus || []).length);
+    setCount('citations', 2);
+  } else {
+    const st = app.state, L = app.missions.levels;
+    const lv = [...L].reverse().find(l => st.xp >= l.xp) || L[0];
+    const next = L.find(l => l.xp > st.xp);
+    $('#lvlTitle').textContent = `${lv.title} · level ${lv.level}`;
+    $('#xpText').textContent = next ? `${st.xp} / ${next.xp} XP` : `${st.xp} XP`;
+    const pct = next ? Math.round(((st.xp - lv.xp) / (next.xp - lv.xp)) * 100) : 100;
+    $('#xpFill').style.width = Math.max(2, pct) + '%';
+    $('#streakText').textContent = st.streak ? `${plural(st.streak, 'day')} streak` : 'No streak yet';
+
+    const open = st.missions.filter(m => m.status !== 'done').length;
+    setCount('missions', open);
+    const missing = app.content.documents.filter(d => ['missing', 'not_started'].includes(d.status)).length;
+    setCount('documents', missing, missing > 0);
+    setCount('targets', app.content.targets.length);
+    setCount('professors', app.profs.professors.length);
+    setCount('universities', (app.res.uniCensus || []).length);
+    const flagged = app.cits.citations.filter(c => ['WRONG_AUTHOR', 'PAPER_MISSING'].includes(c.status)).length;
+    setCount('citations', flagged, flagged > 0);
+  }
 }
 
 function pageHead(extra = '') {
@@ -622,7 +697,200 @@ if (typeof window !== 'undefined' && window.addEventListener) {
   window.addEventListener('resize', () => { if (app.view === 'dashboard') layoutRunway(document); });
 }
 
+function renderZarinDashboard(root) {
+  const Z = (typeof ZARIN_DATA !== 'undefined') ? ZARIN_DATA : (app.content && app.content.zarin) || {};
+  const tgts = Z.targets || [];
+  const mis = Z.missions || [];
+  const docs = Z.documents || [];
+
+  const zarinEvs = [
+    { name: 'Bremen MBA Logistics (EPOS)', date: '2026-12-15', kind: 'target', d: daysUntil('2026-12-15'), open: () => openTarget('zarin-germany-epos') },
+    { name: 'Sweden Universities SCM (Lund/Gothenburg)', date: '2027-01-15', kind: 'target', d: daysUntil('2027-01-15'), open: () => openTarget('zarin-sweden-sisgp') },
+    { name: 'Czech Govt VSE Prague Results', date: '2027-02-15', kind: 'milestone', d: daysUntil('2027-02-15'), open: () => openTarget('zarin-czech-vse') },
+    { name: 'Swedish Institute SISGP Scholarship', date: '2027-02-25', kind: 'critical', d: daysUntil('2027-02-25'), open: () => openTarget('zarin-sweden-sisgp') },
+    { name: 'Bologna Pre-Admission (IYT)', date: '2027-03-31', kind: 'target', d: daysUntil('2027-03-31'), open: () => openTarget('zarin-italy-iyt') },
+    { name: 'Italy IYT Scholarship Portal', date: '2027-05-11', kind: 'critical', d: daysUntil('2027-05-11'), open: () => openTarget('zarin-italy-iyt') },
+    { name: 'Canada Spousal OWP Filing', date: '2027-05-01', kind: 'target', d: daysUntil('2027-05-01'), open: () => openTarget('zarin-canada-spousal') }
+  ].sort((a,b) => a.date.localeCompare(b.date));
+
+  const upcoming = zarinEvs.filter(e => e.d >= 0);
+  const next = upcoming[0];
+  const nextEv = next;
+
+  root.innerHTML = `
+    ${pageHead(`<button class="btn btn-sm btn-primary" type="button" data-goview="targets">View Her Targets</button>`)}
+
+    <section class="runway" aria-label="Zarin Deadline runway">
+      <div class="runway-top">
+        <div>
+          <div class="runway-label">Zarin's next deadline</div>
+          <div class="runway-big" style="cursor:pointer">
+            <span class="runway-days num">${next ? next.d : '—'}</span>
+            <span class="runway-unit">${next ? `days to ${esc(next.name)}` : 'No deadlines ahead'}<span>${next ? fmt(next.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : ''}</span></span>
+          </div>
+        </div>
+        <div class="runway-goal"><strong>Fully funded master's in Supply Chain Management, Logistics or Management</strong>Sweden SISGP, Germany EPOS, Italy IYT, or Canada Spousal Open Work Permit.</div>
+      </div>
+    </section>
+
+    <div class="pin" style="margin-top:20px;border-left:4px solid var(--amber)">
+      <div class="pin-ic" style="color:var(--amber)">${icon('shield')}</div>
+      <div>
+        <h3>Zarin Tasnim: Verified Academic &amp; Industry Profile on File</h3>
+        <p>• <strong>IELTS Academic: 7.0 Overall / C1 Level</strong> (Listening 7.5, Reading 6.5) — British Council TRF 24BD047817TASZ001A, valid to 28 Dec 2026.<br>
+        • <strong>BUP BBA Marketing: CGPA 3.42 / 4.00</strong> (converts to German <strong>1.87 / gut</strong>, comfortably beating 2.0/2.5 cutoffs).<br>
+        • <strong>Global Logistics Track Record:</strong> MGH Group &amp; Akij Logistics (~7,000 certified work hours, 120+ flights, ~4,000 tons, CargoWise &amp; SAP).<br>
+        • <strong>Academic Referee:</strong> Official Letterhead Recommendation from Prof. Dr. Mohammad Zahedul Alam (BUP Marketing) on file.</p>
+      </div>
+      <div class="pin-act" style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-sm" type="button" data-goview="profile">Full Dossier →</button>
+      </div>
+    </div>
+
+    <div style="margin-top:22px">${stats([
+      ['Target Schemes', tgts.length, 'Sweden, Germany, Italy, Czech, Canada', 'ok', 'targets'],
+      ['IELTS Score', '7.0 C1', 'Valid to Dec 2026 (No test needed!)', 'acc', 'documents'],
+      ['German Grade', '1.87', 'BBA 3.42/4.00 (Top gut tier)', 'acc'],
+      ['Work Volume', '~7,000 hrs', '3.5 yrs (Exceeds 3,000h SISGP gate)', 'ok'],
+      ['Documents Ready', docs.filter(d=>d.status==='have').length, `of ${docs.length} on file`, 'ok', 'documents']
+    ])}</div>
+
+    <div class="grid split" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Zarin's Priority Missions</h2><span class="aside">Next action steps</span></div>
+        <div class="rows" style="margin-top:8px">
+          ${mis.slice(0, 5).map(m => {
+            const d = daysUntil(m.deadline);
+            return `<div class="task">
+              <button class="check" type="button" data-toggle="${esc(m.id)}" aria-label="Mark ${esc(m.title)} done">${icon('tick')}</button>
+              <div style="cursor:pointer" data-mission="${esc(m.id)}"><div class="task-t">${esc(m.title)}</div><div class="task-n">${esc(m.detail.slice(0, 110))}…</div></div>
+              <div class="task-side"><div class="xp">+${m.xp} XP</div>${d !== null ? `<div class="due ${dueCls(d)}">${dueText(d)}</div>` : ''}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Upcoming Dates</h2><button class="btn btn-sm" type="button" data-goview="timeline">Timeline</button></div>
+        <div class="rows" style="margin-top:8px">
+          ${upcoming.slice(0, 5).map((e, i) => `<button class="ladder-row ${dueCls(e.d)}" type="button" data-zup="${i}">
+            <span class="ladder-name">${esc(e.name)}</span><span class="ladder-d num">${e.d}<small>d</small></span>
+            <span class="ladder-date">${fmt(e.date, { weekday: 'short', day: 'numeric', month: 'short' })}</span>
+          </button>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  const rb = $('.runway-big', root);
+  if (rb && nextEv) rb.onclick = () => nextEv.open?.();
+  $$('[data-zup]', root).forEach(b => b.onclick = () => upcoming[+b.dataset.zup]?.open?.());
+  $$('[data-mission]', root).forEach(b => b.onclick = () => openMission(b.dataset.mission));
+  $$('[data-goview]', root).forEach(b => b.onclick = () => go(b.dataset.goview));
+}
+
+function renderCoupleDashboard(root) {
+  const cData = (typeof COUPLE_DATA !== 'undefined') ? COUPLE_DATA : (app.content && app.content.couple) || {};
+  const countries = cData.countries || [];
+  const budgets = cData.budgets || {};
+
+  root.innerHTML = `
+    ${pageHead(`<button class="btn btn-sm btn-primary" type="button" data-goview="targets">View All Targets</button>`)}
+
+    <div class="thesis" style="background:linear-gradient(135deg, #172b4b 0%, #0f1f38 100%)">
+      <h2>Couple Strategic Migration Command Centre</h2>
+      <p>Hasibul Hasan, CFA (Economics &amp; Treasury ALM) &amp; Zarin Tasnim (BBA, IELTS 7.0 C1, Global Freight Forwarding).</p>
+      <p style="margin-top:8px"><strong>Strategic Rule:</strong> Run parallel scholarship hunts in <strong>Sweden, Germany, Italy, and Czechia</strong>, while using <strong>Canada</strong> as the high-certainty spousal open work permit PR corridor.</p>
+    </div>
+
+    <div style="margin-top:22px">${stats([
+      ['Dual Full Rides', 'Sweden & Italy', 'SEK 24k/mo & €21.6k/yr couple stipends', 'acc'],
+      ['Spousal Work Rights', 'Canada & Germany', 'Unrestricted full-time work permitted', 'ok'],
+      ['Combined English', 'Both Cleared', 'Hasibul MOI accepted · Zarin IELTS 7.0 C1', 'ok'],
+      ['Submitted Apps', '2 in Prague', 'Charles MEF + VSE Prague (#79074)', 'ok'],
+      ['Couple Savings Potential', '৳200k–250k / mo', 'Net household surplus in Sweden/Canada', 'acc']
+    ])}</div>
+
+    <div class="section-title"><h2>Country Migration Corridors</h2><span class="aside">Ranked by couple synergy</span></div>
+    <div class="couple-grid">
+      ${countries.map(c => `
+        <div class="couple-card">
+          <div class="couple-card-top">
+            <div>
+              <div class="couple-country">${c.flag} ${esc(c.country)}</div>
+              <div class="dim" style="font-size:12.5px;margin-top:2px">${esc(c.title)}</div>
+            </div>
+            <span class="couple-badge">${esc(c.rating.split(' ')[0])}</span>
+          </div>
+          <p style="font-size:13.5px;margin:0;color:var(--ink-2);line-height:1.55">${esc(c.summary)}</p>
+          <div class="field" style="margin:0"><div class="field-k">👨‍💼 Hasibul Route</div><div class="field-v" style="font-size:13px">${esc(c.hisRoute)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">👩‍💼 Zarin Route</div><div class="field-v" style="font-size:13px">${esc(c.herRoute)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">📜 Spousal Visa &amp; Work Rights</div><div class="field-v" style="font-size:13px;color:var(--green)">${esc(c.visaBasis)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">💰 Financial Stacking &amp; Earnings</div><div class="field-v" style="font-size:13px;font-weight:600">${esc(c.financialStack)}</div></div>
+          <div class="field" style="margin:0"><div class="field-k">🎯 Permanent Residence (PR) Pathway</div><div class="field-v" style="font-size:13px">${esc(c.prPathway)}</div></div>
+          <div class="note acc" style="margin-top:8px;font-size:12.5px"><div><strong>Next Joint Action:</strong> ${esc(c.nextAction)}</div></div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="section-title" style="margin-top:28px"><h2>Couple Household Budget &amp; Net Surplus Comparison</h2><span class="aside">Realistic monthly estimates</span></div>
+    <div class="panel">
+      <div class="table-wrap" style="max-height:none">
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Country / Corridor</th>
+              <th>Combined Monthly Income</th>
+              <th>Couple Housing / Apartment</th>
+              <th>Food &amp; Living Costs</th>
+              <th>Health Insurance</th>
+              <th>Net Monthly Surplus (Savings)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>🇸🇪 Sweden (Dual SISGP)</strong></td>
+              <td class="num">${esc(budgets.sweden.income)}</td>
+              <td>${esc(budgets.sweden.housing)}</td>
+              <td>${esc(budgets.sweden.foodLiving)}</td>
+              <td>${esc(budgets.sweden.insurance)}</td>
+              <td class="surplus">${esc(budgets.sweden.netSavings)}</td>
+            </tr>
+            <tr>
+              <td><strong>🇩🇪 Germany (EPOS + Spouse Job)</strong></td>
+              <td class="num">${esc(budgets.germany.income)}</td>
+              <td>${esc(budgets.germany.housing)}</td>
+              <td>${esc(budgets.germany.foodLiving)}</td>
+              <td>${esc(budgets.germany.insurance)}</td>
+              <td class="surplus">${esc(budgets.germany.netSavings)}</td>
+            </tr>
+            <tr>
+              <td><strong>🇨🇦 Canada (Research RA + SCM Job)</strong></td>
+              <td class="num">${esc(budgets.canada.income)}</td>
+              <td>${esc(budgets.canada.housing)}</td>
+              <td>${esc(budgets.canada.foodLiving)}</td>
+              <td>${esc(budgets.canada.insurance)}</td>
+              <td class="surplus">${esc(budgets.canada.netSavings)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  $$('[data-goview]', root).forEach(b => b.onclick = () => go(b.dataset.goview));
+}
+
 function renderDashboard(root) {
+  if (app.profileMode === 'couple') {
+    renderCoupleDashboard(root);
+    return;
+  }
+  if (app.profileMode === 'zarin') {
+    renderZarinDashboard(root);
+    return;
+  }
+
   const st = app.state;
   const M = app.missions.missions;
   const done = st.missions.filter(m => m.status === 'done').length;
@@ -877,19 +1145,21 @@ function renderTimeline(root) {
    MISSIONS
    ============================================================================ */
 function renderMissions(root) {
-  const M = app.missions.missions;
+  const M = getActiveMissions();
   const done = M.filter(m => isDone(m.id)).length;
   const xpAll = M.reduce((a, m) => a + m.xp, 0);
-  const cats = ['all', 'thisweek', ...new Set(M.map(m => m.category))];
+  const cats = ['all', ...(app.profileMode === 'hasibul' ? ['thisweek'] : []), ...new Set(M.map(m => m.category))];
   let list = M.slice();
-  if (app.f.mission === 'thisweek') { const ids = app.missions.thisWeek.map(w => w.id); list = list.filter(m => ids.includes(m.id)); }
+  if (app.f.mission === 'thisweek' && app.profileMode === 'hasibul') { const ids = app.missions.thisWeek.map(w => w.id); list = list.filter(m => ids.includes(m.id)); }
   else if (app.f.mission === 'open') list = list.filter(m => !isDone(m.id));
   else if (app.f.mission !== 'all') list = list.filter(m => m.category === app.f.mission);
   const urg = { critical: 0, high: 1, medium: 2, low: 3 };
   list.sort((a, b) => (isDone(a.id) - isDone(b.id)) || (urg[a.urgency] ?? 9) - (urg[b.urgency] ?? 9) || String(a.deadline || '9').localeCompare(String(b.deadline || '9')));
 
+  const xpEarned = app.profileMode === 'zarin' ? 540 : app.state.xp;
+
   root.innerHTML = `${pageHead()}
-    ${stats([['Done', done, `of ${M.length} missions`, 'ok'], ['Still open', M.length - done, 'sorted by urgency'], ['Your XP', app.state.xp, `of ${xpAll} available`, 'acc'],
+    ${stats([['Done', done, `of ${M.length} missions`, 'ok'], ['Still open', M.length - done, 'sorted by urgency'], ['Your XP', xpEarned, `of ${xpAll} available`, 'acc'],
       ['Critical open', M.filter(m => m.urgency === 'critical' && !isDone(m.id)).length, 'do these first', 'bad']])}
     <div class="toolbar">${chips('mF', cats.map(c => [c, c === 'all' ? 'All' : c === 'thisweek' ? 'This week' : c]), app.f.mission)}</div>
     <div class="panel rows">
@@ -924,14 +1194,14 @@ const DOC_STATUS = {
   missing: ['bad', 'Missing'], not_started: ['bad', 'Not started']
 };
 function renderDocuments(root) {
-  const D = app.content.documents;
+  const D = getActiveDocuments();
   const cnt = (ss) => D.filter(d => ss.includes(d.status)).length;
-  const docsAttached = Object.keys(app.state.docFiles || {}).length;
+  const docsAttached = Object.keys(app.state.docFiles || {}).filter(k => D.some(d => d.id === k)).length;
   const types = ['all', ...new Set(D.map(d => d.type))];
   const order = { missing: 0, not_started: 1, partial: 2, unconfirmed: 3, verify: 4, have: 5 };
   let list = app.f.doc === 'all' ? D.slice() : D.filter(d => d.type === app.f.doc);
   list.sort((a, b) => (b.blocker ? 1 : 0) - (a.blocker ? 1 : 0) || (order[a.status] ?? 9) - (order[b.status] ?? 9));
-  const tName = (id) => { const t = app.content.targets.find(x => x.id === id); return t ? (t.short || t.name) : id; };
+  const tName = (id) => { const t = getActiveTargets().find(x => x.id === id); return t ? (t.short || t.name) : id; };
 
   root.innerHTML = `${pageHead()}
     ${stats([
@@ -1240,13 +1510,15 @@ function openTarget(id) {
 }
 
 function renderTargets(root) {
-  const T = app.content.targets, G = app.content.gates || [];
+  const T = getActiveTargets(), G = app.profileMode === 'hasibul' ? (app.content.gates || []) : [];
   let list = app.f.target === 'all' ? T.slice() : T.filter(t => String(t.tier) === app.f.target);
   list.sort((a, b) => a.tier - b.tier || String(a.deadline || '9').localeCompare(String(b.deadline || '9')));
 
+  const deadEnds = app.profileMode === 'hasibul' ? app.content.deadEnds : [];
+
   root.innerHTML = `${pageHead()}
     ${stats([['Verified targets', T.length, 'every deadline checked'], ['Open now', T.filter(t => t.status === 'open').length, 'you can act today', 'ok'],
-      ['Opening soon', T.filter(t => t.status === 'opening_soon').length, 'prepare now', 'warn'], ['Ruled out', app.content.deadEnds.length, 'confirmed dead ends', 'bad']])}
+      ['Opening soon', T.filter(t => t.status === 'opening_soon').length, 'prepare now', 'warn'], ['Ruled out', deadEnds.length, 'confirmed dead ends', 'bad']])}
     <div class="toolbar">${chips('tF', [['all', 'All tiers'], ['1', 'Tier 1'], ['2', 'Tier 2'], ['3', 'Tier 3']], app.f.target)}</div>
     <div class="grid auto">
       ${list.map(t => { const d = daysUntil(t.deadline); const [sc, sl] = T_STATUS[t.status] || ['plain', t.status]; return `<button class="panel target" type="button" data-t="${esc(t.id)}">
@@ -1267,10 +1539,10 @@ function renderTargets(root) {
         ${g.action ? `<p style="margin:0 0 8px"><b style="color:var(--ink)">Action:</b> ${esc(g.action)}</p>` : ''}
         ${g.impact ? `<p style="margin:0"><b style="color:var(--ink)">Impact:</b> ${esc(g.impact)}</p>` : ''}
       </div></details>`).join('')}</div>` : ''}
-    <div class="section-title"><h2>Ruled out</h2><span class="aside">${plural(app.content.deadEnds.length, 'scheme')}</span></div>
+    ${deadEnds.length ? `<div class="section-title"><h2>Ruled out</h2><span class="aside">${plural(deadEnds.length, 'scheme')}</span></div>
     <div class="panel"><div class="panel-body grid g2" style="gap:0 32px">
-      ${app.content.deadEnds.map(d => `<div class="dead"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.reason || d.why || '')}</div></div></div>`).join('')}
-    </div></div>`;
+      ${deadEnds.map(d => `<div class="dead"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.reason || d.why || '')}</div></div></div>`).join('')}
+    </div></div>` : ''}`;
   wireChips(root, 'tF', k => { app.f.target = k; renderTargets(root); });
   $$('[data-t]', root).forEach(b => b.onclick = () => openTarget(b.dataset.t));
 }
@@ -1670,7 +1942,140 @@ function renderPlaybook(root) {
 /* ============================================================================
    PROFILE
    ============================================================================ */
+function renderZarinProfile(root) {
+  const p = (typeof ZARIN_PROFILE !== 'undefined') ? ZARIN_PROFILE : ((app.content && app.content.zarin && app.content.zarin.profile) || {});
+  const e = p.education || {}, t = p.tests || {}, sk = p.skills || {}, ref = p.referee || {};
+  const kv = (rows) => `<dl class="kv">${rows.filter(([, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
+
+  root.innerHTML = `${pageHead()}
+    <div class="panel id-card" style="border-left:4px solid var(--amber)">
+      <div class="monogram" style="background:var(--amber)" aria-hidden="true">ZT</div>
+      <div>
+        <h2 class="id-name">${esc(p.name)}</h2>
+        <div class="id-sub">${esc(p.title)} · Assistant Manager, Akij Logistics (ex-MGH Group)</div>
+        <div class="tags" style="margin-top:12px">
+          <span class="tag acc">IELTS 7.0 (C1 Proficient)</span>
+          <span class="tag plain">BBA CGPA 3.42 (German 1.87 gut)</span>
+          <span class="tag plain">${esc(p.location)}</span>
+          <span class="tag plain">Target: ${esc(p.targetIntake)}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Contact &amp; Identification</h2></div>
+        <div class="panel-body">
+          ${kv([
+            ['Email', p.email],
+            ['Phone', p.phone],
+            ['Permanent Address', p.permanentAddress],
+            ['Passport', p.passport],
+            ['Citizenship', p.citizenship],
+            ['Marital Status', p.maritalStatus],
+            ['Field of Study', p.field],
+            ['Target Degree', p.targetDegree]
+          ])}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Standardized English Test (VERIFIED)</h2></div>
+        <div class="panel-body">
+          <div class="note acc" style="margin-bottom:12px">
+            <div><strong>Active &amp; Pre-Approved:</strong> Valid until <strong>28 December 2026</strong>. British Council TRF <strong>24BD047817TASZ001A</strong>. Satisfies all European and Canadian requirements with zero additional tests.</div>
+          </div>
+          ${kv([
+            ['Overall Band Score', `${t.ielts.overall} (${t.ielts.cefr} Level)`],
+            ['Listening', t.ielts.listening],
+            ['Reading', t.ielts.reading],
+            ['Writing', t.ielts.writing],
+            ['Speaking', t.ielts.speaking],
+            ['Test Date', t.ielts.date],
+            ['Centre', t.ielts.centreNumber],
+            ['Medium of Instruction', t.moi]
+          ])}
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Undergraduate Degree (BUP)</h2></div>
+        <div class="panel-body">
+          ${kv([
+            ['Degree', e.degree],
+            ['Institution', e.institution],
+            ['Session', e.session],
+            ['Credits Completed', `${e.credits} / 126.0 (100%)`],
+            ['CGPA', `${e.cgpa} / ${e.cgpaScale}`],
+            ['German Conversion', `${e.germanGrade} (Top 'gut' tier)`],
+            ['Higher Secondary (HSC)', e.hsc],
+            ['Secondary (SSC)', e.ssc]
+          ])}
+          <p class="dim" style="font-size:13px;margin:10px 0 0">${esc(e.gradeNote)}</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Audited Quantitative &amp; Analytical Courses</h2></div>
+        <div class="panel-body">
+          <ul class="list" style="margin:0">
+            ${(e.keyCourses || []).map(c => `<li><strong>${esc(c.code)} ${esc(c.name)}</strong> (${c.credits} cr) — Grade <strong>${esc(c.grade)}</strong></li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title"><h2>Professional Freight Forwarding &amp; Supply Chain Experience</h2><span class="aside">3.5+ years continuous</span></div>
+    <div class="panel rows">
+      ${(p.work || []).map(w => `<div style="padding:16px 20px">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <div><div class="uni-name">${esc(w.role)}</div><div class="uni-loc">${esc(w.employer)}</div></div>
+          <span class="num dim" style="font-size:13px">${esc(w.start)} – ${esc(w.end || 'present')} · ${w.hoursPerWeek}h/wk</span>
+        </div>
+        ${w.note ? `<p class="muted" style="font-size:13.5px;margin:8px 0 0">${esc(w.note)}</p>` : ''}
+        ${(w.bullets || []).length ? `<ul class="list" style="margin-top:8px">${w.bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}
+      </div>`).join('')}
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h2>Supply Chain ERP &amp; Technical Skills</h2></div>
+        <div class="panel-body">
+          ${kv([
+            ['Freight Systems', sk.logistics],
+            ['Commercial Operations', sk.commercial],
+            ['Language Proficiencies', sk.languages]
+          ])}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Verified Academic Referee</h2></div>
+        <div class="panel-body">
+          <h3 style="margin:0">${esc(ref.name)}</h3>
+          <div class="uni-loc" style="font-size:13px;margin-top:2px">${esc(ref.role)} · <strong>${esc(ref.institution)}</strong></div>
+          <div class="dim" style="font-size:12.5px;margin-top:4px">Email: ${esc(ref.email)} · Phone: ${esc(ref.phone)}</div>
+          <div class="note acc" style="margin-top:10px">
+            <div><em>"${esc(ref.quote)}"</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function renderProfile(root) {
+  if (app.profileMode === 'zarin') {
+    renderZarinProfile(root);
+    return;
+  }
+  if (app.profileMode === 'couple') {
+    renderCoupleDashboard(root);
+    return;
+  }
+
   const p = app.content.profile, e = p.education || {}, cfa = p.cfa || {}, r = p.research || {}, t = p.tests || {}, sk = p.skills || {};
   const initials = (p.name || 'HH').replace(/,.*/, '').split(/\s+/).map(w => w[0]).slice(0, 2).join('');
   const kv = (rows) => `<dl class="kv">${rows.filter(([, v]) => v !== undefined && v !== null && v !== '').map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
