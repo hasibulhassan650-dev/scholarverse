@@ -3025,6 +3025,702 @@ const EXCEL_DATABASE = {
       "YES",
       "NO"
     ]
+  ],
+  "Zarin Course & Credit Audit": [
+    [
+      "ZARIN TASNIM ? BBA (MARKETING) ACADEMIC CREDIT & PREREQUISITE AUDIT",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Faculty of Business Studies, Bangladesh University of Professionals (BUP) | 126.0 Credits Completed | CGPA: 3.42 / 4.00 (German Bavarian Grade: 1.87 gut)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "AUDITED COURSEWORK CLASSIFICATION & GRADE BREAKDOWN",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "#",
+      "Semester",
+      "Course Code",
+      "Course Title as on BUP Transcript",
+      "Credits",
+      "Grade",
+      "Grade Point",
+      "Prerequisite Classification & Fit Note"
+    ],
+    [
+      "1",
+      "Semester 1",
+      "ALD 1101",
+      "Introduction to Business",
+      "3.0",
+      "A",
+      "4.00",
+      "Foundation Business Studies"
+    ],
+    [
+      "2",
+      "Semester 1",
+      "ALD 1102",
+      "Principles of Management",
+      "3.0",
+      "A-",
+      "3.50",
+      "Management Core"
+    ],
+    [
+      "3",
+      "Semester 1",
+      "ALD 1103",
+      "Financial Accounting",
+      "3.0",
+      "B+",
+      "3.25",
+      "Financial Management"
+    ],
+    [
+      "4",
+      "Semester 1",
+      "ALD 1104",
+      "Fundamental English",
+      "3.0",
+      "A",
+      "4.00",
+      "English Language Proficiency"
+    ],
+    [
+      "5",
+      "Semester 1",
+      "GED 1101",
+      "Bangladesh Studies",
+      "3.0",
+      "A",
+      "4.00",
+      "General Education"
+    ],
+    [
+      "6",
+      "Semester 2",
+      "ALD 1201",
+      "Micro Economics",
+      "3.0",
+      "A",
+      "4.00",
+      "Quantitative Economics Foundation"
+    ],
+    [
+      "7",
+      "Semester 2",
+      "ALD 1202",
+      "Principles of Marketing",
+      "3.0",
+      "A",
+      "4.00",
+      "Core Marketing"
+    ],
+    [
+      "8",
+      "Semester 2",
+      "ALD 1203",
+      "Managerial Accounting",
+      "3.0",
+      "B+",
+      "3.25",
+      "Cost & Operations Accounting"
+    ],
+    [
+      "9",
+      "Semester 2",
+      "ALD 1204",
+      "Business Communication",
+      "3.0",
+      "A",
+      "4.00",
+      "Corporate Communications"
+    ],
+    [
+      "10",
+      "Semester 2",
+      "ALD 1205",
+      "Business Mathematics",
+      "3.0",
+      "A",
+      "4.00",
+      "? QUANT PREREQUISITE (Calculus, Linear Equations, Matrix Algebra)"
+    ],
+    [
+      "11",
+      "Semester 3",
+      "ALD 2101",
+      "Financial Management",
+      "3.0",
+      "B+",
+      "3.25",
+      "Corporate Finance"
+    ],
+    [
+      "12",
+      "Semester 3",
+      "ALD 2102",
+      "Organizational Behavior",
+      "3.0",
+      "A",
+      "4.00",
+      "Management Core"
+    ],
+    [
+      "13",
+      "Semester 3",
+      "ALD 2103",
+      "Business Law",
+      "3.0",
+      "B",
+      "3.00",
+      "Commercial Regulation"
+    ],
+    [
+      "14",
+      "Semester 3",
+      "ALD 2104",
+      "Business Statistics",
+      "3.0",
+      "A",
+      "4.00",
+      "? QUANT PREREQUISITE (Probability, Hypothesis Testing, Sampling, ANOVA)"
+    ],
+    [
+      "15",
+      "Semester 3",
+      "GED 2101",
+      "Introduction to Psychology",
+      "3.0",
+      "A",
+      "4.00",
+      "General Education"
+    ],
+    [
+      "16",
+      "Semester 4",
+      "ALD 2201",
+      "Supply Chain Management",
+      "3.0",
+      "A",
+      "4.00",
+      "? CORE DOMAIN (Logistics Networks, Bullwhip Effect, SCM Design)"
+    ],
+    [
+      "17",
+      "Semester 4",
+      "ALD 2202",
+      "Human Resource Management",
+      "3.0",
+      "B+",
+      "3.25",
+      "Management Core"
+    ],
+    [
+      "18",
+      "Semester 4",
+      "ALD 2203",
+      "Macro Economics",
+      "3.0",
+      "A-",
+      "3.50",
+      "Macroeconomic Policy & Aggregates"
+    ],
+    [
+      "19",
+      "Semester 4",
+      "ALD 2204",
+      "Management Information Systems",
+      "3.0",
+      "B+",
+      "3.25",
+      "Enterprise Software & ERP Foundations"
+    ],
+    [
+      "20",
+      "Semester 4",
+      "GED 2201",
+      "Introduction to Sociology",
+      "3.0",
+      "A",
+      "4.00",
+      "General Education"
+    ],
+    [
+      "21",
+      "Semester 5",
+      "ALD 3101",
+      "Entrepreneurship Development",
+      "3.0",
+      "B+",
+      "3.25",
+      "Business Innovation"
+    ],
+    [
+      "22",
+      "Semester 5",
+      "ALD 3102",
+      "Operations Management",
+      "3.0",
+      "A-",
+      "3.50",
+      "? OPERATIONS PREREQUISITE (Capacity, Layout, Inventory, Quality)"
+    ],
+    [
+      "23",
+      "Semester 5",
+      "MKT 3101",
+      "Big Data in Marketing",
+      "3.0",
+      "A+",
+      "4.00",
+      "? ANALYTICS PREREQUISITE (Predictive Modeling, Data Mining, Python/R)"
+    ],
+    [
+      "24",
+      "Semester 5",
+      "MKT 3102",
+      "Consumer Behavior",
+      "3.0",
+      "A",
+      "4.00",
+      "Consumer Research"
+    ],
+    [
+      "25",
+      "Semester 5",
+      "MKT 3103",
+      "Integrated Marketing Communication",
+      "3.0",
+      "A",
+      "4.00",
+      "Campaign Strategy (Prof. Dr. Zahedul Alam)"
+    ],
+    [
+      "26",
+      "Semester 6",
+      "ALD 3201",
+      "Quantitative Business Analysis",
+      "3.0",
+      "A-",
+      "3.50",
+      "? QUANT PREREQUISITE (Linear Programming, Queueing, Decision Trees)"
+    ],
+    [
+      "27",
+      "Semester 6",
+      "ALD 3202",
+      "International Business",
+      "3.0",
+      "A",
+      "4.00",
+      "Cross-Border Trade & Tariffs"
+    ],
+    [
+      "28",
+      "Semester 6",
+      "MKT 3201",
+      "Brand Management",
+      "3.0",
+      "A",
+      "4.00",
+      "Strategic Brand Equity (Prof. Dr. Zahedul Alam)"
+    ],
+    [
+      "29",
+      "Semester 6",
+      "MKT 3202",
+      "Service Marketing",
+      "3.0",
+      "B+",
+      "3.25",
+      "Service Operations"
+    ],
+    [
+      "30",
+      "Semester 6",
+      "MKT 3203",
+      "Retail Management",
+      "3.0",
+      "A-",
+      "3.50",
+      "Retail Distribution & Merchandising"
+    ],
+    [
+      "31",
+      "Semester 7",
+      "ALD 4101",
+      "Strategic Management",
+      "3.0",
+      "B+",
+      "3.25",
+      "Corporate Strategy & Capstone"
+    ],
+    [
+      "32",
+      "Semester 7",
+      "MKT 4101",
+      "Digital Marketing",
+      "3.0",
+      "A",
+      "4.00",
+      "Omnichannel Operations"
+    ],
+    [
+      "33",
+      "Semester 7",
+      "MKT 4102",
+      "Global Marketing",
+      "3.0",
+      "A",
+      "4.00",
+      "Export Trade Corridors"
+    ],
+    [
+      "34",
+      "Semester 7",
+      "MKT 4103",
+      "Pricing Strategy",
+      "3.0",
+      "B+",
+      "3.25",
+      "Revenue Management & Yield Pricing"
+    ],
+    [
+      "35",
+      "Semester 7",
+      "MKT 4104",
+      "Marketing Research",
+      "3.0",
+      "A-",
+      "3.75",
+      "? RESEARCH PREREQUISITE (Econometric Surveys, SPSS, Regression)"
+    ],
+    [
+      "36",
+      "Semester 8",
+      "MKT 4201",
+      "Customer Relationship Management",
+      "3.0",
+      "A",
+      "4.00",
+      "Client Account Management"
+    ],
+    [
+      "37",
+      "Semester 8",
+      "MKT 4202",
+      "Supply Chain Analytics",
+      "3.0",
+      "A",
+      "4.00",
+      "? ANALYTICS PREREQUISITE (Inventory Optimization & Forecasting)"
+    ],
+    [
+      "38",
+      "Semester 8",
+      "MKT 4203",
+      "Industrial Marketing & B2B",
+      "3.0",
+      "A",
+      "4.00",
+      "B2B Freight Procurement"
+    ],
+    [
+      "39",
+      "Semester 8",
+      "MKT 4204",
+      "Sustainable Marketing & Logistics",
+      "3.0",
+      "A",
+      "4.00",
+      "Green Supply Chains & Reverse Logistics"
+    ],
+    [
+      "40",
+      "Semester 8",
+      "MKT 4897",
+      "Internship",
+      "3.0",
+      "A",
+      "4.00",
+      "Field Operations Experience"
+    ],
+    [
+      "41",
+      "Semester 8",
+      "MKT 4898",
+      "Internship Report / Defense",
+      "3.0",
+      "A",
+      "4.00",
+      "Academic Defense of Empirical Project"
+    ],
+    [
+      "42",
+      "Semester 8",
+      "MKT 4899",
+      "Comprehensive Viva Voce",
+      "3.0",
+      "A-",
+      "3.50",
+      "Final Faculty Board Examination"
+    ]
+  ],
+  "Zarin Applications & Targets": [
+    [
+      "ZARIN TASNIM ? MASTER APPLICATION & SCHOLARSHIP PIPELINE",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Target Intake: Autumn 2027 (Sept/Oct 2027) | Discipline: Supply Chain Management, Logistics & Operations",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "VERIFIED APPLICATION TARGETS & MILESTONES",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "#",
+      "Institution / Scheme",
+      "Jurisdiction",
+      "Target Degree",
+      "Funding Package",
+      "Application Deadline",
+      "Prerequisite Gate Status",
+      "Operational Synergy"
+    ],
+    [
+      "1",
+      "Swedish Institute (SISGP)",
+      "Sweden",
+      "MSc Logistics & SCM (Lund University)",
+      "Full Tuition + SEK 12,000/mo + SEK 15,000 travel",
+      "2027-02-25",
+      "PASSED (IELTS 7.0 C1, ~7k work hours)",
+      "Centre for Retail & Logistics (REAL)"
+    ],
+    [
+      "2",
+      "Swedish Institute (SISGP)",
+      "Sweden",
+      "MSc Logistics & Transport (Univ. of Gothenburg)",
+      "Full Tuition + SEK 12,000/mo + SEK 15,000 travel",
+      "2027-02-25",
+      "PASSED (IELTS 7.0 C1, ~7k work hours)",
+      "Prof. Rickard Bergqvist (Container Trades)"
+    ],
+    [
+      "3",
+      "Swedish Institute (SISGP)",
+      "Sweden",
+      "MSc International Logistics (J?nk?ping Univ.)",
+      "Full Tuition + SEK 12,000/mo + SEK 15,000 travel",
+      "2027-02-25",
+      "PASSED (IELTS 7.0 C1, ~7k work hours)",
+      "Prof. Joakim Wikner (CODP Framework)"
+    ],
+    [
+      "4",
+      "DAAD EPOS (Germany)",
+      "Germany",
+      "MBA International Logistics & Trade (Bremen)",
+      "?992/mo + Tuition Waiver + Travel/Insurance",
+      "2026-12-15",
+      "PASSED (German Grade 1.87 gut, 3.5y exp)",
+      "Direct match with ocean & air freight career"
+    ],
+    [
+      "5",
+      "DAAD EPOS (Germany)",
+      "Germany",
+      "Master in Project Mgmt & Data Science (HTW Berlin)",
+      "?992/mo + Tuition Waiver + Travel/Insurance",
+      "2026-12-15",
+      "PASSED (German Grade 1.87 gut, 3.5y exp)",
+      "Combines big data analytics & logistics"
+    ],
+    [
+      "6",
+      "Invest Your Talent in Italy",
+      "Italy",
+      "MSc Global Supply Chain (University of Bologna)",
+      "100% Tuition Exemption + ?10,800/yr + Paid Internship",
+      "2027-05-11",
+      "PASSED (Bangladesh on 23-country list)",
+      "3-month corporate internship in Italian MNC"
+    ],
+    [
+      "7",
+      "Czech Government Scholarship",
+      "Czechia",
+      "Master in Management (VSE Prague #79074)",
+      "Full Tuition + ~CZK 14,000/mo living allowance",
+      "2026-09-30",
+      "SUBMITTED (Test scores: 54.0 knowledge, 103.2 English)",
+      "Synced with Hasibul Charles University MEF"
+    ],
+    [
+      "8",
+      "University of Waterloo",
+      "Canada",
+      "MMSc / MASc Management Science & Logistics",
+      "Departmental RA/TA (~CAD $28,000/yr)",
+      "2027-02-01",
+      "UNDER REVIEW (Prof. Sibel Alumur / Fatma Gzara)",
+      "Hub network expansion & freight analytics"
+    ],
+    [
+      "9",
+      "HEC Montr?al",
+      "Canada",
+      "MSc Global Supply Chain Management",
+      "Merit Scholarships + Research Assistantships",
+      "2027-02-01",
+      "UNDER REVIEW (Prof. Yossiri Adulyasak / R?mi Charpin)",
+      "Canada Research Chair in Supply Chain Analytics"
+    ],
+    [
+      "10",
+      "IRCC C42 Spousal OWP",
+      "Canada",
+      "Unrestricted Open Work Permit",
+      "Full-time Canadian employment authorization",
+      "2027-05-01",
+      "GUARANTEED (Tied to Hasibul 24-mo Master's)",
+      "Direct employment in Mississauga/Richmond hubs"
+    ]
+  ],
+  "Couple Migration & Financial Matrix": [
+    [
+      "COUPLE MIGRATION MATRIX & DUAL-INCOME PROJECTIONS ? HASIBUL & ZARIN",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Hasibul Hasan Santo, CFA (Economics & Treasury ALM) + Zarin Tasnim (BBA, IELTS 7.0 C1, Logistics & Supply Chain)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "CROSS-JURISDICTION COMPARATIVE ANALYSIS",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Corridor",
+      "Jurisdiction",
+      "Combined Academic Route",
+      "Spousal Work Permit Policy",
+      "Combined Monthly Household Income",
+      "Estimated Monthly Living & Rent",
+      "Net Monthly Household Surplus",
+      "Permanent Residence (PR) Corridor"
+    ],
+    [
+      "Sweden Corridor",
+      "Sweden (EU/Schengen)",
+      "Hasibul: MSc Finance (SISGP) + Zarin: MSc SCM (SISGP)",
+      "Migrationsverket: Unrestricted work rights for student spouse. Zero Swedish language requirement.",
+      "SEK 24,000 / mo (Dual SISGP tax-free) OR SEK 46,000 / mo (One study + one full job)",
+      "SEK 16,000 / mo (Student couple housing + food)",
+      "SEK 8,000 ? 30,000 / mo (~?90,000 ? 350,000 BDT)",
+      "12-mo post-study job seeker visa; PR after 4 years of employment; citizenship in 5 years."
+    ],
+    [
+      "Germany Corridor",
+      "Germany (EU/Schengen)",
+      "Hasibul: G?ttingen M.Sc. Dev Econ (DAAD EPOS) + Zarin: Spousal Visa",
+      "? 30 AufenthG: Full unrestricted employment authorized ('Erwerbst?tigkeit gestattet'). No labor test.",
+      "?1,268 / mo (DAAD EPOS + Spouse allowance) + ?2,200 / mo (Zarin net salary) = ?3,468 / mo",
+      "?1,500 / mo (Couple apartment in G?ttingen/Bremen + food)",
+      "?1,968 / mo (~?255,000 BDT/month surplus)",
+      "EU Blue Card (reduced salary threshold ?45,934). Fast-track PR in 21 months with German B1."
+    ],
+    [
+      "Canada Corridor",
+      "Canada (North America)",
+      "Hasibul: Waterloo MMath / Edwards MSc + Zarin: IRCC C42 Spousal OWP",
+      "IRCC C42: Spouses of master's students (16+ months) get Open Work Permit for full duration + 3y PGWP.",
+      "CAD $2,500 / mo (Hasibul RA/TA) + CAD $3,800 / mo (Zarin freight forwarder salary) = CAD $6,300 / mo",
+      "CAD $3,100 / mo (1-bed rental in Waterloo/Saskatoon + living)",
+      "CAD $3,200 / mo (~?280,000 BDT/month surplus)",
+      "3-year PGWP; 1 year Canadian skilled work experience maximizes Express Entry CRS points for direct PR."
+    ],
+    [
+      "Italy Corridor",
+      "Italy (EU/Schengen)",
+      "Hasibul: Bologna MSc Finance (IYT) + Zarin: Bologna MSc SCM (IYT)",
+      "Italian student visa allows 20 hrs/week employment during semester and 40 hrs/week during holidays.",
+      "?1,800 / mo (Dual IYT living grants) + Paid corporate internship allowances in Italian MNCs",
+      "?1,200 / mo (Shared couple flat in Bologna + living)",
+      "?600 ? 1,000 / mo (~?80,000 ? 130,000 BDT/month)",
+      "12-month post-study search permit (permesso per ricerca lavoro); convertible to work permit on job offer."
+    ],
+    [
+      "Czechia Corridor",
+      "Czechia (EU/Schengen)",
+      "Hasibul: Charles University MEF + Zarin: VSE Prague Management (#79074)",
+      "Full access to Czech labor market without work permit for accredited university students.",
+      "CZK 28,000 / mo (Dual Czech Govt living allowances) + part-time multinational corporate wages",
+      "CZK 22,000 / mo (Prague student apartment + food)",
+      "CZK 6,000 ? 15,000 / mo (~?35,000 ? 85,000 BDT/month)",
+      "Long-term EU residence permit after 5 years of continuous legal residence in Czechia."
+    ]
   ]
 };
 

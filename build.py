@@ -31,6 +31,7 @@ DATA_FILES = [
     "citations.js",          # CITATIONS
     "research.js",           # SUBJECT_*, FUNDING_*, UNI_CENSUS, UNI_RANKED, mergedProfessors()
     "zarin-data.js",         # ZARIN_DATA, ZARIN_PROFILE, ZARIN_TARGETS, ZARIN_DOCUMENTS, ZARIN_MISSIONS
+    "zarin-professors-deep.js", # ZARIN_PROFESSORS_DEEP
     "couple-data.js",        # COUPLE_DATA, COUPLE_COUNTRIES, COUPLE_BUDGETS
 ]
 
@@ -43,7 +44,7 @@ REQUIRED = {
     "CAMPAIGN_PROFESSORS": "array", "PROFESSORS_DEEP": "object", "EXCEL_DATABASE": "object",
     "CITATIONS": "array", "SUBJECT_OPTIONS": "array", "SUBJECT_RANKED": "array",
     "FUNDING_SCHEMES": "array", "FUNDING_DEAD_ENDS": "array", "UNI_CENSUS": "array", "UNI_RANKED": "array",
-    "ZARIN_DATA": "object", "COUPLE_DATA": "object"
+    "ZARIN_DATA": "object", "ZARIN_PROFESSORS_DEEP": "object", "COUPLE_DATA": "object"
 }
 
 CHECK_JS = r"""

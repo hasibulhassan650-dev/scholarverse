@@ -547,14 +547,101 @@ const ZARIN_PROFESSORS = [
   }
 ];
 
+const ZARIN_GATES = [
+  {
+    n: 1,
+    name: "Swedish Institute 3,000-Hour Experience Gate",
+    status: "CLEAR — 100% MET",
+    summary: "Requires 3,000 certified hours of professional work experience and leadership.",
+    detail: "SISGP requires applicants to verify at least 3,000 hours of employment from a maximum of three organizations. Zarin worked continuously at MGH Group from May 2023 to June 2026 (37 months at 45 hrs/wk = ~6,660 hours) and Akij Logistics from June 2026 to present (5 months at 45 hrs/wk = ~900 hours). Her total documented volume exceeds 7,500 hours—more than double the required threshold.",
+    action: "Download official SISGP 2027 Work Experience and Leadership templates once released in January and secure HR signatures from MGH and Akij.",
+    impact: "This is the single most restrictive gate for most applicants; Zarin passes it with an exceptional safety buffer."
+  },
+  {
+    n: 2,
+    name: "English Proficiency (IELTS Academic)",
+    status: "CLEAR — VERIFIED ON FILE",
+    summary: "Requires IELTS Academic 6.5 or 7.0 for English master's entry.",
+    detail: "British Council TRF 24BD047817TASZ001A confirms exam date 28 December 2024. Overall Band Score: 7.0 (C1 Proficient), Listening 7.5, Reading 6.5, Writing 6.5, Speaking 6.5. Valid through 28 December 2026.",
+    action: "Attach TRF directly to Sweden universityadmissions.se, Germany EPOS, and Canada portals before 28 December 2026.",
+    impact: "Zero language risk, zero testing fee, and immediate eligibility for priority Swedish university admissions deadline (15 Jan 2027)."
+  },
+  {
+    n: 3,
+    name: "Quantitative Coursework & ECTS Prerequisite",
+    status: "CLEAR — AUDITED ON TRANSCRIPT",
+    summary: "Requires mathematics, statistics, and operations management credits.",
+    detail: "BUP BBA transcript proves completion of ALD 1205 Business Mathematics (3.0 cr, Grade A 4.00), ALD 2104 Business Statistics (3.0 cr, Grade A 4.00), ALD 2201 Supply Chain Management (3.0 cr, Grade A 4.00), MKT 3101 Big Data in Marketing (3.0 cr, Grade A+ 4.00), and ALD 3201 Quantitative Business Analysis (3.0 cr, Grade A- 3.50). Total quantitative coursework: 15.0 BUP credits = ~21.4 ECTS.",
+    action: "Submit course module descriptions highlighting optimization, statistical testing, and linear programming coverage.",
+    impact: "Fully qualifies for MSc Logistics and Supply Chain Management at Lund, Gothenburg, Jönköping, and HEC Montréal."
+  },
+  {
+    n: 4,
+    name: "German Bavarian Grade Gate",
+    status: "CLEAR — TOP 'GUT' TIER (1.87)",
+    summary: "Requires German GPA equivalent better than 2.50 for university admission.",
+    detail: "Bavarian conversion: 1 + 3 × (4.00 - 3.42) / (4.00 - 2.00) = 1.87. In Germany, 1.0 is highest and 4.0 is passing. 1.87 places her in the top quartile of business applicants.",
+    action: "Include Bavarian formula explanation on German application supplements (Hochschule Bremen / HTW Berlin).",
+    impact: "Comfortably passes Bremen MBA Logistics and HTW Berlin Project Management EPOS screening thresholds."
+  },
+  {
+    n: 5,
+    name: "Canada Spousal Open Work Permit (IRCC C42 Gate)",
+    status: "CLEAR — TIED TO HASIBUL'S 24-MO DEGREE",
+    summary: "Requires primary student to be enrolled in a master's program of at least 16 months.",
+    detail: "Under the January 2024 IRCC policy update, spousal open work permits (C42) are restricted to spouses of students in master's or doctoral programs of 16+ months. Hasibul's primary Canadian targets (Waterloo MMath, Saskatchewan Edwards MSc Finance, HEC Montréal MSc) are all 24-month thesis degrees.",
+    action: "File joint study permit + spousal open work permit application upon Hasibul's Canadian letter of acceptance.",
+    impact: "Grants Zarin unrestricted full-time employment authorization across Canada throughout the study and 3-year PGWP period."
+  }
+];
+
+const ZARIN_DEAD_ENDS = [
+  { name: "Chevening 2027/28", reason: "Closed 6 October 2026. Next cycle opens August 2027.", status: "closed" },
+  { name: "DAAD All-Disciplines Open Call", reason: "Restricted to industrial nations; Bangladesh has no bilateral open call under this code.", status: "ineligible" },
+  { name: "Holland / NL Scholarship (~€5,000)", reason: "Partial funding only (€5,000 one-off grant). Leaves a €28,000 personal living and tuition deficit.", status: "insufficient" },
+  { name: "UK GREAT Scholarship (£10,000)", reason: "Partial tuition grant only. Leaves £30,000+ personal deficit for UK living and international tuition.", status: "insufficient" },
+  { name: "US Fulbright Fellowship", reason: "Closed for 2027 intake; carries mandatory J-1 §212(e) 2-year home return rule blocking foreign work/PR.", status: "conflicts_with_pr" }
+];
+
+const ZARIN_PLAYBOOK = [
+  {
+    id: "sisgp-scw-rules",
+    title: "Swedish Institute (SISGP) — Supply Chain Winning Strategy",
+    icon: "🇸🇪",
+    summary: "How to leverage 7,000 hours of freight volume to secure full tuition + SEK 12,000/mo.",
+    sections: [
+      { heading: "Phase 1: UniversityAdmissions.se (16 Oct 2026 – 15 Jan 2027)", body: "You must apply and rank up to 4 eligible Master's programs on universityadmissions.se before 15 January 2027. Rank: (1) Lund University MSc Logistics & SCM, (2) University of Gothenburg MSc Logistics & Transport, (3) Jönköping University MSc Int. Logistics, (4) Stockholm University. Pay the 900 SEK fee by 1 February." },
+      { heading: "Phase 2: The SISGP Portal (9–25 February 2027)", body: "The Swedish Institute requires three mandatory templates: (1) SI Europass CV, (2) SI Proof of Work Experience, and (3) SI Proof of Leadership. Use only the official 2027 Word forms provided by SI—any altered template causes immediate disqualification." },
+      { heading: "Quantifying 120 Flights and 4,000 Tons", body: "Frame your experience through leadership and development impact: executing 120+ flights and ~4,000 tons of air freight connecting developing Asian exporters to Western consumer markets. Emphasize how supply chain efficiency directly supports economic resilience (SDG 8 & SDG 9)." }
+    ]
+  },
+  {
+    id: "canada-spousal-freight",
+    title: "Canada Spousal Open Work Permit — Freight Logistics Career Blueprint",
+    icon: "🇨🇦",
+    summary: "Targeting high-paying supply chain roles in Mississauga/Vancouver corridors.",
+    sections: [
+      { heading: "The 16-Month IRCC Rule", body: "Under the January 2024 IRCC policy reform, undergraduate and college spouses no longer receive work permits. You qualify because Hasibul is pursuing a 24-month master's degree. Your work permit is unrestricted and valid for the entire duration of his study permit plus his 3-year PGWP." },
+      { heading: "Target Corridors: Peel Region & Metro Vancouver", body: "The Greater Toronto Area (Mississauga/Brampton) and Metro Vancouver (Richmond) are North America's premier freight forwarding clusters. International forwarders (Expeditors, DB Schenker, Kuehne+Nagel, DSV Canada) actively recruit specialists proficient in CargoWise One, air cargo booking, and ocean freight consolidation." },
+      { heading: "Fast-Track to Permanent Residence", body: "While Hasibul conducts research, your full-time employment as a Logistics Specialist (TEER 1/2) accumulates Canadian work experience points under the Canadian Experience Class (CEC) Express Entry stream, dramatically accelerating family PR." }
+    ]
+  }
+];
+
 const ZARIN_DATA = {
   profile: ZARIN_PROFILE,
   targets: ZARIN_TARGETS,
   documents: ZARIN_DOCUMENTS,
   missions: ZARIN_MISSIONS,
-  professors: ZARIN_PROFESSORS
+  professors: ZARIN_PROFESSORS,
+  gates: ZARIN_GATES,
+  deadEnds: ZARIN_DEAD_ENDS,
+  playbook: ZARIN_PLAYBOOK
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ZARIN_DATA, ZARIN_PROFILE, ZARIN_TARGETS, ZARIN_DOCUMENTS, ZARIN_MISSIONS, ZARIN_PROFESSORS };
+  module.exports = {
+    ZARIN_DATA, ZARIN_PROFILE, ZARIN_TARGETS, ZARIN_DOCUMENTS,
+    ZARIN_MISSIONS, ZARIN_PROFESSORS, ZARIN_GATES, ZARIN_DEAD_ENDS, ZARIN_PLAYBOOK
+  };
 }

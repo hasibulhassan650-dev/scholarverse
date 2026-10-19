@@ -45,9 +45,37 @@ function getActiveMissions() {
 
 function getActiveProfessors() {
   if (app.profileMode === 'zarin') {
-    return (typeof ZARIN_PROFESSORS !== 'undefined') ? ZARIN_PROFESSORS : ((app.content && app.content.zarin && app.content.zarin.professors) || []);
+    const list = (typeof ZARIN_PROFESSORS !== 'undefined') ? ZARIN_PROFESSORS : ((app.content && app.content.zarin && app.content.zarin.professors) || []);
+    const deepData = (typeof ZARIN_PROFESSORS_DEEP !== 'undefined') ? ZARIN_PROFESSORS_DEEP : null;
+    if (deepData) {
+      for (const p of list) {
+        if (deepData[p.name]) p.deep = deepData[p.name];
+      }
+    }
+    return list;
   }
   return app.profs.professors;
+}
+
+function getActiveGates() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_GATES !== 'undefined') ? ZARIN_GATES : ((app.content && app.content.zarin && app.content.zarin.gates) || []);
+  }
+  return (typeof GATES !== 'undefined') ? GATES : ((app.content && app.content.gates) || []);
+}
+
+function getActiveDeadEnds() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_DEAD_ENDS !== 'undefined') ? ZARIN_DEAD_ENDS : ((app.content && app.content.zarin && app.content.zarin.deadEnds) || []);
+  }
+  return (typeof DEAD_ENDS !== 'undefined') ? DEAD_ENDS : ((app.content && app.content.deadEnds) || []);
+}
+
+function getActivePlaybook() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_PLAYBOOK !== 'undefined') ? ZARIN_PLAYBOOK : ((app.content && app.content.zarin && app.content.zarin.playbook) || []);
+  }
+  return (typeof PLAYBOOK !== 'undefined') ? PLAYBOOK : ((app.content && app.content.playbook) || []);
 }
 
 /* ---------------- helpers ---------------- */
@@ -1385,9 +1413,21 @@ function openDocModal(d) {
    WORKBOOK
    ============================================================================ */
 function renderExcel(root) {
-  const db = (app.excel && app.excel.database) || {};
-  const names = Object.keys(db);
-  if (!names.length) { root.innerHTML = pageHead() + '<div class="empty">The workbook data is not in this file.</div>'; return; }
+  const db = (app.excel && app.excel.database) || (typeof EXCEL_DATABASE !== 'undefined' ? EXCEL_DATABASE : {});
+  const allNames = Object.keys(db);
+  if (!allNames.length) { root.innerHTML = pageHead() + '<div class="empty">The workbook data is not in this file.</div>'; return; }
+
+  // Filter sheets by active profile
+  let names = allNames;
+  if (app.profileMode === 'zarin') {
+    names = allNames.filter(n => n.includes('Zarin') || n.includes('Couple') || n.includes('Census'));
+  } else if (app.profileMode === 'couple') {
+    names = allNames.filter(n => n.includes('Couple') || n.includes('Timeline') || n.includes('Audit') || n.includes('Applications'));
+  } else {
+    names = allNames.filter(n => !n.includes('Zarin'));
+  }
+  if (!names.length) names = allNames;
+
   const sheet = names.includes(app.f.sheet) ? app.f.sheet : names[0];
   const rows = db[sheet] || [];
   /* first row is a title; find the real header row = first row with 3+ non-empty cells after any title rows */
@@ -1517,11 +1557,11 @@ function openTarget(id) {
 }
 
 function renderTargets(root) {
-  const T = getActiveTargets(), G = app.profileMode === 'hasibul' ? (app.content.gates || []) : [];
+  const T = getActiveTargets(), G = getActiveGates();
   let list = app.f.target === 'all' ? T.slice() : T.filter(t => String(t.tier) === app.f.target);
   list.sort((a, b) => a.tier - b.tier || String(a.deadline || '9').localeCompare(String(b.deadline || '9')));
 
-  const deadEnds = app.profileMode === 'hasibul' ? app.content.deadEnds : [];
+  const deadEnds = getActiveDeadEnds();
 
   root.innerHTML = `${pageHead()}
     ${stats([['Verified targets', T.length, 'every deadline checked'], ['Open now', T.filter(t => t.status === 'open').length, 'you can act today', 'ok'],
@@ -1943,7 +1983,7 @@ function renderAgents(root) {
    PLAYBOOK
    ============================================================================ */
 function renderPlaybook(root) {
-  const P = app.content.playbook;
+  const P = getActivePlaybook();
   const want = app.openPlay; app.openPlay = null;
   root.innerHTML = `${pageHead('<button class="btn btn-sm" type="button" id="pbAll">Expand all</button>')}
     <div class="panel">${P.map(p => `<details class="pb" id="pb-${esc(p.id)}" ${want === p.id ? 'open' : ''}>
