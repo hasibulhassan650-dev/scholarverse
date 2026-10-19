@@ -43,6 +43,13 @@ function getActiveMissions() {
   return (typeof MISSIONS !== 'undefined') ? MISSIONS : ((app.missions && app.missions.missions) || []);
 }
 
+function getActiveProfessors() {
+  if (app.profileMode === 'zarin') {
+    return (typeof ZARIN_PROFESSORS !== 'undefined') ? ZARIN_PROFESSORS : ((app.content && app.content.zarin && app.content.zarin.professors) || []);
+  }
+  return app.profs.professors;
+}
+
 /* ---------------- helpers ---------------- */
 const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -234,7 +241,7 @@ function renderChrome() {
     const missingDocs = getActiveDocuments().filter(d => ['missing','not_started'].includes(d.status)).length;
     setCount('documents', missingDocs, missingDocs > 0);
     setCount('targets', getActiveTargets().length);
-    setCount('professors', 0);
+    setCount('professors', getActiveProfessors().length);
     setCount('universities', (app.res.uniCensus || []).length);
     setCount('citations', 0);
   } else if (app.profileMode === 'couple') {
@@ -245,7 +252,7 @@ function renderChrome() {
     setCount('missions', app.missions.missions.length + (typeof ZARIN_MISSIONS !== 'undefined' ? ZARIN_MISSIONS.length : 10));
     setCount('documents', 23);
     setCount('targets', (app.content.targets.length + (typeof ZARIN_TARGETS !== 'undefined' ? ZARIN_TARGETS.length : 5)));
-    setCount('professors', app.profs.professors.length);
+    setCount('professors', app.profs.professors.length + (typeof ZARIN_PROFESSORS !== 'undefined' ? ZARIN_PROFESSORS.length : 10));
     setCount('universities', (app.res.uniCensus || []).length);
     setCount('citations', 2);
   } else {
@@ -1739,7 +1746,7 @@ const blocked = (p) => /BLOCKED|DO NOT SEND/.test(p.draft || '');
 const emailOk = (p) => /VERIFIED/.test(p.email_status || '') && !/UNVERIFIED/.test(p.email_status || '');
 
 function renderProfessors(root) {
-  const P = app.profs.professors;
+  const P = getActiveProfessors();
   let list = P.slice();
   if (app.f.profTier !== 'all') list = list.filter(p => p.tier === app.f.profTier);
   if (app.f.profStatus === 'send') list = list.filter(sendable);
@@ -1750,9 +1757,18 @@ function renderProfessors(root) {
   list.sort((a, b) => (tr[a.tier] ?? 9) - (tr[b.tier] ?? 9) || (b.score || 0) - (a.score || 0));
   const tiers = ['all', ...new Set(P.map(p => p.tier).filter(Boolean))];
 
+  const headerTitle = app.profileMode === 'zarin'
+    ? 'Supply Chain, Logistics & Operations Faculty Directory'
+    : 'Economics, Quantitative Finance & Financial Engineering Faculty';
+
   root.innerHTML = `${pageHead()}
-    ${stats([['Professors', P.length, `${P.filter(p => p.tier === 'A').length} in tier A`], ['Ready to email', P.filter(sendable).length, 'verified and drafted', 'ok'],
-      ['Blocked', P.filter(blocked).length, 'do not send yet', 'bad'], ['Emails verified', P.filter(emailOk).length, 'from official directories', 'acc'], ['Full dossiers', P.filter(p => p.deep).length, '10 papers analysed each']])}
+    ${stats([
+      ['Tracked Faculty', P.length, `${P.filter(p => p.tier === 'A').length} in tier A`],
+      ['Ready to email', P.filter(sendable).length, 'verified drafts ready', 'ok'],
+      ['Sweden & Canada', P.filter(p => p.country === 'Sweden' || p.country === 'Canada').length, 'priority corridors', 'acc'],
+      ['Emails verified', P.filter(emailOk).length, 'official university directories', 'ok'],
+      ['Research areas', 10, 'logistics, freight & SCM', 'plain']
+    ])}
     <div class="toolbar">
       ${chips('pT', tiers.map(t => [t, t === 'all' ? 'All tiers' : t === 'UNSCORED' ? 'Unscored' : `Tier ${t}`]), app.f.profTier)}
       ${chips('pS', [['all', 'Any status'], ['send', 'Ready to email'], ['deep', 'Has dossier'], ['blocked', 'Blocked'], ['hold', 'On hold']], app.f.profStatus)}
