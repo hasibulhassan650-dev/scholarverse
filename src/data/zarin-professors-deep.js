@@ -1,6 +1,5 @@
-var module = { exports: {} };
 /* ============================================================================
-   ZARIN TASNIM ? DEEP RESEARCH DOSSIERS & 8-POINT FACULTY ANALYSES
+   ZARIN TASNIM — DEEP RESEARCH DOSSIERS & 8-POINT FACULTY ANALYSES
    Comprehensive technical monographs for Supply Chain & Logistics faculty.
    Includes 5-part fit dossiers, research questions, data, methodology, limitations,
    and desk observations linking Zarin's 3.5 yrs MGH/Akij freight forwarding record.
