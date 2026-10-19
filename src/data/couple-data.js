@@ -1,4 +1,3 @@
-var module = { exports: {} };
 /* ============================================================================
    SCHOLARVERSE — COUPLE ROADMAP & MIGRATION MATRIX
    Joint strategic synchronization for Hasibul Hasan, CFA & Zarin Tasnim.

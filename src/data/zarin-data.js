@@ -1,4 +1,3 @@
-var module = { exports: {} };
 /* ============================================================================
    SCHOLARVERSE — ZARIN TASNIM DATA BRAIN
    Verified records for Zarin Tasnim: Supply Chain, Logistics, and Management.
