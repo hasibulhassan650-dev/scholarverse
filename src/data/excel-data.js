@@ -1,4 +1,6 @@
-var module = { exports: {} };
+/* ============================================================================
+   SCHOLARVERSE — EXCEL WORKBOOK DATABASE
+   ============================================================================ */
 const EXCEL_DATABASE = {
   "Dashboard & Timeline": [
     [
