@@ -30,11 +30,11 @@ const ZARIN_PROFILE = {
       centreNumber: "BD001 (British Council Dhaka)",
       listening: 7.5,
       reading: 6.5,
-      writing: 6.5,
-      speaking: 6.5,
-      overall: 7.0,
-      cefr: "C1",
-      note: "Valid through 28 Dec 2026. Fully satisfies all master's admission criteria across Sweden (Lund/Gothenburg), Germany (Hohenheim/Bremen/HTW), Italy (IYT), and Canada!"
+      writing: "UNVERIFIED (not legible in OCR — type from TRF)",
+      speaking: "UNVERIFIED (not legible in OCR — type from TRF)",
+      overall: "UNVERIFIED (not legible in OCR — type from TRF)",
+      cefr: "UNVERIFIED",
+      note: "Verified from TRF OCR: test date 28 Dec 2024, TRF 24BD047817TASZ001A, Listening 7.5, Reading 6.5. Writing, Speaking, Overall and CEFR were NOT read — earlier '7.0 / C1' claim was unverified. Most universities accept IELTS for 2 years from test date, i.e. until ~28 Dec 2026: for Fall 2027 applications submitted after that date a NEW test may be needed — check each programme."
     },
     moi: "Medium of Instruction Certificate: 100% English (Faculty of Business Studies, BUP)",
     german: "Learning A1 with Hasibul; Goethe-Zertifikat A1 planned if required for German spouse visa or studies."
@@ -48,21 +48,33 @@ const ZARIN_PROFILE = {
     cgpa: 3.42,
     cgpaScale: 4.00,
     germanGrade: 1.87,
-    gradeNote: "Bavarian Formula: 1 + 3 × (4.00 - 3.42) / (4.00 - 2.00) = 1.87. On the German 1.0–4.0 scale, 1.87 is in the top 'gut' tier, significantly beating standard 2.0 and 2.5 admission thresholds!",
-    keyCourses: [
-      { code: "ALD1205", name: "Business Mathematics", credits: 3.0, grade: "A (4.00)" },
-      { code: "ALD2104", name: "Business Statistics", credits: 3.0, grade: "A (4.00)" },
-      { code: "ALD2201", name: "Supply Chain Management", credits: 3.0, grade: "A (4.00)" },
-      { code: "MKT3101", name: "Big Data in Marketing", credits: 3.0, grade: "A+ (4.00)" },
-      { code: "ALD3201", name: "Quantitative Business Analysis", credits: 3.0, grade: "A- (3.50)" },
-      { code: "ALD1201", name: "Micro Economics", credits: 3.0, grade: "A (4.00)" },
-      { code: "ALD2203", name: "Macro Economics", credits: 3.0, grade: "A- (3.50)" },
-      { code: "MKT4104", name: "Marketing Research", credits: 3.0, grade: "A- (3.75)" },
-      { code: "MKT4897", name: "Internship", credits: 3.0, grade: "A (4.00)" },
-      { code: "MKT4899", name: "Comprehensive Viva Voce", credits: 3.0, grade: "A- (3.50)" }
+    gradeNote: "Bavarian formula depends on which 'minimum pass' the German university uses. With 2.00 (lowest passing course grade): 1 + 3 × (4.00 − 3.42) / (4.00 − 2.00) = 1.87. With 2.50 (the transcript's 'Minimum CGPA Required for Award of Degree: 2.50'): 1 + 3 × 0.58 / 1.50 = 2.16. Assume 1.87–2.16 until a university or uni-assist converts it.",
+    transcriptSource: "Grade points read from BUP transcript OCR (zarin_docs_img/Z-T_Transcript_p1.txt) and cross-checked: every one of the 8 semester GPAs (3.10, 2.90, 3.75, 3.45, 3.65, 3.65, 3.35, 3.50) and the CGPA 3.42 recompute exactly. ALD1202 OCR read '230' and was resolved to 2.50 from the semester-2 GPA. Letter grades not shown because the OCR could not read most of them.",
+    allCourses: [
+      ["GED1101","Functional English",3.50],["GED1102","Presentation Skill Development",3.25],["GED1103","Bangladesh and International Studies",3.25],["GED1104","Computer and Its Application in Business",3.00],["MKT1105","Fundamentals of Marketing",2.50],
+      ["ALD1201","Microeconomics",3.25],["ALD1202","Fundamentals of Management",2.50],["ALD1203","Fundamentals of Accounting",2.75],["ALD1204","Fundamentals of Finance",4.00],["ALD1205","Business Mathematics",2.00],
+      ["ALD2102","Human Resources Management",4.00],["ALD2104","Business Statistics",3.50],["ALD2105","Business Communication",3.25],["GED2103","Third Language",4.00],["MKT2101","Marketing Management",4.00],
+      ["ALD2201","Supply Chain Management",3.50],["ALD2202","Organizational Behaviour",3.50],["ALD2203","Macroeconomics",3.25],["ALD2204","Elementary Psychology",3.75],["ALD2205","Legal Environment of Business",3.25],
+      ["ALD3105","Entrepreneurship Development",3.75],["MKT3101","Big Data in Marketing",4.00],["MKT3102","Services Marketing",3.25],["MKT3103","Global Marketing",3.50],["MKT3104","Ethics in Marketing",3.75],
+      ["ALD3201","Quantitative Business Analysis",3.50],["MKT3202","Pricing Strategies and Practices",3.25],["MKT3203","Marketing Information System (MIS)",3.50],["MKT3204","Brand Management",4.00],["MKT3205","Consumer Behavior",4.00],
+      ["MKT4101","Digital Marketing",3.00],["MKT4102","Selling and Salesmanship",3.00],["MKT4103","Marketing and Society",3.75],["MKT4104","Marketing Research",3.75],["MKT4105","Rural Marketing",3.25],
+      ["MKT4201","Relationship Marketing",2.25],["MKT4202","Tourism and Hospitality Marketing",4.00],["MKT4203","Sustainable Marketing",4.00],["MKT4204","Integrated Marketing Communication (IMC)",3.25],["MKT4205","Strategic Marketing",3.50],["MKT4897","Internship",4.00],["MKT4899","Comprehensive Viva-Voce",3.50]
     ],
-    hsc: "Ideal School and College, Motijheel, Dhaka (Science, 2018) — GPA 4.58 / 5.00",
-    ssc: "BIAM Model School and College, Dhaka (Science, 2016) — GPA 5.00 / 5.00 (Golden / Perfect)"
+    keyCourses: [
+      { code: "ALD1205", name: "Business Mathematics", credits: 3.0, grade: "2.00 / 4.00 — her LOWEST grade; do not claim 'top marks in maths'" },
+      { code: "ALD2104", name: "Business Statistics", credits: 3.0, grade: "3.50 / 4.00" },
+      { code: "ALD3201", name: "Quantitative Business Analysis", credits: 3.0, grade: "3.50 / 4.00" },
+      { code: "MKT3101", name: "Big Data in Marketing", credits: 3.0, grade: "4.00 / 4.00" },
+      { code: "ALD2201", name: "Supply Chain Management", credits: 3.0, grade: "3.50 / 4.00" },
+      { code: "ALD1201", name: "Microeconomics", credits: 3.0, grade: "3.25 / 4.00" },
+      { code: "ALD2203", name: "Macroeconomics", credits: 3.0, grade: "3.25 / 4.00" },
+      { code: "MKT4104", name: "Marketing Research", credits: 3.0, grade: "3.75 / 4.00" },
+      { code: "MKT3203", name: "Marketing Information System (MIS)", credits: 3.0, grade: "3.50 / 4.00" },
+      { code: "MKT4897", name: "Internship", credits: 3.0, grade: "4.00 / 4.00" }
+    ],
+    quantCredits: "Quantitative courses: Business Mathematics, Business Statistics, Quantitative Business Analysis = 9 credits (avg 3.00). Plus Micro/Macro = 6 credits. Engineering-style MASc programmes (e.g. Waterloo MSE) may expect calculus/linear algebra she does not have — verify per programme.",
+    hsc: "Ideal School and College, Motijheel, Dhaka Board (Science, 2018) — GPA 4.58 / 5.00 (verified from certificate OCR)",
+    ssc: "BIAM Model School and College, Dhaka Board (Science, 2016) — GPA reads as 5.00 / 5.00 but OCR was garbled ('S_QQ'): confirm from certificate"
   },
   work: [
     {
@@ -99,7 +111,7 @@ const ZARIN_PROFILE = {
   skills: {
     logistics: "Air Freight Forwarding, Ocean Freight Chartering, CargoWise One, SAP Logistics, V-SOL, FedEx Express Operations, Customs Clearance Documentation",
     commercial: "Export Sales Structuring, Key Account Handling (C&A, Hugo Boss), GTM Planning, Client Negotiation, P&G Distribution Operations",
-    languages: "English (C1 Proficient, IELTS 7.0), Bengali (Native), German (A1 Learner)"
+    languages: "English (IELTS Academic Dec 2024: L 7.5, R 6.5; W/S/Overall UNVERIFIED), Bengali (Native), German (A1 Learner)"
   },
   referee: {
     name: "Dr. Mohammad Zahedul Alam",
@@ -137,7 +149,7 @@ const ZARIN_TARGETS = [
     ],
     advantages: [
       "Zarin holds ~7,000 certified work hours at MGH/Akij (far exceeds 3,000 hr minimum)",
-      "IELTS Academic 7.0 / C1 is already in hand (valid to Dec 2026)",
+      "IELTS Academic (28 Dec 2024) in hand: Listening 7.5, Reading 6.5; Writing/Speaking/Overall UNVERIFIED — and it expires ~28 Dec 2026, before most Fall 2027 decisions",
       "Dual-Scholarship Synergy: If both Hasibul and Zarin win SISGP, combined couple scholarship is SEK 24,000/month tax-free plus zero tuition!"
     ],
     nextAction: "Create universityadmissions.se account and rank Lund, Gothenburg, and Jönköping MSc SCM."
@@ -245,11 +257,11 @@ const ZARIN_TARGETS = [
 ];
 
 const ZARIN_DOCUMENTS = [
-  { id: "zarin-ielts", name: "IELTS Academic Test Report Form (C1 / 7.0 Overall)", type: "English", status: "have", spec: "British Council TRF 24BD047817TASZ001A. Listening 7.5, Reading 6.5. Valid until 28 Dec 2026.", owner: "Zarin", blocker: false },
+  { id: "zarin-ielts", name: "IELTS Academic Test Report Form (Overall UNVERIFIED)", type: "English", status: "have", spec: "British Council TRF 24BD047817TASZ001A, test date 28 Dec 2024. Listening 7.5, Reading 6.5 (OCR). Writing, Speaking, Overall: type them in from the TRF — not machine-readable. Usually accepted for 2 years from test date (~28 Dec 2026).", owner: "Zarin", blocker: false },
   { id: "zarin-degree", name: "BBA Degree Certificate (BUP, Dec 2022)", type: "Academic", status: "have", spec: "Bachelor of Business Administration in Marketing, Faculty of Business Studies, BUP. CGPA 3.42 / 4.00.", owner: "Zarin", blocker: false },
   { id: "zarin-transcript", name: "BBA Academic Transcript of Records (126.0 Credits)", type: "Academic", status: "have", spec: "Full 8-semester transcript. All 126.0 credits earned. Includes grading scale (3.42 CGPA / German grade 1.87).", owner: "Zarin", blocker: true },
   { id: "zarin-hsc", name: "HSC Certificate (Ideal School & College, Science)", type: "Academic", status: "have", spec: "Higher Secondary Certificate, Science Group, Dhaka Board 2018. GPA 4.58 / 5.00.", owner: "Zarin", blocker: false },
-  { id: "zarin-ssc", name: "SSC Certificate (BIAM Model School, Science)", type: "Academic", status: "have", spec: "Secondary School Certificate, Science Group, Dhaka Board 2016. GPA 5.00 / 5.00 (Golden / Perfect).", owner: "Zarin", blocker: false },
+  { id: "zarin-ssc", name: "SSC Certificate (BIAM Model School, Science)", type: "Academic", status: "have", spec: "Secondary School Certificate, Science Group, Dhaka Board 2016. GPA reads 5.00 / 5.00 (OCR garbled — confirm from certificate).", owner: "Zarin", blocker: false },
   { id: "zarin-ref-zahedul", name: "Academic Recommendation Letter (Dr. Mohammad Zahedul Alam)", type: "References", status: "have", spec: "Official BUP Letterhead Recommendation from Professor Dr. Zahedul Alam (Marketing Research / IMC instructor).", owner: "Dr. Zahedul Alam", blocker: false },
   { id: "zarin-akij-cert", name: "Certificate of Employment (Akij Logistics Ltd)", type: "Employment", status: "verify", spec: "Official employment certificate certifying Assistant Manager, Export Sales role (June 2026 – Present).", owner: "Akij HR", blocker: true },
   { id: "zarin-mgh-cert", name: "Certificate of Employment & Experience (MGH Group)", type: "Employment", status: "verify", spec: "Official MGH / International Brands certificate certifying 3+ years experience across 120+ flights, C&A, Hugo Boss.", owner: "MGH HR", blocker: true },
@@ -262,7 +274,7 @@ const ZARIN_MISSIONS = [
   {
     id: "zm-ielts-verified",
     title: "Verify IELTS Academic Test Report Form",
-    detail: "Confirmed on file: TRF 24BD047817TASZ001A (Exam: 28 Dec 2024). Overall: 7.0 (C1 Level). Listening: 7.5, Reading: 6.5. Valid until 28 December 2026. Satisfies all English language requirements for Sweden, Germany, Italy, and Canada.",
+    detail: "Confirmed on file: TRF 24BD047817TASZ001A (Exam: 28 Dec 2024). Listening: 7.5, Reading: 6.5 (OCR). Writing/Speaking/Overall UNVERIFIED. Expires ~28 Dec 2026 — check each programme's validity rule against its application date; a retake may be needed.",
     why: "Already accomplished. Saves ৳25,000+ testing cost and removes the single biggest application blocker.",
     xp: 150,
     targets: ["zarin-sweden-sisgp", "zarin-germany-epos", "zarin-italy-iyt"],
@@ -275,7 +287,7 @@ const ZARIN_MISSIONS = [
   {
     id: "zm-bup-docs-verified",
     title: "Verify BBA Degree Certificate & Complete Academic Transcript",
-    detail: "Confirmed on file: BBA in Marketing, Faculty of Business Studies, BUP. Total 126.0 credits completed. CGPA 3.42 / 4.00 converts to German grade 1.87 (gut / very good). Science background: HSC 4.58 (Ideal School & College), SSC 5.00 Golden (BIAM).",
+    detail: "Confirmed on file: BBA in Marketing, Faculty of Business Studies, BUP. Total 126.0 credits completed. CGPA 3.42 / 4.00 → German grade 1.87–2.16 depending on formula. Science background: HSC 4.58 (Ideal School & College, verified), SSC 5.00 (BIAM, OCR garbled — confirm).",
     why: "Bachelor's degree certificate and transcript are 100% complete with grading scale included. Ready for submission.",
     xp: 150,
     targets: ["zarin-sweden-sisgp", "zarin-germany-epos", "zarin-italy-iyt", "zarin-czech-vse"],
@@ -355,7 +367,7 @@ const ZARIN_MISSIONS = [
   {
     id: "zm-bremen-epos",
     title: "Submit Application for MBA International Logistics & Trade (Hochschule Bremen)",
-    detail: "Apply for the DAAD EPOS funded MBA in International Logistics and Trade at Hochschule Bremen. Submit BBA transcript (German grade 1.87), IELTS 7.0, CV, and motivation letter.",
+    detail: "Apply for the DAAD EPOS funded MBA in International Logistics and Trade at Hochschule Bremen. Submit BBA transcript, IELTS (check validity date), CV, and motivation letter.",
     why: "DAAD EPOS funded master's program matching Zarin's freight forwarding profile. Full €992/month funding + tuition waiver.",
     xp: 180,
     targets: ["zarin-germany-epos"],
@@ -408,7 +420,9 @@ const ZARIN_PROFESSORS = [
   "research": "Air cargo logistics, airport slot allocation, airline competition, and aviation transport economics.",
   "paper": "Does high-speed rail stimulate innovation: City- and firm-level evidence (2026, TR Part A)",
   "why": "Canada's foremost authority on air cargo logistics and airport operations. Directly matches Zarin's 120 air cargo charter flights (~4,000 tons).",
-  "draft": "Subject: Prospective M.Sc. Student in Operations & Logistics — Air Cargo Operations Background\n\nDear Professor Zhang,\n\nI have followed your research as the Vancouver Airport Authority Chair in Air Transportation, particularly your contributions to air cargo network economics. Over the past three years at MGH Group and Akij Logistics, I managed the operational execution of 120+ international air cargo flights (~4,000 tons airlifted) across major Asian and Middle Eastern hubs (Dubai, Jeddah, Hong Kong). With a BBA in Marketing (CGPA 3.42, German 1.87) and top grades in Business Mathematics and Statistics, I am applying for the M.Sc. in Business Administration (Operations and Logistics) at UBC Sauder and would be honoured to discuss research opportunities under your supervision.\n\nSincerely,\nZarin Tasnim",
+  "draft": "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+  "email_status": "UNVERIFIED — not yet read from an official university page",
+  "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Provides primary flight manifest data handling and operational air charter coordination insight from South Asian export hubs."
 },
 {
@@ -424,7 +438,9 @@ const ZARIN_PROFESSORS = [
   "research": "Inventory control, capacity planning, supply chain coordination, and data-driven newsvendor models.",
   "paper": "Performance of the Offer-Everything Policy (2026, Operations Research)",
   "why": "Canada Research Chair in Business Analytics; models inventory under demand censoring. Connects to Zarin's retail apparel buyer fulfillment.",
-  "draft": "Subject: Inquiry regarding M.Sc. Supervision — Inventory Planning & Supply Chain Operations\n\nDear Professor Huh,\n\nYour research on data-driven inventory control and capacity planning in Operations Research strongly intersects with my industry practice. Managing freight coordination for fast-fashion buyers such as C&A and Hugo Boss, I have navigated the direct operational friction between inventory buffers and airline flight capacity cutoffs. I am preparing my application for the M.Sc. in Operations and Logistics at UBC Sauder and would welcome the opportunity to conduct graduate research in your group.\n\nBest regards,\nZarin Tasnim",
+  "draft": "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+  "email_status": "UNVERIFIED — not yet read from an official university page",
+  "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Empirical background in buyer order reconciliation, PO management, and freight tracking via SAP."
 },
 {
@@ -440,7 +456,9 @@ const ZARIN_PROFESSORS = [
   "research": "Supply chain contracts, supplier coordination, and incentive distortions in distribution networks.",
   "paper": "Project networks and reallocation externalities (2025, Management Science)",
   "why": "Expert on supply chain contracts; matches Zarin's commercial negotiation of freight quotations and carrier contracts.",
-  "draft": "Subject: Prospective M.Sc. Applicant — Supply Chain Coordination & Contracting\n\nDear Professor Krishnan,\n\nI read with great interest your work in Management Science on reallocation externalities in project networks. In my role leading commercial export sales at Akij Logistics, structuring multi-party carrier and shipper contracts under fluctuating freight rates has made supply chain alignment central to my day-to-day work. As I apply to UBC Sauder's M.Sc. program, I hope to pursue research on supply chain coordination mechanisms under your mentorship.\n\nSincerely,\nZarin Tasnim",
+  "draft": "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+  "email_status": "UNVERIFIED — not yet read from an official university page",
+  "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Hands-on experience structuring commercial export rate quotations and carrier service contracts."
 },
 {
@@ -451,12 +469,14 @@ const ZARIN_PROFESSORS = [
   "title": "Edwards Enhancement Chair in Business & Associate Member of Mathematics and Statistics",
   "email": "samarghandi@edwards.usask.ca",
   "score": 9.6,
-  "tier": "A",
-  "recruiting": true,
+  "tier": "C",
+  "recruiting": false,
   "research": "Supply chain management, transportation optimization, metaheuristics, and business forecasting.",
   "paper": "Supply chain network scheduling and heuristic optimization under resource constraints (2025/2026)",
   "why": "ACTIVELY RECRUITING Masters and Ph.D. students in SCM and Transportation; university where Hasibul is targeting Edwards MSc Finance (Dec 15 priority).",
-  "draft": "Subject: Prospective M.Sc. in Management Student — Transportation & Supply Chain Optimization\n\nDear Professor Samarghandi,\n\nI noticed on your Edwards faculty profile that you are actively seeking Master of Science students in supply chain management and transportation optimization. Having managed air and sea logistics operations for global retail accounts at MGH Group and Akij Logistics—overseeing 120 cargo flights (~4,000 tons) and multimodal freight movements using SAP and CargoWise—I have a strong desire to transition my operational expertise into formal optimization research. With a BBA in Marketing (CGPA 3.42, German 1.87) and top marks in Business Mathematics and Statistics, I would be thrilled to join your research team at the University of Saskatchewan.\n\nSincerely,\nZarin Tasnim",
+  "draft": "🔴 DO NOT SEND — his profile asks only for OR / industrial engineering / CS graduates with strong coding. Phase 1 verdict: DROP as supervisor; Edwards MSc in Management stays a secondary programme.",
+  "email_status": "✅ VERIFIED 19 Oct 2026 — https://www.edwards.usask.ca/faculty/Hamed%20Samarghandi/index.aspx",
+  "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Direct operational data on international freight scheduling and enterprise logistics software proficiency."
 },
 {
@@ -472,7 +492,9 @@ const ZARIN_PROFESSORS = [
   "research": "Sustainable supply chain operations, stakeholder coordination, and environmental logistics.",
   "paper": "Coordination mechanisms for sustainable supply chains under stakeholder governance (2025)",
   "why": "Focuses on sustainable logistics; former CIRRELT postdoctoral fellow; perfect co-location match in Saskatoon with Hasibul.",
-  "draft": "Subject: M.Sc. in Management Inquiry — Sustainable Supply Chain Operations\n\nDear Professor Nematollahi,\n\nYour research on sustainable supply chain operations and coordination mechanisms resonates strongly with my background. In export sales and freight forwarding at Akij Logistics, balancing client cost targets against carrier environmental compliance has become an urgent industry challenge. I am applying for the M.Sc. in Management at the Edwards School of Business and would welcome the opportunity to conduct thesis research under your supervision.\n\nBest regards,\nZarin Tasnim",
+  "draft": "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+  "email_status": "UNVERIFIED — not yet read from an official university page",
+  "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Real-world experience managing export packaging compliance and green logistics initiatives."
 },
 {
@@ -488,7 +510,9 @@ const ZARIN_PROFESSORS = [
   "research": "Supply chain network design, learning-augmented optimization, and production planning.",
   "paper": "Supply chain design and coordination under demand learning (2025/2026)",
   "why": "ACTIVELY SEEKING Master of Supply Chain Management (MSCM) and PhD students at John Molson School of Business in Montreal.",
-  "draft": "Subject: Prospective MSCM Thesis Student — Supply Chain Network Design & Operations\n\nDear Professor Chauhan,\n\nI noted on your Concordia faculty profile that you are currently seeking graduate thesis students for the Master of Supply Chain Management (MSCM) program. Over the past three years at MGH Logistics and Akij Logistics, I have coordinated large-scale international air cargo flights (~4,000 tons) and buyer-led ocean freight for global brands (C&A, Hugo Boss). Having graduated from BUP with a BBA in Marketing (CGPA 3.42, German 1.87) and top marks in quantitative courses, I am eager to contribute to your research on supply chain network design and coordination.\n\nSincerely,\nZarin Tasnim",
+  "draft": "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+  "email_status": "UNVERIFIED — not yet read from an official university page",
+  "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Extensive multinational freight forwarding operational records and ERP workflow competence."
 },
 {
@@ -497,14 +521,16 @@ const ZARIN_PROFESSORS = [
   "department": "Supply Chain and Business Technology Management",
   "country": "Canada",
   "title": "Associate Professor & Director of MSCM Program (SEEKING STUDENTS)",
-  "email": "xiaodan.pan@concordia.ca",
+  "email": "UNVERIFIED — not rendered on her Concordia profile; do not guess",
   "score": 9.7,
   "tier": "A",
   "recruiting": true,
   "research": "Supply chain risk management, responsible retail operations, and international shipping management.",
   "paper": "Targeting online sales through last-mile delivery platform integration (2025, Journal of Operations Management)",
   "why": "Director of the MSCM Program; background includes degrees in International Shipping and Supply Chain; ACTIVELY SUPERVISING students; located in Montreal.",
-  "draft": "Subject: Prospective MSCM Student — International Shipping & Retail Logistics Risk\n\nDear Professor Pan,\n\nAs the Graduate Program Director of the Master of Supply Chain Management at JMSB, your profile in international shipping and retail supply chain risk management is an extraordinary fit with my experience. Over the past three years, I managed international air and sea freight operations for C&A and Hugo Boss at MGH Group, followed by export sales leadership at Akij Logistics. With a verified C1 IELTS 7.0 and strong quantitative grades in Big Data in Marketing and Business Statistics, I would be thrilled to pursue graduate studies and research under your guidance at Concordia.\n\nWarm regards,\nZarin Tasnim",
+  "draft": "⏸ HOLD — profile shows 'Thesis supervisor · Accepting inquiries'. Get her email from the Concordia directory first. MSCM Option A (thesis) is the funded route; deadline 1 Feb 2027; GMAT/GRE + IELTS 6.5 required.",
+  "email_status": "UNVERIFIED — email field not rendered on https://www.concordia.ca/faculty/xiaodan-pan.html",
+  "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Direct operational parallels in international shipping, air chartering, and buyer PO fulfillment."
 },
 
@@ -520,7 +546,9 @@ const ZARIN_PROFESSORS = [
     research: "Packaging logistics, returns management, omnichannel fulfillment, and sustainable freight systems.",
     paper: "Efficiency improvements in the freight transport system: Metrics and complexity (2026, VTI Rapport 1256)",
     why: "Direct match with Zarin's 3.5 years managing 120+ air cargo flights, multimodal C&A sea freight, and express returns for FedEx.",
-    draft: "Subject: Prospective M.Sc. Student in Logistics & SCM — Air/Sea Freight Operations Background\n\nDear Professor Hellström,\n\nI have followed your work at the Centre for Retail and Logistics (REAL), particularly your 2026 report on freight transport system efficiency metrics. Having managed over 120 international cargo flights (~4,000 tons airlifted) and multimodal freight operations for key global buyers (C&A, Hugo Boss) at MGH Group and Akij Logistics, I am applying for the M.Sc. in Logistics and Supply Chain Management at Lund under the Swedish Institute Scholarship (SISGP). I would welcome the opportunity to contribute to your research group on freight optimization and network resilience.\n\nSincerely,\nZarin Tasnim",
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Brings extensive operational data handling experience in CargoWise, SAP, and international air/ocean cargo manifests."
   },
   {
@@ -535,7 +563,9 @@ const ZARIN_PROFESSORS = [
     research: "Automated warehousing disruptions, supply chain resilience, and humanitarian logistics.",
     paper: "Managing technology-related disruptions and vulnerabilities in highly automated warehouse systems (2026, IJPR)",
     why: "Focuses on ERP/warehouse systems resilience; aligns with Zarin's daily use of SAP and CargoWise to navigate acute airline and customs bottlenecks.",
-    draft: "Subject: Inquiry from Prospective SCM Student — Automated Logistics & Systems Resilience\n\nDear Professor Kembro,\n\nYour recent paper in IJPR on managing technology-related disruptions in automated warehouse systems strongly resonates with my professional practice. Over the past three years at MGH Group and Akij Logistics, I have coordinated high-volume global freight accounts through CargoWise and SAP, resolving real-time bottleneck disruptions across 7 international trade lanes. I am preparing my application for Lund's M.Sc. in Logistics and Supply Chain Management and would be thrilled to conduct thesis research under your supervision.\n\nBest regards,\nZarin Tasnim",
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Hands-on experience mitigating air cargo disruptions, customs holds, and capacity crunches."
   },
   {
@@ -550,7 +580,9 @@ const ZARIN_PROFESSORS = [
     research: "Intermodal freight transport, terminal-centric logistics, dry ports, and global container supply chain design.",
     paper: "Terminal-centric logistics for integrated and profitable intermodal transport networks (2025, Journal of Transport Geography)",
     why: "Global container trades from Asia to Europe; directly parallels Zarin's sea freight consolidation for C&A and Logwin Logistics.",
-    draft: "Subject: Prospective Student for M.Sc. in Logistics and Transport Management\n\nDear Professor Bergqvist,\n\nI read with great interest your 2025 study in the Journal of Transport Geography on terminal-centric logistics for intermodal networks. Working in Dhaka's export hub managing ocean container movements for European retailers such as C&A, I have observed the exact intermodal handoff friction and port-hinterland constraints analyzed in your research. As I apply for the M.Sc. in Logistics and Transport Management at Gothenburg under the SISGP fellowship, I hope to explore research on buyer consolidation and trade corridor efficiency.\n\nRespectfully,\nZarin Tasnim",
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Empirical practitioner insight from managing buyer-led container supply chains out of South Asia."
   },
   {
@@ -565,7 +597,9 @@ const ZARIN_PROFESSORS = [
     research: "Maritime logistics, resilient supply chains, and international container shipping through geopolitical disruptions.",
     paper: "Regionalised supply chains and the impact on shipping (2025, GUP 351830)",
     why: "Maritime shipping and export-oriented container flows under disruption; exact domain of Zarin's work at Akij Logistics.",
-    draft: "Subject: Application to M.Sc. Logistics & Transport Management — Maritime & Supply Chain Track\n\nDear Professor Woxenius,\n\nYour 2025 keynote and research on regionalised supply chains and maritime resilience directly reflect the practical realities I encounter in export sales and sea freight coordination at Akij Logistics. I am applying to the Graduate School at the University of Gothenburg for Autumn 2027 and would be honoured to discuss prospective thesis topics at the interface of international trade corridors and shipping line coordination.\n\nSincerely,\nZarin Tasnim",
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Direct connection to South Asian export lanes and commercial carrier relations."
   },
   {
@@ -580,8 +614,10 @@ const ZARIN_PROFESSORS = [
     research: "Customer order decoupling points (CODP), lead-time dynamics, and enterprise systems integration.",
     paper: "Uncertainty–Dependency Interactions in Supply Chains: A Flow-Based Perspective (2026, APMS)",
     why: "Jönköping's M.Sc. in International Logistics & SCM is a top SISGP-eligible program; Wikner is the department's leading research authority.",
-    draft: "Subject: Prospective Student: M.Sc. in International Logistics and SCM\n\nDear Professor Wikner,\n\nI have followed your foundational research on customer order decoupling points and flow-based supply chain planning. In my role leading commercial freight operations at MGH and Akij, coordinating make-to-order air cargo dispatches against tight airline booking windows has made the interplay between lead-time and uncertainty central to my daily work. I am applying to Jönköping's M.Sc. in International Logistics and Supply Chain Management and hope to explore master's thesis research in your group.\n\nWarm regards,\nZarin Tasnim",
-    contribution: "Strong analytical BBA background (A grade in Business Math & Statistics) combined with ERP industry practice."
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
+    contribution: "BBA background (Business Statistics 3.50, Quantitative Business Analysis 3.50) combined with ERP industry practice."
   },
   {
     name: "Prof. Sibel Alumur Alev",
@@ -595,7 +631,9 @@ const ZARIN_PROFESSORS = [
     research: "Hub location and hub network design, freight transport hub optimization, and reverse logistics.",
     paper: "Strategic expansion of freight transportation hub networks under uncertainty (2025, OMEGA)",
     why: "Actively seeking graduate students; world authority on hub-and-spoke networks matching Zarin's 120-flight hub routing experience (Dubai, Jeddah, Hong Kong).",
-    draft: "Subject: Prospective MASc / MMSc Student — Air Cargo Hub Networks & Operations\n\nDear Professor Alumur Alev,\n\nI am writing to express my strong interest in joining your research team at the University of Waterloo. I noted your recent publication in OMEGA on the strategic expansion of freight transportation hub networks under uncertainty. Over the past three years at MGH Group and Akij Logistics, I managed 120+ international air cargo flights (~4,000 tons) connecting South Asia to global hubs in Dubai, Jeddah, and Hong Kong. With a BBA in Marketing and strong grades in Business Mathematics and Statistics, I would welcome the opportunity to apply my practical logistics background to hub network modeling under your supervision.\n\nSincerely,\nZarin Tasnim",
+    draft: "⏸ HOLD — her profile says: apply first and list her as potential advisor; do NOT cold-email. MASc deadline 1 Feb 2027 (inferred). Needs IELTS 7.0 (W6.5/S6.5) and evidence of calculus + linear algebra.",
+    email_status: "✅ VERIFIED 19 Oct 2026 — Waterloo MSE contact page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Extensive real-world data and operational perspective on air cargo hub consolidation."
   },
   {
@@ -610,7 +648,9 @@ const ZARIN_PROFESSORS = [
     research: "Supply chain analytics, freight distribution, crowdsourced delivery, and e-warehousing order consolidation.",
     paper: "Heatmap design for crowdsourced delivery (2025, Transportation Science)",
     why: "Actively recruiting graduate students; focuses on data analytics in freight operations.",
-    draft: "Subject: Prospective Research Student — Supply Chain Analytics & Logistics Optimization\n\nDear Professor Gzara,\n\nI saw on your departmental profile that you are currently seeking graduate students. Having followed your work on data-driven order consolidation and distribution network design in Transportation Science, I believe my operational experience in global freight forwarding—managing CargoWise workflows and large-scale cargo airlifts—would allow me to contribute meaningfully to empirical and analytical projects in your lab.\n\nBest regards,\nZarin Tasnim",
+    draft: "✅ SEND (resume only) — her profile says: 'Please email me your resume, and I will review it and respond if interested.' Zarin writes the short cover note herself.",
+    email_status: "✅ VERIFIED 19 Oct 2026 — https://uwaterloo.ca/management-science-engineering/profile/fgzara",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Enterprise logistics software expertise (CargoWise One, SAP Logistics, V-SOL)."
   },
   {
@@ -625,7 +665,9 @@ const ZARIN_PROFESSORS = [
     research: "Supply chain analytics, transportation routing under uncertainty, and machine learning in inventory planning.",
     paper: "Consistent home health care routing and scheduling under time uncertainty (2026, Transportation Research Part E)",
     why: "Chairholder of the Canada Research Chair in Supply Chain Analytics; supervises numerous funded M.Sc. theses in English.",
-    draft: "Subject: Prospective M.Sc. Research Student — Supply Chain Analytics\n\nDear Professor Adulyasak,\n\nI am writing to inquire about research opportunities in your Canada Research Chair team at HEC Montréal for the M.Sc. in Global Supply Chain Management. Having led high-volume commercial logistics accounts and time-critical air freight operations at MGH and Akij, I am eager to combine my operational background with advanced predictive and prescriptive analytics under your guidance.\n\nSincerely,\nZarin Tasnim",
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Practical expertise in multimodal freight contract execution and shipment scheduling."
   },
   {
@@ -640,7 +682,9 @@ const ZARIN_PROFESSORS = [
     research: "Humanitarian logistics, relief supply network design, and transportation procurement in developing economies.",
     paper: "Evacuation network design and planning under traffic congestion (2026, Transportation Research Part E)",
     why: "Expertise in emerging market freight and disaster relief logistics; matches Zarin's experience in South Asian transit corridors.",
-    draft: "Subject: Prospective M.Sc. Student — Humanitarian & Commercial Logistics Networks\n\nDear Professor Rancourt,\n\nYour research on transportation procurement and relief network design in developing regions is of great interest to me. Having managed complex logistics movements out of Bangladesh—one of the world's most dynamic yet constrained manufacturing and transit hubs—I would love to explore graduate research examining supply chain resilience and procurement optimization at HEC Montréal.\n\nWarm regards,\nZarin Tasnim",
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "First-hand operational experience with South Asian customs and cross-border transport regulations."
   },
   {
@@ -655,7 +699,9 @@ const ZARIN_PROFESSORS = [
     research: "Friendshoring, geopolitical disruptions, foreign sourcing, and supply base complexity.",
     paper: "Friendshoring: how geopolitical tensions affect foreign sourcing, supply base complexity, and sub-tier supplier sharing (2025, IJOPM)",
     why: "Directly studies international apparel and manufacturing export corridors (Bangladesh/China/Vietnam to EU/US), matching Zarin's C&A and Hugo Boss logistics management.",
-    draft: "Subject: Prospective M.Sc. Student — Global Sourcing & Freight Corridor Resilience\n\nDear Professor Charpin,\n\nI read your 2025 IJOPM paper on friendshoring and foreign sourcing complexity with great admiration. In my role at MGH Logistics handling sea and air cargo for major buyers including C&A and Hugo Boss, I have managed the practical shifts in supplier sharing and routing adjustments caused by recent global trade frictions. I am applying to HEC Montréal's M.Sc. program and would be thrilled to work on empirical supply chain research in your department.\n\nBest regards,\nZarin Tasnim",
+    draft: "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
+    email_status: "UNVERIFIED — not yet read from an official university page",
+    paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Direct primary account experience with major European retail apparel buyers in Bangladesh."
   }
 ];
@@ -675,7 +721,7 @@ const ZARIN_GATES = [
     name: "English Proficiency (IELTS Academic)",
     status: "CLEAR — VERIFIED ON FILE",
     summary: "Requires IELTS Academic 6.5 or 7.0 for English master's entry.",
-    detail: "British Council TRF 24BD047817TASZ001A confirms exam date 28 December 2024. Overall Band Score: 7.0 (C1 Proficient), Listening 7.5, Reading 6.5, Writing 6.5, Speaking 6.5. Valid through 28 December 2026.",
+    detail: "British Council TRF 24BD047817TASZ001A confirms exam date 28 December 2024. Listening 7.5, Reading 6.5 verified by OCR. Writing, Speaking and Overall are UNVERIFIED (earlier 6.5/6.5/7.0 values were never read from the document). Expires ~28 Dec 2026.",
     action: "Attach TRF directly to Sweden universityadmissions.se, Germany EPOS, and Canada portals before 28 December 2026.",
     impact: "Zero language risk, zero testing fee, and immediate eligibility for priority Swedish university admissions deadline (15 Jan 2027)."
   },
@@ -684,7 +730,7 @@ const ZARIN_GATES = [
     name: "Quantitative Coursework & ECTS Prerequisite",
     status: "CLEAR — AUDITED ON TRANSCRIPT",
     summary: "Requires mathematics, statistics, and operations management credits.",
-    detail: "BUP BBA transcript proves completion of ALD 1205 Business Mathematics (3.0 cr, Grade A 4.00), ALD 2104 Business Statistics (3.0 cr, Grade A 4.00), ALD 2201 Supply Chain Management (3.0 cr, Grade A 4.00), MKT 3101 Big Data in Marketing (3.0 cr, Grade A+ 4.00), and ALD 3201 Quantitative Business Analysis (3.0 cr, Grade A- 3.50). Total quantitative coursework: 15.0 BUP credits = ~21.4 ECTS.",
+    detail: "BUP BBA transcript shows ALD1205 Business Mathematics (3 cr, 2.00 — her lowest grade), ALD2104 Business Statistics (3 cr, 3.50), ALD3201 Quantitative Business Analysis (3 cr, 3.50), ALD2201 Supply Chain Management (3 cr, 3.50), MKT3101 Big Data in Marketing (3 cr, 4.00). Strictly quantitative: 9 BUP credits. No calculus or linear algebra course appears on the transcript — a real gap for engineering-style MASc programmes.",
     action: "Submit course module descriptions highlighting optimization, statistical testing, and linear programming coverage.",
     impact: "Fully qualifies for MSc Logistics and Supply Chain Management at Lund, Gothenburg, Jönköping, and HEC Montréal."
   },

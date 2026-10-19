@@ -1,4 +1,6 @@
-var module = { exports: {} };
+/* ============================================================================
+   SCHOLARVERSE — DEEP RESEARCH DOSSIERS & 80-PAPER MONOGRAPHS
+   ============================================================================ */
 const PROFESSORS_DEEP = {
   "Pascal François": {
     "name": "Pascal François",

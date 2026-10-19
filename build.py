@@ -33,6 +33,7 @@ DATA_FILES = [
     "zarin-data.js",         # ZARIN_DATA, ZARIN_PROFILE, ZARIN_TARGETS, ZARIN_DOCUMENTS, ZARIN_MISSIONS
     "zarin-professors-deep.js", # ZARIN_PROFESSORS_DEEP
     "couple-data.js",        # COUPLE_DATA, COUPLE_COUNTRIES, COUPLE_BUDGETS
+    "prof-verified.js",      # PROF_VERIFIED (Phase 1 primary-source verification records)
 ]
 
 # Every global the app reads. The check fails if any is missing or the wrong type.
@@ -44,7 +45,8 @@ REQUIRED = {
     "CAMPAIGN_PROFESSORS": "array", "PROFESSORS_DEEP": "object", "EXCEL_DATABASE": "object",
     "CITATIONS": "array", "SUBJECT_OPTIONS": "array", "SUBJECT_RANKED": "array",
     "FUNDING_SCHEMES": "array", "FUNDING_DEAD_ENDS": "array", "UNI_CENSUS": "array", "UNI_RANKED": "array",
-    "ZARIN_DATA": "object", "ZARIN_PROFESSORS_DEEP": "object", "COUPLE_DATA": "object"
+    "ZARIN_DATA": "object", "ZARIN_PROFESSORS_DEEP": "object", "COUPLE_DATA": "object",
+    "PROF_VERIFIED": "object"
 }
 
 CHECK_JS = r"""

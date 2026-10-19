@@ -3030,7 +3030,7 @@ const EXCEL_DATABASE = {
   ],
   "Zarin Course & Credit Audit": [
     [
-      "ZARIN TASNIM ? BBA (MARKETING) ACADEMIC CREDIT & PREREQUISITE AUDIT",
+      "ZARIN TASNIM — BBA (MARKETING) TRANSCRIPT, VERIFIED FROM OCR OF BUP TRANSCRIPT (prepared 05 Dec 2024)",
       "",
       "",
       "",
@@ -3040,7 +3040,7 @@ const EXCEL_DATABASE = {
       ""
     ],
     [
-      "Faculty of Business Studies, Bangladesh University of Professionals (BUP) | 126.0 Credits Completed | CGPA: 3.42 / 4.00 (German Bavarian Grade: 1.87 gut)",
+      "BUP Faculty of Business Studies | 126.00 credits | CGPA 3.42 / 4.00 | Roll 19251064 | Result published 07 May 2023 | Medium: English",
       "",
       "",
       "",
@@ -3050,7 +3050,17 @@ const EXCEL_DATABASE = {
       ""
     ],
     [
-      "AUDITED COURSEWORK CLASSIFICATION & GRADE BREAKDOWN",
+      "Check: all 8 semester GPAs (3.10, 2.90, 3.75, 3.45, 3.65, 3.65, 3.35, 3.50) and CGPA 3.42 recompute exactly from the grade points below. Letter grades not reproduced (OCR unreadable). Grade-to-course pairing assumes the OCR kept row order; semester totals prove the numbers, not the pairing — confirm the 3 quant rows against the paper transcript.",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "German grade (Bavarian formula): 1.87 if min pass = 2.00; 2.16 if min pass = 2.50 (transcript states min CGPA for degree 2.50). UNVERIFIED which one a given university uses.",
       "",
       "",
       "",
@@ -3063,436 +3073,446 @@ const EXCEL_DATABASE = {
       "#",
       "Semester",
       "Course Code",
-      "Course Title as on BUP Transcript",
+      "Course Title (transcript)",
       "Credits",
-      "Grade",
       "Grade Point",
-      "Prerequisite Classification & Fit Note"
+      "Semester GPA",
+      "Note"
     ],
     [
       "1",
       "Semester 1",
-      "ALD 1101",
-      "Introduction to Business",
-      "3.0",
-      "A",
-      "4.00",
-      "Foundation Business Studies"
+      "GED1101",
+      "Functional English",
+      "3.00",
+      "3.50",
+      "3.10",
+      ""
     ],
     [
       "2",
       "Semester 1",
-      "ALD 1102",
-      "Principles of Management",
-      "3.0",
-      "A-",
-      "3.50",
-      "Management Core"
+      "GED1102",
+      "Presentation Skill Development",
+      "3.00",
+      "3.25",
+      "3.10",
+      ""
     ],
     [
       "3",
       "Semester 1",
-      "ALD 1103",
-      "Financial Accounting",
-      "3.0",
-      "B+",
+      "GED1103",
+      "Bangladesh and International Studies",
+      "3.00",
       "3.25",
-      "Financial Management"
+      "3.10",
+      ""
     ],
     [
       "4",
       "Semester 1",
-      "ALD 1104",
-      "Fundamental English",
-      "3.0",
-      "A",
-      "4.00",
-      "English Language Proficiency"
+      "GED1104",
+      "Computer and Its Application in Business",
+      "3.00",
+      "3.00",
+      "3.10",
+      ""
     ],
     [
       "5",
       "Semester 1",
-      "GED 1101",
-      "Bangladesh Studies",
-      "3.0",
-      "A",
-      "4.00",
-      "General Education"
+      "MKT1105",
+      "Fundamentals of Marketing",
+      "3.00",
+      "2.50",
+      "3.10",
+      ""
     ],
     [
       "6",
       "Semester 2",
-      "ALD 1201",
-      "Micro Economics",
-      "3.0",
-      "A",
-      "4.00",
-      "Quantitative Economics Foundation"
+      "ALD1201",
+      "Microeconomics",
+      "3.00",
+      "3.25",
+      "2.90",
+      "Economics"
     ],
     [
       "7",
       "Semester 2",
-      "ALD 1202",
-      "Principles of Marketing",
-      "3.0",
-      "A",
-      "4.00",
-      "Core Marketing"
+      "ALD1202",
+      "Fundamentals of Management",
+      "3.00",
+      "2.50",
+      "2.90",
+      ""
     ],
     [
       "8",
       "Semester 2",
-      "ALD 1203",
-      "Managerial Accounting",
-      "3.0",
-      "B+",
-      "3.25",
-      "Cost & Operations Accounting"
+      "ALD1203",
+      "Fundamentals of Accounting",
+      "3.00",
+      "2.75",
+      "2.90",
+      "Accounting"
     ],
     [
       "9",
       "Semester 2",
-      "ALD 1204",
-      "Business Communication",
-      "3.0",
-      "A",
+      "ALD1204",
+      "Fundamentals of Finance",
+      "3.00",
       "4.00",
-      "Corporate Communications"
+      "2.90",
+      "Finance"
     ],
     [
       "10",
       "Semester 2",
-      "ALD 1205",
+      "ALD1205",
       "Business Mathematics",
-      "3.0",
-      "A",
-      "4.00",
-      "? QUANT PREREQUISITE (Calculus, Linear Equations, Matrix Algebra)"
+      "3.00",
+      "2.00",
+      "2.90",
+      "QUANT — lowest grade on transcript (2.00)"
     ],
     [
       "11",
       "Semester 3",
-      "ALD 2101",
-      "Financial Management",
-      "3.0",
-      "B+",
-      "3.25",
-      "Corporate Finance"
+      "ALD2102",
+      "Human Resources Management",
+      "3.00",
+      "4.00",
+      "3.75",
+      ""
     ],
     [
       "12",
       "Semester 3",
-      "ALD 2102",
-      "Organizational Behavior",
-      "3.0",
-      "A",
-      "4.00",
-      "Management Core"
+      "ALD2104",
+      "Business Statistics",
+      "3.00",
+      "3.50",
+      "3.75",
+      "QUANT (statistics)"
     ],
     [
       "13",
       "Semester 3",
-      "ALD 2103",
-      "Business Law",
-      "3.0",
-      "B",
+      "ALD2105",
+      "Business Communication",
       "3.00",
-      "Commercial Regulation"
+      "3.25",
+      "3.75",
+      ""
     ],
     [
       "14",
       "Semester 3",
-      "ALD 2104",
-      "Business Statistics",
-      "3.0",
-      "A",
+      "GED2103",
+      "Third Language",
+      "3.00",
       "4.00",
-      "? QUANT PREREQUISITE (Probability, Hypothesis Testing, Sampling, ANOVA)"
+      "3.75",
+      ""
     ],
     [
       "15",
       "Semester 3",
-      "GED 2101",
-      "Introduction to Psychology",
-      "3.0",
-      "A",
+      "MKT2101",
+      "Marketing Management",
+      "3.00",
       "4.00",
-      "General Education"
+      "3.75",
+      ""
     ],
     [
       "16",
       "Semester 4",
-      "ALD 2201",
+      "ALD2201",
       "Supply Chain Management",
-      "3.0",
-      "A",
-      "4.00",
-      "? CORE DOMAIN (Logistics Networks, Bullwhip Effect, SCM Design)"
+      "3.00",
+      "3.50",
+      "3.45",
+      "Core domain — supply chain"
     ],
     [
       "17",
       "Semester 4",
-      "ALD 2202",
-      "Human Resource Management",
-      "3.0",
-      "B+",
-      "3.25",
-      "Management Core"
+      "ALD2202",
+      "Organizational Behaviour",
+      "3.00",
+      "3.50",
+      "3.45",
+      ""
     ],
     [
       "18",
       "Semester 4",
-      "ALD 2203",
-      "Macro Economics",
-      "3.0",
-      "A-",
-      "3.50",
-      "Macroeconomic Policy & Aggregates"
+      "ALD2203",
+      "Macroeconomics",
+      "3.00",
+      "3.25",
+      "3.45",
+      "Economics"
     ],
     [
       "19",
       "Semester 4",
-      "ALD 2204",
-      "Management Information Systems",
-      "3.0",
-      "B+",
-      "3.25",
-      "Enterprise Software & ERP Foundations"
+      "ALD2204",
+      "Elementary Psychology",
+      "3.00",
+      "3.75",
+      "3.45",
+      ""
     ],
     [
       "20",
       "Semester 4",
-      "GED 2201",
-      "Introduction to Sociology",
-      "3.0",
-      "A",
-      "4.00",
-      "General Education"
+      "ALD2205",
+      "Legal Environment of Business",
+      "3.00",
+      "3.25",
+      "3.45",
+      ""
     ],
     [
       "21",
       "Semester 5",
-      "ALD 3101",
+      "ALD3105",
       "Entrepreneurship Development",
-      "3.0",
-      "B+",
-      "3.25",
-      "Business Innovation"
+      "3.00",
+      "3.75",
+      "3.65",
+      ""
     ],
     [
       "22",
       "Semester 5",
-      "ALD 3102",
-      "Operations Management",
-      "3.0",
-      "A-",
-      "3.50",
-      "? OPERATIONS PREREQUISITE (Capacity, Layout, Inventory, Quality)"
+      "MKT3101",
+      "Big Data in Marketing",
+      "3.00",
+      "4.00",
+      "3.65",
+      "Analytics-flavoured marketing course"
     ],
     [
       "23",
       "Semester 5",
-      "MKT 3101",
-      "Big Data in Marketing",
-      "3.0",
-      "A+",
-      "4.00",
-      "? ANALYTICS PREREQUISITE (Predictive Modeling, Data Mining, Python/R)"
+      "MKT3102",
+      "Services Marketing",
+      "3.00",
+      "3.25",
+      "3.65",
+      ""
     ],
     [
       "24",
       "Semester 5",
-      "MKT 3102",
-      "Consumer Behavior",
-      "3.0",
-      "A",
-      "4.00",
-      "Consumer Research"
+      "MKT3103",
+      "Global Marketing",
+      "3.00",
+      "3.50",
+      "3.65",
+      ""
     ],
     [
       "25",
       "Semester 5",
-      "MKT 3103",
-      "Integrated Marketing Communication",
-      "3.0",
-      "A",
-      "4.00",
-      "Campaign Strategy (Prof. Dr. Zahedul Alam)"
+      "MKT3104",
+      "Ethics in Marketing",
+      "3.00",
+      "3.75",
+      "3.65",
+      ""
     ],
     [
       "26",
       "Semester 6",
-      "ALD 3201",
+      "ALD3201",
       "Quantitative Business Analysis",
-      "3.0",
-      "A-",
+      "3.00",
       "3.50",
-      "? QUANT PREREQUISITE (Linear Programming, Queueing, Decision Trees)"
+      "3.65",
+      "QUANT (operations research / analytics)"
     ],
     [
       "27",
       "Semester 6",
-      "ALD 3202",
-      "International Business",
-      "3.0",
-      "A",
-      "4.00",
-      "Cross-Border Trade & Tariffs"
+      "MKT3202",
+      "Pricing Strategies and Practices",
+      "3.00",
+      "3.25",
+      "3.65",
+      ""
     ],
     [
       "28",
       "Semester 6",
-      "MKT 3201",
-      "Brand Management",
-      "3.0",
-      "A",
-      "4.00",
-      "Strategic Brand Equity (Prof. Dr. Zahedul Alam)"
+      "MKT3203",
+      "Marketing Information System (MIS)",
+      "3.00",
+      "3.50",
+      "3.65",
+      "Information systems"
     ],
     [
       "29",
       "Semester 6",
-      "MKT 3202",
-      "Service Marketing",
-      "3.0",
-      "B+",
-      "3.25",
-      "Service Operations"
+      "MKT3204",
+      "Brand Management",
+      "3.00",
+      "4.00",
+      "3.65",
+      ""
     ],
     [
       "30",
       "Semester 6",
-      "MKT 3203",
-      "Retail Management",
-      "3.0",
-      "A-",
-      "3.50",
-      "Retail Distribution & Merchandising"
+      "MKT3205",
+      "Consumer Behavior",
+      "3.00",
+      "4.00",
+      "3.65",
+      ""
     ],
     [
       "31",
       "Semester 7",
-      "ALD 4101",
-      "Strategic Management",
-      "3.0",
-      "B+",
-      "3.25",
-      "Corporate Strategy & Capstone"
+      "MKT4101",
+      "Digital Marketing",
+      "3.00",
+      "3.00",
+      "3.35",
+      ""
     ],
     [
       "32",
       "Semester 7",
-      "MKT 4101",
-      "Digital Marketing",
-      "3.0",
-      "A",
-      "4.00",
-      "Omnichannel Operations"
+      "MKT4102",
+      "Selling and Salesmanship",
+      "3.00",
+      "3.00",
+      "3.35",
+      ""
     ],
     [
       "33",
       "Semester 7",
-      "MKT 4102",
-      "Global Marketing",
-      "3.0",
-      "A",
-      "4.00",
-      "Export Trade Corridors"
+      "MKT4103",
+      "Marketing and Society",
+      "3.00",
+      "3.75",
+      "3.35",
+      ""
     ],
     [
       "34",
       "Semester 7",
-      "MKT 4103",
-      "Pricing Strategy",
-      "3.0",
-      "B+",
-      "3.25",
-      "Revenue Management & Yield Pricing"
+      "MKT4104",
+      "Marketing Research",
+      "3.00",
+      "3.75",
+      "3.35",
+      "Research methods"
     ],
     [
       "35",
       "Semester 7",
-      "MKT 4104",
-      "Marketing Research",
-      "3.0",
-      "A-",
-      "3.75",
-      "? RESEARCH PREREQUISITE (Econometric Surveys, SPSS, Regression)"
+      "MKT4105",
+      "Rural Marketing",
+      "3.00",
+      "3.25",
+      "3.35",
+      ""
     ],
     [
       "36",
       "Semester 8",
-      "MKT 4201",
-      "Customer Relationship Management",
-      "3.0",
-      "A",
-      "4.00",
-      "Client Account Management"
+      "MKT4201",
+      "Relationship Marketing",
+      "3.00",
+      "2.25",
+      "3.50",
+      ""
     ],
     [
       "37",
       "Semester 8",
-      "MKT 4202",
-      "Supply Chain Analytics",
-      "3.0",
-      "A",
+      "MKT4202",
+      "Tourism and Hospitality Marketing",
+      "3.00",
       "4.00",
-      "? ANALYTICS PREREQUISITE (Inventory Optimization & Forecasting)"
+      "3.50",
+      ""
     ],
     [
       "38",
       "Semester 8",
-      "MKT 4203",
-      "Industrial Marketing & B2B",
-      "3.0",
-      "A",
+      "MKT4203",
+      "Sustainable Marketing",
+      "3.00",
       "4.00",
-      "B2B Freight Procurement"
+      "3.50",
+      ""
     ],
     [
       "39",
       "Semester 8",
-      "MKT 4204",
-      "Sustainable Marketing & Logistics",
-      "3.0",
-      "A",
-      "4.00",
-      "Green Supply Chains & Reverse Logistics"
+      "MKT4204",
+      "Integrated Marketing Communication (IMC)",
+      "3.00",
+      "3.25",
+      "3.50",
+      ""
     ],
     [
       "40",
       "Semester 8",
-      "MKT 4897",
-      "Internship",
-      "3.0",
-      "A",
-      "4.00",
-      "Field Operations Experience"
+      "MKT4205",
+      "Strategic Marketing",
+      "3.00",
+      "3.50",
+      "3.50",
+      ""
     ],
     [
       "41",
       "Semester 8",
-      "MKT 4898",
-      "Internship Report / Defense",
-      "3.0",
-      "A",
+      "MKT4897",
+      "Internship",
+      "3.00",
       "4.00",
-      "Academic Defense of Empirical Project"
+      "3.50",
+      "Internship"
     ],
     [
       "42",
       "Semester 8",
-      "MKT 4899",
-      "Comprehensive Viva Voce",
-      "3.0",
-      "A-",
+      "MKT4899",
+      "Comprehensive Viva-Voce",
+      "3.00",
       "3.50",
-      "Final Faculty Board Examination"
+      "3.50",
+      ""
+    ],
+    [
+      "",
+      "TOTAL",
+      "",
+      "42 courses",
+      "126.00",
+      "CGPA 3.42",
+      "",
+      "Quant courses: Business Mathematics 2.00, Business Statistics 3.50, Quantitative Business Analysis 3.50 (avg 3.00)"
     ]
   ],
   "Zarin Applications & Targets": [
     [
-      "ZARIN TASNIM ? MASTER APPLICATION & SCHOLARSHIP PIPELINE",
+      "ZARIN TASNIM — MASTER APPLICATION & SCHOLARSHIP PIPELINE",
       "",
       "",
       "",
@@ -3538,7 +3558,7 @@ const EXCEL_DATABASE = {
       "MSc Logistics & SCM (Lund University)",
       "Full Tuition + SEK 12,000/mo + SEK 15,000 travel",
       "2027-02-25",
-      "PASSED (IELTS 7.0 C1, ~7k work hours)",
+      "Work hours likely met; IELTS W/S/Overall UNVERIFIED and TRF expires ~28 Dec 2026",
       "Centre for Retail & Logistics (REAL)"
     ],
     [
@@ -3548,17 +3568,17 @@ const EXCEL_DATABASE = {
       "MSc Logistics & Transport (Univ. of Gothenburg)",
       "Full Tuition + SEK 12,000/mo + SEK 15,000 travel",
       "2027-02-25",
-      "PASSED (IELTS 7.0 C1, ~7k work hours)",
+      "Work hours likely met; IELTS W/S/Overall UNVERIFIED and TRF expires ~28 Dec 2026",
       "Prof. Rickard Bergqvist (Container Trades)"
     ],
     [
       "3",
       "Swedish Institute (SISGP)",
       "Sweden",
-      "MSc International Logistics (J?nk?ping Univ.)",
+      "MSc International Logistics (Jönköping Univ.)",
       "Full Tuition + SEK 12,000/mo + SEK 15,000 travel",
       "2027-02-25",
-      "PASSED (IELTS 7.0 C1, ~7k work hours)",
+      "Work hours likely met; IELTS W/S/Overall UNVERIFIED and TRF expires ~28 Dec 2026",
       "Prof. Joakim Wikner (CODP Framework)"
     ],
     [
@@ -3568,7 +3588,7 @@ const EXCEL_DATABASE = {
       "MBA International Logistics & Trade (Bremen)",
       "?992/mo + Tuition Waiver + Travel/Insurance",
       "2026-12-15",
-      "PASSED (German Grade 1.87 gut, 3.5y exp)",
+      "German grade 1.87–2.16 (formula-dependent); verify programme rules",
       "Direct match with ocean & air freight career"
     ],
     [
@@ -3578,7 +3598,7 @@ const EXCEL_DATABASE = {
       "Master in Project Mgmt & Data Science (HTW Berlin)",
       "?992/mo + Tuition Waiver + Travel/Insurance",
       "2026-12-15",
-      "PASSED (German Grade 1.87 gut, 3.5y exp)",
+      "German grade 1.87–2.16 (formula-dependent); verify programme rules",
       "Combines big data analytics & logistics"
     ],
     [
@@ -3613,12 +3633,12 @@ const EXCEL_DATABASE = {
     ],
     [
       "9",
-      "HEC Montr?al",
+      "HEC Montréal",
       "Canada",
       "MSc Global Supply Chain Management",
       "Merit Scholarships + Research Assistantships",
       "2027-02-01",
-      "UNDER REVIEW (Prof. Yossiri Adulyasak / R?mi Charpin)",
+      "UNDER REVIEW (Prof. Yossiri Adulyasak / Rémi Charpin)",
       "Canada Research Chair in Supply Chain Analytics"
     ],
     [
@@ -3628,13 +3648,13 @@ const EXCEL_DATABASE = {
       "Unrestricted Open Work Permit",
       "Full-time Canadian employment authorization",
       "2027-05-01",
-      "GUARANTEED (Tied to Hasibul 24-mo Master's)",
+      "LIKELY if Hasibul holds an eligible study permit — check current IRCC spousal OWP rules (UNVERIFIED)",
       "Direct employment in Mississauga/Richmond hubs"
     ]
   ],
   "Couple Migration & Financial Matrix": [
     [
-      "COUPLE MIGRATION MATRIX & DUAL-INCOME PROJECTIONS ? HASIBUL & ZARIN",
+      "COUPLE MIGRATION MATRIX & DUAL-INCOME PROJECTIONS — HASIBUL & ZARIN",
       "",
       "",
       "",
@@ -3644,7 +3664,7 @@ const EXCEL_DATABASE = {
       ""
     ],
     [
-      "Hasibul Hasan Santo, CFA (Economics & Treasury ALM) + Zarin Tasnim (BBA, IELTS 7.0 C1, Logistics & Supply Chain)",
+      "Hasibul Hasan Santo, CFA (Economics & Treasury ALM) + Zarin Tasnim (BBA Marketing 3.42, IELTS Dec 2024 L7.5/R6.5, Logistics & Supply Chain)",
       "",
       "",
       "",

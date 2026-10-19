@@ -1821,6 +1821,7 @@ function renderProfessors(root) {
         ${sendable(p) ? '<span class="tag ok">Ready to email</span>' : blocked(p) ? '<span class="tag bad">Blocked</span>' : p.draft ? '<span class="tag warn">Hold</span>' : ''}
         ${p.recruiting ? '<span class="tag acc">Recruiting</span>' : ''}
         ${p.deep ? '<span class="tag plain">Dossier</span>' : ''}
+        ${(typeof PROF_VERIFIED !== 'undefined' && PROF_VERIFIED.professors && PROF_VERIFIED.professors[p.name]) ? `<span class="tag ok">Phase 1: ${esc(PROF_VERIFIED.professors[p.name].verdict || 'checked')}</span>` : '<span class="tag warn plain">Not yet verified</span>'}
         <span class="tag ${emailOk(p) ? 'ok' : 'warn'} plain">${emailOk(p) ? 'Email verified' : 'Email unconfirmed'}</span>
       </div>
       <div class="prof-mail">${esc(p.email || '')}</div>
@@ -1837,8 +1838,25 @@ function openProf(p) {
   const tabs = [];
   if (papers.length) tabs.push(['papers', `Papers (${papers.length})`]);
   if (deep.dossier) tabs.push(['dossier', 'Fit dossier']);
+  const ver = (typeof PROF_VERIFIED !== 'undefined' && PROF_VERIFIED.professors) ? PROF_VERIFIED.professors[p.name] : null;
+  if (ver) tabs.unshift(['verified', 'Verified (Phase 1)']);
   tabs.push(['overview', 'Contact & outreach'], ['network', 'Supervision']);
   const pane = {};
+  if (ver) {
+    const link = (u, t) => u && /^https?:/.test(u) ? `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t || 'source')}</a>` : `<span class="dim">${esc(u || 'no source')}</span>`;
+    const fld = (k, v) => v ? `<div class="field"><div class="field-k">${k}</div><div class="field-v">${v}</div></div>` : '';
+    const pr = ver.programme || {};
+    pane.verified = `<div class="note ${/keep/i.test(ver.verdict || '') ? 'ok' : 'warn'}" style="margin-top:12px"><div><strong>Verdict: ${esc(ver.verdict || 'UNVERIFIED')}.</strong> ${esc(ver.verdict_reason || '')}</div></div>
+      <p class="dim" style="font-size:12.5px;margin:10px 0 0">Checked ${esc(PROF_VERIFIED.checked || '')} against primary sources. Every line below links to the page it came from. Anything not listed was not verified.</p>
+      ${fld('Profile', `${esc(ver.title || '')}${ver.department ? ' · ' + esc(ver.department) : ''} — ${link(ver.profile_url, 'official page')}`)}
+      ${fld('Email (as printed on official page)', ver.email && !/UNVERIFIED|NOT FOUND/i.test(ver.email) ? `<span class="num" style="color:var(--green)">${esc(ver.email)}</span> — ${link(ver.email_source)}` : '<span style="color:var(--red)">UNVERIFIED</span>')}
+      ${fld('Taking students?', ver.accepting_students_quote ? `“${esc(ver.accepting_students_quote)}” — ${link(ver.accepting_source)}` : '<span class="dim">No statement found</span>')}
+      ${fld('Grants', (ver.grants || []).length ? '<ul class="list">' + ver.grants.map(g => `<li>${esc([g.program, g.title, g.amount, g.years].filter(Boolean).join(' · '))} — ${link(g.source)}</li>`).join('') + '</ul>' : '<span class="dim">None found in the databases searched</span>')}
+      ${fld('Programme', `<strong>${esc(pr.name || '')}</strong>${pr.type ? ' · ' + esc(pr.type) : ''}<br>${pr.supervisor_required ? 'Supervisor before applying: ' + esc(pr.supervisor_required) + '<br>' : ''}${pr.funding_package ? 'Funding: ' + esc(pr.funding_package) + ' — ' + link(pr.funding_source) + '<br>' : ''}${pr.deadline ? 'Deadline: ' + esc(pr.deadline) + ' — ' + link(pr.deadline_source) + '<br>' : ''}${pr.admission_fit ? 'Admission fit: ' + esc(pr.admission_fit) + '<br>' : ''}${pr.notes ? '<span class="dim">' + esc(pr.notes) + '</span>' : ''}`)}
+      ${fld('Students and theses (source-linked)', (ver.students || []).length ? '<ul class="list">' + ver.students.map(s => `<li><strong>${esc(s.name)}</strong>${s.degree ? ' (' + esc(s.degree) + (s.year ? ', ' + esc(s.year) : '') + ')' : (s.year ? ' (' + esc(s.year) + ')' : '')} — ${esc(s.thesis_title || '')} ${link(s.url)}</li>`).join('') + '</ul><p class="dim" style="font-size:12.5px">No student emails are listed. Reach students through LinkedIn or their university profile, not guessed addresses.</p>' : '<span class="dim">No verifiable students found</span>')}
+      ${fld('Recent papers (checked)', (ver.papers || []).length ? '<ul class="list">' + ver.papers.map(x => `<li>${esc(x.citation)} ${link(x.doi_or_url, 'link')}</li>`).join('') + '</ul>' : '')}
+      ${(ver.unverified || []).length ? `<div class="note warn" style="margin-top:14px"><div><strong>Still unverified:</strong> ${esc(ver.unverified.join('; '))}</div></div>` : ''}`;
+  }
   pane.papers = `<p class="dim" style="font-size:13px;margin:12px 0 4px">Each paper read for question, data, method, findings, caveats and a Bangladesh extension.</p>
     ${papers.map((pp, i) => `<details class="paper" ${i === 0 ? 'open' : ''}><summary><span class="num">${String(pp.num || i + 1).padStart(2, '0')}</span><span>${esc(pp.title)}</span></summary>
       <div class="paper-body">
