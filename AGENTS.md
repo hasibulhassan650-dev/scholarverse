@@ -55,6 +55,14 @@ Most updates are data updates. Prefer editing `src/data/*` over touching `app.js
 
 ## Data shapes (copy an existing entry when adding one)
 
+**FACT OBJECT (Verification Backbone)**
+`{ value, source, checked, status }`
+- `value`: the primitive value (string, number, array).
+- `source`: URL (e.g. `https://...`) or explicit file/document reference.
+- `checked`: `YYYY-MM-DD` date string of when this was primary-source verified.
+- `status`: `"verified"` | `"unverified"` | `"user_reported"`
+Any critical field (target deadline, funding, fundingDetail; professor email, recruiting; test scores/grades) can be either a primitive or a Fact Object. The helper `fv(x)` returns `x?.value !== undefined ? x.value : x`.
+
 **TARGETS** (`content.js`) — `id, name, short, country, flag, tier (1–3), priority ("P0"–"P2"),
 subjectFit, funding, fundingDetail, deadline, deadlineLabel, gateDeadline?, gateLabel?,
 status ("open" | "opening_soon" | "closed"), route, why, eligibleProgrammes[], gates[],

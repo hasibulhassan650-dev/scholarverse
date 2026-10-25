@@ -853,6 +853,13 @@ var module = { exports: {} };
    Every entry carries its status. Nothing is invented.
    ============================================================================ */
 
+const USER_INPUT_NEEDED = [
+  { id: "zarin-ielts-subscores", person: "Zarin", label: "IELTS Writing, Speaking & Overall Scores", desc: "TRF scan only showed Listening 7.5 and Reading 6.5 legibly. Type exact scores from paper TRF.", status: "pending" },
+  { id: "zarin-quant-grades", person: "Zarin", label: "Confirm 3 Quantitative Course Grades", desc: "Confirm Business Math (2.00), Business Stats (3.50), Quant Business Analysis (3.50) from paper transcript.", status: "pending" },
+  { id: "zarin-ssc-gpa", person: "Zarin", label: "SSC GPA Confirmation", desc: "Confirm BIAM Model School SSC GPA (OCR garbled as 'S_QQ' instead of 5.00).", status: "pending" },
+  { id: "hasibul-citybank-dates", person: "Hasibul", label: "City Bank HR Certificate Start Date", desc: "Exact official start date on City Bank letterhead (confirm Mar 2024 to avoid CV mismatch).", status: "pending" }
+];
+
 /* ---------------------------------------------------------------------------
    PROFILE — the verified record
    --------------------------------------------------------------------------- */
@@ -1009,11 +1016,11 @@ const TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PERFECT — funds Finance/Banking, not development",
-    funding: "Full tuition + SEK 12,000/month + SEK 15,000 travel grant",
-    fundingDetail: "A genuine full ride. Tuition paid directly to the university each semester, plus a monthly living allowance and a one-time travel grant.",
-    deadline: "2027-02-25",
+    funding: {"value":"Full tuition + SEK 12,000/month + SEK 15,000 travel grant","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    fundingDetail: {"value":"A genuine full ride. Tuition paid directly to the university each semester, plus a monthly living allowance of SEK 12,000 and SEK 15,000 travel grant.","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2027-02-25","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "SI portal: ~9–25 Feb 2027 (14:59 CET close)",
-    gateDeadline: "2027-01-15",
+    gateDeadline: {"value":"2027-01-15","source":"https://www.universityadmissions.se/intl/key-dates-and-deadlines/autumn-semester-dates/","checked":"2026-10-25","status":"verified"},
     gateLabel: "Swedish university application: ~16 Oct 2026 – 15 Jan 2027",
     status: "opening_soon",
     route: "Two-stage: apply to the university FIRST via universityadmissions.se, then the scholarship",
@@ -1036,6 +1043,22 @@ const TARGETS = [
       "Uppsala University — Statistics and Data Science (UU-M2660, 120cr)",
       "Linnaeus University — Economics (F3224, 120cr)"
     ],
+    scoring: {
+  "admitOdds": 4,
+  "admitRationale": "BUP BSS Econ 3.30 + CFA charter; multiple Swedish Finance/Econ programs available; admissions rank-ordered.",
+  "fundingOdds": 3,
+  "fundingRationale": "Competitive global pool, but Bangladesh on 34-country list and >4,840 work hours clears 3k gate comfortably.",
+  "fullCostCovered": "yes",
+  "fullCostRationale": "Full tuition + SEK 12,000/mo living allowance + SEK 15,000 travel grant.",
+  "subjectFit": 5,
+  "subjectRationale": "Direct finance/banking programs (SSE, Stockholm Univ, Lund).",
+  "careerPR": 4,
+  "careerPRRationale": "Sweden post-study work permit + fast-track tech/finance residency.",
+  "coupleFit": 5,
+  "coupleFitRationale": "Dual SISGP target with Zarin; spouse work permit if only one admitted.",
+  "effort": 3,
+  "effortRationale": "Central application via universityadmissions.se + 2-page CV/motivation letter for SI portal in Feb."
+},
     gates: [
       "Must be ADMITTED to an eligible programme on announcement day — reserve listings are rejected",
       "≥3,000 hours work experience prior to February 2026, from a MAXIMUM of THREE employers",
@@ -1065,14 +1088,30 @@ const TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PARTIAL — development economics, not finance",
-    funding: "€992/month + health/accident/liability insurance + travel allowance + possible rent subsidy (to €350) + family allowance",
-    fundingDetail: "12–42 months. No tuition at Göttingen (Lower Saxony). Includes a funded intensive German course Aug–Sep.",
-    deadline: "2026-11-15",
+    funding: {"value":"€992/month + health/accident/liability insurance + travel allowance + possible rent subsidy (to €350) + family allowance","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
+    fundingDetail: {"value":"12–42 months. No tuition at Göttingen (Lower Saxony). Includes a funded intensive German course Aug–Sep.","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-11-15","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "15 November 2026 — HARD",
     status: "open",
     route: "DIRECT to the university. ONE application covers BOTH the programme and the funding.",
     why: "Your most immediate hard deadline. Rich-country applicants cannot touch EPOS. Field match is economies. Roughly 6–7 scholarships a year.",
     eligibleProgrammes: ["MSc Development Economics, University of Göttingen, 24 months, English-taught"],
+    scoring: {
+  "admitOdds": 3,
+  "admitRationale": "Upper third requirement is a stretch for 3.30 CGPA, but 27 math/stats credits and CFA Level 7 offset it.",
+  "fundingOdds": 4,
+  "fundingRationale": "Direct university-administered DAAD EPOS quota (6-7 awards/yr).",
+  "fullCostCovered": "yes",
+  "fullCostRationale": "€992/mo + insurance + travel allowance; zero tuition in Lower Saxony.",
+  "subjectFit": 3,
+  "subjectRationale": "Development Economics, not pure financial economics.",
+  "careerPR": 4,
+  "careerPRRationale": "Germany 18-month jobseeker visa + EU Blue Card fast-track PR (21 months with B1 German).",
+  "coupleFit": 4,
+  "coupleFitRationale": "Spouse visa allows unrestricted employment in Germany; Bremen MBA sync.",
+  "effort": 4,
+  "effortRationale": "12-document Section C bundle, signed checklist, 2-page motivation, syllabus extraction."
+},
     gates: [
       "2+ years RELEVANT professional experience after the bachelor's, held AT TIME OF APPLICATION",
       "Degree normally not more than 6 years old (2022 → safe to 2028 ✅)",
@@ -1104,14 +1143,30 @@ const TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PARTIAL — agricultural/development economics",
-    funding: "€992/month + insurance + travel — AND tuition is WAIVED for EPOS recipients",
-    fundingDetail: "24 months, English-taught. Same EPOS package as Göttingen but with an explicit tuition waiver.",
-    deadline: "2026-12-15",
+    funding: {"value":"€992/month + insurance + travel — AND tuition is WAIVED for EPOS recipients","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
+    fundingDetail: {"value":"24 months, English-taught. Full DAAD EPOS package plus state tuition fee exemption under EPOS funding agreement.","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "15 December 2026 (window opens 15 Nov)",
     status: "opening_soon",
     route: "TWO PARTS — email PDFs to agecon@uni-hohenheim.de AND apply via HohCampus. Both required.",
     why: "⭐ THE SAFER OF YOUR TWO EPOS ROUTES. Hohenheim states an explicit numeric grade threshold of 2.5 on the German scale — your 2.05 PASSES it. English results accepted until 6 January.",
     eligibleProgrammes: ["MSc Agricultural Economics, University of Hohenheim, 24 months, English-taught"],
+    scoring: {
+  "admitOdds": 4,
+  "admitRationale": "Explicit 2.50 threshold on German scale; 3.30 converts to ~2.05 gut, safely clearing the academic gate.",
+  "fundingOdds": 3,
+  "fundingRationale": "DAAD EPOS selection committee quota; Agri-econ focus.",
+  "fullCostCovered": "yes",
+  "fullCostRationale": "€992/mo + insurance + travel + full tuition waiver under EPOS agreement.",
+  "subjectFit": 2,
+  "subjectRationale": "Agricultural Economics; weaker connection to ALM/Treasury.",
+  "careerPR": 4,
+  "careerPRRationale": "Standard German 18-month jobseeker visa & EU Blue Card path.",
+  "coupleFit": 4,
+  "coupleFitRationale": "German spouse employment rights.",
+  "effort": 3,
+  "effortRationale": "Email PDF bundle to agecon + HohCampus portal submission; motivation letter reused."
+},
     gates: [
       "Same DAAD EPOS gates as Göttingen",
       "Ranking letter required ONLY if GPA is worse than 2.5 German — yours is 2.05, so NOT required here",
@@ -1846,6 +1901,29 @@ const PLAYBOOK = [
     ]
   },
   {
+    id: "consultant-advisory",
+    title: "Admissions Consultant Playbook & Risk Matrix (WS-F)",
+    icon: "🧭",
+    sections: [
+      {
+        heading: "Strategic Risk Register — Known Pitfalls & Countermeasures (WS-F2)",
+        body: "• Göttingen 'Upper Third' vs 3.30 CGPA: Mitigate with CFA Level 7 charter proof, 27 math/stats credits, Thesis GPA 4.00, and Top 10 BIBM/MT rank certificates.\n• USask Edwards GMAT: 585 score is below the 600 recommended bar; highlight 3 cu verified calculus (ECON1103/1202) and 2+ years daily Treasury ALM balance-sheet management.\n• UBC Sauder Outreach Restriction: Official policy strictly bans faculty cold emails; cite Prof. Isha Agarwal's crowding-out & shadow-bank research solely in the 2-page Statement of Intent.\n• Waterloo MASc Quantitative Gate for Zarin: BBA transcript lacks calculus/linear algebra (Business Math was 2.00); pivot to Concordia MSCM (Option A Thesis) under Prof. Xiaodan Pan.\n• Zarin IELTS Expiration: Exam date 28 Dec 2024 expires ~28 Dec 2026; submit Canadian applications before expiry or schedule retake."
+      },
+      {
+        heading: "Question Bank: Admissions Offices & Info Sessions (WS-F3)",
+        body: "• Göttingen EPOS Zoom Session (26 Oct): 'Confirm whether 126 BUP credits (87 Econ / 27 Math & Stats) meets 60 ECTS econ + 12 ECTS math prerequisite, and confirm MOI upload slot in Step 3.'\n• USask Edwards Admissions (mscmanagement@edwards.usask.ca): 'What is the exact dollar amount of guaranteed funding, does it provide a living allowance beyond offsetting tuition ($16,875/yr), and is 15 Dec or 30 Jan the binding deadline?'\n• Concordia JMSB MSCM Office: 'Is GMAT waiver available for 3.5+ years multinational logistics leadership, and what entrance awards exist for Option A thesis students?'"
+      },
+      {
+        heading: "Interview Question Bank & Evidence Mapping (WS-F3)",
+        body: "• Q1: 'Why Development Economics when your background is in commercial banking and treasury?' → Evidence: A sovereign yield curve is critical financial infrastructure; without reliable term-structure modeling, central bank monetary policy transmission fails and credit spreads widen for developing economies.\n• Q2: 'Can you handle advanced econometric modeling with a 3.30 CGPA?' → Evidence: Completed 27 credits of mathematics, statistics, and econometrics; modelled all 310 outstanding Bangladesh government securities; cleared CFA Level 1, 2, and 3 on first attempt."
+      },
+      {
+        heading: "Narrative & Motivation Architecture (WS-F4)",
+        body: "• Governing Principle: Zero AI-generated prose. Both DAAD and Chevening screen for AI phrasing.\n• 2-Page EPOS Uniform Letter Structure: (1) Academic & professional trajectory (Treasury ALM, CFA, 310 G-sec curve model); (2) Developmental relevance (financial stability as economic infrastructure); (3) Course ranking justification (Göttingen #1 for empirical micro-development economics, Hohenheim #2 for trade/agricultural linkages); (4) Concrete re-employment and return trajectory."
+      }
+    ]
+  },
+  {
     id: "corrections",
     title: "Corrections — things that were reported wrong",
     icon: "🔧",
@@ -1864,7 +1942,7 @@ const PLAYBOOK = [
    EXPORT
    --------------------------------------------------------------------------- */
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { PROFILE, TARGETS, DEAD_ENDS, GATES, DOCUMENTS, AGENTS, PLAYBOOK };
+  module.exports = { USER_INPUT_NEEDED, PROFILE, TARGETS, DEAD_ENDS, GATES, DOCUMENTS, AGENTS, PLAYBOOK };
 }
 
 /* ============ missions.js ============ */
@@ -2183,6 +2261,64 @@ const MISSIONS = [
       "Confirm the transcript states the grading scale",
       "Order 2+ certified copies of each",
       "Keep the originals safe"
+    ]
+  },
+  {
+    id: "goettingen-pack-audit",
+    title: "Audit 12-Document Göttingen EPOS Pack (Section C Verbatim)",
+    detail: "Audit and verify all 12 document components specified in Section C of the official Göttingen Application Guide (2026 v2) for non-EEA applicants applying with the DAAD EPOS scholarship before final portal submission.",
+    why: "Incomplete uploads or uncertified documents lead to immediate administrative rejection with zero recourse. Pre-auditing against the exact Section C specifications one week prior to deadline ensures a flawless submission pack.",
+    xp: 150,
+    targets: ["goettingen"],
+    owner: "You",
+    deadline: "2026-11-08",
+    urgency: "critical",
+    category: "Documents",
+    actionUrl: "https://www.uni-goettingen.de/de/document/download/286b93d1993ca230ab1a72d483aa26ec.pdf/Application%20Guide_2026_v2.pdf",
+    actionLabel: "📥 Official Göttingen Guide (PDF)",
+    sources: [
+      { label: "Göttingen EPOS Document Checklist", url: "https://www.uni-goettingen.de/en/572463.html" },
+      { label: "Official Göttingen Application Guide 2026 v2 (Section C)", url: "https://www.uni-goettingen.de/de/document/download/286b93d1993ca230ab1a72d483aa26ec.pdf/Application%20Guide_2026_v2.pdf" }
+    ],
+    checklist: [
+      "1. University degree certificate (BSS in Economics, electronic verification key/code or notarized copy)",
+      "2. Transcript of records in English (showing all passed courses, credits, and grading scheme explanation)",
+      "3. Official course descriptions (syllabus/excerpts proving 87 cr Economics and 27 cr Math/Stats/Econometrics)",
+      "4. Resume/CV in English (Europass template, reverse chronological order, no unexplained gaps, dated)",
+      "5. Motivation Letter (max 2 pages, dated, justifying prioritization of Göttingen #1 and Hohenheim #2)",
+      "6. English language verification (BUP Medium of Instruction certificate; confirmed accepted in writing 13 Oct 2026)",
+      "7. APS certification (EXEMPT: Bangladesh applicants do not require APS)",
+      "8a. Summary of additional achievements (max 1 page, bullet points: CFA charter, ALM modeling, BAFEDA)",
+      "8b. Proof of additional achievements (single PDF combining CFA verification, training certificates, awards)",
+      "9a. DAAD EPOS checklist (printed physically, signed with blue ink pen, and rescanned to PDF)",
+      "9b. DAAD EPOS application form (typed electronically, identical for both choices, signed and dated)",
+      "9c. Certificate(s) of Employment (City Bank + bKash proving >2 years post-degree experience, re-employment clause)",
+      "9d. Employer Letter of Recommendation (City Bank letterhead, signed, stamped, current date of issue)"
+    ]
+  },
+  {
+    id: "edwards-funding-inquiry",
+    title: "Inquire on Edwards MSc Funding Package & Binding Deadline",
+    detail: "Send formal inquiry email to mscmanagement@edwards.usask.ca regarding international student guaranteed funding scope, deadline discrepancy, and English waiver criteria prior to portal outage.",
+    why: "Edwards page says Dec 15 for international funding while grad.usask.ca says Jan 30. Furthermore, published funding guarantees only 'offset tuition' ($16,875/yr) with no living stipend stated. Clarification prevents blind financial risk.",
+    xp: 90,
+    targets: ["edwards"],
+    owner: "You",
+    deadline: "2026-11-05",
+    urgency: "high",
+    category: "Communication",
+    actionUrl: "mailto:mscmanagement@edwards.usask.ca",
+    actionLabel: "✉️ Email Edwards Admissions",
+    sources: [
+      { label: "Edwards MSc in Management Page", url: "https://www.edwards.usask.ca/programs/mscmanagement/" },
+      { label: "USask CGPS Management Portal", url: "https://grad.usask.ca/programs/management.php" }
+    ],
+    submissionGuide: "Send concise email to mscmanagement@edwards.usask.ca with the 3 bulleted questions below. Note: USask application portal is scheduled for maintenance downtime for up to 6 days starting 1 November 2026.",
+    checklist: [
+      "Question 1: What is the exact dollar value of the guaranteed funding package for international MSc in Management (Finance) students, and does it provide living allowance support beyond offsetting tuition ($16,875/year)?",
+      "Question 2: Which deadline is strictly binding for international funding consideration: December 15, 2026 (Edwards page) or January 30, 2027 (grad.usask.ca)?",
+      "Question 3: Does the University of Saskatchewan accept a four-year Bachelor's Medium of Instruction (MOI) certificate from an accredited institution (BUP) for language verification, or is an IELTS/TOEFL mandatory?",
+      "Take note of USask application portal scheduled maintenance downtime starting 1 November (up to 6 days)"
     ]
   },
   {
@@ -3634,7 +3770,7 @@ const CAMPAIGN_PROFESSORS = [
     "research": "His OWN listed areas: MODELING VOLATILITY · DERIVATIVES · BOND MARKETS · MARKET MICROSTRUCTURE. His biography says: 'My research is broadly in the areas of risk-management and FIXED INCOME MARKETS.' He is also an affiliated member of WatRISQ at the University of Waterloo.",
     "paper": "Kalimipalli, Nayak & Perez (2013), \"Dynamic Effects of Idiosyncratic Volatility and Liquidity on Corporate Bond Spreads\", Journal of Banking and Finance 37(8): 2969–2990. Also Kalimipalli & Nayak (2012), \"Idiosyncratic Volatility vs. Liquidity? Evidence from the US Corporate Bond Market\", Journal of Financial Intermediation 21: 217–242. Also Das, Kalimipalli & Nayak (2014), \"Did CDS Trading Improve the Market for Corporate Bonds?\", Journal of Financial Economics 111(2): 495–525 — semifinalist for the FMA Best Paper award.",
     "paper_status": "✅ PAPERS NOW VERIFIED from his official page — the earlier 'NO PAPER FOUND' was a search failure, not a fact about him",
-    "supervision": "⭐ DIRECTOR of PhD and Research-based Master's Programs in Management. His listed master's supervision is mostly MFin/MBA/MABE project work — including 'Understanding the risks in MUNICIPAL BOND MARKETS' (2011), 'Regulation of CDS markets' (2009), 'Economic Capital' (2010), 'CDO Pricing' (2005) and 'Issues in SOVEREIGN DEBT CRISIS' (2010). ⚠️ BUT: most of the listed supervision dates are 2005–2014, and his PhD student Laleh Samarbaksh is listed as 'in progress since Jan 2011'.",
+    "supervision": "⚠️ UNVERIFIED / STALE (Historical 2005–2014 listings only from personal site): Listed MFin/MBA/MABE project work includes municipal bond risks (2011), CDS regulation (2009). No recent verified MSc theses traceable on primary repository. Verify current active supervision before outreach.",
     "draft": "⚠️ SENDABLE NOW — a real paper exists — but read the caveat",
     "why": "REASSESSED UPWARD, 60 → 74. My earlier note said 'no paper verified — the source could not find one'. That was MY search failing, not a fact. His official page lists a Journal of Financial Economics paper and two more in the Journal of Banking and Finance and the Journal of Financial Intermediation. His stated areas are bond markets, derivatives, volatility and market microstructure — a genuine fixed-income match. And he is the DIRECTOR of the research master's programme.",
     "contribution": "Bangladesh government securities are safe domestically but illiquid under stress, with no repo market at many tenors. His work measures how idiosyncratic volatility and liquidity jointly price corporate bond spreads. You can bring the bond-market version of that in a market with almost no secondary trading — measuring how liquidity is priced when there is very little of it.",
@@ -8786,6 +8922,138 @@ const SUBJECT_FALLBACK = [
 ];
 
 /* ---------------------------------------------------------------
+   FUNDING COSTS & FINANCIAL GAP MATRIX (WS-D4)
+   --------------------------------------------------------------- */
+const FUNDING_COSTS = [
+  {
+    targetId: "sisgp",
+    name: "Sweden SISGP (Dual or Single)",
+    country: "Sweden",
+    tuitionYear: 0,
+    tuitionNote: "Full tuition paid directly by Swedish Institute (~SEK 140,000/yr)",
+    officialLivingCost: 120000,
+    livingCostNote: "Swedish Migration Agency requirement: SEK 10,314/mo (~SEK 123,768/yr)",
+    guaranteedFunding: 144000,
+    fundingNote: "SEK 12,000/mo × 12 = SEK 144,000/yr + SEK 15,000 travel",
+    gapSingle: -24000, // surplus
+    gapCouple: -48000, // surplus if dual
+    verdict: "Full Surplus Full-Ride",
+    source: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/"
+  },
+  {
+    targetId: "goettingen",
+    name: "Göttingen EPOS (MSc Dev Econ)",
+    country: "Germany",
+    tuitionYear: 0,
+    tuitionNote: "Zero tuition in Lower Saxony; semester fee ~€400 incl public transit",
+    officialLivingCost: 11904,
+    livingCostNote: "German blocked account rate: €992/mo = €11,904/yr",
+    guaranteedFunding: 11904,
+    fundingNote: "€992/mo × 12 = €11,904/yr + health insurance + travel allowance",
+    gapSingle: 0,
+    gapCouple: -2400, // surplus with spouse work or family allowance
+    verdict: "100% Fully Funded",
+    source: "https://www.uni-goettingen.de/en/572462.html"
+  },
+  {
+    targetId: "hohenheim",
+    name: "Hohenheim EPOS (MSc AgEcon)",
+    country: "Germany",
+    tuitionYear: 0,
+    tuitionNote: "Tuition waived for EPOS recipients (otherwise €1,500/sem in Baden-Württemberg)",
+    officialLivingCost: 11904,
+    livingCostNote: "German blocked account rate: €992/mo = €11,904/yr",
+    guaranteedFunding: 11904,
+    fundingNote: "€992/mo × 12 = €11,904/yr + insurance + travel",
+    gapSingle: 0,
+    gapCouple: -2400,
+    verdict: "100% Fully Funded",
+    source: "https://www.uni-hohenheim.de/en/agecon-scholarships"
+  },
+  {
+    targetId: "edwards",
+    name: "USask Edwards (MSc Management - Finance)",
+    country: "Canada",
+    tuitionYear: 16875,
+    tuitionNote: "CAD $5,625/term × 3 terms = CAD $16,875/yr",
+    officialLivingCost: 20635,
+    livingCostNote: "IRCC study permit living expense requirement: CAD $20,635/yr (excluding tuition)",
+    guaranteedFunding: 16875,
+    fundingNote: "Official letter guarantees tuition offset only (~$16,875). Living stipend UNVERIFIED.",
+    gapSingle: 20635,
+    gapCouple: 15000,
+    verdict: "Tuition Covered; Living Gap of ~$20,635 CAD/yr",
+    source: "https://www.edwards.usask.ca/programs/mscmanagement/ ; IRCC cost guidelines"
+  },
+  {
+    targetId: "ubc",
+    name: "UBC Sauder (MSc Business Admin - Finance)",
+    country: "Canada",
+    tuitionYear: 6881,
+    tuitionNote: "CAD $10,081.65/yr minus $3,200 International Tuition Award = $6,881.65/yr",
+    officialLivingCost: 24000,
+    livingCostNote: "Vancouver cost of living estimate / IRCC minimum",
+    guaranteedFunding: 12000,
+    fundingNote: "No guaranteed stipend; summer RA up to $12,000 + hourly TA work ($37.53/hr)",
+    gapSingle: 18881,
+    gapCouple: 12000,
+    verdict: "Partial Funding; Living Gap of ~$18,881 CAD/yr",
+    source: "https://www.sauder.ubc.ca/programs/finance-msc"
+  }
+];
+
+/* ---------------------------------------------------------------
+   COUPLE CO-LOCATION MATRIX (WS-D5)
+   --------------------------------------------------------------- */
+const COUPLE_COLOCATION_MATRIX = [
+  {
+    hisTarget: "USask Edwards MSc Finance (Saskatoon)",
+    herTarget: "USask Edwards MSc SCM (Saskatoon)",
+    city: "Saskatoon, SK 🇨🇦",
+    status: "SAME_CAMPUS",
+    statusLabel: "✅ Same University & Campus",
+    synergy: "Single apartment rental, shared commute, joint Edwards network, SINP provincial retention pathway.",
+    combinedFunding: "Both receive departmental tuition offset; spouse open work permit available."
+  },
+  {
+    hisTarget: "Göttingen MSc Dev Econ (Lower Saxony)",
+    herTarget: "Hochschule Bremen MBA Logistics (Bremen)",
+    city: "Lower Saxony / Bremen Corridor 🇩🇪",
+    status: "SAME_COMMUTE_REGION",
+    statusLabel: "✅ Commutable Corridor (~1h 20m RE Train)",
+    synergy: "Regional transit pass included in semester tickets; shared residence in Hannover or Bremen possible.",
+    combinedFunding: "Dual DAAD EPOS (€992 + €992 = €1,984/mo combined tax-free)."
+  },
+  {
+    hisTarget: "Stockholm Univ / SSE Banking & Finance (Stockholm)",
+    herTarget: "Stockholm Univ / KTH SCM & Operations (Stockholm)",
+    city: "Stockholm 🇸🇪",
+    status: "SAME_CITY",
+    statusLabel: "✅ Same City",
+    synergy: "Vibrant global capital, top financial & logistics corporate headquarters.",
+    combinedFunding: "Dual SISGP (SEK 12,000 + SEK 12,000 = SEK 24,000/mo tax-free)."
+  },
+  {
+    hisTarget: "Lund Univ MSc Finance (Lund/Malmö)",
+    herTarget: "Lund Univ MSc Logistics & SCM (Lund)",
+    city: "Lund / Malmö 🇸🇪",
+    status: "SAME_CAMPUS",
+    statusLabel: "✅ Same University & Campus",
+    synergy: "World-class SCM center (REAL) and prestigious finance department. 10-minute walk between faculties.",
+    combinedFunding: "Dual SISGP (SEK 24,000/mo net combined)."
+  },
+  {
+    hisTarget: "USask Edwards (Saskatoon)",
+    herTarget: "Concordia MSCM (Montreal)",
+    city: "Saskatoon / Montreal 🇨🇦",
+    status: "SPLIT_PROVINCE",
+    statusLabel: "❌ Different Provinces (~3,000 km)",
+    synergy: "Separation required during academic terms; dual living costs destroy household savings.",
+    combinedFunding: "Double apartment rent and domestic flights erode funding."
+  }
+];
+
+/* ---------------------------------------------------------------
    FUNDING
    --------------------------------------------------------------- */
 const FUNDING_SCHEMES = [
@@ -8915,8 +9183,8 @@ const UNI_RANKED = [
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { SUBJECT_OPTIONS, SUBJECT_RANKED, SUBJECT_FALLBACK,
-                     FUNDING_SCHEMES, FUNDING_DEAD_ENDS,
-                     UNI_CENSUS, UNI_RANKED };
+                     FUNDING_SCHEMES, FUNDING_DEAD_ENDS, FUNDING_COSTS,
+                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED };
 }
 
 function normalizeName(n) {
@@ -9079,9 +9347,9 @@ const ZARIN_TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PERFECT — 100% match with 3.5 yrs MGH/Akij freight forwarding experience",
-    funding: "Full Tuition Paid to University + SEK 12,000/month living stipend + SEK 15,000 travel grant",
-    deadline: "2027-02-25",
-    gateDeadline: "2027-01-15",
+    funding: {"value":"Full Tuition Paid to University + SEK 12,000/month living stipend + SEK 15,000 travel grant","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2027-02-25","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    gateDeadline: {"value":"2027-01-15","source":"https://www.universityadmissions.se/intl/key-dates-and-deadlines/autumn-semester-dates/","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "SI Portal: 9–25 Feb 2027 (14:59 CET)",
     gateLabel: "UniversityAdmissions.se application: 16 Oct 2026 – 15 Jan 2027",
     status: "open",
@@ -9108,8 +9376,8 @@ const ZARIN_TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
-    funding: "€992/month stipend + full tuition waiver + health insurance + flights",
-    deadline: "2026-12-15",
+    funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://www.hs-bremen.de/studieren/studiengang/international-logistics-and-trade-mba/","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "Varies by programme: Oct – Dec 2026",
     status: "open",
     route: "Direct application to participating universities (Hochschule Bremen / HTW Berlin)",
@@ -9133,8 +9401,8 @@ const ZARIN_TARGETS = [
     tier: 1,
     priority: "P1",
     subjectFit: "HIGH — Global Supply Chain & International Management",
-    funding: "100% Tuition Exemption + €10,800/yr Living Stipend + 3-Month Paid Corporate Internship",
-    deadline: "2027-05-11",
+    funding: {"value":"100% Tuition Exemption + €10,800/yr Living Stipend + 3-Month Paid Corporate Internship","source":"https://investyourtalent.esteri.it/default.asp","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2027-05-11","source":"https://investyourtalent.esteri.it/default.asp","checked":"2026-10-25","status":"verified"},
     gateDeadline: "2027-03-31",
     deadlineLabel: "IYT Portal: April – May 2027",
     gateLabel: "University Pre-Admissions: Jan – March 2027",
@@ -9198,7 +9466,139 @@ const ZARIN_TARGETS = [
       "Dual income dramatically accelerates Canadian permanent residence (Express Entry / Canadian Experience Class)"
     ],
     nextAction: "Maintain clean employment documentation from MGH and Akij."
-  }
+  },
+{
+  "id": "zarin-concordia-mscm",
+  "name": "Concordia University — Master of Supply Chain Management (MSCM Option A Thesis)",
+  "short": "Concordia MSCM Thesis",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "PERFECT — 45-credit thesis program directed by Assoc. Prof. Xiaodan Pan",
+  "funding": {
+    "value": "Departmental TA/RA & Entrance Awards (~$10k-$15k/yr; living gap exists)",
+    "source": "https://www.concordia.ca/academics/graduate/supply-chain-management.html",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2027-02-01",
+    "source": "https://www.concordia.ca/academics/graduate/supply-chain-management.html",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "status": "open",
+  "route": "Direct application for Fall 2027 intake via Concordia Graduate Portal",
+  "eligibleProgrammes": [
+    "MSCM Option A (MSCA 699 - 21 credit research thesis)"
+  ],
+  "scoring": {
+    "admitOdds": 4,
+    "admitRationale": "BBA Marketing with 3.42 CGPA and 3.5 yrs logistics leadership; GMAT/GRE required.",
+    "fundingOdds": 3,
+    "fundingRationale": "Awards generally available for thesis students, but living costs require TA/RA top-up.",
+    "fullCostCovered": "no",
+    "fullCostRationale": "Partial funding only; living stipend not guaranteed on admission.",
+    "subjectFit": 5,
+    "subjectRationale": "Retail & multimodal supply chain research directly aligns with MGH/Akij freight background.",
+    "careerPR": 4,
+    "careerPRRationale": "Montreal logistics hub; 3-year PGWP upon graduation.",
+    "coupleFit": 2,
+    "coupleFitRationale": "Location in Montreal creates split-province risk if Hasibul attends USask in Saskatoon.",
+    "effort": 3,
+    "effortRationale": "Standard university application with 2 references and statement of intent."
+  },
+  "nextAction": "Confirm GMAT/GRE score requirements and prepare Option A thesis research proposal."
+},
+{
+  "id": "zarin-usask-edwards",
+  "name": "University of Saskatchewan — MSc in Management (Operations Management)",
+  "short": "USask Edwards MSc OM",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "HIGH — 2-year thesis master's in Operations Management",
+  "funding": {
+    "value": "Guaranteed Tuition Offset ($16,875/yr); living stipend UNVERIFIED",
+    "source": "https://www.edwards.usask.ca/programs/mscmanagement/",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2026-12-15",
+    "source": "https://www.edwards.usask.ca/programs/mscmanagement/",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "status": "open",
+  "route": "Online application via USask CGPS portal before 15 Dec priority funding deadline",
+  "eligibleProgrammes": [
+    "MSc in Management — Operations Management Stream"
+  ],
+  "scoring": {
+    "admitOdds": 3,
+    "admitRationale": "Requires GMAT 550+ and academic background; Prof. Samarghandi seeks OR/IE/CS degrees, so other OM supervisors must be named.",
+    "fundingOdds": 3,
+    "fundingRationale": "Guaranteed tuition offset for international students meeting 15 Dec deadline.",
+    "fullCostCovered": "no",
+    "fullCostRationale": "Tuition offset only; living expenses (~$20k/yr) not guaranteed.",
+    "subjectFit": 4,
+    "subjectRationale": "Operations and inventory management thesis stream.",
+    "careerPR": 5,
+    "careerPRRationale": "Saskatchewan SINP student retention category offers reliable provincial PR.",
+    "coupleFit": 5,
+    "coupleFitRationale": "100% campus and city co-location in Saskatoon with Hasibul.",
+    "effort": 3,
+    "effortRationale": "Application package with 3 references and statement of intent."
+  },
+  "nextAction": "Name 3 alternate OM faculty members (e.g. Dr. Keith Willoughby) in Letter of Intent."
+},
+{
+  "id": "zarin-waterloo-mase",
+  "name": "University of Waterloo — MASc Management Science & Engineering (Logistics)",
+  "short": "Waterloo MASc MSE",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 2,
+  "priority": "P1",
+  "subjectFit": "HIGH — Freight hub networks & distribution analytics",
+  "funding": {
+    "value": "Guaranteed Minimum $18,000/yr (Tuition gap of ~$8,000/yr before living)",
+    "source": "https://uwaterloo.ca/management-science-engineering/graduate-studies/funding",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2027-02-01",
+    "source": "https://uwaterloo.ca/management-science-engineering/graduate-studies/admission-requirements",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "status": "open",
+  "route": "Email resume to Prof. Fatma Gzara now; apply online before Feb 1",
+  "eligibleProgrammes": [
+    "MASc in Management Sciences (Logistics & Supply Chain stream)"
+  ],
+  "scoring": {
+    "admitOdds": 2,
+    "admitRationale": "Engineering faculty requires calculus & linear algebra (Business Math was 2.00); stretch admission.",
+    "fundingOdds": 3,
+    "fundingRationale": "Departmental minimum $18k/yr guaranteed if admitted with supervisor.",
+    "fullCostCovered": "no",
+    "fullCostRationale": "Tuition is $26k/yr for internationals; leaves ~$8k tuition deficit plus living costs.",
+    "subjectFit": 5,
+    "subjectRationale": "Air cargo hub optimization under Prof. Alumur Alev & Prof. Gzara.",
+    "careerPR": 4,
+    "careerPRRationale": "Ontario OINP Master's Stream and tech/supply chain corridor.",
+    "coupleFit": 3,
+    "coupleFitRationale": "Kitchener-Waterloo is separate from Saskatchewan; spouse work permit possible.",
+    "effort": 4,
+    "effortRationale": "Requires supervisor alignment and formal engineering department relevancy petition."
+  },
+  "nextAction": "Email resume to Prof. Fatma Gzara (fgzara@uwaterloo.ca)."
+}
 ];
 
 const ZARIN_DOCUMENTS = [
@@ -12016,6 +12416,18 @@ function getActivePlaybook() {
 const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fv = (x) => (x && typeof x === 'object' && x.value !== undefined) ? x.value : x;
+const factBadge = (f) => {
+  if (!f || typeof f !== 'object' || f.value === undefined) return '';
+  const isStale = f.checked && ((TODAY - new Date(f.checked)) / 86400000 > 30);
+  if (f.status === 'verified') {
+    return `<span class="tag ${isStale ? 'warn' : 'ok'}" title="Verified on ${esc(f.checked)}${f.source ? ` from ${esc(f.source)}` : ''}">${isStale ? '⚠️ Stale' : '✅ Verified'}</span>`;
+  }
+  if (f.status === 'user_reported') {
+    return `<span class="tag acc" title="User reported${f.checked ? ` on ${esc(f.checked)}` : ''}">👤 Self-reported</span>`;
+  }
+  return `<span class="tag warn plain" title="${esc(f.source || 'Unverified source')}">❓ Unverified</span>`;
+};
 const TODAY = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; })();
 const isoLocal = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const TODAY_ISO = isoLocal(TODAY);
@@ -12076,6 +12488,7 @@ const VIEWS = {
   documents:    { t: 'Documents',     s: 'What you hold, what is missing, and who has to produce it.', ic: 'doc', g: 'Act' },
   excel:        { t: 'Workbook',      s: 'The master spreadsheet, searchable sheet by sheet.', ic: 'sheet', g: 'Act' },
   targets:      { t: 'Targets',       s: 'Verified scholarship schemes, their windows, and the gates you must clear.', ic: 'target', g: 'Research' },
+  portfolio:    { t: 'Portfolio',     s: 'Decision engine: weighted admissions & funding analytics across targets.', ic: 'compass', g: 'Research' },
   universities: { t: 'Universities',  s: 'Ranked for usefulness to you, plus the full Canadian census against the 16-month gate.', ic: 'uni', g: 'Research' },
   subjects:     { t: 'Subject fit',   s: 'Which degree label actually gets funded.', ic: 'compass', g: 'Research' },
   funding:      { t: 'Funding',       s: 'What each scheme pays for, and which ones are dead ends.', ic: 'coin', g: 'Research' },
@@ -12195,11 +12608,19 @@ function renderChrome() {
   const setCount = (k, n, hot) => { const el = $('#nc-' + k); if (!el) return; el.hidden = !n; el.textContent = n; el.classList.toggle('hot', !!hot); };
 
   if (app.profileMode === 'zarin') {
-    $('#lvlTitle').textContent = `Shortlist Contender · Level 5`;
-    $('#xpText').textContent = `540 / 900 XP`;
-    $('#xpFill').style.width = `60%`;
-    $('#streakText').textContent = `IELTS 7.0 C1 (Valid)`;
-    setCount('missions', getActiveMissions().length);
+    const zState = getProfileState('zarin');
+    const ZM = getActiveMissions();
+    const totalXp = ZM.reduce((sum, m) => sum + (m.xp || 0), 0);
+    const zXp = zState.xp || 0;
+    const L = app.missions.levels;
+    const lv = [...L].reverse().find(l => zXp >= l.xp) || L[0];
+    const next = L.find(l => l.xp > zXp);
+    $('#lvlTitle').textContent = `${lv.title} · level ${lv.level}`;
+    $('#xpText').textContent = next ? `${zXp} / ${next.xp} XP` : `${zXp} / ${totalXp} XP`;
+    const pct = totalXp ? Math.min(100, Math.round((zXp / totalXp) * 100)) : 0;
+    $('#xpFill').style.width = Math.max(2, pct) + '%';
+    $('#streakText').textContent = 'Zarin Track';
+    setCount('missions', ZM.filter(m => !isDone(m.id)).length);
     const missingDocs = getActiveDocuments().filter(d => ['missing','not_started'].includes(d.status)).length;
     setCount('documents', missingDocs, missingDocs > 0);
     setCount('targets', getActiveTargets().length);
@@ -12247,7 +12668,7 @@ function pageHead(extra = '') {
 function renderView() {
   const fn = {
     dashboard: renderDashboard, calendar: renderCalendar, timeline: renderTimeline, missions: renderMissions,
-    documents: renderDocuments, excel: renderExcel, targets: renderTargets, universities: renderUniversities,
+    documents: renderDocuments, excel: renderExcel, targets: renderTargets, portfolio: renderPortfolio, universities: renderUniversities,
     subjects: renderSubjects, funding: renderFunding, professors: renderProfessors, citations: renderCitations,
     agents: renderAgents, playbook: renderPlaybook, profile: renderProfile
   }[app.view];
@@ -12263,12 +12684,56 @@ const chips = (id, opts, cur) => `<div class="chips" id="${id}">${opts.map(([k, 
 const wireChips = (root, id, fn) => $$(`#${id} .chip`, root).forEach(b => b.onclick = () => fn(b.dataset.k));
 
 /* ============================================================================
-   MISSIONS — shared toggle
+   MISSIONS — profile-aware state & toggle
    ============================================================================ */
-const missionMeta = (id) => app.missions.missions.find(m => m.id === id);
-const isDone = (id) => (app.state.missions.find(m => m.id === id) || {}).status === 'done';
+function getProfileState(mode = app.profileMode) {
+  if (mode === 'zarin') {
+    let s = null;
+    try { s = JSON.parse(localStorage.getItem('sv-zarin-state')); } catch (e) {}
+    if (!s || !Array.isArray(s.missions)) {
+      const ms = (typeof ZARIN_MISSIONS !== 'undefined' ? ZARIN_MISSIONS : []).map(m => ({ id: m.id, status: 'todo' }));
+      s = { missions: ms, xp: 0 };
+    }
+    return s;
+  }
+  return app.state;
+}
+
+const missionMeta = (id) => {
+  if (app.profileMode === 'zarin') {
+    const ZM = (typeof ZARIN_MISSIONS !== 'undefined' ? ZARIN_MISSIONS : []);
+    return ZM.find(m => m.id === id) || { id, title: 'Mission', xp: 50 };
+  }
+  return app.missions.missions.find(m => m.id === id) || { id, title: 'Mission', xp: 50 };
+};
+
+const isDone = (id) => {
+  if (app.profileMode === 'zarin') {
+    const s = getProfileState('zarin');
+    return (s.missions.find(m => m.id === id) || {}).status === 'done';
+  }
+  return (app.state.missions.find(m => m.id === id) || {}).status === 'done';
+};
 
 async function toggleMission(id) {
+  if (app.profileMode === 'zarin') {
+    const s = getProfileState('zarin');
+    const m = missionMeta(id);
+    let rec = s.missions.find(x => x.id === id);
+    if (!rec) { rec = { id, status: 'todo' }; s.missions.push(rec); }
+    if (rec.status === 'done') {
+      rec.status = 'todo';
+      s.xp = Math.max(0, (s.xp || 0) - (m.xp || 0));
+      toast('Mission reopened', `−${m.xp || 0} XP`);
+    } else {
+      rec.status = 'done';
+      s.xp = (s.xp || 0) + (m.xp || 0);
+      toast('Mission complete', `${m.title.slice(0, 60)} · +${m.xp || 0} XP`);
+    }
+    try { localStorage.setItem('sv-zarin-state', JSON.stringify(s)); } catch (e) {}
+    render();
+    return;
+  }
   try {
     const r = await post('/api/mission/complete', { missionId: id });
     app.state = r.state;
@@ -12575,7 +13040,8 @@ function openMission(id) {
    ============================================================================ */
 function horizonEvents() {
   const seen = new Set(), out = [];
-  const add = (name, date, kind, open) => {
+  const add = (name, rawDate, kind, open) => {
+    const date = fv(rawDate);
     const key = name.toLowerCase().split(' ')[0] + date;
     if (!date || seen.has(key)) return; seen.add(key);
     out.push({ name, date, kind, d: daysUntil(date), open });
@@ -12585,7 +13051,7 @@ function horizonEvents() {
   });
   CRITICAL_DATES.forEach(c => add(c.name, c.date, 'critical', () => openCritical(c)));
   add(ZOOM.name, ZOOM.date, 'session', openZoom);
-  return out.sort((a, b) => a.date.localeCompare(b.date));
+  return out.sort((a, b) => String(a.date).localeCompare(String(b.date)));
 }
 
 function runwayHTML(evs) {
@@ -12802,6 +13268,36 @@ function renderCoupleDashboard(root) {
       `).join('')}
     </div>
 
+    <div class="section-title" style="margin-top:28px"><h2>Couple Co-Location Matrix (WS-D5)</h2><span class="aside">Same City vs. Split Province Risk Assessment</span></div>
+    <div class="panel" style="margin-bottom:24px">
+      <div class="table-wrap" style="max-height:none">
+        <table class="tbl dense">
+          <thead>
+            <tr>
+              <th>Hasibul Target</th>
+              <th>Zarin Target</th>
+              <th>Location / Corridor</th>
+              <th>Status</th>
+              <th>Synergy / Risk Detail</th>
+              <th>Combined Funding</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${(typeof COUPLE_COLOCATION_MATRIX !== 'undefined' ? COUPLE_COLOCATION_MATRIX : []).map(cm => `
+              <tr style="background:${cm.status === 'SPLIT_PROVINCE' ? 'rgba(239, 68, 68, 0.05)' : 'var(--card-bg, #fff)'}">
+                <td><strong>${esc(cm.hisTarget)}</strong></td>
+                <td><strong>${esc(cm.herTarget)}</strong></td>
+                <td>${esc(cm.city)}</td>
+                <td><span class="tag ${cm.status === 'SPLIT_PROVINCE' ? 'bad' : 'ok'}">${esc(cm.statusLabel)}</span></td>
+                <td>${esc(cm.synergy)}</td>
+                <td style="font-weight:600;font-size:12.5px">${esc(cm.combinedFunding)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="section-title" style="margin-top:28px"><h2>Couple Household Budget &amp; Net Surplus Comparison</h2><span class="aside">Realistic monthly estimates</span></div>
     <div class="panel">
       <div class="table-wrap" style="max-height:none">
@@ -12848,6 +13344,50 @@ function renderCoupleDashboard(root) {
   `;
 
   $$('[data-goview]', root).forEach(b => b.onclick = () => go(b.dataset.goview));
+}
+
+function renderUserInputCard() {
+  const items = (typeof USER_INPUT_NEEDED !== 'undefined' ? USER_INPUT_NEEDED : []);
+  let savedStatus = {};
+  try { savedStatus = JSON.parse(localStorage.getItem('sv-user-inputs') || '{}'); } catch (e) {}
+  const pending = items.filter(it => !savedStatus[it.id]);
+  if (!pending.length) return '';
+  return `
+    <div class="note warn" style="margin-top:16px;border-left:4px solid var(--amber)">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>⚠️ Action Required: Missing Personal Documents Data (${pending.length})</strong>
+          <span class="dim" style="font-size:12px">Only you can provide these</span>
+        </div>
+        <p style="font-size:12.5px;margin:6px 0 10px;color:var(--ink-2)">These values could not be verified by automated OCR and require manual confirmation from physical papers:</p>
+        <div class="rows" style="gap:6px">
+          ${pending.map(it => `
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:var(--card-bg, #fff);border-radius:4px;border:1px solid var(--rule)">
+              <div>
+                <span class="tag acc" style="margin-right:6px">${esc(it.person)}</span>
+                <strong>${esc(it.label)}</strong>: <span class="dim">${esc(it.desc)}</span>
+              </div>
+              <button class="btn btn-sm" type="button" data-userinput="${esc(it.id)}">Mark Provided</button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function wireUserInputCard(root) {
+  $$('[data-userinput]', root).forEach(btn => {
+    btn.onclick = () => {
+      const id = btn.dataset.userinput;
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem('sv-user-inputs') || '{}'); } catch (e) {}
+      saved[id] = true;
+      try { localStorage.setItem('sv-user-inputs', JSON.stringify(saved)); } catch (e) {}
+      toast('Item marked as provided', id);
+      render();
+    };
+  });
 }
 
 function renderDashboard(root) {
@@ -12903,6 +13443,8 @@ function renderDashboard(root) {
         <button class="btn btn-sm" type="button" id="dEpos">EPOS playbook</button>
       </div>
     </div>
+
+    ${renderUserInputCard()}
 
     <div style="margin-top:22px">${stats([
       ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
@@ -12986,6 +13528,7 @@ function renderDashboard(root) {
   $('#dPal').onclick = openPalette;
   $('#dZoom').onclick = openZoom;
   $('#dEpos').onclick = () => { app.openPlay = 'epos'; go('playbook'); };
+  wireUserInputCard(root);
 }
 
 function openCritical(c) {
@@ -13025,14 +13568,17 @@ function openDeadModal(d) {
 function calendarEvents() {
   const evs = [];
   app.content.targets.forEach(t => {
-    if (t.deadline) evs.push({ id: 't-' + t.id, date: t.deadline, title: `${t.flag || ''} ${t.short || t.name}`, kind: 'target', cls: t.priority === 'P0' ? 'critical' : 'target', open: () => openTarget(t.id) });
-    if (t.gateDeadline) evs.push({ id: 'g-' + t.id, date: t.gateDeadline, title: `${t.short || t.name} university application`, kind: 'target', cls: 'target', open: () => openTarget(t.id) });
+    const dl = fv(t.deadline);
+    if (dl) evs.push({ id: 't-' + t.id, date: dl, title: `${t.flag || ''} ${t.short || t.name}`, kind: 'target', cls: t.priority === 'P0' ? 'critical' : 'target', open: () => openTarget(t.id) });
+    const gdl = fv(t.gateDeadline);
+    if (gdl) evs.push({ id: 'g-' + t.id, date: gdl, title: `${t.short || t.name} university application`, kind: 'target', cls: 'target', open: () => openTarget(t.id) });
   });
   app.missions.missions.forEach(m => {
-    if (m.deadline) evs.push({ id: 'm-' + m.id, date: m.deadline, title: m.title, kind: 'mission', cls: isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', open: () => openMission(m.id) });
+    const mdl = fv(m.deadline);
+    if (mdl) evs.push({ id: 'm-' + m.id, date: mdl, title: m.title, kind: 'mission', cls: isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', open: () => openMission(m.id) });
   });
-  CRITICAL_DATES.forEach(c => evs.push({ id: 'c-' + c.name, date: c.date, title: `${c.name} deadline`, kind: 'critical', cls: 'critical', open: () => openCritical(c) }));
-  evs.push({ id: 'zoom', date: ZOOM.date, title: 'Göttingen info session', kind: 'session', cls: 'high', open: openZoom });
+  CRITICAL_DATES.forEach(c => evs.push({ id: 'c-' + c.name, date: fv(c.date), title: `${c.name} deadline`, kind: 'critical', cls: 'critical', open: () => openCritical(c) }));
+  evs.push({ id: 'zoom', date: fv(ZOOM.date), title: 'Göttingen info session', kind: 'session', cls: 'high', open: openZoom });
   return evs;
 }
 
@@ -13089,11 +13635,11 @@ function renderCalendar(root) {
    ============================================================================ */
 function renderTimeline(root) {
   const rows = [
-    ...app.content.targets.filter(t => t.deadline).map(t => ({ date: t.deadline, name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) })),
-    ...app.content.targets.filter(t => t.gateDeadline).map(t => ({ date: t.gateDeadline, name: `${t.short || t.name}: ${t.gateLabel || 'university application'}`, kind: 'University', open: () => openTarget(t.id) })),
-    ...app.content.documents.filter(d => d.deadline).map(d => ({ date: d.deadline, name: d.name, kind: 'Document' })),
-    ...app.missions.missions.filter(m => m.deadline).map(m => ({ date: m.deadline, name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
-  ].sort((a, b) => a.date.localeCompare(b.date));
+    ...app.content.targets.filter(t => fv(t.deadline)).map(t => ({ date: fv(t.deadline), name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) })),
+    ...app.content.targets.filter(t => fv(t.gateDeadline)).map(t => ({ date: fv(t.gateDeadline), name: `${t.short || t.name}: ${t.gateLabel || 'university application'}`, kind: 'University', open: () => openTarget(t.id) })),
+    ...app.content.documents.filter(d => fv(d.deadline)).map(d => ({ date: fv(d.deadline), name: d.name, kind: 'Document' })),
+    ...app.missions.missions.filter(m => fv(m.deadline)).map(m => ({ date: fv(m.deadline), name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
+  ].sort((a, b) => String(a.date).localeCompare(String(b.date)));
   const groups = {};
   rows.forEach(r => (groups[r.date.slice(0, 7)] = groups[r.date.slice(0, 7)] || []).push(r));
   const flat = [];
@@ -13125,7 +13671,7 @@ function renderMissions(root) {
   const urg = { critical: 0, high: 1, medium: 2, low: 3 };
   list.sort((a, b) => (isDone(a.id) - isDone(b.id)) || (urg[a.urgency] ?? 9) - (urg[b.urgency] ?? 9) || String(a.deadline || '9').localeCompare(String(b.deadline || '9')));
 
-  const xpEarned = app.profileMode === 'zarin' ? 540 : app.state.xp;
+  const xpEarned = app.profileMode === 'zarin' ? (getProfileState('zarin').xp || 0) : app.state.xp;
 
   root.innerHTML = `${pageHead()}
     ${stats([['Done', done, `of ${M.length} missions`, 'ok'], ['Still open', M.length - done, 'sorted by urgency'], ['Your XP', xpEarned, `of ${xpAll} available`, 'acc'],
@@ -13473,7 +14019,18 @@ function openTarget(id) {
     <div class="dialog-sub">${esc(t.country)} · tier ${t.tier} · priority ${esc(t.priority || '—')}</div>
     <div class="tags"><span class="tag ${sc}">${sl}</span>${d !== null ? `<span class="tag ${d <= 30 ? 'warn' : 'plain'}">${dueText(d)}</span>` : ''}<span class="tag plain">${esc(t.deadlineLabel || fmt(t.deadline))}</span></div>
     ${t.nextAction ? `<div class="next-step"><b>Next action</b>${esc(t.nextAction)}</div>` : ''}
-    <div class="field"><div class="field-k">Funding</div><div class="field-v">${esc(t.funding)}${t.fundingDetail ? `\n<span class="muted">${esc(t.fundingDetail)}</span>` : ''}</div></div>
+    ${t.scoring ? `
+      <div class="field" style="margin-top:16px"><div class="field-k">Decision Analytics &amp; Scoring (WS-D1)</div>
+        <div class="tags" style="margin-top:4px">
+          <span class="tag ok">Admit Odds: ${t.scoring.admitOdds}/5</span>
+          <span class="tag ${t.scoring.fullCostCovered === 'yes' ? 'ok' : t.scoring.fullCostCovered === 'no' ? 'bad' : 'warn'}">Full Cost: ${esc(t.scoring.fullCostCovered)}</span>
+          <span class="tag acc">Subject Fit: ${t.scoring.subjectFit}/5</span>
+          <span class="tag plain">Career / PR: ${t.scoring.careerPR}/5</span>
+        </div>
+        <p class="dim" style="font-size:12px;margin:6px 0 0">Rationale: ${esc(t.scoring.admitRationale || '')} ${esc(t.scoring.fullCostRationale || '')}</p>
+      </div>
+    ` : ''}
+    <div class="field"><div class="field-k">Funding</div><div class="field-v">${esc(fv(t.funding))}${factBadge(t.funding)}${t.fundingDetail ? `\n<span class="muted">${esc(fv(t.fundingDetail))}</span>${factBadge(t.fundingDetail)}` : ''}</div></div>
     ${t.subjectFit ? `<div class="field"><div class="field-k">Subject fit</div><div class="field-v">${esc(t.subjectFit)}</div></div>` : ''}
     <div class="field"><div class="field-k">How to apply</div><div class="field-v">${esc(t.route)}${t.gateLabel ? `\n<span class="muted">${esc(t.gateLabel)}</span>` : ''}</div></div>
     <div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(t.why)}</div></div>
@@ -13597,6 +14154,137 @@ function renderUniversities(root) {
   });
 }
 
+/* ============================================================================
+   PORTFOLIO — DECISION ENGINE & ANALYTICS (WS-D1, D2, D3)
+   ============================================================================ */
+function renderPortfolio(root) {
+  const T = getActiveTargets();
+  let weights = { subject: 25, funding: 25, admit: 20, career: 15, couple: 10, effort: 5 };
+  try {
+    const saved = JSON.parse(localStorage.getItem('sv-portfolio-weights'));
+    if (saved) weights = { ...weights, ...saved };
+  } catch (e) {}
+
+  const calcScore = (t) => {
+    const s = t.scoring;
+    if (!s) return 0;
+    const norm = (val) => typeof val === 'number' ? (val / 5) * 100 : (val === 'yes' ? 100 : (val === 'no' ? 0 : 40));
+    const score = (
+      norm(s.subjectFit) * (weights.subject / 100) +
+      norm(s.fundingOdds) * (weights.funding / 100) +
+      norm(s.admitOdds) * (weights.admit / 100) +
+      norm(s.careerPR) * (weights.career / 100) +
+      norm(s.coupleFit) * (weights.couple / 100) +
+      norm(s.effort) * (weights.effort / 100)
+    );
+    return Math.round(score);
+  };
+
+  const list = T.map(t => ({ ...t, totalScore: calcScore(t) })).sort((a, b) => b.totalScore - a.totalScore);
+
+  // Portfolio Coverage Check (WS-D3)
+  const countries = new Set(list.map(t => t.country));
+  const reaches = list.filter(t => t.scoring && t.scoring.admitOdds <= 2).length;
+  const guaranteed = list.filter(t => t.scoring && t.scoring.fullCostCovered === 'yes').length;
+  const coverageWarnings = [];
+  if (countries.size <= 1) coverageWarnings.push("All applications concentrated in one country — high geopolitical / visa risk.");
+  if (reaches === list.length) coverageWarnings.push("All targets are reach-level (odds ≤ 2) — add at least 1 safety option.");
+  if (guaranteed === 0) coverageWarnings.push("Zero targets provide 100% guaranteed full-cost funding — portfolio violates the zero-self-funding rule.");
+
+  root.innerHTML = `
+    ${pageHead()}
+    ${stats([
+      ['Active Targets', list.length, 'portfolio candidates', 'ok'],
+      ['Guaranteed Full-Cost', guaranteed, 'covers tuition + living', guaranteed > 0 ? 'ok' : 'bad'],
+      ['Countries', countries.size, 'geographic spread', countries.size > 1 ? 'acc' : 'warn'],
+      ['Top Recommendation', list[0] ? (list[0].short || list[0].name) : '—', list[0] ? `Score ${list[0].totalScore}/100` : '', 'acc']
+    ])}
+
+    ${coverageWarnings.length ? `
+      <div class="note warn" style="margin-top:16px;border-left:4px solid var(--amber)">
+        <div>
+          <strong>⚠️ Portfolio Balance Advisory</strong>
+          <ul class="list" style="margin-top:6px">
+            ${coverageWarnings.map(w => `<li>${esc(w)}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    ` : `
+      <div class="note ok" style="margin-top:16px">
+        <div><strong>✅ Portfolio Diversification:</strong> Healthy geographic and risk distribution across European full-rides and Canadian thesis programs.</div>
+      </div>
+    `}
+
+    <div class="panel" style="margin-top:20px;padding:16px">
+      <div class="panel-head"><h2>Decision Weights (Customizable)</h2><span class="aside">Weights adjust rankings instantly</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:12px;margin-top:12px">
+        ${Object.entries(weights).map(([k, v]) => `
+          <div>
+            <label style="font-size:12px;text-transform:capitalize;font-weight:600">${esc(k)} (${v}%)</label>
+            <input type="range" class="input" min="0" max="50" step="5" value="${v}" data-weight="${esc(k)}" style="padding:0;height:24px">
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px"><h2>Ranked Application Portfolio</h2><span class="aside">Ranked by weighted score</span></div>
+    <div class="panel">
+      <div class="table-wrap" style="max-height:none">
+        <table class="tbl dense">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Target Scheme / Program</th>
+              <th>Country</th>
+              <th>Deadline</th>
+              <th>Full Cost Covered?</th>
+              <th>Admit Odds</th>
+              <th>Subject Fit</th>
+              <th>Career / PR</th>
+              <th>Score</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map((t, idx) => {
+              const sc = t.scoring || {};
+              const isDisqualified = sc.fullCostCovered === 'no';
+              return `
+                <tr style="opacity:${isDisqualified ? '0.7' : '1'};background:${isDisqualified ? 'rgba(239, 68, 68, 0.04)' : 'var(--card-bg, #fff)'}">
+                  <td class="num"><strong>#${idx + 1}</strong></td>
+                  <td>
+                    <strong>${esc(t.short || t.name)}</strong>
+                    ${isDisqualified ? '<div style="font-size:11px;color:var(--red);font-weight:600">⚠️ Partial funding — violates zero-self-funding rule</div>' : ''}
+                  </td>
+                  <td>${t.flag || ''} ${esc(t.country)}</td>
+                  <td class="num">${esc(fv(t.deadline))}</td>
+                  <td><span class="tag ${sc.fullCostCovered === 'yes' ? 'ok' : sc.fullCostCovered === 'no' ? 'bad' : 'warn'}">${esc(sc.fullCostCovered || 'unknown')}</span></td>
+                  <td class="num">${sc.admitOdds ? sc.admitOdds + '/5' : '—'}</td>
+                  <td class="num">${sc.subjectFit ? sc.subjectFit + '/5' : '—'}</td>
+                  <td class="num">${sc.careerPR ? sc.careerPR + '/5' : '—'}</td>
+                  <td class="num" style="font-weight:700;font-size:15px;color:${isDisqualified ? 'var(--ink-2)' : 'var(--green)'}">${t.totalScore}</td>
+                  <td><button class="btn btn-sm" type="button" data-opentarget="${esc(t.id)}">Dossier →</button></td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  $$('[data-weight]', root).forEach(slider => {
+    slider.oninput = () => {
+      weights[slider.dataset.weight] = parseInt(slider.value, 10);
+      try { localStorage.setItem('sv-portfolio-weights', JSON.stringify(weights)); } catch (e) {}
+      renderPortfolio(root);
+    };
+  });
+  $$('[data-opentarget]', root).forEach(btn => {
+    btn.onclick = () => openTarget(btn.dataset.opentarget);
+  });
+}
+
 function openUniModal(u) {
   const [name, prov, cat, gate, prog, note] = u;
   const CAT = { U15: 'U15 Research Intensive', MD: 'Medical/Doctoral', COMP: 'Comprehensive', PU: 'Primarily Undergraduate', SPEC: 'Specialised', FR: 'Francophone' };
@@ -13690,6 +14378,38 @@ function renderFunding(root) {
     ${stats([['Schemes tracked', S.length, 'funding routes'], ['Guaranteed', S.filter(s => /guaranteed/i.test(s.kind)).length, 'attach to admission', 'ok'],
       ['Open now', S.filter(s => s.status === 'OPEN').length, `of ${S.length}`], ['Verified amounts', ver, 'the rest are unconfirmed', 'warn'], ['Dead ends', DE.length, 'exclude you', 'bad']])}
     <div class="note warn" style="margin-bottom:16px"><div><strong>Only ${ver} of ${S.length} amounts are independently confirmed.</strong> Treat every unverified figure as a lead and check it on the official page before it shapes a decision.</div></div>
+    
+    <div class="section-title"><h2>Financial Gap Calculator (WS-D4)</h2><span class="aside">Tuition + Official Living Costs vs. Guaranteed Funding</span></div>
+    <div class="panel" style="margin-bottom:24px"><div class="table-wrap" style="max-height:none">
+      <table class="tbl dense">
+        <thead>
+          <tr>
+            <th>Target Program</th>
+            <th>Country</th>
+            <th>Tuition / Year</th>
+            <th>Official Living Cost</th>
+            <th>Guaranteed Funding</th>
+            <th>Net Gap (Single)</th>
+            <th>Status / Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${(typeof FUNDING_COSTS !== 'undefined' ? FUNDING_COSTS : []).map(fc => `
+            <tr style="background:${fc.gapSingle <= 0 ? 'var(--card-bg, #fff)' : 'rgba(239, 68, 68, 0.05)'}">
+              <td><strong>${esc(fc.name)}</strong></td>
+              <td>${esc(fc.country)}</td>
+              <td class="num">${fc.tuitionYear === 0 ? 'Zero / Waived' : '$' + fc.tuitionYear.toLocaleString()}</td>
+              <td class="num">${fc.officialLivingCost ? '$' + fc.officialLivingCost.toLocaleString() : '—'}</td>
+              <td class="num" style="color:var(--green)">${fc.guaranteedFunding ? '$' + fc.guaranteedFunding.toLocaleString() : 'None'}</td>
+              <td class="num" style="font-weight:700;color:${fc.gapSingle <= 0 ? 'var(--green)' : 'var(--red)'}">
+                ${fc.gapSingle <= 0 ? (fc.gapSingle === 0 ? '$0 (Break-even)' : '+$' + Math.abs(fc.gapSingle).toLocaleString() + ' Surplus') : '-$' + fc.gapSingle.toLocaleString() + ' DEFICIT'}
+              </td>
+              <td><span class="tag ${fc.gapSingle <= 0 ? 'ok' : 'bad'}">${esc(fc.verdict)}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div></div>
     <div class="panel"><div class="table-wrap" style="max-height:none">
       <table class="tbl"><thead><tr><th>Scheme</th><th>Who applies</th><th>Amount</th><th>Covers</th><th>Type</th><th>Deadline</th><th>Fall 2027</th><th>Verified</th></tr></thead>
       <tbody>${S.map(s => `<tr>

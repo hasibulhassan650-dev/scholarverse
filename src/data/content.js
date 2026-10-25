@@ -6,6 +6,13 @@ var module = { exports: {} };
    Every entry carries its status. Nothing is invented.
    ============================================================================ */
 
+const USER_INPUT_NEEDED = [
+  { id: "zarin-ielts-subscores", person: "Zarin", label: "IELTS Writing, Speaking & Overall Scores", desc: "TRF scan only showed Listening 7.5 and Reading 6.5 legibly. Type exact scores from paper TRF.", status: "pending" },
+  { id: "zarin-quant-grades", person: "Zarin", label: "Confirm 3 Quantitative Course Grades", desc: "Confirm Business Math (2.00), Business Stats (3.50), Quant Business Analysis (3.50) from paper transcript.", status: "pending" },
+  { id: "zarin-ssc-gpa", person: "Zarin", label: "SSC GPA Confirmation", desc: "Confirm BIAM Model School SSC GPA (OCR garbled as 'S_QQ' instead of 5.00).", status: "pending" },
+  { id: "hasibul-citybank-dates", person: "Hasibul", label: "City Bank HR Certificate Start Date", desc: "Exact official start date on City Bank letterhead (confirm Mar 2024 to avoid CV mismatch).", status: "pending" }
+];
+
 /* ---------------------------------------------------------------------------
    PROFILE — the verified record
    --------------------------------------------------------------------------- */
@@ -162,11 +169,11 @@ const TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PERFECT — funds Finance/Banking, not development",
-    funding: "Full tuition + SEK 12,000/month + SEK 15,000 travel grant",
-    fundingDetail: "A genuine full ride. Tuition paid directly to the university each semester, plus a monthly living allowance and a one-time travel grant.",
-    deadline: "2027-02-25",
+    funding: {"value":"Full tuition + SEK 12,000/month + SEK 15,000 travel grant","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    fundingDetail: {"value":"A genuine full ride. Tuition paid directly to the university each semester, plus a monthly living allowance of SEK 12,000 and SEK 15,000 travel grant.","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2027-02-25","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "SI portal: ~9–25 Feb 2027 (14:59 CET close)",
-    gateDeadline: "2027-01-15",
+    gateDeadline: {"value":"2027-01-15","source":"https://www.universityadmissions.se/intl/key-dates-and-deadlines/autumn-semester-dates/","checked":"2026-10-25","status":"verified"},
     gateLabel: "Swedish university application: ~16 Oct 2026 – 15 Jan 2027",
     status: "opening_soon",
     route: "Two-stage: apply to the university FIRST via universityadmissions.se, then the scholarship",
@@ -189,6 +196,22 @@ const TARGETS = [
       "Uppsala University — Statistics and Data Science (UU-M2660, 120cr)",
       "Linnaeus University — Economics (F3224, 120cr)"
     ],
+    scoring: {
+  "admitOdds": 4,
+  "admitRationale": "BUP BSS Econ 3.30 + CFA charter; multiple Swedish Finance/Econ programs available; admissions rank-ordered.",
+  "fundingOdds": 3,
+  "fundingRationale": "Competitive global pool, but Bangladesh on 34-country list and >4,840 work hours clears 3k gate comfortably.",
+  "fullCostCovered": "yes",
+  "fullCostRationale": "Full tuition + SEK 12,000/mo living allowance + SEK 15,000 travel grant.",
+  "subjectFit": 5,
+  "subjectRationale": "Direct finance/banking programs (SSE, Stockholm Univ, Lund).",
+  "careerPR": 4,
+  "careerPRRationale": "Sweden post-study work permit + fast-track tech/finance residency.",
+  "coupleFit": 5,
+  "coupleFitRationale": "Dual SISGP target with Zarin; spouse work permit if only one admitted.",
+  "effort": 3,
+  "effortRationale": "Central application via universityadmissions.se + 2-page CV/motivation letter for SI portal in Feb."
+},
     gates: [
       "Must be ADMITTED to an eligible programme on announcement day — reserve listings are rejected",
       "≥3,000 hours work experience prior to February 2026, from a MAXIMUM of THREE employers",
@@ -218,14 +241,30 @@ const TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PARTIAL — development economics, not finance",
-    funding: "€992/month + health/accident/liability insurance + travel allowance + possible rent subsidy (to €350) + family allowance",
-    fundingDetail: "12–42 months. No tuition at Göttingen (Lower Saxony). Includes a funded intensive German course Aug–Sep.",
-    deadline: "2026-11-15",
+    funding: {"value":"€992/month + health/accident/liability insurance + travel allowance + possible rent subsidy (to €350) + family allowance","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
+    fundingDetail: {"value":"12–42 months. No tuition at Göttingen (Lower Saxony). Includes a funded intensive German course Aug–Sep.","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-11-15","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "15 November 2026 — HARD",
     status: "open",
     route: "DIRECT to the university. ONE application covers BOTH the programme and the funding.",
     why: "Your most immediate hard deadline. Rich-country applicants cannot touch EPOS. Field match is economies. Roughly 6–7 scholarships a year.",
     eligibleProgrammes: ["MSc Development Economics, University of Göttingen, 24 months, English-taught"],
+    scoring: {
+  "admitOdds": 3,
+  "admitRationale": "Upper third requirement is a stretch for 3.30 CGPA, but 27 math/stats credits and CFA Level 7 offset it.",
+  "fundingOdds": 4,
+  "fundingRationale": "Direct university-administered DAAD EPOS quota (6-7 awards/yr).",
+  "fullCostCovered": "yes",
+  "fullCostRationale": "€992/mo + insurance + travel allowance; zero tuition in Lower Saxony.",
+  "subjectFit": 3,
+  "subjectRationale": "Development Economics, not pure financial economics.",
+  "careerPR": 4,
+  "careerPRRationale": "Germany 18-month jobseeker visa + EU Blue Card fast-track PR (21 months with B1 German).",
+  "coupleFit": 4,
+  "coupleFitRationale": "Spouse visa allows unrestricted employment in Germany; Bremen MBA sync.",
+  "effort": 4,
+  "effortRationale": "12-document Section C bundle, signed checklist, 2-page motivation, syllabus extraction."
+},
     gates: [
       "2+ years RELEVANT professional experience after the bachelor's, held AT TIME OF APPLICATION",
       "Degree normally not more than 6 years old (2022 → safe to 2028 ✅)",
@@ -257,14 +296,30 @@ const TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PARTIAL — agricultural/development economics",
-    funding: "€992/month + insurance + travel — AND tuition is WAIVED for EPOS recipients",
-    fundingDetail: "24 months, English-taught. Same EPOS package as Göttingen but with an explicit tuition waiver.",
-    deadline: "2026-12-15",
+    funding: {"value":"€992/month + insurance + travel — AND tuition is WAIVED for EPOS recipients","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
+    fundingDetail: {"value":"24 months, English-taught. Full DAAD EPOS package plus state tuition fee exemption under EPOS funding agreement.","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "15 December 2026 (window opens 15 Nov)",
     status: "opening_soon",
     route: "TWO PARTS — email PDFs to agecon@uni-hohenheim.de AND apply via HohCampus. Both required.",
     why: "⭐ THE SAFER OF YOUR TWO EPOS ROUTES. Hohenheim states an explicit numeric grade threshold of 2.5 on the German scale — your 2.05 PASSES it. English results accepted until 6 January.",
     eligibleProgrammes: ["MSc Agricultural Economics, University of Hohenheim, 24 months, English-taught"],
+    scoring: {
+  "admitOdds": 4,
+  "admitRationale": "Explicit 2.50 threshold on German scale; 3.30 converts to ~2.05 gut, safely clearing the academic gate.",
+  "fundingOdds": 3,
+  "fundingRationale": "DAAD EPOS selection committee quota; Agri-econ focus.",
+  "fullCostCovered": "yes",
+  "fullCostRationale": "€992/mo + insurance + travel + full tuition waiver under EPOS agreement.",
+  "subjectFit": 2,
+  "subjectRationale": "Agricultural Economics; weaker connection to ALM/Treasury.",
+  "careerPR": 4,
+  "careerPRRationale": "Standard German 18-month jobseeker visa & EU Blue Card path.",
+  "coupleFit": 4,
+  "coupleFitRationale": "German spouse employment rights.",
+  "effort": 3,
+  "effortRationale": "Email PDF bundle to agecon + HohCampus portal submission; motivation letter reused."
+},
     gates: [
       "Same DAAD EPOS gates as Göttingen",
       "Ranking letter required ONLY if GPA is worse than 2.5 German — yours is 2.05, so NOT required here",
@@ -999,6 +1054,29 @@ const PLAYBOOK = [
     ]
   },
   {
+    id: "consultant-advisory",
+    title: "Admissions Consultant Playbook & Risk Matrix (WS-F)",
+    icon: "🧭",
+    sections: [
+      {
+        heading: "Strategic Risk Register — Known Pitfalls & Countermeasures (WS-F2)",
+        body: "• Göttingen 'Upper Third' vs 3.30 CGPA: Mitigate with CFA Level 7 charter proof, 27 math/stats credits, Thesis GPA 4.00, and Top 10 BIBM/MT rank certificates.\n• USask Edwards GMAT: 585 score is below the 600 recommended bar; highlight 3 cu verified calculus (ECON1103/1202) and 2+ years daily Treasury ALM balance-sheet management.\n• UBC Sauder Outreach Restriction: Official policy strictly bans faculty cold emails; cite Prof. Isha Agarwal's crowding-out & shadow-bank research solely in the 2-page Statement of Intent.\n• Waterloo MASc Quantitative Gate for Zarin: BBA transcript lacks calculus/linear algebra (Business Math was 2.00); pivot to Concordia MSCM (Option A Thesis) under Prof. Xiaodan Pan.\n• Zarin IELTS Expiration: Exam date 28 Dec 2024 expires ~28 Dec 2026; submit Canadian applications before expiry or schedule retake."
+      },
+      {
+        heading: "Question Bank: Admissions Offices & Info Sessions (WS-F3)",
+        body: "• Göttingen EPOS Zoom Session (26 Oct): 'Confirm whether 126 BUP credits (87 Econ / 27 Math & Stats) meets 60 ECTS econ + 12 ECTS math prerequisite, and confirm MOI upload slot in Step 3.'\n• USask Edwards Admissions (mscmanagement@edwards.usask.ca): 'What is the exact dollar amount of guaranteed funding, does it provide a living allowance beyond offsetting tuition ($16,875/yr), and is 15 Dec or 30 Jan the binding deadline?'\n• Concordia JMSB MSCM Office: 'Is GMAT waiver available for 3.5+ years multinational logistics leadership, and what entrance awards exist for Option A thesis students?'"
+      },
+      {
+        heading: "Interview Question Bank & Evidence Mapping (WS-F3)",
+        body: "• Q1: 'Why Development Economics when your background is in commercial banking and treasury?' → Evidence: A sovereign yield curve is critical financial infrastructure; without reliable term-structure modeling, central bank monetary policy transmission fails and credit spreads widen for developing economies.\n• Q2: 'Can you handle advanced econometric modeling with a 3.30 CGPA?' → Evidence: Completed 27 credits of mathematics, statistics, and econometrics; modelled all 310 outstanding Bangladesh government securities; cleared CFA Level 1, 2, and 3 on first attempt."
+      },
+      {
+        heading: "Narrative & Motivation Architecture (WS-F4)",
+        body: "• Governing Principle: Zero AI-generated prose. Both DAAD and Chevening screen for AI phrasing.\n• 2-Page EPOS Uniform Letter Structure: (1) Academic & professional trajectory (Treasury ALM, CFA, 310 G-sec curve model); (2) Developmental relevance (financial stability as economic infrastructure); (3) Course ranking justification (Göttingen #1 for empirical micro-development economics, Hohenheim #2 for trade/agricultural linkages); (4) Concrete re-employment and return trajectory."
+      }
+    ]
+  },
+  {
     id: "corrections",
     title: "Corrections — things that were reported wrong",
     icon: "🔧",
@@ -1017,5 +1095,5 @@ const PLAYBOOK = [
    EXPORT
    --------------------------------------------------------------------------- */
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { PROFILE, TARGETS, DEAD_ENDS, GATES, DOCUMENTS, AGENTS, PLAYBOOK };
+  module.exports = { USER_INPUT_NEEDED, PROFILE, TARGETS, DEAD_ENDS, GATES, DOCUMENTS, AGENTS, PLAYBOOK };
 }

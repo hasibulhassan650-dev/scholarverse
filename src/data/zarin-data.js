@@ -134,9 +134,9 @@ const ZARIN_TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "PERFECT — 100% match with 3.5 yrs MGH/Akij freight forwarding experience",
-    funding: "Full Tuition Paid to University + SEK 12,000/month living stipend + SEK 15,000 travel grant",
-    deadline: "2027-02-25",
-    gateDeadline: "2027-01-15",
+    funding: {"value":"Full Tuition Paid to University + SEK 12,000/month living stipend + SEK 15,000 travel grant","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2027-02-25","source":"https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/","checked":"2026-10-25","status":"verified"},
+    gateDeadline: {"value":"2027-01-15","source":"https://www.universityadmissions.se/intl/key-dates-and-deadlines/autumn-semester-dates/","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "SI Portal: 9–25 Feb 2027 (14:59 CET)",
     gateLabel: "UniversityAdmissions.se application: 16 Oct 2026 – 15 Jan 2027",
     status: "open",
@@ -163,8 +163,8 @@ const ZARIN_TARGETS = [
     tier: 1,
     priority: "P0",
     subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
-    funding: "€992/month stipend + full tuition waiver + health insurance + flights",
-    deadline: "2026-12-15",
+    funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://www.hs-bremen.de/studieren/studiengang/international-logistics-and-trade-mba/","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "Varies by programme: Oct – Dec 2026",
     status: "open",
     route: "Direct application to participating universities (Hochschule Bremen / HTW Berlin)",
@@ -188,8 +188,8 @@ const ZARIN_TARGETS = [
     tier: 1,
     priority: "P1",
     subjectFit: "HIGH — Global Supply Chain & International Management",
-    funding: "100% Tuition Exemption + €10,800/yr Living Stipend + 3-Month Paid Corporate Internship",
-    deadline: "2027-05-11",
+    funding: {"value":"100% Tuition Exemption + €10,800/yr Living Stipend + 3-Month Paid Corporate Internship","source":"https://investyourtalent.esteri.it/default.asp","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2027-05-11","source":"https://investyourtalent.esteri.it/default.asp","checked":"2026-10-25","status":"verified"},
     gateDeadline: "2027-03-31",
     deadlineLabel: "IYT Portal: April – May 2027",
     gateLabel: "University Pre-Admissions: Jan – March 2027",
@@ -253,7 +253,139 @@ const ZARIN_TARGETS = [
       "Dual income dramatically accelerates Canadian permanent residence (Express Entry / Canadian Experience Class)"
     ],
     nextAction: "Maintain clean employment documentation from MGH and Akij."
-  }
+  },
+{
+  "id": "zarin-concordia-mscm",
+  "name": "Concordia University — Master of Supply Chain Management (MSCM Option A Thesis)",
+  "short": "Concordia MSCM Thesis",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "PERFECT — 45-credit thesis program directed by Assoc. Prof. Xiaodan Pan",
+  "funding": {
+    "value": "Departmental TA/RA & Entrance Awards (~$10k-$15k/yr; living gap exists)",
+    "source": "https://www.concordia.ca/academics/graduate/supply-chain-management.html",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2027-02-01",
+    "source": "https://www.concordia.ca/academics/graduate/supply-chain-management.html",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "status": "open",
+  "route": "Direct application for Fall 2027 intake via Concordia Graduate Portal",
+  "eligibleProgrammes": [
+    "MSCM Option A (MSCA 699 - 21 credit research thesis)"
+  ],
+  "scoring": {
+    "admitOdds": 4,
+    "admitRationale": "BBA Marketing with 3.42 CGPA and 3.5 yrs logistics leadership; GMAT/GRE required.",
+    "fundingOdds": 3,
+    "fundingRationale": "Awards generally available for thesis students, but living costs require TA/RA top-up.",
+    "fullCostCovered": "no",
+    "fullCostRationale": "Partial funding only; living stipend not guaranteed on admission.",
+    "subjectFit": 5,
+    "subjectRationale": "Retail & multimodal supply chain research directly aligns with MGH/Akij freight background.",
+    "careerPR": 4,
+    "careerPRRationale": "Montreal logistics hub; 3-year PGWP upon graduation.",
+    "coupleFit": 2,
+    "coupleFitRationale": "Location in Montreal creates split-province risk if Hasibul attends USask in Saskatoon.",
+    "effort": 3,
+    "effortRationale": "Standard university application with 2 references and statement of intent."
+  },
+  "nextAction": "Confirm GMAT/GRE score requirements and prepare Option A thesis research proposal."
+},
+{
+  "id": "zarin-usask-edwards",
+  "name": "University of Saskatchewan — MSc in Management (Operations Management)",
+  "short": "USask Edwards MSc OM",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "HIGH — 2-year thesis master's in Operations Management",
+  "funding": {
+    "value": "Guaranteed Tuition Offset ($16,875/yr); living stipend UNVERIFIED",
+    "source": "https://www.edwards.usask.ca/programs/mscmanagement/",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2026-12-15",
+    "source": "https://www.edwards.usask.ca/programs/mscmanagement/",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "status": "open",
+  "route": "Online application via USask CGPS portal before 15 Dec priority funding deadline",
+  "eligibleProgrammes": [
+    "MSc in Management — Operations Management Stream"
+  ],
+  "scoring": {
+    "admitOdds": 3,
+    "admitRationale": "Requires GMAT 550+ and academic background; Prof. Samarghandi seeks OR/IE/CS degrees, so other OM supervisors must be named.",
+    "fundingOdds": 3,
+    "fundingRationale": "Guaranteed tuition offset for international students meeting 15 Dec deadline.",
+    "fullCostCovered": "no",
+    "fullCostRationale": "Tuition offset only; living expenses (~$20k/yr) not guaranteed.",
+    "subjectFit": 4,
+    "subjectRationale": "Operations and inventory management thesis stream.",
+    "careerPR": 5,
+    "careerPRRationale": "Saskatchewan SINP student retention category offers reliable provincial PR.",
+    "coupleFit": 5,
+    "coupleFitRationale": "100% campus and city co-location in Saskatoon with Hasibul.",
+    "effort": 3,
+    "effortRationale": "Application package with 3 references and statement of intent."
+  },
+  "nextAction": "Name 3 alternate OM faculty members (e.g. Dr. Keith Willoughby) in Letter of Intent."
+},
+{
+  "id": "zarin-waterloo-mase",
+  "name": "University of Waterloo — MASc Management Science & Engineering (Logistics)",
+  "short": "Waterloo MASc MSE",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 2,
+  "priority": "P1",
+  "subjectFit": "HIGH — Freight hub networks & distribution analytics",
+  "funding": {
+    "value": "Guaranteed Minimum $18,000/yr (Tuition gap of ~$8,000/yr before living)",
+    "source": "https://uwaterloo.ca/management-science-engineering/graduate-studies/funding",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2027-02-01",
+    "source": "https://uwaterloo.ca/management-science-engineering/graduate-studies/admission-requirements",
+    "checked": "2026-10-25",
+    "status": "verified"
+  },
+  "status": "open",
+  "route": "Email resume to Prof. Fatma Gzara now; apply online before Feb 1",
+  "eligibleProgrammes": [
+    "MASc in Management Sciences (Logistics & Supply Chain stream)"
+  ],
+  "scoring": {
+    "admitOdds": 2,
+    "admitRationale": "Engineering faculty requires calculus & linear algebra (Business Math was 2.00); stretch admission.",
+    "fundingOdds": 3,
+    "fundingRationale": "Departmental minimum $18k/yr guaranteed if admitted with supervisor.",
+    "fullCostCovered": "no",
+    "fullCostRationale": "Tuition is $26k/yr for internationals; leaves ~$8k tuition deficit plus living costs.",
+    "subjectFit": 5,
+    "subjectRationale": "Air cargo hub optimization under Prof. Alumur Alev & Prof. Gzara.",
+    "careerPR": 4,
+    "careerPRRationale": "Ontario OINP Master's Stream and tech/supply chain corridor.",
+    "coupleFit": 3,
+    "coupleFitRationale": "Kitchener-Waterloo is separate from Saskatchewan; spouse work permit possible.",
+    "effort": 4,
+    "effortRationale": "Requires supervisor alignment and formal engineering department relevancy petition."
+  },
+  "nextAction": "Email resume to Prof. Fatma Gzara (fgzara@uwaterloo.ca)."
+}
 ];
 
 const ZARIN_DOCUMENTS = [

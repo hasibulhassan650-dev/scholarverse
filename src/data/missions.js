@@ -316,6 +316,64 @@ const MISSIONS = [
     ]
   },
   {
+    id: "goettingen-pack-audit",
+    title: "Audit 12-Document Göttingen EPOS Pack (Section C Verbatim)",
+    detail: "Audit and verify all 12 document components specified in Section C of the official Göttingen Application Guide (2026 v2) for non-EEA applicants applying with the DAAD EPOS scholarship before final portal submission.",
+    why: "Incomplete uploads or uncertified documents lead to immediate administrative rejection with zero recourse. Pre-auditing against the exact Section C specifications one week prior to deadline ensures a flawless submission pack.",
+    xp: 150,
+    targets: ["goettingen"],
+    owner: "You",
+    deadline: "2026-11-08",
+    urgency: "critical",
+    category: "Documents",
+    actionUrl: "https://www.uni-goettingen.de/de/document/download/286b93d1993ca230ab1a72d483aa26ec.pdf/Application%20Guide_2026_v2.pdf",
+    actionLabel: "📥 Official Göttingen Guide (PDF)",
+    sources: [
+      { label: "Göttingen EPOS Document Checklist", url: "https://www.uni-goettingen.de/en/572463.html" },
+      { label: "Official Göttingen Application Guide 2026 v2 (Section C)", url: "https://www.uni-goettingen.de/de/document/download/286b93d1993ca230ab1a72d483aa26ec.pdf/Application%20Guide_2026_v2.pdf" }
+    ],
+    checklist: [
+      "1. University degree certificate (BSS in Economics, electronic verification key/code or notarized copy)",
+      "2. Transcript of records in English (showing all passed courses, credits, and grading scheme explanation)",
+      "3. Official course descriptions (syllabus/excerpts proving 87 cr Economics and 27 cr Math/Stats/Econometrics)",
+      "4. Resume/CV in English (Europass template, reverse chronological order, no unexplained gaps, dated)",
+      "5. Motivation Letter (max 2 pages, dated, justifying prioritization of Göttingen #1 and Hohenheim #2)",
+      "6. English language verification (BUP Medium of Instruction certificate; confirmed accepted in writing 13 Oct 2026)",
+      "7. APS certification (EXEMPT: Bangladesh applicants do not require APS)",
+      "8a. Summary of additional achievements (max 1 page, bullet points: CFA charter, ALM modeling, BAFEDA)",
+      "8b. Proof of additional achievements (single PDF combining CFA verification, training certificates, awards)",
+      "9a. DAAD EPOS checklist (printed physically, signed with blue ink pen, and rescanned to PDF)",
+      "9b. DAAD EPOS application form (typed electronically, identical for both choices, signed and dated)",
+      "9c. Certificate(s) of Employment (City Bank + bKash proving >2 years post-degree experience, re-employment clause)",
+      "9d. Employer Letter of Recommendation (City Bank letterhead, signed, stamped, current date of issue)"
+    ]
+  },
+  {
+    id: "edwards-funding-inquiry",
+    title: "Inquire on Edwards MSc Funding Package & Binding Deadline",
+    detail: "Send formal inquiry email to mscmanagement@edwards.usask.ca regarding international student guaranteed funding scope, deadline discrepancy, and English waiver criteria prior to portal outage.",
+    why: "Edwards page says Dec 15 for international funding while grad.usask.ca says Jan 30. Furthermore, published funding guarantees only 'offset tuition' ($16,875/yr) with no living stipend stated. Clarification prevents blind financial risk.",
+    xp: 90,
+    targets: ["edwards"],
+    owner: "You",
+    deadline: "2026-11-05",
+    urgency: "high",
+    category: "Communication",
+    actionUrl: "mailto:mscmanagement@edwards.usask.ca",
+    actionLabel: "✉️ Email Edwards Admissions",
+    sources: [
+      { label: "Edwards MSc in Management Page", url: "https://www.edwards.usask.ca/programs/mscmanagement/" },
+      { label: "USask CGPS Management Portal", url: "https://grad.usask.ca/programs/management.php" }
+    ],
+    submissionGuide: "Send concise email to mscmanagement@edwards.usask.ca with the 3 bulleted questions below. Note: USask application portal is scheduled for maintenance downtime for up to 6 days starting 1 November 2026.",
+    checklist: [
+      "Question 1: What is the exact dollar value of the guaranteed funding package for international MSc in Management (Finance) students, and does it provide living allowance support beyond offsetting tuition ($16,875/year)?",
+      "Question 2: Which deadline is strictly binding for international funding consideration: December 15, 2026 (Edwards page) or January 30, 2027 (grad.usask.ca)?",
+      "Question 3: Does the University of Saskatchewan accept a four-year Bachelor's Medium of Instruction (MOI) certificate from an accredited institution (BUP) for language verification, or is an IELTS/TOEFL mandatory?",
+      "Take note of USask application portal scheduled maintenance downtime starting 1 November (up to 6 days)"
+    ]
+  },
+  {
     id: "submit-goettingen",
     title: "SUBMIT Göttingen EPOS",
     detail: "Submit the complete EPOS application to the University of Göttingen before 15 November 2026.",

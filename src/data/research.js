@@ -86,6 +86,138 @@ const SUBJECT_FALLBACK = [
 ];
 
 /* ---------------------------------------------------------------
+   FUNDING COSTS & FINANCIAL GAP MATRIX (WS-D4)
+   --------------------------------------------------------------- */
+const FUNDING_COSTS = [
+  {
+    targetId: "sisgp",
+    name: "Sweden SISGP (Dual or Single)",
+    country: "Sweden",
+    tuitionYear: 0,
+    tuitionNote: "Full tuition paid directly by Swedish Institute (~SEK 140,000/yr)",
+    officialLivingCost: 120000,
+    livingCostNote: "Swedish Migration Agency requirement: SEK 10,314/mo (~SEK 123,768/yr)",
+    guaranteedFunding: 144000,
+    fundingNote: "SEK 12,000/mo × 12 = SEK 144,000/yr + SEK 15,000 travel",
+    gapSingle: -24000, // surplus
+    gapCouple: -48000, // surplus if dual
+    verdict: "Full Surplus Full-Ride",
+    source: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/"
+  },
+  {
+    targetId: "goettingen",
+    name: "Göttingen EPOS (MSc Dev Econ)",
+    country: "Germany",
+    tuitionYear: 0,
+    tuitionNote: "Zero tuition in Lower Saxony; semester fee ~€400 incl public transit",
+    officialLivingCost: 11904,
+    livingCostNote: "German blocked account rate: €992/mo = €11,904/yr",
+    guaranteedFunding: 11904,
+    fundingNote: "€992/mo × 12 = €11,904/yr + health insurance + travel allowance",
+    gapSingle: 0,
+    gapCouple: -2400, // surplus with spouse work or family allowance
+    verdict: "100% Fully Funded",
+    source: "https://www.uni-goettingen.de/en/572462.html"
+  },
+  {
+    targetId: "hohenheim",
+    name: "Hohenheim EPOS (MSc AgEcon)",
+    country: "Germany",
+    tuitionYear: 0,
+    tuitionNote: "Tuition waived for EPOS recipients (otherwise €1,500/sem in Baden-Württemberg)",
+    officialLivingCost: 11904,
+    livingCostNote: "German blocked account rate: €992/mo = €11,904/yr",
+    guaranteedFunding: 11904,
+    fundingNote: "€992/mo × 12 = €11,904/yr + insurance + travel",
+    gapSingle: 0,
+    gapCouple: -2400,
+    verdict: "100% Fully Funded",
+    source: "https://www.uni-hohenheim.de/en/agecon-scholarships"
+  },
+  {
+    targetId: "edwards",
+    name: "USask Edwards (MSc Management - Finance)",
+    country: "Canada",
+    tuitionYear: 16875,
+    tuitionNote: "CAD $5,625/term × 3 terms = CAD $16,875/yr",
+    officialLivingCost: 20635,
+    livingCostNote: "IRCC study permit living expense requirement: CAD $20,635/yr (excluding tuition)",
+    guaranteedFunding: 16875,
+    fundingNote: "Official letter guarantees tuition offset only (~$16,875). Living stipend UNVERIFIED.",
+    gapSingle: 20635,
+    gapCouple: 15000,
+    verdict: "Tuition Covered; Living Gap of ~$20,635 CAD/yr",
+    source: "https://www.edwards.usask.ca/programs/mscmanagement/ ; IRCC cost guidelines"
+  },
+  {
+    targetId: "ubc",
+    name: "UBC Sauder (MSc Business Admin - Finance)",
+    country: "Canada",
+    tuitionYear: 6881,
+    tuitionNote: "CAD $10,081.65/yr minus $3,200 International Tuition Award = $6,881.65/yr",
+    officialLivingCost: 24000,
+    livingCostNote: "Vancouver cost of living estimate / IRCC minimum",
+    guaranteedFunding: 12000,
+    fundingNote: "No guaranteed stipend; summer RA up to $12,000 + hourly TA work ($37.53/hr)",
+    gapSingle: 18881,
+    gapCouple: 12000,
+    verdict: "Partial Funding; Living Gap of ~$18,881 CAD/yr",
+    source: "https://www.sauder.ubc.ca/programs/finance-msc"
+  }
+];
+
+/* ---------------------------------------------------------------
+   COUPLE CO-LOCATION MATRIX (WS-D5)
+   --------------------------------------------------------------- */
+const COUPLE_COLOCATION_MATRIX = [
+  {
+    hisTarget: "USask Edwards MSc Finance (Saskatoon)",
+    herTarget: "USask Edwards MSc SCM (Saskatoon)",
+    city: "Saskatoon, SK 🇨🇦",
+    status: "SAME_CAMPUS",
+    statusLabel: "✅ Same University & Campus",
+    synergy: "Single apartment rental, shared commute, joint Edwards network, SINP provincial retention pathway.",
+    combinedFunding: "Both receive departmental tuition offset; spouse open work permit available."
+  },
+  {
+    hisTarget: "Göttingen MSc Dev Econ (Lower Saxony)",
+    herTarget: "Hochschule Bremen MBA Logistics (Bremen)",
+    city: "Lower Saxony / Bremen Corridor 🇩🇪",
+    status: "SAME_COMMUTE_REGION",
+    statusLabel: "✅ Commutable Corridor (~1h 20m RE Train)",
+    synergy: "Regional transit pass included in semester tickets; shared residence in Hannover or Bremen possible.",
+    combinedFunding: "Dual DAAD EPOS (€992 + €992 = €1,984/mo combined tax-free)."
+  },
+  {
+    hisTarget: "Stockholm Univ / SSE Banking & Finance (Stockholm)",
+    herTarget: "Stockholm Univ / KTH SCM & Operations (Stockholm)",
+    city: "Stockholm 🇸🇪",
+    status: "SAME_CITY",
+    statusLabel: "✅ Same City",
+    synergy: "Vibrant global capital, top financial & logistics corporate headquarters.",
+    combinedFunding: "Dual SISGP (SEK 12,000 + SEK 12,000 = SEK 24,000/mo tax-free)."
+  },
+  {
+    hisTarget: "Lund Univ MSc Finance (Lund/Malmö)",
+    herTarget: "Lund Univ MSc Logistics & SCM (Lund)",
+    city: "Lund / Malmö 🇸🇪",
+    status: "SAME_CAMPUS",
+    statusLabel: "✅ Same University & Campus",
+    synergy: "World-class SCM center (REAL) and prestigious finance department. 10-minute walk between faculties.",
+    combinedFunding: "Dual SISGP (SEK 24,000/mo net combined)."
+  },
+  {
+    hisTarget: "USask Edwards (Saskatoon)",
+    herTarget: "Concordia MSCM (Montreal)",
+    city: "Saskatoon / Montreal 🇨🇦",
+    status: "SPLIT_PROVINCE",
+    statusLabel: "❌ Different Provinces (~3,000 km)",
+    synergy: "Separation required during academic terms; dual living costs destroy household savings.",
+    combinedFunding: "Double apartment rent and domestic flights erode funding."
+  }
+];
+
+/* ---------------------------------------------------------------
    FUNDING
    --------------------------------------------------------------- */
 const FUNDING_SCHEMES = [
@@ -215,8 +347,8 @@ const UNI_RANKED = [
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { SUBJECT_OPTIONS, SUBJECT_RANKED, SUBJECT_FALLBACK,
-                     FUNDING_SCHEMES, FUNDING_DEAD_ENDS,
-                     UNI_CENSUS, UNI_RANKED };
+                     FUNDING_SCHEMES, FUNDING_DEAD_ENDS, FUNDING_COSTS,
+                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED };
 }
 
 function normalizeName(n) {

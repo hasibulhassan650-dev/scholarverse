@@ -82,6 +82,18 @@ function getActivePlaybook() {
 const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fv = (x) => (x && typeof x === 'object' && x.value !== undefined) ? x.value : x;
+const factBadge = (f) => {
+  if (!f || typeof f !== 'object' || f.value === undefined) return '';
+  const isStale = f.checked && ((TODAY - new Date(f.checked)) / 86400000 > 30);
+  if (f.status === 'verified') {
+    return `<span class="tag ${isStale ? 'warn' : 'ok'}" title="Verified on ${esc(f.checked)}${f.source ? ` from ${esc(f.source)}` : ''}">${isStale ? '⚠️ Stale' : '✅ Verified'}</span>`;
+  }
+  if (f.status === 'user_reported') {
+    return `<span class="tag acc" title="User reported${f.checked ? ` on ${esc(f.checked)}` : ''}">👤 Self-reported</span>`;
+  }
+  return `<span class="tag warn plain" title="${esc(f.source || 'Unverified source')}">❓ Unverified</span>`;
+};
 const TODAY = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; })();
 const isoLocal = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const TODAY_ISO = isoLocal(TODAY);
@@ -142,6 +154,7 @@ const VIEWS = {
   documents:    { t: 'Documents',     s: 'What you hold, what is missing, and who has to produce it.', ic: 'doc', g: 'Act' },
   excel:        { t: 'Workbook',      s: 'The master spreadsheet, searchable sheet by sheet.', ic: 'sheet', g: 'Act' },
   targets:      { t: 'Targets',       s: 'Verified scholarship schemes, their windows, and the gates you must clear.', ic: 'target', g: 'Research' },
+  portfolio:    { t: 'Portfolio',     s: 'Decision engine: weighted admissions & funding analytics across targets.', ic: 'compass', g: 'Research' },
   universities: { t: 'Universities',  s: 'Ranked for usefulness to you, plus the full Canadian census against the 16-month gate.', ic: 'uni', g: 'Research' },
   subjects:     { t: 'Subject fit',   s: 'Which degree label actually gets funded.', ic: 'compass', g: 'Research' },
   funding:      { t: 'Funding',       s: 'What each scheme pays for, and which ones are dead ends.', ic: 'coin', g: 'Research' },
@@ -261,11 +274,19 @@ function renderChrome() {
   const setCount = (k, n, hot) => { const el = $('#nc-' + k); if (!el) return; el.hidden = !n; el.textContent = n; el.classList.toggle('hot', !!hot); };
 
   if (app.profileMode === 'zarin') {
-    $('#lvlTitle').textContent = `Shortlist Contender · Level 5`;
-    $('#xpText').textContent = `540 / 900 XP`;
-    $('#xpFill').style.width = `60%`;
-    $('#streakText').textContent = `IELTS 7.0 C1 (Valid)`;
-    setCount('missions', getActiveMissions().length);
+    const zState = getProfileState('zarin');
+    const ZM = getActiveMissions();
+    const totalXp = ZM.reduce((sum, m) => sum + (m.xp || 0), 0);
+    const zXp = zState.xp || 0;
+    const L = app.missions.levels;
+    const lv = [...L].reverse().find(l => zXp >= l.xp) || L[0];
+    const next = L.find(l => l.xp > zXp);
+    $('#lvlTitle').textContent = `${lv.title} · level ${lv.level}`;
+    $('#xpText').textContent = next ? `${zXp} / ${next.xp} XP` : `${zXp} / ${totalXp} XP`;
+    const pct = totalXp ? Math.min(100, Math.round((zXp / totalXp) * 100)) : 0;
+    $('#xpFill').style.width = Math.max(2, pct) + '%';
+    $('#streakText').textContent = 'Zarin Track';
+    setCount('missions', ZM.filter(m => !isDone(m.id)).length);
     const missingDocs = getActiveDocuments().filter(d => ['missing','not_started'].includes(d.status)).length;
     setCount('documents', missingDocs, missingDocs > 0);
     setCount('targets', getActiveTargets().length);
@@ -313,7 +334,7 @@ function pageHead(extra = '') {
 function renderView() {
   const fn = {
     dashboard: renderDashboard, calendar: renderCalendar, timeline: renderTimeline, missions: renderMissions,
-    documents: renderDocuments, excel: renderExcel, targets: renderTargets, universities: renderUniversities,
+    documents: renderDocuments, excel: renderExcel, targets: renderTargets, portfolio: renderPortfolio, universities: renderUniversities,
     subjects: renderSubjects, funding: renderFunding, professors: renderProfessors, citations: renderCitations,
     agents: renderAgents, playbook: renderPlaybook, profile: renderProfile
   }[app.view];
@@ -329,12 +350,56 @@ const chips = (id, opts, cur) => `<div class="chips" id="${id}">${opts.map(([k, 
 const wireChips = (root, id, fn) => $$(`#${id} .chip`, root).forEach(b => b.onclick = () => fn(b.dataset.k));
 
 /* ============================================================================
-   MISSIONS — shared toggle
+   MISSIONS — profile-aware state & toggle
    ============================================================================ */
-const missionMeta = (id) => app.missions.missions.find(m => m.id === id);
-const isDone = (id) => (app.state.missions.find(m => m.id === id) || {}).status === 'done';
+function getProfileState(mode = app.profileMode) {
+  if (mode === 'zarin') {
+    let s = null;
+    try { s = JSON.parse(localStorage.getItem('sv-zarin-state')); } catch (e) {}
+    if (!s || !Array.isArray(s.missions)) {
+      const ms = (typeof ZARIN_MISSIONS !== 'undefined' ? ZARIN_MISSIONS : []).map(m => ({ id: m.id, status: 'todo' }));
+      s = { missions: ms, xp: 0 };
+    }
+    return s;
+  }
+  return app.state;
+}
+
+const missionMeta = (id) => {
+  if (app.profileMode === 'zarin') {
+    const ZM = (typeof ZARIN_MISSIONS !== 'undefined' ? ZARIN_MISSIONS : []);
+    return ZM.find(m => m.id === id) || { id, title: 'Mission', xp: 50 };
+  }
+  return app.missions.missions.find(m => m.id === id) || { id, title: 'Mission', xp: 50 };
+};
+
+const isDone = (id) => {
+  if (app.profileMode === 'zarin') {
+    const s = getProfileState('zarin');
+    return (s.missions.find(m => m.id === id) || {}).status === 'done';
+  }
+  return (app.state.missions.find(m => m.id === id) || {}).status === 'done';
+};
 
 async function toggleMission(id) {
+  if (app.profileMode === 'zarin') {
+    const s = getProfileState('zarin');
+    const m = missionMeta(id);
+    let rec = s.missions.find(x => x.id === id);
+    if (!rec) { rec = { id, status: 'todo' }; s.missions.push(rec); }
+    if (rec.status === 'done') {
+      rec.status = 'todo';
+      s.xp = Math.max(0, (s.xp || 0) - (m.xp || 0));
+      toast('Mission reopened', `−${m.xp || 0} XP`);
+    } else {
+      rec.status = 'done';
+      s.xp = (s.xp || 0) + (m.xp || 0);
+      toast('Mission complete', `${m.title.slice(0, 60)} · +${m.xp || 0} XP`);
+    }
+    try { localStorage.setItem('sv-zarin-state', JSON.stringify(s)); } catch (e) {}
+    render();
+    return;
+  }
   try {
     const r = await post('/api/mission/complete', { missionId: id });
     app.state = r.state;
@@ -641,7 +706,8 @@ function openMission(id) {
    ============================================================================ */
 function horizonEvents() {
   const seen = new Set(), out = [];
-  const add = (name, date, kind, open) => {
+  const add = (name, rawDate, kind, open) => {
+    const date = fv(rawDate);
     const key = name.toLowerCase().split(' ')[0] + date;
     if (!date || seen.has(key)) return; seen.add(key);
     out.push({ name, date, kind, d: daysUntil(date), open });
@@ -651,7 +717,7 @@ function horizonEvents() {
   });
   CRITICAL_DATES.forEach(c => add(c.name, c.date, 'critical', () => openCritical(c)));
   add(ZOOM.name, ZOOM.date, 'session', openZoom);
-  return out.sort((a, b) => a.date.localeCompare(b.date));
+  return out.sort((a, b) => String(a.date).localeCompare(String(b.date)));
 }
 
 function runwayHTML(evs) {
@@ -868,6 +934,36 @@ function renderCoupleDashboard(root) {
       `).join('')}
     </div>
 
+    <div class="section-title" style="margin-top:28px"><h2>Couple Co-Location Matrix (WS-D5)</h2><span class="aside">Same City vs. Split Province Risk Assessment</span></div>
+    <div class="panel" style="margin-bottom:24px">
+      <div class="table-wrap" style="max-height:none">
+        <table class="tbl dense">
+          <thead>
+            <tr>
+              <th>Hasibul Target</th>
+              <th>Zarin Target</th>
+              <th>Location / Corridor</th>
+              <th>Status</th>
+              <th>Synergy / Risk Detail</th>
+              <th>Combined Funding</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${(typeof COUPLE_COLOCATION_MATRIX !== 'undefined' ? COUPLE_COLOCATION_MATRIX : []).map(cm => `
+              <tr style="background:${cm.status === 'SPLIT_PROVINCE' ? 'rgba(239, 68, 68, 0.05)' : 'var(--card-bg, #fff)'}">
+                <td><strong>${esc(cm.hisTarget)}</strong></td>
+                <td><strong>${esc(cm.herTarget)}</strong></td>
+                <td>${esc(cm.city)}</td>
+                <td><span class="tag ${cm.status === 'SPLIT_PROVINCE' ? 'bad' : 'ok'}">${esc(cm.statusLabel)}</span></td>
+                <td>${esc(cm.synergy)}</td>
+                <td style="font-weight:600;font-size:12.5px">${esc(cm.combinedFunding)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <div class="section-title" style="margin-top:28px"><h2>Couple Household Budget &amp; Net Surplus Comparison</h2><span class="aside">Realistic monthly estimates</span></div>
     <div class="panel">
       <div class="table-wrap" style="max-height:none">
@@ -914,6 +1010,50 @@ function renderCoupleDashboard(root) {
   `;
 
   $$('[data-goview]', root).forEach(b => b.onclick = () => go(b.dataset.goview));
+}
+
+function renderUserInputCard() {
+  const items = (typeof USER_INPUT_NEEDED !== 'undefined' ? USER_INPUT_NEEDED : []);
+  let savedStatus = {};
+  try { savedStatus = JSON.parse(localStorage.getItem('sv-user-inputs') || '{}'); } catch (e) {}
+  const pending = items.filter(it => !savedStatus[it.id]);
+  if (!pending.length) return '';
+  return `
+    <div class="note warn" style="margin-top:16px;border-left:4px solid var(--amber)">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>⚠️ Action Required: Missing Personal Documents Data (${pending.length})</strong>
+          <span class="dim" style="font-size:12px">Only you can provide these</span>
+        </div>
+        <p style="font-size:12.5px;margin:6px 0 10px;color:var(--ink-2)">These values could not be verified by automated OCR and require manual confirmation from physical papers:</p>
+        <div class="rows" style="gap:6px">
+          ${pending.map(it => `
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:var(--card-bg, #fff);border-radius:4px;border:1px solid var(--rule)">
+              <div>
+                <span class="tag acc" style="margin-right:6px">${esc(it.person)}</span>
+                <strong>${esc(it.label)}</strong>: <span class="dim">${esc(it.desc)}</span>
+              </div>
+              <button class="btn btn-sm" type="button" data-userinput="${esc(it.id)}">Mark Provided</button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function wireUserInputCard(root) {
+  $$('[data-userinput]', root).forEach(btn => {
+    btn.onclick = () => {
+      const id = btn.dataset.userinput;
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem('sv-user-inputs') || '{}'); } catch (e) {}
+      saved[id] = true;
+      try { localStorage.setItem('sv-user-inputs', JSON.stringify(saved)); } catch (e) {}
+      toast('Item marked as provided', id);
+      render();
+    };
+  });
 }
 
 function renderDashboard(root) {
@@ -969,6 +1109,8 @@ function renderDashboard(root) {
         <button class="btn btn-sm" type="button" id="dEpos">EPOS playbook</button>
       </div>
     </div>
+
+    ${renderUserInputCard()}
 
     <div style="margin-top:22px">${stats([
       ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
@@ -1052,6 +1194,7 @@ function renderDashboard(root) {
   $('#dPal').onclick = openPalette;
   $('#dZoom').onclick = openZoom;
   $('#dEpos').onclick = () => { app.openPlay = 'epos'; go('playbook'); };
+  wireUserInputCard(root);
 }
 
 function openCritical(c) {
@@ -1091,14 +1234,17 @@ function openDeadModal(d) {
 function calendarEvents() {
   const evs = [];
   app.content.targets.forEach(t => {
-    if (t.deadline) evs.push({ id: 't-' + t.id, date: t.deadline, title: `${t.flag || ''} ${t.short || t.name}`, kind: 'target', cls: t.priority === 'P0' ? 'critical' : 'target', open: () => openTarget(t.id) });
-    if (t.gateDeadline) evs.push({ id: 'g-' + t.id, date: t.gateDeadline, title: `${t.short || t.name} university application`, kind: 'target', cls: 'target', open: () => openTarget(t.id) });
+    const dl = fv(t.deadline);
+    if (dl) evs.push({ id: 't-' + t.id, date: dl, title: `${t.flag || ''} ${t.short || t.name}`, kind: 'target', cls: t.priority === 'P0' ? 'critical' : 'target', open: () => openTarget(t.id) });
+    const gdl = fv(t.gateDeadline);
+    if (gdl) evs.push({ id: 'g-' + t.id, date: gdl, title: `${t.short || t.name} university application`, kind: 'target', cls: 'target', open: () => openTarget(t.id) });
   });
   app.missions.missions.forEach(m => {
-    if (m.deadline) evs.push({ id: 'm-' + m.id, date: m.deadline, title: m.title, kind: 'mission', cls: isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', open: () => openMission(m.id) });
+    const mdl = fv(m.deadline);
+    if (mdl) evs.push({ id: 'm-' + m.id, date: mdl, title: m.title, kind: 'mission', cls: isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', open: () => openMission(m.id) });
   });
-  CRITICAL_DATES.forEach(c => evs.push({ id: 'c-' + c.name, date: c.date, title: `${c.name} deadline`, kind: 'critical', cls: 'critical', open: () => openCritical(c) }));
-  evs.push({ id: 'zoom', date: ZOOM.date, title: 'Göttingen info session', kind: 'session', cls: 'high', open: openZoom });
+  CRITICAL_DATES.forEach(c => evs.push({ id: 'c-' + c.name, date: fv(c.date), title: `${c.name} deadline`, kind: 'critical', cls: 'critical', open: () => openCritical(c) }));
+  evs.push({ id: 'zoom', date: fv(ZOOM.date), title: 'Göttingen info session', kind: 'session', cls: 'high', open: openZoom });
   return evs;
 }
 
@@ -1155,11 +1301,11 @@ function renderCalendar(root) {
    ============================================================================ */
 function renderTimeline(root) {
   const rows = [
-    ...app.content.targets.filter(t => t.deadline).map(t => ({ date: t.deadline, name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) })),
-    ...app.content.targets.filter(t => t.gateDeadline).map(t => ({ date: t.gateDeadline, name: `${t.short || t.name}: ${t.gateLabel || 'university application'}`, kind: 'University', open: () => openTarget(t.id) })),
-    ...app.content.documents.filter(d => d.deadline).map(d => ({ date: d.deadline, name: d.name, kind: 'Document' })),
-    ...app.missions.missions.filter(m => m.deadline).map(m => ({ date: m.deadline, name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
-  ].sort((a, b) => a.date.localeCompare(b.date));
+    ...app.content.targets.filter(t => fv(t.deadline)).map(t => ({ date: fv(t.deadline), name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) })),
+    ...app.content.targets.filter(t => fv(t.gateDeadline)).map(t => ({ date: fv(t.gateDeadline), name: `${t.short || t.name}: ${t.gateLabel || 'university application'}`, kind: 'University', open: () => openTarget(t.id) })),
+    ...app.content.documents.filter(d => fv(d.deadline)).map(d => ({ date: fv(d.deadline), name: d.name, kind: 'Document' })),
+    ...app.missions.missions.filter(m => fv(m.deadline)).map(m => ({ date: fv(m.deadline), name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
+  ].sort((a, b) => String(a.date).localeCompare(String(b.date)));
   const groups = {};
   rows.forEach(r => (groups[r.date.slice(0, 7)] = groups[r.date.slice(0, 7)] || []).push(r));
   const flat = [];
@@ -1191,7 +1337,7 @@ function renderMissions(root) {
   const urg = { critical: 0, high: 1, medium: 2, low: 3 };
   list.sort((a, b) => (isDone(a.id) - isDone(b.id)) || (urg[a.urgency] ?? 9) - (urg[b.urgency] ?? 9) || String(a.deadline || '9').localeCompare(String(b.deadline || '9')));
 
-  const xpEarned = app.profileMode === 'zarin' ? 540 : app.state.xp;
+  const xpEarned = app.profileMode === 'zarin' ? (getProfileState('zarin').xp || 0) : app.state.xp;
 
   root.innerHTML = `${pageHead()}
     ${stats([['Done', done, `of ${M.length} missions`, 'ok'], ['Still open', M.length - done, 'sorted by urgency'], ['Your XP', xpEarned, `of ${xpAll} available`, 'acc'],
@@ -1539,7 +1685,18 @@ function openTarget(id) {
     <div class="dialog-sub">${esc(t.country)} · tier ${t.tier} · priority ${esc(t.priority || '—')}</div>
     <div class="tags"><span class="tag ${sc}">${sl}</span>${d !== null ? `<span class="tag ${d <= 30 ? 'warn' : 'plain'}">${dueText(d)}</span>` : ''}<span class="tag plain">${esc(t.deadlineLabel || fmt(t.deadline))}</span></div>
     ${t.nextAction ? `<div class="next-step"><b>Next action</b>${esc(t.nextAction)}</div>` : ''}
-    <div class="field"><div class="field-k">Funding</div><div class="field-v">${esc(t.funding)}${t.fundingDetail ? `\n<span class="muted">${esc(t.fundingDetail)}</span>` : ''}</div></div>
+    ${t.scoring ? `
+      <div class="field" style="margin-top:16px"><div class="field-k">Decision Analytics &amp; Scoring (WS-D1)</div>
+        <div class="tags" style="margin-top:4px">
+          <span class="tag ok">Admit Odds: ${t.scoring.admitOdds}/5</span>
+          <span class="tag ${t.scoring.fullCostCovered === 'yes' ? 'ok' : t.scoring.fullCostCovered === 'no' ? 'bad' : 'warn'}">Full Cost: ${esc(t.scoring.fullCostCovered)}</span>
+          <span class="tag acc">Subject Fit: ${t.scoring.subjectFit}/5</span>
+          <span class="tag plain">Career / PR: ${t.scoring.careerPR}/5</span>
+        </div>
+        <p class="dim" style="font-size:12px;margin:6px 0 0">Rationale: ${esc(t.scoring.admitRationale || '')} ${esc(t.scoring.fullCostRationale || '')}</p>
+      </div>
+    ` : ''}
+    <div class="field"><div class="field-k">Funding</div><div class="field-v">${esc(fv(t.funding))}${factBadge(t.funding)}${t.fundingDetail ? `\n<span class="muted">${esc(fv(t.fundingDetail))}</span>${factBadge(t.fundingDetail)}` : ''}</div></div>
     ${t.subjectFit ? `<div class="field"><div class="field-k">Subject fit</div><div class="field-v">${esc(t.subjectFit)}</div></div>` : ''}
     <div class="field"><div class="field-k">How to apply</div><div class="field-v">${esc(t.route)}${t.gateLabel ? `\n<span class="muted">${esc(t.gateLabel)}</span>` : ''}</div></div>
     <div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(t.why)}</div></div>
@@ -1663,6 +1820,137 @@ function renderUniversities(root) {
   });
 }
 
+/* ============================================================================
+   PORTFOLIO — DECISION ENGINE & ANALYTICS (WS-D1, D2, D3)
+   ============================================================================ */
+function renderPortfolio(root) {
+  const T = getActiveTargets();
+  let weights = { subject: 25, funding: 25, admit: 20, career: 15, couple: 10, effort: 5 };
+  try {
+    const saved = JSON.parse(localStorage.getItem('sv-portfolio-weights'));
+    if (saved) weights = { ...weights, ...saved };
+  } catch (e) {}
+
+  const calcScore = (t) => {
+    const s = t.scoring;
+    if (!s) return 0;
+    const norm = (val) => typeof val === 'number' ? (val / 5) * 100 : (val === 'yes' ? 100 : (val === 'no' ? 0 : 40));
+    const score = (
+      norm(s.subjectFit) * (weights.subject / 100) +
+      norm(s.fundingOdds) * (weights.funding / 100) +
+      norm(s.admitOdds) * (weights.admit / 100) +
+      norm(s.careerPR) * (weights.career / 100) +
+      norm(s.coupleFit) * (weights.couple / 100) +
+      norm(s.effort) * (weights.effort / 100)
+    );
+    return Math.round(score);
+  };
+
+  const list = T.map(t => ({ ...t, totalScore: calcScore(t) })).sort((a, b) => b.totalScore - a.totalScore);
+
+  // Portfolio Coverage Check (WS-D3)
+  const countries = new Set(list.map(t => t.country));
+  const reaches = list.filter(t => t.scoring && t.scoring.admitOdds <= 2).length;
+  const guaranteed = list.filter(t => t.scoring && t.scoring.fullCostCovered === 'yes').length;
+  const coverageWarnings = [];
+  if (countries.size <= 1) coverageWarnings.push("All applications concentrated in one country — high geopolitical / visa risk.");
+  if (reaches === list.length) coverageWarnings.push("All targets are reach-level (odds ≤ 2) — add at least 1 safety option.");
+  if (guaranteed === 0) coverageWarnings.push("Zero targets provide 100% guaranteed full-cost funding — portfolio violates the zero-self-funding rule.");
+
+  root.innerHTML = `
+    ${pageHead()}
+    ${stats([
+      ['Active Targets', list.length, 'portfolio candidates', 'ok'],
+      ['Guaranteed Full-Cost', guaranteed, 'covers tuition + living', guaranteed > 0 ? 'ok' : 'bad'],
+      ['Countries', countries.size, 'geographic spread', countries.size > 1 ? 'acc' : 'warn'],
+      ['Top Recommendation', list[0] ? (list[0].short || list[0].name) : '—', list[0] ? `Score ${list[0].totalScore}/100` : '', 'acc']
+    ])}
+
+    ${coverageWarnings.length ? `
+      <div class="note warn" style="margin-top:16px;border-left:4px solid var(--amber)">
+        <div>
+          <strong>⚠️ Portfolio Balance Advisory</strong>
+          <ul class="list" style="margin-top:6px">
+            ${coverageWarnings.map(w => `<li>${esc(w)}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    ` : `
+      <div class="note ok" style="margin-top:16px">
+        <div><strong>✅ Portfolio Diversification:</strong> Healthy geographic and risk distribution across European full-rides and Canadian thesis programs.</div>
+      </div>
+    `}
+
+    <div class="panel" style="margin-top:20px;padding:16px">
+      <div class="panel-head"><h2>Decision Weights (Customizable)</h2><span class="aside">Weights adjust rankings instantly</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:12px;margin-top:12px">
+        ${Object.entries(weights).map(([k, v]) => `
+          <div>
+            <label style="font-size:12px;text-transform:capitalize;font-weight:600">${esc(k)} (${v}%)</label>
+            <input type="range" class="input" min="0" max="50" step="5" value="${v}" data-weight="${esc(k)}" style="padding:0;height:24px">
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:24px"><h2>Ranked Application Portfolio</h2><span class="aside">Ranked by weighted score</span></div>
+    <div class="panel">
+      <div class="table-wrap" style="max-height:none">
+        <table class="tbl dense">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Target Scheme / Program</th>
+              <th>Country</th>
+              <th>Deadline</th>
+              <th>Full Cost Covered?</th>
+              <th>Admit Odds</th>
+              <th>Subject Fit</th>
+              <th>Career / PR</th>
+              <th>Score</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map((t, idx) => {
+              const sc = t.scoring || {};
+              const isDisqualified = sc.fullCostCovered === 'no';
+              return `
+                <tr style="opacity:${isDisqualified ? '0.7' : '1'};background:${isDisqualified ? 'rgba(239, 68, 68, 0.04)' : 'var(--card-bg, #fff)'}">
+                  <td class="num"><strong>#${idx + 1}</strong></td>
+                  <td>
+                    <strong>${esc(t.short || t.name)}</strong>
+                    ${isDisqualified ? '<div style="font-size:11px;color:var(--red);font-weight:600">⚠️ Partial funding — violates zero-self-funding rule</div>' : ''}
+                  </td>
+                  <td>${t.flag || ''} ${esc(t.country)}</td>
+                  <td class="num">${esc(fv(t.deadline))}</td>
+                  <td><span class="tag ${sc.fullCostCovered === 'yes' ? 'ok' : sc.fullCostCovered === 'no' ? 'bad' : 'warn'}">${esc(sc.fullCostCovered || 'unknown')}</span></td>
+                  <td class="num">${sc.admitOdds ? sc.admitOdds + '/5' : '—'}</td>
+                  <td class="num">${sc.subjectFit ? sc.subjectFit + '/5' : '—'}</td>
+                  <td class="num">${sc.careerPR ? sc.careerPR + '/5' : '—'}</td>
+                  <td class="num" style="font-weight:700;font-size:15px;color:${isDisqualified ? 'var(--ink-2)' : 'var(--green)'}">${t.totalScore}</td>
+                  <td><button class="btn btn-sm" type="button" data-opentarget="${esc(t.id)}">Dossier →</button></td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  $$('[data-weight]', root).forEach(slider => {
+    slider.oninput = () => {
+      weights[slider.dataset.weight] = parseInt(slider.value, 10);
+      try { localStorage.setItem('sv-portfolio-weights', JSON.stringify(weights)); } catch (e) {}
+      renderPortfolio(root);
+    };
+  });
+  $$('[data-opentarget]', root).forEach(btn => {
+    btn.onclick = () => openTarget(btn.dataset.opentarget);
+  });
+}
+
 function openUniModal(u) {
   const [name, prov, cat, gate, prog, note] = u;
   const CAT = { U15: 'U15 Research Intensive', MD: 'Medical/Doctoral', COMP: 'Comprehensive', PU: 'Primarily Undergraduate', SPEC: 'Specialised', FR: 'Francophone' };
@@ -1756,6 +2044,38 @@ function renderFunding(root) {
     ${stats([['Schemes tracked', S.length, 'funding routes'], ['Guaranteed', S.filter(s => /guaranteed/i.test(s.kind)).length, 'attach to admission', 'ok'],
       ['Open now', S.filter(s => s.status === 'OPEN').length, `of ${S.length}`], ['Verified amounts', ver, 'the rest are unconfirmed', 'warn'], ['Dead ends', DE.length, 'exclude you', 'bad']])}
     <div class="note warn" style="margin-bottom:16px"><div><strong>Only ${ver} of ${S.length} amounts are independently confirmed.</strong> Treat every unverified figure as a lead and check it on the official page before it shapes a decision.</div></div>
+    
+    <div class="section-title"><h2>Financial Gap Calculator (WS-D4)</h2><span class="aside">Tuition + Official Living Costs vs. Guaranteed Funding</span></div>
+    <div class="panel" style="margin-bottom:24px"><div class="table-wrap" style="max-height:none">
+      <table class="tbl dense">
+        <thead>
+          <tr>
+            <th>Target Program</th>
+            <th>Country</th>
+            <th>Tuition / Year</th>
+            <th>Official Living Cost</th>
+            <th>Guaranteed Funding</th>
+            <th>Net Gap (Single)</th>
+            <th>Status / Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${(typeof FUNDING_COSTS !== 'undefined' ? FUNDING_COSTS : []).map(fc => `
+            <tr style="background:${fc.gapSingle <= 0 ? 'var(--card-bg, #fff)' : 'rgba(239, 68, 68, 0.05)'}">
+              <td><strong>${esc(fc.name)}</strong></td>
+              <td>${esc(fc.country)}</td>
+              <td class="num">${fc.tuitionYear === 0 ? 'Zero / Waived' : '$' + fc.tuitionYear.toLocaleString()}</td>
+              <td class="num">${fc.officialLivingCost ? '$' + fc.officialLivingCost.toLocaleString() : '—'}</td>
+              <td class="num" style="color:var(--green)">${fc.guaranteedFunding ? '$' + fc.guaranteedFunding.toLocaleString() : 'None'}</td>
+              <td class="num" style="font-weight:700;color:${fc.gapSingle <= 0 ? 'var(--green)' : 'var(--red)'}">
+                ${fc.gapSingle <= 0 ? (fc.gapSingle === 0 ? '$0 (Break-even)' : '+$' + Math.abs(fc.gapSingle).toLocaleString() + ' Surplus') : '-$' + fc.gapSingle.toLocaleString() + ' DEFICIT'}
+              </td>
+              <td><span class="tag ${fc.gapSingle <= 0 ? 'ok' : 'bad'}">${esc(fc.verdict)}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div></div>
     <div class="panel"><div class="table-wrap" style="max-height:none">
       <table class="tbl"><thead><tr><th>Scheme</th><th>Who applies</th><th>Amount</th><th>Covers</th><th>Type</th><th>Deadline</th><th>Fall 2027</th><th>Verified</th></tr></thead>
       <tbody>${S.map(s => `<tr>
