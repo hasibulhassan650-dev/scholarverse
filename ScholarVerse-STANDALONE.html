@@ -1901,6 +1901,29 @@ const PLAYBOOK = [
     ]
   },
   {
+    id: "goettingen-interview-station",
+    title: "15-Minute Göttingen EPOS Interview Simulator",
+    icon: "🎙️",
+    sections: [
+      {
+        heading: "Format & Rules (Official Göttingen Guide & DAAD FAQ)",
+        body: "• Duration: Exactly 15 minutes via virtual meeting (Zoom/Teams).\n• Panel: 2–3 faculty members from the Faculty of Business and Economics & EPOS Coordination.\n• Rule: Must be conducted strictly by the candidate alone (no external assistance)."
+      },
+      {
+        heading: "Station 1: Quantitative & Academic Defense (Minutes 1–5)",
+        body: "• Question: 'Your undergraduate CGPA is 3.30. How do we know you can handle graduate-level micro-econometrics and advanced quantitative methods?'\n• Your Proven Evidence: (1) 27 credits across 9 semester courses in mathematics, statistics, and econometrics; (2) Cleared all three levels of the CFA Program on first attempt while working full time (EQF Level 7 credential); (3) Bachelor's project paper on financial literacy scored 4.00/4.00 using logistic regression and ANOVA across 318 respondents."
+      },
+      {
+        heading: "Station 2: Development Relevance & Treasury ALM (Minutes 6–10)",
+        body: "• Question: 'Your career is in commercial treasury and money markets. How does your experience contribute to development economics in the Global South?'\n• Your Proven Evidence: Financial stability and domestic sovereign debt markets are fundamental national infrastructure. In Bangladesh, government securities (all 310 of which I modeled) lack a reliable benchmark curve. When sovereign borrowing floods commercial banks, monetary transmission breaks down and private sector credit drops. Reforming term-structure modeling is directly tied to national macroeconomic resilience."
+      },
+      {
+        heading: "Station 3: Return Trajectory & Re-Employment (Minutes 11–15)",
+        body: "• Question: 'What is your concrete post-graduation plan upon returning to Bangladesh?'\n• Your Proven Evidence: City Bank PLC provides an institutional re-employment guarantee upon graduation. I will return to lead the Asset Liability Management desk, applying advanced econometrics to domestic yield curve construction and advising regulatory bodies (Bangladesh Bank / BAFEDA) on liquidity corridor efficiency."
+      }
+    ]
+  },
+  {
     id: "consultant-advisory",
     title: "Admissions Consultant Playbook & Risk Matrix (WS-F)",
     icon: "🧭",
@@ -10361,10 +10384,10 @@ const COUPLE_COUNTRIES = [
     flag: "🇨🇦",
     rating: "⭐⭐⭐⭐⭐ (Direct PR Corridor & Logistics Demand)",
     title: "Funded Research Master's + IRCC C42 Spousal Open Work Permit",
-    summary: "Canada provides the most direct transition from master's graduation to Permanent Residence (PR) via Express Entry, with direct employer demand for both profiles.",
-    hisRoute: "University of Waterloo (MMath Applied Math, guaranteed departmental funding ~$28k–$34k/yr) or Saskatchewan Edwards (MSc Finance, $18k–$22k/yr)",
+    summary: "Canada provides the most direct transition from master's graduation to Permanent Residence (PR) via Express Entry. Under IRCC rules updated for 2024–2026, Master's degree graduates are 100% EXEMPT from PGWP field-of-study restriction lists.",
+    hisRoute: "University of Waterloo (MMath Applied Math / Statistics, 16-24mo) or Saskatchewan Edwards (MSc Management - Finance, 24mo)",
     herRoute: "Accompanies on an IRCC C42 Spousal Open Work Permit (OWP), clearing the 16-month master's degree gate through Hasibul's program",
-    visaBasis: "IRCC C42 Regulation: Spouses of international students in master's programs of 16+ months are legally entitled to an Open Work Permit for the entire duration of the study permit and subsequent 3-year PGWP.",
+    visaBasis: "IRCC C42 Regulation: Spouses of international students in master's programs of 16+ months are legally entitled to an Open Work Permit for the entire duration of the study permit and subsequent 3-year PGWP. NEW 2024–2026 IRCC RULE: Master's degree holders are completely exempt from the PGWP occupational field-of-study restrictions required for college/undergraduate programs (requires only CLB 7 English).",
     financialStack: "Hasibul's research assistantship ($25,000–$32,000 CAD/yr) + Zarin's full-time salary in Canadian freight forwarding (CargoWise/SAP forwarders in Mississauga / Brampton / Vancouver pay $52,000–$65,000 CAD/yr) = $80,000–$95,000 CAD combined annual household income.",
     prPathway: "Graduation yields a 3-year Post-Graduation Work Permit (PGWP). 1 year of Canadian skilled work experience (Hasibul in Treasury/Banking, Zarin in Freight Logistics) generates maximum Comprehensive Ranking System (CRS) points for Express Entry Canadian Experience Class (CEC) PR. Canadian passport after 3 years of PR.",
     nextAction: "Hasibul submits Waterloo (Jan 6) and Edwards (Dec 15); Zarin prepares MGH/Akij CargoWise employment portfolio."
@@ -10406,11 +10429,11 @@ const COUPLE_BUDGETS = {
     netSavings: "SEK 7,000 – 9,000 / mo (~৳80,000–100,000 BDT/month surplus)"
   },
   germany: {
-    income: "€1,268 / mo (DAAD EPOS + Spouse allowance) + €2,200 / mo (Zarin net salary)",
+    income: "€1,268 / mo (DAAD EPOS €992 + DAAD Family Allowance ~€276) [Floor before spouse earnings]",
     housing: "€750 – 950 / mo (Couple apartment in Göttingen / Bremen)",
     foodLiving: "€600 / mo",
     insurance: "€0 (DAAD covers health insurance)",
-    netSavings: "€1,800 – 2,100 / mo (~৳240,000 BDT/month surplus)"
+    netSavings: "Surplus with Zarin employment (€2,200 net): €1,800 – 2,100 / mo. Guaranteed base floor covers basic living."
   },
   canada: {
     income: "CAD $2,500 / mo (Hasibul RA/TA) + CAD $3,600 / mo (Zarin net salary)",
@@ -12888,13 +12911,29 @@ const DocStore = {
 
 async function attachFileToDoc(docId, file) {
   if (!file) return;
+  // Pre-Flight Document Upload & Compliance Inspector (Upgrade 4)
+  const MAX_PORTAL_SIZE = 5 * 1024 * 1024; // 5 MB standard DAAD/university limit
+  const isTooLarge = file.size > MAX_PORTAL_SIZE;
+  const isPdf = file.name.toLowerCase().endsWith('.pdf');
+  
+  if (isTooLarge) {
+    toast('Warning: Large File Size', `${(file.size / (1024 * 1024)).toFixed(1)} MB exceeds standard 5 MB portal limit. Consider compressing.`);
+  }
+  if (!isPdf && !file.name.match(/\.(jpg|jpeg|png)$/i)) {
+    toast('Warning: File Type', 'Most scholarship portals accept PDF format only.');
+  }
+
   try {
     await DocStore.save(docId, file);
     const fileMeta = {
       name: file.name,
       size: file.size,
       type: file.type || 'application/pdf',
-      date: new Date().toISOString()
+      date: new Date().toISOString(),
+      compliance: {
+        sizeOk: !isTooLarge,
+        formatOk: isPdf
+      }
     };
     app.state.docFiles = app.state.docFiles || {};
     app.state.docFiles[docId] = fileMeta;
@@ -12903,7 +12942,7 @@ async function attachFileToDoc(docId, file) {
     if (doc) doc.status = 'have';
 
     await post('/api/doc/attach', { docId, fileMeta });
-    toast('Attached ' + file.name, 'Document is now saved in your vault');
+    toast('Attached ' + file.name, isTooLarge ? 'Saved in vault (Warning: >5MB)' : 'Document is now saved & verified in vault');
     render();
   } catch (err) {
     toast('Attachment failed', err.message);

@@ -554,13 +554,29 @@ const DocStore = {
 
 async function attachFileToDoc(docId, file) {
   if (!file) return;
+  // Pre-Flight Document Upload & Compliance Inspector (Upgrade 4)
+  const MAX_PORTAL_SIZE = 5 * 1024 * 1024; // 5 MB standard DAAD/university limit
+  const isTooLarge = file.size > MAX_PORTAL_SIZE;
+  const isPdf = file.name.toLowerCase().endsWith('.pdf');
+  
+  if (isTooLarge) {
+    toast('Warning: Large File Size', `${(file.size / (1024 * 1024)).toFixed(1)} MB exceeds standard 5 MB portal limit. Consider compressing.`);
+  }
+  if (!isPdf && !file.name.match(/\.(jpg|jpeg|png)$/i)) {
+    toast('Warning: File Type', 'Most scholarship portals accept PDF format only.');
+  }
+
   try {
     await DocStore.save(docId, file);
     const fileMeta = {
       name: file.name,
       size: file.size,
       type: file.type || 'application/pdf',
-      date: new Date().toISOString()
+      date: new Date().toISOString(),
+      compliance: {
+        sizeOk: !isTooLarge,
+        formatOk: isPdf
+      }
     };
     app.state.docFiles = app.state.docFiles || {};
     app.state.docFiles[docId] = fileMeta;
@@ -569,7 +585,7 @@ async function attachFileToDoc(docId, file) {
     if (doc) doc.status = 'have';
 
     await post('/api/doc/attach', { docId, fileMeta });
-    toast('Attached ' + file.name, 'Document is now saved in your vault');
+    toast('Attached ' + file.name, isTooLarge ? 'Saved in vault (Warning: >5MB)' : 'Document is now saved & verified in vault');
     render();
   } catch (err) {
     toast('Attachment failed', err.message);

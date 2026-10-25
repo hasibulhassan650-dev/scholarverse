@@ -37,10 +37,10 @@ const COUPLE_COUNTRIES = [
     flag: "🇨🇦",
     rating: "⭐⭐⭐⭐⭐ (Direct PR Corridor & Logistics Demand)",
     title: "Funded Research Master's + IRCC C42 Spousal Open Work Permit",
-    summary: "Canada provides the most direct transition from master's graduation to Permanent Residence (PR) via Express Entry, with direct employer demand for both profiles.",
-    hisRoute: "University of Waterloo (MMath Applied Math, guaranteed departmental funding ~$28k–$34k/yr) or Saskatchewan Edwards (MSc Finance, $18k–$22k/yr)",
+    summary: "Canada provides the most direct transition from master's graduation to Permanent Residence (PR) via Express Entry. Under IRCC rules updated for 2024–2026, Master's degree graduates are 100% EXEMPT from PGWP field-of-study restriction lists.",
+    hisRoute: "University of Waterloo (MMath Applied Math / Statistics, 16-24mo) or Saskatchewan Edwards (MSc Management - Finance, 24mo)",
     herRoute: "Accompanies on an IRCC C42 Spousal Open Work Permit (OWP), clearing the 16-month master's degree gate through Hasibul's program",
-    visaBasis: "IRCC C42 Regulation: Spouses of international students in master's programs of 16+ months are legally entitled to an Open Work Permit for the entire duration of the study permit and subsequent 3-year PGWP.",
+    visaBasis: "IRCC C42 Regulation: Spouses of international students in master's programs of 16+ months are legally entitled to an Open Work Permit for the entire duration of the study permit and subsequent 3-year PGWP. NEW 2024–2026 IRCC RULE: Master's degree holders are completely exempt from the PGWP occupational field-of-study restrictions required for college/undergraduate programs (requires only CLB 7 English).",
     financialStack: "Hasibul's research assistantship ($25,000–$32,000 CAD/yr) + Zarin's full-time salary in Canadian freight forwarding (CargoWise/SAP forwarders in Mississauga / Brampton / Vancouver pay $52,000–$65,000 CAD/yr) = $80,000–$95,000 CAD combined annual household income.",
     prPathway: "Graduation yields a 3-year Post-Graduation Work Permit (PGWP). 1 year of Canadian skilled work experience (Hasibul in Treasury/Banking, Zarin in Freight Logistics) generates maximum Comprehensive Ranking System (CRS) points for Express Entry Canadian Experience Class (CEC) PR. Canadian passport after 3 years of PR.",
     nextAction: "Hasibul submits Waterloo (Jan 6) and Edwards (Dec 15); Zarin prepares MGH/Akij CargoWise employment portfolio."
@@ -82,11 +82,11 @@ const COUPLE_BUDGETS = {
     netSavings: "SEK 7,000 – 9,000 / mo (~৳80,000–100,000 BDT/month surplus)"
   },
   germany: {
-    income: "€1,268 / mo (DAAD EPOS + Spouse allowance) + €2,200 / mo (Zarin net salary)",
+    income: "€1,268 / mo (DAAD EPOS €992 + DAAD Family Allowance ~€276) [Floor before spouse earnings]",
     housing: "€750 – 950 / mo (Couple apartment in Göttingen / Bremen)",
     foodLiving: "€600 / mo",
     insurance: "€0 (DAAD covers health insurance)",
-    netSavings: "€1,800 – 2,100 / mo (~৳240,000 BDT/month surplus)"
+    netSavings: "Surplus with Zarin employment (€2,200 net): €1,800 – 2,100 / mo. Guaranteed base floor covers basic living."
   },
   canada: {
     income: "CAD $2,500 / mo (Hasibul RA/TA) + CAD $3,600 / mo (Zarin net salary)",

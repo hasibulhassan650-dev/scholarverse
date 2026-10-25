@@ -1054,6 +1054,29 @@ const PLAYBOOK = [
     ]
   },
   {
+    id: "goettingen-interview-station",
+    title: "15-Minute Göttingen EPOS Interview Simulator",
+    icon: "🎙️",
+    sections: [
+      {
+        heading: "Format & Rules (Official Göttingen Guide & DAAD FAQ)",
+        body: "• Duration: Exactly 15 minutes via virtual meeting (Zoom/Teams).\n• Panel: 2–3 faculty members from the Faculty of Business and Economics & EPOS Coordination.\n• Rule: Must be conducted strictly by the candidate alone (no external assistance)."
+      },
+      {
+        heading: "Station 1: Quantitative & Academic Defense (Minutes 1–5)",
+        body: "• Question: 'Your undergraduate CGPA is 3.30. How do we know you can handle graduate-level micro-econometrics and advanced quantitative methods?'\n• Your Proven Evidence: (1) 27 credits across 9 semester courses in mathematics, statistics, and econometrics; (2) Cleared all three levels of the CFA Program on first attempt while working full time (EQF Level 7 credential); (3) Bachelor's project paper on financial literacy scored 4.00/4.00 using logistic regression and ANOVA across 318 respondents."
+      },
+      {
+        heading: "Station 2: Development Relevance & Treasury ALM (Minutes 6–10)",
+        body: "• Question: 'Your career is in commercial treasury and money markets. How does your experience contribute to development economics in the Global South?'\n• Your Proven Evidence: Financial stability and domestic sovereign debt markets are fundamental national infrastructure. In Bangladesh, government securities (all 310 of which I modeled) lack a reliable benchmark curve. When sovereign borrowing floods commercial banks, monetary transmission breaks down and private sector credit drops. Reforming term-structure modeling is directly tied to national macroeconomic resilience."
+      },
+      {
+        heading: "Station 3: Return Trajectory & Re-Employment (Minutes 11–15)",
+        body: "• Question: 'What is your concrete post-graduation plan upon returning to Bangladesh?'\n• Your Proven Evidence: City Bank PLC provides an institutional re-employment guarantee upon graduation. I will return to lead the Asset Liability Management desk, applying advanced econometrics to domestic yield curve construction and advising regulatory bodies (Bangladesh Bank / BAFEDA) on liquidity corridor efficiency."
+      }
+    ]
+  },
+  {
     id: "consultant-advisory",
     title: "Admissions Consultant Playbook & Risk Matrix (WS-F)",
     icon: "🧭",
