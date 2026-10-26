@@ -48,7 +48,7 @@ REQUIRED = {
     "FUNDING_SCHEMES": "array", "FUNDING_DEAD_ENDS": "array", "FUNDING_COSTS": "array",
     "COUPLE_COLOCATION_MATRIX": "array", "UNI_CENSUS": "array", "UNI_RANKED": "array",
     "ZARIN_DATA": "object", "ZARIN_PROFESSORS_DEEP": "object", "COUPLE_DATA": "object",
-    "PROF_VERIFIED": "object"
+    "SWEDEN_RANK_OPTIMIZER": "object", "PROF_VERIFIED": "object"
 }
 
 CHECK_JS = r"""

@@ -61,7 +61,7 @@ const PROFILE = {
   tests: {
     ielts: null,
     toefl: null,
-    moi: "Medium of Instruction certificate held — but INSUFFICIENT for DAAD EPOS and Hohenheim",
+    moi: "Medium of Instruction Certificate: 100% English (BUP). VERIFIED for Göttingen EPOS in writing on 13 Oct 2026 ('sufficient and meets the language criteria'). Hohenheim published wording lists IELTS/TOEFL required.",
     gmatFocus: 585,
     gmatNote: "Mid-distribution (~50–60th percentile band). Neutral, NOT an asset. Do not lead with it.",
     german: "A1, no certificate"
@@ -265,6 +265,20 @@ const TARGETS = [
   "effort": 4,
   "effortRationale": "12-document Section C bundle, signed checklist, 2-page motivation, syllabus extraction."
 },
+    requiredDocs: [
+      { docId: "degree", label: "1. University Degree Certificate", rule: "BSS Economics certificate (notarized copy or electronic verification key)" },
+      { docId: "transcript", label: "2. Official Academic Transcript", rule: "8-semester transcript with official grading scale on reverse" },
+      { docId: "course-descriptions", label: "3. Official Course Descriptions / Syllabus", rule: "Handbook extract proving 87 cr Economics + 27 cr Math/Stats/Econometrics" },
+      { docId: "europass", label: "4. Europass Resume / CV", rule: "Reverse chronological order, dated, zero unexplained gaps" },
+      { docId: "motivation", label: "5. Uniform Letter of Motivation", rule: "Max 2 pages, dated, justifies ranking (Göttingen #1, Hohenheim #2)" },
+      { docId: "moi", label: "6. English Verification (MOI)", rule: "BUP Medium of Instruction certificate (confirmed accepted 13 Oct 2026)" },
+      { docId: "hsc", label: "7. University Entrance Qualification", rule: "HSC certificate + certified English translation" },
+      { docId: "achievements-summary", label: "8a/b. Summary & Proof of Additional Achievements", rule: "1 page bullet summary + combined proof PDF (CFA Charter, modeling, awards)" },
+      { docId: "epos-checklist", label: "9a. DAAD EPOS Checklist", rule: "Printed physically, signed with blue ink pen, rescanned to PDF" },
+      { docId: "epos-form", label: "9b. DAAD EPOS Application Form", rule: "Typed electronically, dated, identical priorities for both choices" },
+      { docId: "emp-cert", label: "9c. Certificate(s) of Employment", rule: "Proving >2 years post-degree experience, re-employment clause" },
+      { docId: "emp-letter", label: "9d. Employer Letter of Recommendation", rule: "City Bank letterhead, signed, stamped, current date of issue" }
+    ],
     gates: [
       "2+ years RELEVANT professional experience after the bachelor's, held AT TIME OF APPLICATION",
       "Degree normally not more than 6 years old (2022 → safe to 2028 ✅)",
@@ -707,7 +721,9 @@ const DOCUMENTS = [
   { id: "leadership", name: "Leadership evidence dossier", type: "SISGP", status: "missing", req: ["SISGP"], spec: "SISGP requires demonstrated leadership. You have it: derivatives teaching, BAFEDA/BAMDA representation, Level 2 MIS dashboard award, Manager promotion, BUP Economics Club, BNCC. Assemble it.", owner: "You", blocker: true },
   { id: "hohcampus", name: "HohCampus application", type: "Application", status: "missing", req: ["Hohenheim"], spec: "Hohenheim requires a TWO-PART application: email AND HohCampus. Both.", owner: "You" },
   { id: "pretest", name: "AgEcon PreTest", type: "Application", status: "missing", req: ["Hohenheim"], spec: "Self-evaluation required by Hohenheim.", owner: "You" },
-  { id: "working-paper", name: "Yield-curve working paper", type: "Research", status: "not_started", req: ["All"], spec: "⚡ HIGHEST-LEVERAGE ASSET. Fit Nelson-Siegel to your 310-security dataset. Converts 'no publications' into independent empirical research and becomes your professor-outreach attachment.", owner: "You" }
+  { id: "working-paper", name: "Yield-curve working paper", type: "Research", status: "not_started", req: ["All"], spec: "⚡ HIGHEST-LEVERAGE ASSET. Fit Nelson-Siegel to your 310-security dataset. Converts 'no publications' into independent empirical research and becomes your professor-outreach attachment.", owner: "You" },
+  { id: "course-descriptions", name: "Official Course Descriptions (Syllabus)", type: "Academic", status: "have", req: ["Göttingen"], spec: "Official course handbook/syllabus extract proving 87 cr Economics and 27 cr Math/Stats/Econometrics (verified against transcript).", owner: "You" },
+  { id: "achievements-summary", name: "Summary & Proof of Additional Achievements", type: "Academic", status: "have", req: ["Göttingen"], spec: "Max 1 page bullet summary + single combined PDF of supporting certificates (CFA Level 7 Charter, BAFEDA, Level 2 MIS Award, BNCC).", owner: "You" }
 ];
 
 /* ---------------------------------------------------------------------------

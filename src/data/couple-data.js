@@ -97,11 +97,54 @@ const COUPLE_BUDGETS = {
   }
 };
 
+const SWEDEN_RANK_OPTIMIZER = {
+  rule: "Swedish Central Application System (universityadmissions.se) admits to a maximum of ONE program. If admitted to priority #1, priorities #2, #3, and #4 are automatically deleted by the system. To co-locate, Hasibul and Zarin must synchronize their 4-program rank order by geographic corridor.",
+  strategies: [
+    {
+      name: "Strategy 1: Stockholm Capital Hub (Recommended for Global Prestige & Banking)",
+      synergyRating: "⭐⭐⭐⭐⭐ (100% City Co-Location if Priority #1 or #2 Admitted)",
+      location: "Stockholm, Sweden 🇸🇪",
+      hisRank: [
+        { rank: 1, code: "HHS-34041", name: "Stockholm School of Economics — MSc Finance (120 cr)", fit: "Global Top 15 Finance, Wall St / London feeder" },
+        { rank: 2, code: "SU-31068", name: "Stockholm University — MSc Banking & Finance (120 cr)", fit: "Direct Treasury ALM / Bank Risk match" },
+        { rank: 3, code: "LU-18260", name: "Lund University — MSc Finance (60 cr / 1 yr)", fit: "Fall-back to Skåne corridor" },
+        { rank: 4, code: "GU-82011", name: "University of Gothenburg — MSc Finance (120 cr)", fit: "Western Sweden commercial banking hub" }
+      ],
+      herRank: [
+        { rank: 1, code: "SU-43004", name: "Stockholm University — MSc in Operations Management / Marketing (120 cr)", fit: "Stockholm corporate logistics hub" },
+        { rank: 2, code: "LU-18250", name: "Lund University — MSc Logistics & Supply Chain Management (120 cr)", fit: "Global Top 50 SCM Center" },
+        { rank: 3, code: "GU-82011", name: "University of Gothenburg — MSc Logistics & Transport (120 cr)", fit: "Largest container port in Scandinavia" },
+        { rank: 4, code: "HJ-MU113", name: "Jönköping University — MSc International Logistics (120 cr)", fit: "Swedish logistics node" }
+      ],
+      financialSummary: "If both win SISGP: SEK 24,000/mo net combined (~$2,300 USD) + 100% free tuition. If one wins SISGP and one works: SEK 12,000/mo scholarship + SEK 32,000–38,000/mo corporate salary on unrestricted spousal permit."
+    },
+    {
+      name: "Strategy 2: The Skåne / Öresund Corridor (Lund Primary Co-Location)",
+      synergyRating: "⭐⭐⭐⭐⭐ (Same Campus & 10-Minute Walk Between Faculties)",
+      location: "Lund / Malmö / Copenhagen Corridor 🇸🇪🇩🇰",
+      hisRank: [
+        { rank: 1, code: "LU-18250", name: "Lund University — MSc Economics (120 cr)", fit: "Top quantitative econometrics & macro group" },
+        { rank: 2, code: "LU-18260", name: "Lund University — MSc Finance (60 cr / 1 yr)", fit: "Dedicated corporate finance & derivatives" },
+        { rank: 3, code: "SU-31068", name: "Stockholm University — MSc Banking & Finance (120 cr)", fit: "Stockholm banking fallback" },
+        { rank: 4, code: "GU-82011", name: "University of Gothenburg — MSc Finance (120 cr)", fit: "Gothenburg fallback" }
+      ],
+      herRank: [
+        { rank: 1, code: "LU-18250", name: "Lund University — MSc Logistics & Supply Chain Management (120 cr)", fit: "Center for Retail & Logistics (REAL); #1 SCM program in Nordics" },
+        { rank: 2, code: "GU-82011", name: "University of Gothenburg — MSc Logistics & Transport Management (120 cr)", fit: "Gothenburg maritime port logistics" },
+        { rank: 3, code: "HJ-MU113", name: "Jönköping University — MSc International Logistics (120 cr)", fit: "Flow-based SCM under Prof. Wikner" },
+        { rank: 4, code: "SU-43004", name: "Stockholm University — MSc Operations Management (120 cr)", fit: "Stockholm fallback" }
+      ],
+      financialSummary: "Shared 1-bedroom student apartment in Lund (SEK 8,500/mo); combined SISGP SEK 24,000/mo produces ~SEK 9,000/mo net household savings (~৳100,000 BDT/month)."
+    }
+  ]
+};
+
 const COUPLE_DATA = {
   countries: COUPLE_COUNTRIES,
-  budgets: COUPLE_BUDGETS
+  budgets: COUPLE_BUDGETS,
+  swedenOptimizer: SWEDEN_RANK_OPTIMIZER
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { COUPLE_DATA, COUPLE_COUNTRIES, COUPLE_BUDGETS };
+  module.exports = { COUPLE_DATA, COUPLE_COUNTRIES, COUPLE_BUDGETS, SWEDEN_RANK_OPTIMIZER };
 }

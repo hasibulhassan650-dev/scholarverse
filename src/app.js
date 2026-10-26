@@ -980,6 +980,42 @@ function renderCoupleDashboard(root) {
       </div>
     </div>
 
+    <div class="section-title" style="margin-top:28px"><h2>🇸🇪 Sweden 4-Program Synchronizer &amp; Rank Optimizer</h2><span class="aside">Avoid Automatic Choice Deletion on universityadmissions.se</span></div>
+    <div class="panel" style="margin-bottom:24px;padding:18px 20px">
+      <p style="font-size:13.5px;color:var(--ink-2);margin:0 0 16px;line-height:1.55">
+        <strong>The Sweden Central Admissions Rule:</strong> You can apply to a maximum of 4 programs. If you are admitted to your higher choice (e.g. #1), all lower choices (#2, #3, #4) are deleted automatically. To live together, both applicants must synchronize their 4 rankings by city corridor.
+      </p>
+      <div class="grid g2" style="gap:20px">
+        ${(typeof SWEDEN_RANK_OPTIMIZER !== 'undefined' && SWEDEN_RANK_OPTIMIZER.strategies ? SWEDEN_RANK_OPTIMIZER.strategies : []).map(st => `
+          <div style="background:var(--sheet-2);padding:16px;border-radius:var(--r-ctl);border:1px solid var(--rule)">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <h3 style="font-size:15px;margin:0">${esc(st.name)}</h3>
+              <span class="tag acc">${esc(st.location)}</span>
+            </div>
+            <div class="dim" style="font-size:12px;margin:4px 0 12px">${esc(st.synergyRating)}</div>
+            
+            <div style="margin-bottom:12px">
+              <div style="font-size:12px;font-weight:700;color:var(--teal);margin-bottom:4px">👨‍💼 Hasibul 4-Rank Order</div>
+              <ol style="margin:0;padding-left:18px;font-size:12.5px;line-height:1.45">
+                ${st.hisRank.map(r => `<li><strong>${esc(r.name)}</strong> <span class="dim">(${esc(r.code)})</span> — ${esc(r.fit)}</li>`).join('')}
+              </ol>
+            </div>
+
+            <div style="margin-bottom:12px">
+              <div style="font-size:12px;font-weight:700;color:var(--amber);margin-bottom:4px">👩‍💼 Zarin 4-Rank Order</div>
+              <ol style="margin:0;padding-left:18px;font-size:12.5px;line-height:1.45">
+                ${st.herRank.map(r => `<li><strong>${esc(r.name)}</strong> <span class="dim">(${esc(r.code)})</span> — ${esc(r.fit)}</li>`).join('')}
+              </ol>
+            </div>
+
+            <div class="note ok" style="font-size:12px;margin:0">
+              <div><strong>Combined Funding &amp; Living:</strong> ${esc(st.financialSummary)}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
     <div class="section-title" style="margin-top:28px"><h2>Couple Household Budget &amp; Net Surplus Comparison</h2><span class="aside">Realistic monthly estimates</span></div>
     <div class="panel">
       <div class="table-wrap" style="max-height:none">
@@ -1717,6 +1753,30 @@ function openTarget(id) {
     <div class="field"><div class="field-k">How to apply</div><div class="field-v">${esc(t.route)}${t.gateLabel ? `\n<span class="muted">${esc(t.gateLabel)}</span>` : ''}</div></div>
     <div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(t.why)}</div></div>
     <div class="field"><div class="field-k">Eligible programmes</div>${list(t.eligibleProgrammes)}</div>
+    ${t.requiredDocs?.length ? `
+      <div class="field" style="margin-top:18px">
+        <div class="field-k" style="color:var(--teal)">🏛️ Pre-Flight Document Bundle Audit (${t.requiredDocs.length} Mandatory Section C Items)</div>
+        <div class="rows" style="gap:6px;margin-top:8px">
+          ${t.requiredDocs.map(rd => {
+            const doc = (app.content.documents || []).find(d => d.id === rd.docId) || {};
+            const isHeld = doc.status === 'have';
+            const fileMeta = app.state.docFiles && app.state.docFiles[rd.docId];
+            return `
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--sheet-2);border-radius:var(--r-ctl);border:1px solid var(--rule);font-size:12.5px">
+                <div style="flex:1;padding-right:10px">
+                  <strong>${esc(rd.label)}</strong>
+                  <div class="dim" style="font-size:11.5px;margin-top:2px">${esc(rd.rule)}</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span class="tag ${isHeld ? 'ok' : 'warn'}">${isHeld ? '✅ Held' : '⏳ Missing'}</span>
+                  ${fileMeta ? `<button class="btn btn-sm" type="button" data-viewvaultdoc="${esc(rd.docId)}">View (${esc(fmtBytes(fileMeta.size))})</button>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    ` : ''}
     <div class="cols2">
       <div class="field"><div class="field-k">Gates</div>${list(t.gates)}</div>
       <div>
@@ -1727,6 +1787,9 @@ function openTarget(id) {
     ${t.advantages?.length ? `<div class="field"><div class="field-k">Advantages</div>${list(t.advantages)}</div>` : ''}
     ${t.corrections?.length ? `<div class="field"><div class="field-k">Corrections on file</div>${list(t.corrections)}</div>` : ''}
     ${t.source ? `<div class="field"><div class="field-k">Source</div><div class="field-v dim">${esc(t.source)}</div></div>` : ''}`);
+  $$('#modalInner [data-viewvaultdoc]').forEach(b => {
+    b.onclick = () => DocStore.view(b.dataset.viewvaultdoc);
+  });
 }
 
 function renderTargets(root) {
