@@ -1162,7 +1162,14 @@ const TARGETS = [
     deadline: {"value":"2026-12-15","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "15 December 2026 (window opens 15 Nov)",
     status: "opening_soon",
-    route: "TWO PARTS — email PDFs to agecon@uni-hohenheim.de AND apply via HohCampus. Both required.",
+    route: "TWO PARTS: (1) Email separate unmerged PDFs to agecon@uni-hohenheim.de with subject 'DAAD - [HohCampus No.] - Hasibul Hasan'; (2) Submit online admission application via HohCampus portal (opens 15 Nov).",
+    submissionRules: [
+      "Strict file naming required: '1. Hasan Hasibul - DAAD Application Form.pdf', '2. Hasan Hasibul - Motivation Letter.pdf', '3. Hasan Hasibul - Diploma & Transcript of Records.pdf', '4. Hasan Hasibul - CV.pdf', '5. Hasan Hasibul - Employment Certificates.pdf', '6. Hasan Hasibul - Professional Recommendations.pdf', '7. Hasan Hasibul - Proof of English Proficiency.pdf'",
+      "Do NOT merge into a single PDF; do NOT send cloud download links (Google Drive/Dropbox) — direct attachments only",
+      "HohCampus portal application must be submitted before 15 December 2026",
+      "English score grace period: Official test score can be emailed to agecon@uni-hohenheim.de until 6 January 2027",
+      "AgEcon PreTest on ILIAS (120 min, 15 questions) is mandatory; print result PDF to attach"
+    ],
     why: "⭐ THE SAFER OF YOUR TWO EPOS ROUTES. Hohenheim states an explicit numeric grade threshold of 2.5 on the German scale — your 2.05 PASSES it. English results accepted until 6 January.",
     eligibleProgrammes: ["MSc Agricultural Economics, University of Hohenheim, 24 months, English-taught"],
     scoring: {
@@ -2474,27 +2481,29 @@ const MISSIONS = [
   /* =====  HOHENHEIM PATH  ===== */
   {
     id: "agecon-pretest",
-    title: "Complete the AgEcon PreTest",
-    detail: "Complete Hohenheim's AgEcon PreTest (self-evaluation online quiz) and save the completion confirmation certificate.",
-    why: "Hohenheim requires proof of self-evaluation through the AgEcon PreTest as a mandatory admission document for MSc Agricultural Economics.",
-    xp: 50,
+    title: "Complete the Mandatory AgEcon ILIAS PreTest",
+    detail: "Complete Hohenheim's mandatory 120-minute, 15-question AgEcon PreTest on ILIAS and generate the completion result PDF certificate.",
+    why: "Mandatory admission requirement for MSc Agricultural Economics. While the score does NOT affect admission chances (pure self-evaluation), the generated result PDF must be attached to the application.",
+    xp: 60,
     targets: ["hohenheim"],
     owner: "You",
     deadline: "2026-12-05",
     urgency: "medium",
     category: "Application",
-    actionUrl: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test",
-    actionLabel: "📝 Open AgEcon PreTest Portal",
-    submissionGuide: "Where & how: Complete the online self-test at Hohenheim's portal. Print or save the resulting PDF certificate. Attach it to your application email to agecon@uni-hohenheim.de.",
+    actionUrl: "https://openilias.uni-hohenheim.de/goto.php?target=cat_31&client_id=UHOH2",
+    actionLabel: "📝 Open Hohenheim ILIAS Portal",
+    submissionGuide: "Where & how: Register as external user on openilias.uni-hohenheim.de -> Navigate to Repository -> Repository Home -> Projects F-J -> INTERNET TEST AGECON -> Start Test (120 mins max, 15 questions, calculator permitted). At the end, use browser Print to PDF to save result certificate.",
     sources: [
-      { label: "Hohenheim AgEcon PreTest Regulation", url: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test" },
-      { label: "Hohenheim AgEcon Scholarship Requirements", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+      { label: "Hohenheim PreTest Instructions", url: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test" },
+      { label: "Hohenheim ILIAS Test System", url: "https://openilias.uni-hohenheim.de/goto.php?target=cat_31&client_id=UHOH2" }
     ],
     checklist: [
-      "Access Hohenheim AgEcon PreTest page",
-      "Complete the self-evaluation test in economics & statistics",
-      "Save the confirmation result as PDF",
-      "Include with application documents"
+      "Register new external user account on Hohenheim ILIAS portal",
+      "Navigate to Repository Home -> Projects F - J -> INTERNET TEST AGECON",
+      "Have calculator ready and review basic microeconomics and econometrics",
+      "Complete 15 questions within 120-minute limit",
+      "Save test completion report as PDF using browser Print function",
+      "Attach PDF to Hohenheim application package"
     ]
   },
   {
@@ -9416,20 +9425,21 @@ const ZARIN_TARGETS = [
     priority: "P0",
     subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
     funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
-    deadline: {"value":"2026-12-15","source":"https://www.hs-bremen.de/studieren/studiengang/international-logistics-and-trade-mba/","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-26","status":"verified"},
     deadlineLabel: "Varies by programme: Oct – Dec 2026",
     status: "open",
-    route: "Direct application to participating universities (Hochschule Bremen / HTW Berlin)",
+    route: "Direct application to participating institutions (Hochschule Bremen IGC / HTW Berlin)",
     eligibleProgrammes: [
-      "Hochschule Bremen — MBA in International Logistics and Trade (EPOS funded) ⭐ Direct fit",
-      "HTW Berlin — Master in Project Management and Data Science (MPMD) (EPOS funded)"
+      "Hochschule Bremen (IGC) — International MBA in International Logistics & SCM (Director: Prof. Dr. Frank Fürstenberg; apply.graduatecenter.org)",
+      "HTW Berlin — Master in Project Management and Data Science (MPMD; mpmd.htw-berlin.de/applying; Window: 1 Nov 2026 – 28 Feb 2027)"
     ],
     advantages: [
       "Zarin's BBA 3.42 converts to German 1.87 (beats 2.0 competitive bar)",
       "3.5 years of verifiable freight forwarding and commercial operations exceed 2-year EPOS gate",
-      "Same-country synergy with Hasibul's Göttingen/Hohenheim EPOS targets"
+      "HTW Berlin MPMD explicitly recognizes English-taught degree as C1 English (zero IELTS expiration risk)",
+      "Same-country synergy with Hasibul's Göttingen/Hohenheim EPOS targets (DAAD €276/mo spousal allowance)"
     ],
-    nextAction: "Review Bremen MBA Logistics EPOS call and prepare motivation letter."
+    nextAction: "Submit Bremen IGC application via apply.graduatecenter.org; prepare HTW Berlin MPMD application for 1 Nov opening."
   },
   {
     id: "zarin-italy-iyt",
@@ -12587,7 +12597,8 @@ const CRITICAL_DATES = [
   { name: 'ETH ESOP', date: '2026-11-30' },
   { name: 'EPFL Excellence', date: '2026-12-15' },
   { name: 'Hohenheim EPOS', date: '2026-12-15' },
-  { name: 'Swedish universities', date: '2027-01-15' }
+  { name: 'Swedish universities (ranking locked)', date: '2027-01-15' },
+  { name: 'Sweden 900 SEK fee & document upload', date: '2027-02-01' }
 ];
 const ZOOM = { name: 'Göttingen info session', date: '2026-10-26' };
 
@@ -13090,6 +13101,16 @@ function openMission(id) {
       </div>
     ` : ''}
 
+    ${id === 'goettingen-pack-audit' ? `
+      <div class="note ok" style="margin:14px 0;border-left:4px solid var(--teal)">
+        <div>
+          <strong>🏛️ Göttingen 12-Document Section C Pre-Flight Bundle</strong>
+          <p style="font-size:12.5px;margin:4px 0 8px">Audit and inspect all 12 mandatory Section C items, check their status in your vault, and view documents directly before final portal submission.</p>
+          <button class="btn btn-sm btn-primary" type="button" id="mOpenGoeDossier">Open Complete 12-Doc Dossier Audit →</button>
+        </div>
+      </div>
+    ` : ''}
+
     ${m.why ? `<div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(m.why)}</div></div>` : ''}
     ${m.checklist?.length ? `<div class="field"><div class="field-k">Checklist</div><ul class="list">${m.checklist.map(c => `<li>${esc(c)}</li>`).join('')}</ul></div>` : ''}
 
@@ -13129,6 +13150,9 @@ function openMission(id) {
       };
     }
   }
+
+  const goeBtn = $('#mOpenGoeDossier');
+  if (goeBtn) goeBtn.onclick = () => { closeModal(); openTarget('goettingen'); };
 
   $('#mToggle').onclick = async () => { closeModal(); await toggleMission(id); };
 }

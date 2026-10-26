@@ -164,20 +164,21 @@ const ZARIN_TARGETS = [
     priority: "P0",
     subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
     funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
-    deadline: {"value":"2026-12-15","source":"https://www.hs-bremen.de/studieren/studiengang/international-logistics-and-trade-mba/","checked":"2026-10-25","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-26","status":"verified"},
     deadlineLabel: "Varies by programme: Oct – Dec 2026",
     status: "open",
-    route: "Direct application to participating universities (Hochschule Bremen / HTW Berlin)",
+    route: "Direct application to participating institutions (Hochschule Bremen IGC / HTW Berlin)",
     eligibleProgrammes: [
-      "Hochschule Bremen — MBA in International Logistics and Trade (EPOS funded) ⭐ Direct fit",
-      "HTW Berlin — Master in Project Management and Data Science (MPMD) (EPOS funded)"
+      "Hochschule Bremen (IGC) — International MBA in International Logistics & SCM (Director: Prof. Dr. Frank Fürstenberg; apply.graduatecenter.org)",
+      "HTW Berlin — Master in Project Management and Data Science (MPMD; mpmd.htw-berlin.de/applying; Window: 1 Nov 2026 – 28 Feb 2027)"
     ],
     advantages: [
       "Zarin's BBA 3.42 converts to German 1.87 (beats 2.0 competitive bar)",
       "3.5 years of verifiable freight forwarding and commercial operations exceed 2-year EPOS gate",
-      "Same-country synergy with Hasibul's Göttingen/Hohenheim EPOS targets"
+      "HTW Berlin MPMD explicitly recognizes English-taught degree as C1 English (zero IELTS expiration risk)",
+      "Same-country synergy with Hasibul's Göttingen/Hohenheim EPOS targets (DAAD €276/mo spousal allowance)"
     ],
-    nextAction: "Review Bremen MBA Logistics EPOS call and prepare motivation letter."
+    nextAction: "Submit Bremen IGC application via apply.graduatecenter.org; prepare HTW Berlin MPMD application for 1 Nov opening."
   },
   {
     id: "zarin-italy-iyt",

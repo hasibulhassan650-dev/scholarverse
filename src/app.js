@@ -171,7 +171,8 @@ const CRITICAL_DATES = [
   { name: 'ETH ESOP', date: '2026-11-30' },
   { name: 'EPFL Excellence', date: '2026-12-15' },
   { name: 'Hohenheim EPOS', date: '2026-12-15' },
-  { name: 'Swedish universities', date: '2027-01-15' }
+  { name: 'Swedish universities (ranking locked)', date: '2027-01-15' },
+  { name: 'Sweden 900 SEK fee & document upload', date: '2027-02-01' }
 ];
 const ZOOM = { name: 'Göttingen info session', date: '2026-10-26' };
 
@@ -674,6 +675,16 @@ function openMission(id) {
       </div>
     ` : ''}
 
+    ${id === 'goettingen-pack-audit' ? `
+      <div class="note ok" style="margin:14px 0;border-left:4px solid var(--teal)">
+        <div>
+          <strong>🏛️ Göttingen 12-Document Section C Pre-Flight Bundle</strong>
+          <p style="font-size:12.5px;margin:4px 0 8px">Audit and inspect all 12 mandatory Section C items, check their status in your vault, and view documents directly before final portal submission.</p>
+          <button class="btn btn-sm btn-primary" type="button" id="mOpenGoeDossier">Open Complete 12-Doc Dossier Audit →</button>
+        </div>
+      </div>
+    ` : ''}
+
     ${m.why ? `<div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(m.why)}</div></div>` : ''}
     ${m.checklist?.length ? `<div class="field"><div class="field-k">Checklist</div><ul class="list">${m.checklist.map(c => `<li>${esc(c)}</li>`).join('')}</ul></div>` : ''}
 
@@ -713,6 +724,9 @@ function openMission(id) {
       };
     }
   }
+
+  const goeBtn = $('#mOpenGoeDossier');
+  if (goeBtn) goeBtn.onclick = () => { closeModal(); openTarget('goettingen'); };
 
   $('#mToggle').onclick = async () => { closeModal(); await toggleMission(id); };
 }

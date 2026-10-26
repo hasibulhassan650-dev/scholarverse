@@ -315,7 +315,14 @@ const TARGETS = [
     deadline: {"value":"2026-12-15","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     deadlineLabel: "15 December 2026 (window opens 15 Nov)",
     status: "opening_soon",
-    route: "TWO PARTS — email PDFs to agecon@uni-hohenheim.de AND apply via HohCampus. Both required.",
+    route: "TWO PARTS: (1) Email separate unmerged PDFs to agecon@uni-hohenheim.de with subject 'DAAD - [HohCampus No.] - Hasibul Hasan'; (2) Submit online admission application via HohCampus portal (opens 15 Nov).",
+    submissionRules: [
+      "Strict file naming required: '1. Hasan Hasibul - DAAD Application Form.pdf', '2. Hasan Hasibul - Motivation Letter.pdf', '3. Hasan Hasibul - Diploma & Transcript of Records.pdf', '4. Hasan Hasibul - CV.pdf', '5. Hasan Hasibul - Employment Certificates.pdf', '6. Hasan Hasibul - Professional Recommendations.pdf', '7. Hasan Hasibul - Proof of English Proficiency.pdf'",
+      "Do NOT merge into a single PDF; do NOT send cloud download links (Google Drive/Dropbox) — direct attachments only",
+      "HohCampus portal application must be submitted before 15 December 2026",
+      "English score grace period: Official test score can be emailed to agecon@uni-hohenheim.de until 6 January 2027",
+      "AgEcon PreTest on ILIAS (120 min, 15 questions) is mandatory; print result PDF to attach"
+    ],
     why: "⭐ THE SAFER OF YOUR TWO EPOS ROUTES. Hohenheim states an explicit numeric grade threshold of 2.5 on the German scale — your 2.05 PASSES it. English results accepted until 6 January.",
     eligibleProgrammes: ["MSc Agricultural Economics, University of Hohenheim, 24 months, English-taught"],
     scoring: {

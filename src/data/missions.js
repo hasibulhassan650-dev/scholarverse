@@ -487,27 +487,29 @@ const MISSIONS = [
   /* =====  HOHENHEIM PATH  ===== */
   {
     id: "agecon-pretest",
-    title: "Complete the AgEcon PreTest",
-    detail: "Complete Hohenheim's AgEcon PreTest (self-evaluation online quiz) and save the completion confirmation certificate.",
-    why: "Hohenheim requires proof of self-evaluation through the AgEcon PreTest as a mandatory admission document for MSc Agricultural Economics.",
-    xp: 50,
+    title: "Complete the Mandatory AgEcon ILIAS PreTest",
+    detail: "Complete Hohenheim's mandatory 120-minute, 15-question AgEcon PreTest on ILIAS and generate the completion result PDF certificate.",
+    why: "Mandatory admission requirement for MSc Agricultural Economics. While the score does NOT affect admission chances (pure self-evaluation), the generated result PDF must be attached to the application.",
+    xp: 60,
     targets: ["hohenheim"],
     owner: "You",
     deadline: "2026-12-05",
     urgency: "medium",
     category: "Application",
-    actionUrl: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test",
-    actionLabel: "📝 Open AgEcon PreTest Portal",
-    submissionGuide: "Where & how: Complete the online self-test at Hohenheim's portal. Print or save the resulting PDF certificate. Attach it to your application email to agecon@uni-hohenheim.de.",
+    actionUrl: "https://openilias.uni-hohenheim.de/goto.php?target=cat_31&client_id=UHOH2",
+    actionLabel: "📝 Open Hohenheim ILIAS Portal",
+    submissionGuide: "Where & how: Register as external user on openilias.uni-hohenheim.de -> Navigate to Repository -> Repository Home -> Projects F-J -> INTERNET TEST AGECON -> Start Test (120 mins max, 15 questions, calculator permitted). At the end, use browser Print to PDF to save result certificate.",
     sources: [
-      { label: "Hohenheim AgEcon PreTest Regulation", url: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test" },
-      { label: "Hohenheim AgEcon Scholarship Requirements", url: "https://www.uni-hohenheim.de/en/agecon-scholarships" }
+      { label: "Hohenheim PreTest Instructions", url: "https://www.uni-hohenheim.de/bewerbung-agecon-pre-test" },
+      { label: "Hohenheim ILIAS Test System", url: "https://openilias.uni-hohenheim.de/goto.php?target=cat_31&client_id=UHOH2" }
     ],
     checklist: [
-      "Access Hohenheim AgEcon PreTest page",
-      "Complete the self-evaluation test in economics & statistics",
-      "Save the confirmation result as PDF",
-      "Include with application documents"
+      "Register new external user account on Hohenheim ILIAS portal",
+      "Navigate to Repository Home -> Projects F - J -> INTERNET TEST AGECON",
+      "Have calculator ready and review basic microeconomics and econometrics",
+      "Complete 15 questions within 120-minute limit",
+      "Save test completion report as PDF using browser Print function",
+      "Attach PDF to Hohenheim application package"
     ]
   },
   {
