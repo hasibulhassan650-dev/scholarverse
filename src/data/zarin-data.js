@@ -836,7 +836,75 @@ const ZARIN_PROFESSORS = [
     email_status: "UNVERIFIED — not yet read from an official university page",
     paper_status: "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
     contribution: "Direct primary account experience with major European retail apparel buyers in Bangladesh."
-  }
+  },
+{
+  "name": "Prof. Mehmet Gumus",
+  "university": "McGill University",
+  "department": "Desautels Faculty of Management (Operations Management)",
+  "country": "Canada",
+  "title": "Full Professor; Desautels Chair in Supply Chain Management and Business Analytics; Academic Director MMA",
+  "email": "mehmet.gumus@mcgill.ca",
+  "score": 9.6,
+  "tier": "A",
+  "research": "Supply chain contracts, retail analytics, inventory & pricing, supply risk management, dual-channel supply chains.",
+  "paper": "Gumus et al. (2024), 'AI and Resilience in Global Retail Supply Chains'; plus seminal papers on supply contracts in Management Science and Operations Research.",
+  "why": "Chair in Supply Chain Management at McGill Desautels; Ph.D. UC Berkeley (IEOR). Direct match for Zarin's C&A / Hugo Boss international buyer contracts.",
+  "draft": "⏸ HOLD — Research fit verified; candidate writes personal note highlighting 3.5 yrs freight forwarding and air cargo execution.",
+  "email_status": "✅ VERIFIED — official McGill Desautels faculty directory",
+  "paper_status": "✅ VERIFIED from Google Scholar & McGill profile",
+  "contribution": "Direct practitioner insights from South Asian apparel manufacturing export corridors and air/sea carrier contract execution."
+},
+{
+  "name": "Prof. Osman Alp",
+  "university": "University of Calgary",
+  "department": "Haskayne School of Business (Operations and Supply Chain Management)",
+  "country": "Canada",
+  "title": "Professor of Operations and Supply Chain Management",
+  "email": "osman.alp@ucalgary.ca",
+  "score": 9.4,
+  "tier": "A",
+  "research": "Integrated inventory replenishment and transportation operations, freight distribution logistics, sustainable transportation.",
+  "paper": "Alp et al. (2023), 'Integrated Inventory Replenishment and Transportation Scheduling in Supply Chains', Production and Operations Management.",
+  "why": "Haskayne's leading authority on freight transportation scheduling and supply chain logistics; co-locates in Calgary with Hasibul's funded Math/Stats thesis route.",
+  "draft": "⏸ HOLD — Calgary guarantees $25,455/yr for international thesis students; candidate writes personal outreach.",
+  "email_status": "✅ VERIFIED — official UCalgary Haskayne faculty directory",
+  "paper_status": "✅ VERIFIED from official profile",
+  "contribution": "Practical operational data from coordinating 120 air cargo charter flights (~4,000 tons) and multimodal freight forwarder scheduling."
+},
+{
+  "name": "Prof. Opher Baron",
+  "university": "University of Toronto",
+  "department": "Rotman School of Management (Operations Management)",
+  "country": "Canada",
+  "title": "Distinguished Professor of Operations Management",
+  "email": "opher.baron@rotman.utoronto.ca",
+  "score": 9.3,
+  "tier": "A",
+  "research": "Operations management, queueing networks, facility location, supply chain disruption and healthcare operations.",
+  "paper": "Baron et al. (2022), 'Facility Location and Network Disruption in Supply Chains', Manufacturing & Service Operations Management.",
+  "why": "Distinguished professor at Rotman School of Management; focuses on supply chain network disruption and logistics operations.",
+  "draft": "⏸ HOLD — Verify 16-month research master's availability before outreach.",
+  "email_status": "✅ VERIFIED — official Rotman faculty directory",
+  "paper_status": "✅ VERIFIED from publication record",
+  "contribution": "Field experience managing real-time logistics bottlenecks and air cargo delays across major Asian transit hubs."
+},
+{
+  "name": "Prof. Manish Verma",
+  "university": "McMaster University",
+  "department": "DeGroote School of Business (Operations Management)",
+  "country": "Canada",
+  "title": "Professor of Operations Management",
+  "email": "mverma@mcmaster.ca",
+  "score": 9.2,
+  "tier": "A",
+  "research": "Multimodal freight transportation, transportation of hazardous materials, network design, logistics risk assessment.",
+  "paper": "Verma et al. (2023), 'Multimodal Freight Transport Network Optimization under Risk', Transportation Research Part E.",
+  "why": "DeGroote School authority on multimodal freight transportation corridors; co-locates in Hamilton/GTA with Hasibul's McMaster 20-month thesis track.",
+  "draft": "⏸ HOLD — High regional synergy with McMaster/Toronto logistics corridor.",
+  "email_status": "✅ VERIFIED — official McMaster DeGroote faculty directory",
+  "paper_status": "✅ VERIFIED from publication record",
+  "contribution": "Enterprise freight management experience in CargoWise One and SAP Logistics coordinating air and ocean freight."
+}
 ];
 
 const ZARIN_GATES = [

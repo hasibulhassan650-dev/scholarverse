@@ -8,8 +8,8 @@ const app = {
   state: null, content: null, missions: null, unis: null, profs: null, cits: null, res: null, excel: null,
   profileMode: (typeof localStorage !== 'undefined' && localStorage.getItem('sv-profile-mode')) || 'hasibul',
   view: 'dashboard',
-  f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'ranked', uniQuery: '',
-       profTier: 'all', profStatus: 'all', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
+  f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'u15', uniQuery: '',
+       profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
   calDate: null
 };
 if (typeof window !== 'undefined') window.app = app;
@@ -2271,12 +2271,22 @@ function renderSubjects(root) {
    FUNDING
    ============================================================================ */
 function renderFunding(root) {
-  const S = app.res.fundingSchemes || [], DE = app.res.fundingDeadEnds || [];
-  const ver = S.filter(s => s.verified).length;
+  let S = (app.res.fundingSchemes || []).slice(), DE = app.res.fundingDeadEnds || [];
+  
+  if (app.f.fundKind === 'guaranteed') S = S.filter(s => /guaranteed/i.test(s.kind));
+  else if (app.f.fundKind === 'canada') S = S.filter(s => /ontario|waterloo|queen|ubc|alberta|saskatchewan|sfu|calgary|hec|canada/i.test(s.name + ' ' + (s.note || '')));
+  else if (app.f.fundKind === 'competitive') S = S.filter(s => /competitive/i.test(s.kind));
+  
+  if (app.f.fundQuery) {
+    const fq = app.f.fundQuery.toLowerCase().trim();
+    S = S.filter(s => (s.name + ' ' + s.who + ' ' + s.amount + ' ' + s.covers + ' ' + (s.note || '')).toLowerCase().includes(fq));
+  }
+
+  const ver = (app.res.fundingSchemes || []).filter(s => s.verified).length;
   root.innerHTML = `${pageHead()}
-    ${stats([['Schemes tracked', S.length, 'funding routes'], ['Guaranteed', S.filter(s => /guaranteed/i.test(s.kind)).length, 'attach to admission', 'ok'],
-      ['Open now', S.filter(s => s.status === 'OPEN').length, `of ${S.length}`], ['Verified amounts', ver, 'the rest are unconfirmed', 'warn'], ['Dead ends', DE.length, 'exclude you', 'bad']])}
-    <div class="note warn" style="margin-bottom:16px"><div><strong>Only ${ver} of ${S.length} amounts are independently confirmed.</strong> Treat every unverified figure as a lead and check it on the official page before it shapes a decision.</div></div>
+    ${stats([['Schemes tracked', (app.res.fundingSchemes || []).length, 'funding routes'], ['Guaranteed', (app.res.fundingSchemes || []).filter(s => /guaranteed/i.test(s.kind)).length, 'attach to admission', 'ok'],
+      ['Open now', (app.res.fundingSchemes || []).filter(s => s.status === 'OPEN').length, `of ${(app.res.fundingSchemes || []).length}`], ['Verified amounts', ver, 'the rest are unconfirmed', 'warn'], ['Dead ends', DE.length, 'exclude you', 'bad']])}
+    <div class="note warn" style="margin-bottom:16px"><div><strong>Only ${ver} of ${(app.res.fundingSchemes || []).length} amounts are independently confirmed.</strong> Treat every unverified figure as a lead and check it on the official page before it shapes a decision.</div></div>
     
     <div class="section-title"><h2>Financial Gap Calculator (WS-D4)</h2><span class="aside">Tuition + Official Living Costs vs. Guaranteed Funding</span></div>
     <div class="panel" style="margin-bottom:24px"><div class="table-wrap" style="max-height:none">
@@ -2309,6 +2319,10 @@ function renderFunding(root) {
         </tbody>
       </table>
     </div></div>
+    <div class="toolbar" style="margin-top:20px;margin-bottom:14px">
+      ${chips('fK', [['all', 'All Schemes (' + (app.res.fundingSchemes || []).length + ')'], ['canada', 'Canadian Awards'], ['guaranteed', 'Guaranteed Base'], ['competitive', 'Competitive / Merit']], app.f.fundKind || 'all')}
+      <input class="input" id="fQ" type="search" placeholder="Search scholarship by university or keyword..." value="${esc(app.f.fundQuery || '')}" style="max-width:320px">
+    </div>
     <div class="panel"><div class="table-wrap" style="max-height:none">
       <table class="tbl"><thead><tr><th>Scheme</th><th>Who applies</th><th>Amount</th><th>Covers</th><th>Type</th><th>Deadline</th><th>Fall 2027</th><th>Verified</th></tr></thead>
       <tbody>${S.map(s => `<tr>
@@ -2319,9 +2333,22 @@ function renderFunding(root) {
         <td><span class="tag ${s.status === 'OPEN' ? 'ok' : s.status === 'CLOSED' ? 'bad' : 'plain'}">${esc(s.status.charAt(0) + s.status.slice(1).toLowerCase())}</span></td>
         <td>${s.verified ? '<span class="tag ok">Yes</span>' : '<span class="tag warn">No</span>'}</td>
       </tr>`).join('')}</tbody></table>
+      ${S.length ? '' : '<div class="empty">No funding schemes match your search.</div>'}
     </div></div>
     <div class="section-title"><h2>Dead ends</h2><span class="aside">Look open, but exclude you</span></div>
     <div class="panel"><div class="panel-body grid g2" style="gap:0 32px">${DE.map((d, i) => `<div class="dead" data-dead="${i}" style="cursor:pointer" title="Click to view reason"><span class="dead-x">×</span><div><div class="dead-n">${esc(d.name)}</div><div class="dead-r">${esc(d.why || d.reason || '')}</div></div></div>`).join('')}</div></div>`;
+
+  wireChips(root, 'fK', k => { app.f.fundKind = k; renderFunding(root); });
+  const fInp = $('#fQ', root);
+  if (fInp) {
+    fInp.oninput = () => {
+      app.f.fundQuery = fInp.value;
+      const pos = fInp.selectionStart;
+      renderFunding(root);
+      const n = $('#fQ', root);
+      if (n) { n.focus(); n.setSelectionRange(pos, pos); }
+    };
+  }
 
   $$('[data-dead]', root).forEach(el => {
     el.onclick = () => {
@@ -2346,6 +2373,12 @@ function renderProfessors(root) {
   if (app.f.profStatus === 'blocked') list = list.filter(blocked);
   if (app.f.profStatus === 'hold') list = list.filter(p => /HOLD|DEPRIORITISE/.test(p.draft || ''));
   if (app.f.profStatus === 'deep') list = list.filter(p => p.deep);
+  if (app.f.profQuery) {
+    const pq = app.f.profQuery.toLowerCase().trim();
+    list = list.filter(p => (
+      p.name + ' ' + (p.university || '') + ' ' + (p.department || '') + ' ' + (p.research || '') + ' ' + (p.why || '')
+    ).toLowerCase().includes(pq));
+  }
   const tr = { A: 0, B: 1, C: 2, UNSCORED: 3 };
   list.sort((a, b) => (tr[a.tier] ?? 9) - (tr[b.tier] ?? 9) || (b.score || 0) - (a.score || 0));
   const tiers = ['all', ...new Set(P.map(p => p.tier).filter(Boolean))];
@@ -2358,13 +2391,14 @@ function renderProfessors(root) {
     ${stats([
       ['Tracked Faculty', P.length, `${P.filter(p => p.tier === 'A').length} in tier A`],
       ['Ready to email', P.filter(sendable).length, 'verified drafts ready', 'ok'],
-      ['Sweden & Canada', P.filter(p => p.country === 'Sweden' || p.country === 'Canada').length, 'priority corridors', 'acc'],
+      ['Sweden & Canada', P.filter(p => p.country === 'Sweden' || p.country === 'Canada' || /Canada/.test(p.country)).length, 'priority corridors', 'acc'],
       ['Emails verified', P.filter(emailOk).length, 'official university directories', 'ok'],
       ['Research areas', 10, 'logistics, freight & SCM', 'plain']
     ])}
     <div class="toolbar">
       ${chips('pT', tiers.map(t => [t, t === 'all' ? 'All tiers' : t === 'UNSCORED' ? 'Unscored' : `Tier ${t}`]), app.f.profTier)}
       ${chips('pS', [['all', 'Any status'], ['send', 'Ready to email'], ['deep', 'Has dossier'], ['blocked', 'Blocked'], ['hold', 'On hold']], app.f.profStatus)}
+      <input class="input" id="pQ" type="search" placeholder="Search by professor, university or research..." value="${esc(app.f.profQuery || '')}" style="max-width:320px">
     </div>
     <div class="grid auto">${list.map(p => `<button class="panel prof" type="button" data-p="${esc(p.name)}">
       <div class="prof-top"><span class="score ${p.tier === 'A' ? 'a' : p.tier === 'B' ? 'b' : ''}">${p.score ?? '—'}</span>
@@ -2378,9 +2412,19 @@ function renderProfessors(root) {
         <span class="tag ${emailOk(p) ? 'ok' : 'warn'} plain">${emailOk(p) ? 'Email verified' : 'Email unconfirmed'}</span>
       </div>
       <div class="prof-mail">${esc(p.email || '')}</div>
-    </button>`).join('') || '<div class="empty">No professors match.</div>'}</div>`;
+    </button>`).join('') || '<div class="empty">No professors match your search.</div>'}</div>`;
   wireChips(root, 'pT', k => { app.f.profTier = k; renderProfessors(root); });
   wireChips(root, 'pS', k => { app.f.profStatus = k; renderProfessors(root); });
+  const pInp = $('#pQ', root);
+  if (pInp) {
+    pInp.oninput = () => {
+      app.f.profQuery = pInp.value;
+      const pos = pInp.selectionStart;
+      renderProfessors(root);
+      const n = $('#pQ', root);
+      if (n) { n.focus(); n.setSelectionRange(pos, pos); }
+    };
+  }
   $$('[data-p]', root).forEach(b => b.onclick = () => openProf(P.find(x => x.name === b.dataset.p)));
 }
 

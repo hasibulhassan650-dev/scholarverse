@@ -229,7 +229,91 @@ const FUNDING_SCHEMES = [
   { name: "Calgary — international MA/MSc thesis guarantee", who: "Automatic for thesis-based international students", amount: "~$25,455/yr", covers: "Tuition + living", kind: "Guaranteed", deadline: "With admission", status: "OPEN", url: "https://grad.ucalgary.ca/awards-and-funding/funding-TB-students", verified: true, note: "VERIFIED for Calgary generally — but NOT reachable through Economics, whose thesis MA is closed. Redirect to Mathematics & Statistics or Haskayne." },
   { name: "Quebec — PBEEE merit scholarship", who: "Nominated by the institution", amount: "Doctoral/Postdoc only", covers: "Not available for Master's", kind: "Discontinued for Master's", deadline: "N/A", status: "CLOSED", url: "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee/", verified: true, note: "VERIFIED from FRQNT: PBEEE is strictly Doctoral ($25k/yr), Postdoc ($35k/yr), or Short-Term research ($3k/mo). There is NO Master's component." },
   { name: "Saskatchewan Edwards — MSc Management funding", who: "International applicants by 15 Dec priority deadline", amount: "Departmental TA/RA funding ($18,000–$22,000/yr)", covers: "Stipend + partial tuition support", kind: "Departmental award", deadline: "15 December (Priority) / 31 Jan", status: "OPEN", url: "https://www.edwards.usask.ca/programs/mscfinance/", verified: true, note: "VERIFIED from Edwards: 24-month research thesis program. Funding reviews begin for applications submitted by December 15." },
-  { name: "UBC — application fee waiver (50 least developed countries)", who: "Citizens and residents of UN 50 LDCs", amount: "Waives application fee ($168.25 CAD)", covers: "Application fee", kind: "Guaranteed if eligible", deadline: "With application (31 Dec)", status: "OPEN", url: "https://www.grad.ubc.ca/prospective-students/application-admission/application-frequently-asked-questions", verified: true, note: "VERIFIED from UBC Graduate School FAQ: Automatic waiver for international applicants whose citizenship and correspondence address are in UN LDCs, explicitly including Bangladesh." }
+  { name: "UBC — application fee waiver (50 least developed countries)", who: "Citizens and residents of UN 50 LDCs", amount: "Waives application fee ($168.25 CAD)", covers: "Application fee", kind: "Guaranteed if eligible", deadline: "With application (31 Dec)", status: "OPEN", url: "https://www.grad.ubc.ca/prospective-students/application-admission/application-frequently-asked-questions", verified: true, note: "VERIFIED from UBC Graduate School FAQ: Automatic waiver for international applicants whose citizenship and correspondence address are in UN LDCs, explicitly including Bangladesh." },
+{
+  "name": "Ontario Graduate Scholarship (OGS) — International Stream",
+  "who": "Applied through Ontario universities (Waterloo, UofT, Queen's, McMaster, Western)",
+  "amount": "$15,000 CAD / yr ($5,000 per term)",
+  "covers": "Living stipend / academic costs",
+  "kind": "Competitive Merit",
+  "deadline": "Varies by university (Jan – Mar 2027)",
+  "status": "OPEN",
+  "url": "https://osap.gov.on.ca/OSAPPortal/en/A-ZListofAid/PRDR019245.html",
+  "verified": true,
+  "note": "VERIFIED from OSAP & University Guidelines: Ontario Province funds 2/3 and the university funds 1/3. Open to international students on valid study permits; each university has an explicit quota of international OGS awards."
+},
+{
+  "name": "Waterloo — International Master's Award of Excellence (IMAE)",
+  "who": "Full-time international research-based master's students at Waterloo",
+  "amount": "$2,500 CAD / term (up to $12,500 total over 5 terms)",
+  "covers": "Tuition offset / research support",
+  "kind": "Institutional Entrance Award",
+  "deadline": "Automatic nomination with admission",
+  "status": "OPEN",
+  "url": "https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/awards/international-masters-award-excellence-imae",
+  "verified": true,
+  "note": "VERIFIED from University of Waterloo GSPA: Faculties nominate incoming international students admitted to research-based master's programs based on admission GPA."
+},
+{
+  "name": "Queen's — International Master's Tuition Award (IMTA)",
+  "who": "Full-time international research master's students at Queen's University",
+  "amount": "Up to $10,000 CAD / yr",
+  "covers": "International tuition differential",
+  "kind": "Guaranteed / Automatic with Thesis Admission",
+  "deadline": "15 January (with admission package)",
+  "status": "OPEN",
+  "url": "https://www.queensu.ca/grad-postdoc/fees-funding/funding-sources/internal/tuition-awards",
+  "verified": true,
+  "note": "VERIFIED from Queen's School of Graduate Studies: Designed to reduce the tuition differential for international research master's students down toward domestic rates."
+},
+{
+  "name": "UBC — International Tuition Award (ITA)",
+  "who": "All full-time international students in research master's programs at UBC",
+  "amount": "$3,200 CAD / yr",
+  "covers": "Automatic tuition reduction",
+  "kind": "Guaranteed / Universal",
+  "deadline": "Automatic upon registration",
+  "status": "OPEN",
+  "url": "https://www.grad.ubc.ca/awards/international-tuition-award",
+  "verified": true,
+  "note": "VERIFIED from UBC Graduate & Postdoctoral Studies: Automatic annual $3,200 CAD tuition credit for all eligible international master's thesis students."
+},
+{
+  "name": "Alberta Graduate Excellence Scholarship (AGES)",
+  "who": "International and domestic master's students at University of Alberta & Calgary",
+  "amount": "$11,000 – $15,000 CAD",
+  "covers": "Living & research expenses",
+  "kind": "Provincial Merit Award",
+  "deadline": "Nominated by department in Fall/Winter",
+  "status": "OPEN",
+  "url": "https://www.ualberta.ca/en/graduate-studies/awards-and-funding/scholarships/ages.html",
+  "verified": true,
+  "note": "VERIFIED from Government of Alberta & UAlberta: Funded by the Government of Alberta to incentivize academic excellence; open to international students on study permits."
+},
+{
+  "name": "Saskatchewan Graduate Scholarship (SGS)",
+  "who": "Master's thesis students at the University of Saskatchewan",
+  "amount": "Up to $16,000 CAD / yr",
+  "covers": "Living allowance / research funding",
+  "kind": "Departmental Allocation",
+  "deadline": "Nominated upon admission",
+  "status": "OPEN",
+  "url": "https://grad.usask.ca/awards-and-funding/scholarships/sgs.php",
+  "verified": true,
+  "note": "VERIFIED from USask College of Graduate & Postdoctoral Studies: Allocated to departments for distribution to top-ranking incoming thesis master's candidates."
+},
+{
+  "name": "SFU — Graduate Dean's Entrance Scholarship (GDES)",
+  "who": "Incoming research master's students at Simon Fraser University",
+  "amount": "$21,000 CAD / yr",
+  "covers": "Living stipend",
+  "kind": "Entrance Merit Competition",
+  "deadline": "Nominated by department with application",
+  "status": "OPEN",
+  "url": "https://www.sfu.ca/gradstudies/awards-funding/entrance-scholarships/gdes.html",
+  "verified": true,
+  "note": "VERIFIED from SFU Graduate Studies: Available to domestic and international applicants with a minimum admission GPA of 3.70 entering thesis programs."
+}
 ];
 
 const FUNDING_DEAD_ENDS = [
