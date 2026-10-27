@@ -49,6 +49,7 @@ REQUIRED = {
     "COUPLE_COLOCATION_MATRIX": "array", "UNI_CENSUS": "array", "UNI_RANKED": "array",
     "CANADA_U15_RANKED": "array", "MASTERSPORTAL_CANADA_AUDIT": "array",
     "MASTERSPORTAL_FINANCE_CANADA_AUDIT": "array",
+    "CANADA_MASTER_PROGRAMS_105": "array", "CANADA_SUBJECT_MATRIX_41": "array", "CANADA_FUNDING_GUIDE_16": "array",
     "ZARIN_DATA": "object", "ZARIN_PROFESSORS_DEEP": "object", "COUPLE_DATA": "object",
     "SWEDEN_RANK_OPTIMIZER": "object", "PROF_VERIFIED": "object"
 }

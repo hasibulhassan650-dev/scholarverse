@@ -8,7 +8,8 @@ const app = {
   state: null, content: null, missions: null, unis: null, profs: null, cits: null, res: null, excel: null,
   profileMode: (typeof localStorage !== 'undefined' && localStorage.getItem('sv-profile-mode')) || 'hasibul',
   view: 'dashboard',
-  f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'u15', uniQuery: '', mpGate: 'all', mpQuery: '',
+  f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'directory105', uniQuery: '', mpGate: 'all', mpQuery: '',
+       dirDiscipline: 'all', dirGate: 'all', dirProvince: 'all', dirQuery: '',
        profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
   calDate: null
 };
@@ -1908,7 +1909,140 @@ function renderUniversities(root) {
   const CAT = { U15: 'U15', MD: 'Medical/doctoral', COMP: 'Comprehensive', PU: 'Primarily undergraduate', SPEC: 'Specialised', FR: 'Francophone' };
 
   let body = '';
-  if (app.f.uniMode === 'u15') {
+  if (app.f.uniMode === 'directory105') {
+    const allProgs = ((typeof CANADA_MASTER_PROGRAMS_105 !== 'undefined' ? CANADA_MASTER_PROGRAMS_105 : (app.res && app.res.CANADA_MASTER_PROGRAMS_105)) || []);
+    let pList = allProgs.slice();
+
+    // Discipline clustering
+    if (app.f.dirDiscipline && app.f.dirDiscipline !== 'all') {
+      const disc = app.f.dirDiscipline;
+      if (disc === 'econ') pList = pList.filter(p => /economics & econometrics|pure & quantitative/i.test(p['Sub-Discipline Category'] || ''));
+      else if (disc === 'quant') pList = pList.filter(p => /quant|actuarial|math/i.test(p['Sub-Discipline Category'] || ''));
+      else if (disc === 'fe') pList = pList.filter(p => /financial economics/i.test(p['Sub-Discipline Category'] || ''));
+      else if (disc === 'fin') pList = pList.filter(p => /^finance|investment|corporate/i.test(p['Sub-Discipline Category'] || ''));
+      else if (disc === 'dev') pList = pList.filter(p => /agricultural|resource|agribusiness|development|policy/i.test(p['Sub-Discipline Category'] || ''));
+    }
+
+    // Gate filter
+    if (app.f.dirGate && app.f.dirGate !== 'all') {
+      pList = pList.filter(p => p.gateStatus === app.f.dirGate);
+    }
+
+    // Province filter
+    if (app.f.dirProvince && app.f.dirProvince !== 'all') {
+      pList = pList.filter(p => p.Province === app.f.dirProvince);
+    }
+
+    // Search query
+    if (app.f.dirQuery) {
+      const q = app.f.dirQuery.toLowerCase().trim();
+      pList = pList.filter(p => (
+        (p['University'] || '') + ' ' + (p['Program Name'] || '') + ' ' + (p['Degree'] || '') + ' ' +
+        (p['Faculty / School'] || '') + ' ' + (p['Sub-Discipline Category'] || '') + ' ' +
+        (p['Duration & Format'] || '') + ' ' + (p['Funding & Financial Aid Model'] || '') + ' ' +
+        (p['Key Admission & Test Notes'] || '')
+      ).toLowerCase().includes(q));
+    }
+
+    const passCount = allProgs.filter(p => p.gateStatus === 'PASS').length;
+    const failCount = allProgs.filter(p => p.gateStatus === 'FAIL').length;
+    const partCount = allProgs.filter(p => p.gateStatus === 'PARTIAL').length;
+    const exclCount = allProgs.filter(p => p.gateStatus === 'EXCLUDED').length;
+
+    body = `
+      <div class="note acc" style="margin-bottom:16px">
+        <div>
+          <strong>🍁 Canada Complete Master's in Economics &amp; Finance Ranked Directory (105 Programs across 41 Universities):</strong>
+          Every program is cross-referenced with official QS 2026 and Maclean's rankings, verified funding packages, duration, and the 16-month IRCC C42 spousal open work permit gate. Click any row or card to inspect complete admission requirements and matched research supervisors.
+        </div>
+      </div>
+
+      <div class="toolbar" style="margin-bottom:8px">
+        ${chips('dD', [
+          ['all', 'All Disciplines (' + allProgs.length + ')'],
+          ['econ', 'Econ & Econometrics'],
+          ['quant', 'Quant & Math Finance'],
+          ['fe', 'Financial Economics'],
+          ['fin', 'Finance & Investments'],
+          ['dev', 'Ag, Dev & Resource Econ']
+        ], app.f.dirDiscipline || 'all')}
+        <input class="input" id="dQ" type="search" placeholder="Search across 105 programs, universities, tests..." value="${esc(app.f.dirQuery || '')}" style="max-width:340px">
+      </div>
+
+      <div class="toolbar" style="margin-bottom:14px">
+        ${chips('dG', [
+          ['all', 'All Gate Statuses (' + allProgs.length + ')'],
+          ['PASS', 'Clears 16-mo Gate (' + passCount + ')'],
+          ['FAIL', 'Fails Gate <16mo (' + failCount + ')'],
+          ['PARTIAL', 'Extendable / Ambiguous (' + partCount + ')'],
+          ['EXCLUDED', 'Diploma / Unfunded (' + exclCount + ')']
+        ], app.f.dirGate || 'all')}
+        ${chips('dP', [
+          ['all', 'All Provinces'],
+          ['ON', 'Ontario (ON)'],
+          ['QC', 'Quebec (QC)'],
+          ['BC', 'British Columbia (BC)'],
+          ['AB', 'Alberta (AB)'],
+          ['SK', 'Saskatchewan (SK)'],
+          ['NS', 'Nova Scotia (NS)'],
+          ['MB', 'Manitoba (MB)'],
+          ['NL', 'Newfoundland (NL)'],
+          ['NB', 'New Brunswick (NB)']
+        ], app.f.dirProvince || 'all')}
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap" style="max-height:none">
+          <table class="tbl dense">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>University</th>
+                <th>Program Name &amp; School</th>
+                <th>Degree</th>
+                <th>Sub-Discipline</th>
+                <th>Duration &amp; Format</th>
+                <th>Spousal Gate (16-mo)</th>
+                <th>Funding Model</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${pList.map(p => {
+                const isPass = p.gateStatus === 'PASS';
+                const isFail = p.gateStatus === 'FAIL';
+                const isExcl = p.gateStatus === 'EXCLUDED';
+                const bg = isPass ? 'var(--card-bg, #fff)' : isFail ? 'rgba(239, 68, 68, 0.04)' : 'rgba(242, 179, 61, 0.04)';
+                return `
+                  <tr style="background:${bg}">
+                    <td class="num"><strong>${esc(p['Canada Rank (Econ/Fin Composite)'] || '—')}</strong></td>
+                    <td>
+                      <strong>${esc(p['University'])}</strong>
+                      <div class="dim" style="font-size:11.5px">${esc(p['Province'])} · ${esc(p["Maclean's 2026 Category & Rank"] || '')}</div>
+                    </td>
+                    <td>
+                      <strong>${esc(p['Program Name'])}</strong>
+                      <div class="dim" style="font-size:11.5px;color:var(--ink-2)">${esc(p['Faculty / School'])}</div>
+                    </td>
+                    <td><span class="tag acc" style="font-size:11px">${esc(p['Degree'])}</span></td>
+                    <td style="font-size:12px">${esc(p['Sub-Discipline Category'])}</td>
+                    <td class="num" style="font-size:12px">${esc(p['Duration & Format'])}</td>
+                    <td><span class="tag ${isPass ? 'ok' : isFail ? 'bad' : isExcl ? 'bad' : 'warn'}" style="font-size:11px">${esc(p.gateLabel || p.gateStatus)}</span></td>
+                    <td style="font-size:11.5px;max-width:180px">
+                      <span class="tag plain" style="font-size:10.5px">${esc(p.fundingType || 'Funding')}</span>
+                      <div class="dim" style="font-size:11px;margin-top:2px">${esc(p['Funding & Financial Aid Model'] || '')}</div>
+                    </td>
+                    <td><button class="btn btn-sm" type="button" data-progrank="${esc(p['Program Name'])}" data-proguniv="${esc(p['University'])}">Inspect →</button></td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+          ${pList.length ? '' : '<div class="empty">No programs match your search or filter criteria.</div>'}
+        </div>
+      </div>
+    `;
+  } else if (app.f.uniMode === 'u15') {
     body = `
       <div class="note acc" style="margin-bottom:16px">
         <div><strong>🏛️ Official U15 &amp; Comprehensive Canadian National Rankings:</strong> Comprehensive cross-discipline mapping comparing Hasibul's Finance/Econ/Quant routes with Zarin's SCM/Logistics routes, spousal work permit feasibility, and verified faculty leads.</div>
@@ -2088,8 +2222,9 @@ function renderUniversities(root) {
   }
 
   root.innerHTML = `${pageHead(`<div class="seg" id="uM">
+    <button type="button" data-m="directory105" aria-pressed="${app.f.uniMode === 'directory105'}">🍁 Canada 105 Directory</button>
     <button type="button" data-m="u15" aria-pressed="${app.f.uniMode === 'u15'}">🏛️ National U15</button>
-    <button type="button" data-m="mastersportal" aria-pressed="${app.f.uniMode === 'mastersportal'}">🇨🇦 MastersPortal (Econ 64 + Fin 49)</button>
+    <button type="button" data-m="mastersportal" aria-pressed="${app.f.uniMode === 'mastersportal'}">🇨🇦 MastersPortal (113)</button>
     <button type="button" data-m="ranked" aria-pressed="${app.f.uniMode === 'ranked'}">⭐ Custom Fit</button>
     <button type="button" data-m="census" aria-pressed="${app.f.uniMode === 'census'}">📋 Full Census</button>
     <button type="button" data-m="fetcher" aria-pressed="${app.f.uniMode === 'fetcher'}">🔍 Intel Fetcher</button>
@@ -2101,11 +2236,26 @@ function renderUniversities(root) {
   wireChips(root, 'uG', k => { app.f.uniGate = k; renderUniversities(root); });
   wireChips(root, 'mpD', k => { app.f.mpDiscipline = k; renderUniversities(root); });
   wireChips(root, 'mpG', k => { app.f.mpGate = k; renderUniversities(root); });
+  wireChips(root, 'dD', k => { app.f.dirDiscipline = k; renderUniversities(root); });
+  wireChips(root, 'dG', k => { app.f.dirGate = k; renderUniversities(root); });
+  wireChips(root, 'dP', k => { app.f.dirProvince = k; renderUniversities(root); });
   const inp = $('#uQ');
   if (inp) inp.oninput = () => { app.f.uniQuery = inp.value; const p = inp.selectionStart; renderUniversities(root); const n = $('#uQ'); n.focus(); n.setSelectionRange(p, p); };
   const mpInp = $('#mpQ');
   if (mpInp) mpInp.oninput = () => { app.f.mpQuery = mpInp.value; const p = mpInp.selectionStart; renderUniversities(root); const n = $('#mpQ'); n.focus(); n.setSelectionRange(p, p); };
+  const dInp = $('#dQ');
+  if (dInp) dInp.oninput = () => { app.f.dirQuery = dInp.value; const p = dInp.selectionStart; renderUniversities(root); const n = $('#dQ'); n.focus(); n.setSelectionRange(p, p); };
   wireProfLinks(root);
+
+  $$('[data-progrank]', root).forEach(btn => {
+    btn.onclick = () => {
+      const progName = btn.dataset.progrank;
+      const univName = btn.dataset.proguniv;
+      const allProgs = ((typeof CANADA_MASTER_PROGRAMS_105 !== 'undefined' ? CANADA_MASTER_PROGRAMS_105 : (app.res && app.res.CANADA_MASTER_PROGRAMS_105)) || []);
+      const p = allProgs.find(x => x['Program Name'] === progName && x['University'] === univName) || allProgs.find(x => x['Program Name'] === progName);
+      if (p) openCanadaProgramModal(p);
+    };
+  });
 
   $$('.panel.uni', root).forEach(panel => {
     panel.style.cursor = 'pointer';
@@ -2114,6 +2264,92 @@ function renderUniversities(root) {
       const uName = (panel.querySelector('.uni-name')?.textContent || '').trim();
       const uObj = census.find(x => x[0].toLowerCase().includes(uName.toLowerCase()) || uName.toLowerCase().includes(x[0].toLowerCase())) || [uName, 'Canada', 'U15', 'PASS', '', ''];
       openUniModal(uObj);
+    };
+  });
+}
+
+function openCanadaProgramModal(p) {
+  const fac = facultyAt(p['University']);
+  const isPass = p.gateStatus === 'PASS';
+  const isFail = p.gateStatus === 'FAIL';
+  const url = p['Official Program URL'];
+
+  openModal(`
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px">
+      <div>
+        <div class="tier-label">${esc(p['Canada Rank (Econ/Fin Composite)'] || '')} · ${esc(p['Province'] || '')} · ${esc(p["Maclean's 2026 Category & Rank"] || '')}</div>
+        <h2 style="font-size:22px;margin:6px 0 2px">${esc(p['Program Name'])}</h2>
+        <div class="dialog-sub" style="font-size:15px;font-weight:600;color:var(--teal)">${esc(p['University'])} · <span class="muted">${esc(p['Faculty / School'] || '')}</span></div>
+      </div>
+      <span class="tag acc" style="font-size:14px;padding:6px 12px">${esc(p['Degree'])}</span>
+    </div>
+
+    <div class="tags" style="margin-top:14px">
+      <span class="tag ${isPass ? 'ok' : isFail ? 'bad' : 'warn'}">${esc(p.gateLabel || p.gateStatus)}</span>
+      <span class="tag plain">Duration: ${esc(p['Duration & Format'])}</span>
+      <span class="tag plain">Co-op: ${esc(p['Co-op / Internship'] || 'No')}</span>
+      <span class="tag plain">${esc(p['Sub-Discipline Category'])}</span>
+    </div>
+
+    <div class="field" style="margin-top:18px">
+      <div class="field-k" style="color:var(--teal)">💰 Funding &amp; Financial Aid Model</div>
+      <div class="field-v" style="font-weight:600;background:var(--sheet-2);padding:10px 14px;border-radius:6px;border:1px solid var(--rule)">
+        ${esc(p['Funding & Financial Aid Model'] || 'None recorded')}
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:14px">
+      <div class="field-k">🎯 Key Admission &amp; Test Notes</div>
+      <div class="field-v" style="background:var(--sheet-2);padding:10px 14px;border-radius:6px;border:1px solid var(--rule)">
+        ${esc(p['Key Admission & Test Notes'] || 'Standard graduate admissions requirements apply.')}
+      </div>
+    </div>
+
+    <div class="cols2" style="margin-top:14px">
+      <div class="field">
+        <div class="field-k">QS Subject Rankings (2026)</div>
+        <div class="field-v" style="font-size:13px">
+          • Economics: <strong>${esc(p['QS Econ Rank 2026 (Canada / Global)'] || 'Unranked')}</strong><br>
+          • Finance/Accounting: <strong>${esc(p['QS Finance Rank 2026 (Canada / Global)'] || 'Unranked')}</strong>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-k">Official Program Link</div>
+        <div class="field-v">
+          ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Open University Portal ↗</a>` : '<span class="dim">URL not available</span>'}
+        </div>
+      </div>
+    </div>
+
+    ${fac.length ? `
+      <div class="field" style="margin-top:16px">
+        <div class="field-k">Faculty Matched at ${esc(p['University'])} (${fac.length})</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+          ${fac.map(f => `
+            <button class="btn btn-sm" type="button" data-modalprof="${esc(f.name)}" data-modtrack="${f.track === 'zarin' ? 'zarin' : 'hasibul'}">
+              <span>${f.track === 'zarin' ? '👩‍💼' : '👨‍💼'}</span>
+              <span>${esc(f.name)}</span>
+              ${f.deep ? '★' : ''} → Dossier
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    <div style="margin-top:24px;display:flex;justify-content:flex-end">
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
+    </div>
+  `);
+
+  $$('#modalInner [data-modalprof]').forEach(b => {
+    b.onclick = () => {
+      const name = b.dataset.modalprof;
+      const isZ = b.dataset.modtrack === 'zarin';
+      let profObj = null;
+      if (isZ && typeof ZARIN_PROFESSORS !== 'undefined') profObj = ZARIN_PROFESSORS.find(x => x.name === name);
+      if (!profObj && app.profs && app.profs.professors) profObj = app.profs.professors.find(x => x.name === name);
+      if (!profObj && typeof ZARIN_PROFESSORS !== 'undefined') profObj = ZARIN_PROFESSORS.find(x => x.name === name);
+      if (profObj) openProf(profObj);
     };
   });
 }
