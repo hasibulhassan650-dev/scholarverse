@@ -10,7 +10,7 @@ const app = {
   view: 'dashboard',
   f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'directory105', uniQuery: '', mpGate: 'all', mpQuery: '',
        dirDiscipline: 'all', dirGate: 'all', dirProvince: 'all', dirQuery: '',
-       profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
+       profTrack: 'all', profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
   calDate: null
 };
 if (typeof window !== 'undefined') window.app = app;
@@ -2688,7 +2688,24 @@ const blocked = (p) => /BLOCKED|DO NOT SEND/.test(p.draft || '');
 const emailOk = (p) => /VERIFIED/.test(p.email_status || '') && !/UNVERIFIED/.test(p.email_status || '');
 
 function renderProfessors(root) {
-  const P = getActiveProfessors();
+  let P = [];
+  if (app.f.profTrack === 'hasibul') {
+    P = app.profs.professors.map(x => ({ ...x, track: 'hasibul' }));
+  } else if (app.f.profTrack === 'zarin') {
+    P = (typeof ZARIN_PROFESSORS !== 'undefined' ? ZARIN_PROFESSORS : []).map(x => ({ ...x, track: 'zarin' }));
+  } else {
+    // Both / All
+    if (app.profileMode === 'zarin') {
+      P = (typeof ZARIN_PROFESSORS !== 'undefined' ? ZARIN_PROFESSORS : []).map(x => ({ ...x, track: 'zarin' }));
+    } else if (app.profileMode === 'couple') {
+      const hP = (app.profs && app.profs.professors ? app.profs.professors : []).map(x => ({ ...x, track: 'hasibul' }));
+      const zP = (typeof ZARIN_PROFESSORS !== 'undefined' ? ZARIN_PROFESSORS : []).map(x => ({ ...x, track: 'zarin' }));
+      P = [...hP, ...zP];
+    } else {
+      P = (app.profs && app.profs.professors ? app.profs.professors : []).map(x => ({ ...x, track: 'hasibul' }));
+    }
+  }
+
   let list = P.slice();
   if (app.f.profTier !== 'all') list = list.filter(p => p.tier === app.f.profTier);
   if (app.f.profStatus === 'send') list = list.filter(sendable);
@@ -2705,28 +2722,34 @@ function renderProfessors(root) {
   list.sort((a, b) => (tr[a.tier] ?? 9) - (tr[b.tier] ?? 9) || (b.score || 0) - (a.score || 0));
   const tiers = ['all', ...new Set(P.map(p => p.tier).filter(Boolean))];
 
-  const headerTitle = app.profileMode === 'zarin'
-    ? 'Supply Chain, Logistics & Operations Faculty Directory'
-    : 'Economics, Quantitative Finance & Financial Engineering Faculty';
-
   root.innerHTML = `${pageHead()}
     ${stats([
       ['Tracked Faculty', P.length, `${P.filter(p => p.tier === 'A').length} in tier A`],
       ['Ready to email', P.filter(sendable).length, 'verified drafts ready', 'ok'],
       ['Sweden & Canada', P.filter(p => p.country === 'Sweden' || p.country === 'Canada' || /Canada/.test(p.country)).length, 'priority corridors', 'acc'],
       ['Emails verified', P.filter(emailOk).length, 'official university directories', 'ok'],
-      ['Research areas', 10, 'logistics, freight & SCM', 'plain']
+      ['Research areas', 10, 'finance, quant & SCM', 'plain']
     ])}
+    <div class="toolbar" style="margin-bottom:8px">
+      ${chips('pTr', [['all', 'Active Mode Faculty (' + P.length + ')'], ['hasibul', '👨‍💼 Hasibul (Finance / Quant)'], ['zarin', '👩‍💼 Zarin (SCM / Logistics)']], app.f.profTrack || 'all')}
+      <input class="input" id="pQ" type="search" placeholder="Search by professor, university or research..." value="${esc(app.f.profQuery || '')}" style="max-width:320px">
+    </div>
     <div class="toolbar">
       ${chips('pT', tiers.map(t => [t, t === 'all' ? 'All tiers' : t === 'UNSCORED' ? 'Unscored' : `Tier ${t}`]), app.f.profTier)}
       ${chips('pS', [['all', 'Any status'], ['send', 'Ready to email'], ['deep', 'Has dossier'], ['blocked', 'Blocked'], ['hold', 'On hold']], app.f.profStatus)}
-      <input class="input" id="pQ" type="search" placeholder="Search by professor, university or research..." value="${esc(app.f.profQuery || '')}" style="max-width:320px">
     </div>
-    <div class="grid auto">${list.map(p => `<button class="panel prof" type="button" data-p="${esc(p.name)}">
+    <div class="grid auto">${list.map(p => {
+      const isZ = p.track === 'zarin';
+      return `<button class="panel prof" type="button" data-p="${esc(p.name)}" data-ptrack="${isZ ? 'zarin' : 'hasibul'}">
       <div class="prof-top"><span class="score ${p.tier === 'A' ? 'a' : p.tier === 'B' ? 'b' : ''}">${p.score ?? '—'}</span>
-        <div><div class="uni-name">${esc(p.name)}</div><div class="uni-loc">${esc(p.university)}${p.department ? ` · ${esc(p.department)}` : ''}</div></div></div>
+        <div>
+          <div class="uni-name">${isZ ? '👩‍💼 ' : '👨‍💼 '}${esc(p.name)}</div>
+          <div class="uni-loc">${esc(p.university)}${p.department ? ` · ${esc(p.department)}` : ''}</div>
+        </div>
+      </div>
       <div class="prof-why">${esc(p.why || p.research || '')}</div>
       <div class="tags">
+        <span class="tag ${isZ ? 'warn' : 'acc'}" style="font-size:11px">${isZ ? 'Zarin Track' : 'Hasibul Track'}</span>
         ${sendable(p) ? '<span class="tag ok">Ready to email</span>' : blocked(p) ? '<span class="tag bad">Blocked</span>' : p.draft ? '<span class="tag warn">Hold</span>' : ''}
         ${p.recruiting ? '<span class="tag acc">Recruiting</span>' : ''}
         ${p.deep ? '<span class="tag plain">Dossier</span>' : ''}
@@ -2734,7 +2757,9 @@ function renderProfessors(root) {
         <span class="tag ${emailOk(p) ? 'ok' : 'warn'} plain">${emailOk(p) ? 'Email verified' : 'Email unconfirmed'}</span>
       </div>
       <div class="prof-mail">${esc(p.email || '')}</div>
-    </button>`).join('') || '<div class="empty">No professors match your search.</div>'}</div>`;
+    </button>`;
+    }).join('') || '<div class="empty">No professors match your search.</div>'}</div>`;
+  wireChips(root, 'pTr', k => { app.f.profTrack = k; renderProfessors(root); });
   wireChips(root, 'pT', k => { app.f.profTier = k; renderProfessors(root); });
   wireChips(root, 'pS', k => { app.f.profStatus = k; renderProfessors(root); });
   const pInp = $('#pQ', root);
@@ -2747,7 +2772,14 @@ function renderProfessors(root) {
       if (n) { n.focus(); n.setSelectionRange(pos, pos); }
     };
   }
-  $$('[data-p]', root).forEach(b => b.onclick = () => openProf(P.find(x => x.name === b.dataset.p)));
+  $$('[data-p]', root).forEach(b => b.onclick = () => {
+    const isZ = b.dataset.ptrack === 'zarin';
+    let profObj = null;
+    if (isZ && typeof ZARIN_PROFESSORS !== 'undefined') profObj = ZARIN_PROFESSORS.find(x => x.name === b.dataset.p);
+    if (!profObj && app.profs && app.profs.professors) profObj = app.profs.professors.find(x => x.name === b.dataset.p);
+    if (!profObj && typeof ZARIN_PROFESSORS !== 'undefined') profObj = ZARIN_PROFESSORS.find(x => x.name === b.dataset.p);
+    if (profObj) openProf(profObj);
+  });
 }
 
 function copyBtn(id) { return `<button class="btn btn-sm" type="button" data-copy="${id}">Copy</button>`; }
