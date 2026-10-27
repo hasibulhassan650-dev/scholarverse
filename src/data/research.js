@@ -1273,10 +1273,442 @@ const MASTERSPORTAL_CANADA_AUDIT = [
   }
 ];
 
+const MASTERSPORTAL_FINANCE_CANADA_AUDIT = [
+  {
+    "university": "Trent University",
+    "program": "Applied AI and Financial Analytics",
+    "degree": "Postgraduate Certificate",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$19,000 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Postgraduate Certificate, NOT a master's degree. Not exempt from new IRCC post-Nov 2024 PGWP field-of-study rules.",
+    "fundingStatus": "Unfunded Certificate",
+    "verdict": "Disqualified (Certificate)"
+  },
+  {
+    "university": "Seneca Polytechnic",
+    "program": "Financial Planning",
+    "degree": "Postgraduate Certificate",
+    "duration": "8 months",
+    "tuition": "$12,949 full",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "College certificate; fails the 16-month spousal work-permit gate.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Polytechnic 8mo)"
+  },
+  {
+    "university": "Conestoga College",
+    "program": "Financial Planning Services",
+    "degree": "Postgraduate Certificate",
+    "duration": "8 months / 1 yr",
+    "tuition": "Not available",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "College certificate; fails 16-month gate.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (College Certificate)"
+  },
+  {
+    "university": "Douglas College",
+    "program": "Financial Planning",
+    "degree": "Postgraduate Diploma",
+    "duration": "12 months (1 yr)",
+    "tuition": "$16,248 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "College post-degree diploma; fails 16-month gate.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (College Diploma)"
+  },
+  {
+    "university": "Seneca Polytechnic",
+    "program": "Financial Services Compliance",
+    "degree": "Postgraduate Certificate",
+    "duration": "8 months",
+    "tuition": "$12,949 full",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "College certificate; fails 16-month gate.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Polytechnic 8mo)"
+  },
+  {
+    "university": "Douglas College",
+    "program": "Financial Analysis",
+    "degree": "Postgraduate Diploma",
+    "duration": "12 months (1 yr)",
+    "tuition": "$16,248 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "College diploma; fails 16-month gate.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (College Diploma)"
+  },
+  {
+    "university": "International Business University",
+    "program": "Financial and Management Analytics",
+    "degree": "M.B.A.",
+    "duration": "16 months (1.3 yrs)",
+    "tuition": "$13,794 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "Private for-profit business school in Ontario; high immigration and quality risk.",
+    "fundingStatus": "Unfunded Private MBA",
+    "verdict": "Disqualified (For-Profit Private)"
+  },
+  {
+    "university": "Université Laval",
+    "program": "MBA in Financial Planning",
+    "degree": "M.B.A.",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$15,746 / yr",
+    "gateStatus": "PARTIAL",
+    "gateReason": "24-month duration clears spousal gate, but instruction is primarily French.",
+    "fundingStatus": "Unfunded Professional",
+    "verdict": "Language Barrier (French)"
+  },
+  {
+    "university": "Queen's University (Smith)",
+    "program": "Full-Time MBA in Finance",
+    "degree": "M.B.A.",
+    "duration": "12 months",
+    "tuition": "$74,927 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "12-month duration fails spousal gate; exorbitant tuition ($75k CAD); completely unfunded.",
+    "fundingStatus": "Unfunded ($75k)",
+    "verdict": "Disqualified (High Cost 12mo)"
+  },
+  {
+    "university": "University of Toronto",
+    "program": "Master of Financial Economics (MFE)",
+    "degree": "Master (Professional)",
+    "duration": "20 months",
+    "tuition": "$21,772 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "20-month duration with summer internship clears the 16-month spousal work-permit gate.",
+    "fundingStatus": "Professional (Unfunded)",
+    "verdict": "High Prestige (Unfunded)"
+  },
+  {
+    "university": "University of British Columbia (Sauder)",
+    "program": "MSc Business Administration (Finance)",
+    "degree": "Master (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$7,053 / yr (net after ITA)",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ TOP TARGET: 24-month research thesis degree; international tuition net under $8k CAD; summer RA up to $12k + TA $37.53/hr; app fee waived for Bangladesh.",
+    "fundingStatus": "Partial (Summer RA + TA)",
+    "verdict": "⭐ Lead Canadian Target (Isha Agarwal)"
+  },
+  {
+    "university": "Lakehead University",
+    "program": "MSc in Business Management (Finance)",
+    "degree": "M.Sc.",
+    "duration": "12 months",
+    "tuition": "$13,796 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month program. Fails the 16-month spousal work-permit gate.",
+    "fundingStatus": "Limited",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Toronto (Rotman)",
+    "program": "Master of Finance (MFin)",
+    "degree": "Professional Master",
+    "duration": "20 months (Hybrid)",
+    "tuition": "$34,545 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "20-month duration passes 16-month gate, but hybrid weekend schedule is designed for local working professionals.",
+    "fundingStatus": "Unfunded ($34.5k/yr)",
+    "verdict": "Unfunded Executive"
+  },
+  {
+    "university": "HEC Montréal",
+    "program": "MSc in Financial Engineering (Thesis)",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "16 to 24 months",
+    "tuition": "$17,929 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ TOP TARGET: 16-24 month thesis stream; partner of Canadian Derivatives Institute; NSERC/FRQNT eligible; Quebec differential fee exemptions available.",
+    "fundingStatus": "High / Multiple Grants",
+    "verdict": "⭐ #1 Quant Fit (Pascal François)"
+  },
+  {
+    "university": "New York Institute of Technology",
+    "program": "MBA in Finance (Vancouver)",
+    "degree": "M.B.A.",
+    "duration": "12 months",
+    "tuition": "$50,400 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Private US satellite branch in Vancouver ($50.4k tuition); fails funding constraint.",
+    "fundingStatus": "Unfunded ($50.4k)",
+    "verdict": "Disqualified (US Branch)"
+  },
+  {
+    "university": "Carleton University (Sprott)",
+    "program": "Master of Finance (MFin)",
+    "degree": "Master (Professional)",
+    "duration": "16 to 24 months",
+    "tuition": "$28,607 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16-24 months duration with internship passes 16-month gate, but charges steep professional tuition.",
+    "fundingStatus": "Unfunded Professional",
+    "verdict": "Unfunded Professional"
+  },
+  {
+    "university": "Royal Roads University",
+    "program": "Financial Analysis Certificate",
+    "degree": "Certificate",
+    "duration": "12 months (Online)",
+    "tuition": "$7,598 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Online continuing education certificate; not a full degree.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Online Certificate)"
+  },
+  {
+    "university": "University of Toronto (Rotman)",
+    "program": "Master of Financial Risk Management (MFRM)",
+    "degree": "Master",
+    "duration": "10 months",
+    "tuition": "$28,436 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "10-month intensive program. Strictly fails the 16-month spousal open work permit gate.",
+    "fundingStatus": "Unfunded ($28.4k)",
+    "verdict": "Disqualified (10 months)"
+  },
+  {
+    "university": "Toronto Metropolitan University",
+    "program": "International Economics & Finance",
+    "degree": "M.A.",
+    "duration": "12 months",
+    "tuition": "$20,698 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month intensive program. Fails 16-month gate.",
+    "fundingStatus": "Unfunded Coursework",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Concordia University",
+    "program": "Chartered Professional Accountancy (CPA)",
+    "degree": "Graduate Diploma (GrDip)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$12,791 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "30-credit Graduate Diploma, not a Master of Science.",
+    "fundingStatus": "Unfunded Diploma",
+    "verdict": "Disqualified (Graduate Diploma)"
+  },
+  {
+    "university": "Queen's University (Smith)",
+    "program": "MSc in Management — Finance",
+    "degree": "M.Sc. (PhD Feeder)",
+    "duration": "12 months",
+    "tuition": "$9,225 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month program designed as PhD entry; fails the 16-month spousal gate.",
+    "fundingStatus": "Departmental",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Alberta",
+    "program": "M.A. in Economics and Finance",
+    "degree": "M.A. (Course-based)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$7,506 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month duration clears spousal gate; curriculum combines macroeconomics and financial markets.",
+    "fundingStatus": "Course-based (Self-funded)",
+    "verdict": "Viable 2-Year Program"
+  },
+  {
+    "university": "University of Lethbridge",
+    "program": "MSc in Management (Finance)",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "20 months (1.6 yrs)",
+    "tuition": "$1,568 / module",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ HIDDEN GEM: 20-month thesis degree with dedicated financial trading room and capital modeling; clears 16-month gate.",
+    "fundingStatus": "Low Tuition + Assistantships",
+    "verdict": "⭐ Strong Alberta Target"
+  },
+  {
+    "university": "Wilfrid Laurier University",
+    "program": "Master of Finance (MFin)",
+    "degree": "Master",
+    "duration": "12 months",
+    "tuition": "$26,964 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month course-based MFin. Fails 16-month spousal work permit gate.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "HEC Montréal",
+    "program": "MSc in Finance (Thesis Stream)",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "16 to 24 months",
+    "tuition": "$17,929 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ TOP TARGET: 16-24 months; Fixed Income Securities, Econometrics of Financial Markets, Time Series; SSHRC eligible; Quebec fee exemption.",
+    "fundingStatus": "High / Multiple Grants",
+    "verdict": "⭐ #1 Finance Fit (Cenesizoglu/Dorion)"
+  },
+  {
+    "university": "University of Toronto",
+    "program": "Master of Accounting & Finance (MAccFin)",
+    "degree": "Master (Co-op)",
+    "duration": "16 months",
+    "tuition": "$22,742 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16-month duration with 4-month co-op internship at Scarborough; clears 16-month gate.",
+    "fundingStatus": "Unfunded Professional",
+    "verdict": "Viable Co-op (Unfunded)"
+  },
+  {
+    "university": "University of Manitoba (Asper)",
+    "program": "Master of Finance (MFin)",
+    "degree": "Master",
+    "duration": "12 months",
+    "tuition": "$26,938 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month course-based program. Fails 16-month gate.",
+    "fundingStatus": "Unfunded ($26.9k)",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Lambton College",
+    "program": "Financial Services Compliance",
+    "degree": "Postgraduate Certificate",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$9,184 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Ontario College Graduate Certificate, not a university master's degree.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (College Certificate)"
+  },
+  {
+    "university": "University of Waterloo",
+    "program": "Master of Quantitative Finance (MQF)",
+    "degree": "Master (Professional)",
+    "duration": "16 to 24 months",
+    "tuition": "$12,919 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16 months with 100% internship placement into top Canadian capital markets; explicitly UNFUNDED by department.",
+    "fundingStatus": "❌ Explicitly Unfunded",
+    "verdict": "Prestige Trap (Unfunded)"
+  },
+  {
+    "university": "University of Fredericton",
+    "program": "Executive MBA in Finance Leadership",
+    "degree": "Online MBA",
+    "duration": "18 months",
+    "tuition": "$15,484 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Online private for-profit university; study permit ineligible.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Online For-Profit)"
+  },
+  {
+    "university": "Simon Fraser University (Beedie)",
+    "program": "Master of Science in Finance",
+    "degree": "M.Sc. (Course-based)",
+    "duration": "16 months",
+    "tuition": "$32,834 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16 months duration clears spousal gate; high tuition with student-managed fund.",
+    "fundingStatus": "Unfunded ($32.8k/yr)",
+    "verdict": "Unfunded Professional"
+  },
+  {
+    "university": "University of Saskatchewan (Edwards)",
+    "program": "MSc in Management (Finance Specialization)",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$8,028 / yr ($16,875/yr intl)",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ TOP CO-LOCATION: 24-month research thesis degree; guaranteed tuition offset for applications by Dec 15; calculus prerequisite verified; co-locates in Saskatoon.",
+    "fundingStatus": "Guaranteed Tuition Offset",
+    "verdict": "⭐ Lead Canadian Target (Abdullah Mamun)"
+  },
+  {
+    "university": "Concordia University (JMSB)",
+    "program": "Master of Science in Finance",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$14,097 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ TOP MONTREAL TARGET: 45-credit research thesis program over 2 years; departmental awards + TA/RA positions.",
+    "fundingStatus": "Departmental TA/RA",
+    "verdict": "⭐ Strong Montreal Co-Location"
+  },
+  {
+    "university": "Concordia University (JMSB)",
+    "program": "Master of Supply Chain Management (MSCM)",
+    "degree": "Master (Thesis Option A)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$14,097 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ ZARIN #1 CANADIAN TARGET: Directed by Assoc. Prof. Xiaodan Pan; 24-month research thesis program.",
+    "fundingStatus": "Thesis Awards Available",
+    "verdict": "⭐ Zarin Lead Canadian Target"
+  },
+  {
+    "university": "Wilfrid Laurier University",
+    "program": "MSc Finance & Management Analytics",
+    "degree": "Double Degree (MSc + MFin)",
+    "duration": "20 months",
+    "tuition": "$11,219 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ HIDDEN GEM: 20-month double degree integrating quantitative machine learning with finance; clears 16-month gate.",
+    "fundingStatus": "Departmental Funding",
+    "verdict": "⭐ High Value Quant Target"
+  },
+  {
+    "university": "McMaster University (DeGroote)",
+    "program": "Master of Finance (MFin)",
+    "degree": "Master (Course-based)",
+    "duration": "16 months",
+    "tuition": "$24,000 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16-month duration clears spousal gate; securities valuation & trading strategy.",
+    "fundingStatus": "Unfunded Coursework",
+    "verdict": "Viable 16mo (Unfunded)"
+  },
+  {
+    "university": "York University",
+    "program": "Master of Financial Accountability (MFAc)",
+    "degree": "Master",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$8,956 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month degree in financial governance and compliance; clears 16-month gate.",
+    "fundingStatus": "Partial / Limited",
+    "verdict": "Governance / Compliance Track"
+  },
+  {
+    "university": "Humber Polytechnic",
+    "program": "Postgraduate Certificate in Finance",
+    "degree": "Certificate",
+    "duration": "12 months",
+    "tuition": "$12,057 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Polytechnic certificate; fails master's degree qualification.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Polytechnic)"
+  },
+  {
+    "university": "Saint Mary's University (Sobey)",
+    "program": "Master of Finance (MFin)",
+    "degree": "Master",
+    "duration": "12 months",
+    "tuition": "$32,628 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month program. Fails 16-month spousal gate.",
+    "fundingStatus": "Unfunded ($32.6k)",
+    "verdict": "Disqualified (Length < 16mo)"
+  }
+];
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {SUBJECT_OPTIONS, SUBJECT_RANKED, SUBJECT_FALLBACK,
                      FUNDING_SCHEMES, FUNDING_DEAD_ENDS, FUNDING_COSTS,
-                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED, CANADA_U15_RANKED, MASTERSPORTAL_CANADA_AUDIT };
+                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED, CANADA_U15_RANKED, MASTERSPORTAL_CANADA_AUDIT, MASTERSPORTAL_FINANCE_CANADA_AUDIT };
 }
 
 function normalizeName(n) {

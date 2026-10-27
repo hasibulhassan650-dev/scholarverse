@@ -48,6 +48,7 @@ REQUIRED = {
     "FUNDING_SCHEMES": "array", "FUNDING_DEAD_ENDS": "array", "FUNDING_COSTS": "array",
     "COUPLE_COLOCATION_MATRIX": "array", "UNI_CENSUS": "array", "UNI_RANKED": "array",
     "CANADA_U15_RANKED": "array", "MASTERSPORTAL_CANADA_AUDIT": "array",
+    "MASTERSPORTAL_FINANCE_CANADA_AUDIT": "array",
     "ZARIN_DATA": "object", "ZARIN_PROFESSORS_DEEP": "object", "COUPLE_DATA": "object",
     "SWEDEN_RANK_OPTIMIZER": "object", "PROF_VERIFIED": "object"
 }

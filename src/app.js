@@ -1983,14 +1983,21 @@ function renderUniversities(root) {
       </div>
     `;
   } else if (app.f.uniMode === 'mastersportal') {
-    const mpAll = (typeof MASTERSPORTAL_CANADA_AUDIT !== 'undefined' ? MASTERSPORTAL_CANADA_AUDIT : (app.res && app.res.MASTERSPORTAL_CANADA_AUDIT) || []);
+    const econAll = ((typeof MASTERSPORTAL_CANADA_AUDIT !== 'undefined' ? MASTERSPORTAL_CANADA_AUDIT : (app.res && app.res.MASTERSPORTAL_CANADA_AUDIT)) || []).map(x => ({ ...x, field: 'Economics' }));
+    const finAll = ((typeof MASTERSPORTAL_FINANCE_CANADA_AUDIT !== 'undefined' ? MASTERSPORTAL_FINANCE_CANADA_AUDIT : (app.res && app.res.MASTERSPORTAL_FINANCE_CANADA_AUDIT)) || []).map(x => ({ ...x, field: 'Finance' }));
+
+    let mpAll = [];
+    if (app.f.mpDiscipline === 'economics') mpAll = econAll;
+    else if (app.f.mpDiscipline === 'finance') mpAll = finAll;
+    else mpAll = [...econAll, ...finAll];
+
     let mpList = mpAll.slice();
     if (app.f.mpGate && app.f.mpGate !== 'all') {
       mpList = mpList.filter(x => x.gateStatus === app.f.mpGate);
     }
     if (app.f.mpQuery) {
       const q = app.f.mpQuery.toLowerCase().trim();
-      mpList = mpList.filter(x => (x.university + ' ' + x.program + ' ' + x.degree + ' ' + x.verdict + ' ' + x.gateReason).toLowerCase().includes(q));
+      mpList = mpList.filter(x => (x.university + ' ' + x.program + ' ' + x.degree + ' ' + x.verdict + ' ' + x.gateReason + ' ' + x.field).toLowerCase().includes(q));
     }
     const passCount = mpAll.filter(x => x.gateStatus === 'PASS').length;
     const failCount = mpAll.filter(x => x.gateStatus === 'FAIL').length;
@@ -1998,14 +2005,18 @@ function renderUniversities(root) {
 
     body = `
       <div class="note acc" style="margin-bottom:16px">
-        <div><strong>🇨🇦 MastersPortal Canadian Economics Master's Audit (64 Degrees Exhausted):</strong>
-        Every single economics master's and graduate program in Canada listed on MastersPortal was audited against the 16-month spousal work-permit gate, degree qualifications, and departmental funding.
-        <strong>Critical Finding:</strong> Over 50% are either 12-month coursework traps (ineligible for spousal OWP) or college post-grad diplomas. 16 genuine research/thesis targets identified.</div>
+        <div><strong>🇨🇦 MastersPortal Canadian Master's Audit (64 Economics + 49 Finance Degrees Exhausted):</strong>
+        Every single master's and graduate program in Canada listed on MastersPortal under Economics and Finance was audited against the 16-month spousal work-permit gate, degree qualifications, and departmental funding.
+        <strong>Critical Finding:</strong> Over 60% are either 12-month coursework traps (ineligible for spousal OWP) or college post-grad diplomas. 25 genuine research/thesis targets identified across both disciplines.</div>
       </div>
 
-      <div class="toolbar">
-        ${chips('mpG', [['all', 'All (' + mpAll.length + ')'], ['PASS', 'Clears Gate (' + passCount + ')'], ['FAIL', 'Fails Gate (' + failCount + ')'], ['EXCLUDED', 'Diploma / Unfunded (' + exclCount + ')']], app.f.mpGate || 'all')}
-        <input class="input" id="mpQ" type="search" placeholder="Search by university or program..." value="${esc(app.f.mpQuery || '')}" style="max-width:320px">
+      <div class="toolbar" style="margin-bottom:10px">
+        ${chips('mpD', [['all', 'All Disciplines (' + (econAll.length + finAll.length) + ')'], ['economics', 'Economics (64 search hits)'], ['finance', 'Finance (49 search hits)']], app.f.mpDiscipline || 'all')}
+        <input class="input" id="mpQ" type="search" placeholder="Search by university, program or keyword..." value="${esc(app.f.mpQuery || '')}" style="max-width:320px">
+      </div>
+
+      <div class="toolbar" style="margin-bottom:14px">
+        ${chips('mpG', [['all', 'All Gate Statuses (' + mpAll.length + ')'], ['PASS', 'Clears Gate (' + passCount + ')'], ['FAIL', 'Fails Gate (' + failCount + ')'], ['EXCLUDED', 'Diploma / Unfunded (' + exclCount + ')']], app.f.mpGate || 'all')}
       </div>
 
       <div class="panel">
@@ -2013,6 +2024,7 @@ function renderUniversities(root) {
           <table class="tbl dense">
             <thead>
               <tr>
+                <th>Discipline</th>
                 <th>University</th>
                 <th>Program &amp; Degree</th>
                 <th>Duration</th>
@@ -2025,6 +2037,7 @@ function renderUniversities(root) {
             <tbody>
               ${mpList.map(item => `
                 <tr style="background:${item.gateStatus === 'PASS' ? 'var(--card-bg, #fff)' : 'rgba(239, 68, 68, 0.04)'}">
+                  <td><span class="tag ${item.field === 'Finance' ? 'acc' : 'plain'}" style="font-size:11px">${esc(item.field)}</span></td>
                   <td><strong>${esc(item.university)}</strong></td>
                   <td>
                     <strong>${esc(item.program)}</strong> <span class="tag plain" style="font-size:11px">${esc(item.degree)}</span>
@@ -2076,7 +2089,7 @@ function renderUniversities(root) {
 
   root.innerHTML = `${pageHead(`<div class="seg" id="uM">
     <button type="button" data-m="u15" aria-pressed="${app.f.uniMode === 'u15'}">🏛️ National U15</button>
-    <button type="button" data-m="mastersportal" aria-pressed="${app.f.uniMode === 'mastersportal'}">🇨🇦 MastersPortal Audit (64)</button>
+    <button type="button" data-m="mastersportal" aria-pressed="${app.f.uniMode === 'mastersportal'}">🇨🇦 MastersPortal (Econ 64 + Fin 49)</button>
     <button type="button" data-m="ranked" aria-pressed="${app.f.uniMode === 'ranked'}">⭐ Custom Fit</button>
     <button type="button" data-m="census" aria-pressed="${app.f.uniMode === 'census'}">📋 Full Census</button>
     <button type="button" data-m="fetcher" aria-pressed="${app.f.uniMode === 'fetcher'}">🔍 Intel Fetcher</button>
@@ -2086,6 +2099,7 @@ function renderUniversities(root) {
     ${body}`;
   $$('#uM button', root).forEach(b => b.onclick = () => { app.f.uniMode = b.dataset.m; renderUniversities(root); });
   wireChips(root, 'uG', k => { app.f.uniGate = k; renderUniversities(root); });
+  wireChips(root, 'mpD', k => { app.f.mpDiscipline = k; renderUniversities(root); });
   wireChips(root, 'mpG', k => { app.f.mpGate = k; renderUniversities(root); });
   const inp = $('#uQ');
   if (inp) inp.oninput = () => { app.f.uniQuery = inp.value; const p = inp.selectionStart; renderUniversities(root); const n = $('#uQ'); n.focus(); n.setSelectionRange(p, p); };
