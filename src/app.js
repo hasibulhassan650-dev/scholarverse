@@ -1848,20 +1848,141 @@ function renderTargets(root) {
    UNIVERSITIES
    ============================================================================ */
 function facultyAt(name) {
-  const n = name.toLowerCase();
-  return app.profs.professors.filter(p => { const u = (p.university || '').toLowerCase(); return u && (u.includes(n) || n.includes(u)); });
+  const n = (name || '').toLowerCase();
+  const hasibulProfs = (app.profs && app.profs.professors ? app.profs.professors : []).filter(p => {
+    const u = (p.university || '').toLowerCase();
+    return u && (u.includes(n) || n.includes(u));
+  }).map(p => ({ ...p, track: 'hasibul' }));
+
+  const zarinProfs = (typeof ZARIN_PROFESSORS !== 'undefined' ? ZARIN_PROFESSORS : []).filter(p => {
+    const u = (p.university || '').toLowerCase();
+    return u && (u.includes(n) || n.includes(u));
+  }).map(p => ({ ...p, track: 'zarin' }));
+
+  const seen = new Set();
+  const merged = [];
+  [...hasibulProfs, ...zarinProfs].forEach(p => {
+    if (!seen.has(p.name)) {
+      seen.add(p.name);
+      merged.push(p);
+    }
+  });
+  return merged;
 }
-const peopleHTML = (ps) => ps.length ? `<div class="people">${ps.map(p => `<button class="person-link" type="button" data-prof="${esc(p.name)}">${esc(p.name)}${p.deep ? ' ★' : ''}</button>`).join('')}</div>` : '';
-const wireProfLinks = (root) => $$('[data-prof]', root).forEach(b => b.onclick = (e) => { e.stopPropagation(); const p = app.profs.professors.find(x => x.name === b.dataset.prof); if (p) openProf(p); });
+
+const peopleHTML = (ps) => {
+  if (!ps || !ps.length) return '';
+  return `<div class="people" style="margin-top:12px;border-top:1px solid var(--rule);padding-top:10px">
+    <div style="font-size:11.5px;font-weight:700;color:var(--ink-2);margin-bottom:6px">Matched Faculty (${ps.length}):</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      ${ps.map(p => {
+        const isZ = p.track === 'zarin';
+        const isV = (typeof PROF_VERIFIED !== 'undefined' && PROF_VERIFIED.professors && PROF_VERIFIED.professors[p.name]);
+        return `<button class="person-link ${isZ ? 'zarin-prof' : ''}" type="button" data-prof="${esc(p.name)}" data-track="${isZ ? 'zarin' : 'hasibul'}" style="display:inline-flex;align-items:center;gap:4px;font-size:12px;padding:3px 8px;border-radius:99px;border:1px solid ${isZ ? 'rgba(184, 98, 0, 0.3)' : 'var(--rule)'};background:${isZ ? 'var(--amber-soft)' : 'var(--sheet-2)'}">
+          <span>${isZ ? '👩‍💼' : '👨‍💼'}</span>
+          <span>${esc(p.name)}</span>
+          ${isV ? '<span style="color:var(--green);font-weight:bold">✓</span>' : ''}
+          ${p.deep ? '<span style="color:var(--teal)">★</span>' : ''}
+        </button>`;
+      }).join('')}
+    </div>
+  </div>`;
+};
+
+const wireProfLinks = (root) => $$('[data-prof]', root).forEach(b => b.onclick = (e) => {
+  e.stopPropagation();
+  const name = b.dataset.prof;
+  const isZ = b.dataset.track === 'zarin';
+  let p = null;
+  if (isZ && typeof ZARIN_PROFESSORS !== 'undefined') p = ZARIN_PROFESSORS.find(x => x.name === name);
+  if (!p && app.profs && app.profs.professors) p = app.profs.professors.find(x => x.name === name);
+  if (!p && typeof ZARIN_PROFESSORS !== 'undefined') p = ZARIN_PROFESSORS.find(x => x.name === name);
+  if (p) openProf(p);
+});
 
 function renderUniversities(root) {
   const census = app.res.uniCensus || [], ranked = app.res.uniRanked || [];
+  const u15 = (typeof CANADA_U15_RANKED !== 'undefined' ? CANADA_U15_RANKED : (app.res && app.res.CANADA_U15_RANKED) || []);
   const g = (x) => String(x || 'UNVERIFIED').toUpperCase();
   const c = (k) => census.filter(u => g(u[3]) === k).length;
   const CAT = { U15: 'U15', MD: 'Medical/doctoral', COMP: 'Comprehensive', PU: 'Primarily undergraduate', SPEC: 'Specialised', FR: 'Francophone' };
 
   let body = '';
-  if (app.f.uniMode === 'ranked') {
+  if (app.f.uniMode === 'u15') {
+    body = `
+      <div class="note acc" style="margin-bottom:16px">
+        <div><strong>🏛️ Official U15 &amp; Comprehensive Canadian National Rankings:</strong> Comprehensive cross-discipline mapping comparing Hasibul's Finance/Econ/Quant routes with Zarin's SCM/Logistics routes, spousal work permit feasibility, and verified faculty leads.</div>
+      </div>
+      <div class="grid auto">
+        ${u15.map(u => {
+          const fac = facultyAt(u.name);
+          return `
+            <div class="panel uni pass" style="padding:20px;border-top:3px solid var(--teal)">
+              <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:start">
+                <span class="rank" style="width:44px;height:44px;font-size:16px;border-radius:50%;display:grid;place-items:center;background:var(--sheet-2);border:1px solid var(--rule);font-weight:700">#${u.rank}</span>
+                <div>
+                  <div class="uni-name" style="font-size:17px;font-weight:700">${esc(u.name)}</div>
+                  <div class="uni-loc" style="font-size:13px;color:var(--ink-2);margin-top:2px">${esc(u.city)}, ${esc(u.province)} · <span class="dim">${esc(u.tier)}</span></div>
+                </div>
+              </div>
+              <div class="tags" style="margin-top:12px">
+                <span class="tag ${u.gateStatus || 'plain'}">${esc(u.gateLabel || u.gate)}</span>
+                <span class="tag plain" style="font-size:11.5px">💰 ${esc(u.funding)}</span>
+              </div>
+              
+              <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;font-size:13px">
+                <div style="padding:6px 10px;background:var(--sheet-2);border-radius:6px;border-left:3px solid var(--teal)">
+                  <strong style="color:var(--teal)">👨‍💼 Hasibul Route:</strong> ${esc(u.hasibulProgram)}
+                </div>
+                <div style="padding:6px 10px;background:var(--sheet-2);border-radius:6px;border-left:3px solid var(--amber)">
+                  <strong style="color:var(--amber)">👩‍💼 Zarin Route:</strong> ${esc(u.zarinProgram)}
+                </div>
+              </div>
+
+              <div class="uni-note" style="font-size:13px;color:var(--ink-2);margin-top:12px;line-height:1.5">
+                ${esc(u.why)}
+              </div>
+
+              ${peopleHTML(fac)}
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  } else if (app.f.uniMode === 'fetcher') {
+    body = `
+      <div class="panel" style="padding:24px;border-left:4px solid var(--teal);margin-bottom:20px">
+        <h2 style="font-size:20px;margin:0 0 10px">🔍 Primary-Source Intelligence Fetcher Playbook</h2>
+        <p style="font-size:14px;color:var(--ink-2);line-height:1.6;margin:0 0 16px">
+          This system enforces zero hallucination. Use these primary institutional channels and official tools to extract real, unassailable data on Canadian universities and professors:
+        </p>
+        <div class="grid g2" style="gap:16px">
+          <div style="background:var(--sheet-2);padding:14px 16px;border-radius:8px;border:1px solid var(--rule)">
+            <h4 style="margin:0 0 6px;color:var(--teal)">1. Government of Canada Grants Disclosure</h4>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:0 0 8px">Search proactive disclosures for NSERC Discovery &amp; SSHRC Insight grants to confirm active funding amounts and expiration dates.</p>
+            <a href="https://search.open.canada.ca/grants/" target="_blank" rel="noopener" class="btn btn-sm">Open search.open.canada.ca ↗</a>
+          </div>
+          <div style="background:var(--sheet-2);padding:14px 16px;border-radius:8px;border:1px solid var(--rule)">
+            <h4 style="margin:0 0 6px;color:var(--teal)">2. Institutional Theses &amp; Student Repositories</h4>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:0 0 8px">Search advisor fields to see real supervised MSc/PhD students and topics: UWSpace (Waterloo), Spectrum (Concordia), HARVEST (USask), cIRcle (UBC), Biblos (HEC).</p>
+            <div class="tags" style="margin-top:6px">
+              <span class="tag plain">UWSpace</span><span class="tag plain">HARVEST</span><span class="tag plain">Spectrum</span><span class="tag plain">cIRcle</span>
+            </div>
+          </div>
+          <div style="background:var(--sheet-2);padding:14px 16px;border-radius:8px;border:1px solid var(--rule)">
+            <h4 style="margin:0 0 6px;color:var(--teal)">3. Crossref Digital Object Identifier (DOI) Verification</h4>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:0 0 8px">Verify that cited papers are published in top peer-reviewed journals (JFE, RFS, JPE, OMEGA, IJPR) and check author sequence before outreach.</p>
+            <span class="tag ok">Crossref Verified</span>
+          </div>
+          <div style="background:var(--sheet-2);padding:14px 16px;border-radius:8px;border:1px solid var(--rule)">
+            <h4 style="margin:0 0 6px;color:var(--teal)">4. Mathematics Genealogy Project (MGP)</h4>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:0 0 8px">Check doctoral lineages, academic descendants, and research rigor for quantitative mathematics and actuarial supervisors.</p>
+            <a href="https://www.mathgenealogy.org" target="_blank" rel="noopener" class="btn btn-sm">Open mathgenealogy.org ↗</a>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (app.f.uniMode === 'ranked') {
     body = `<div class="note acc" style="margin-bottom:16px"><div>This is not a reputation ranking. McGill, Toronto and UBC sit low or off the list because they fail the 16-month spousal work-permit gate, the funding requirement, or both. Order reflects what is usable to you.</div></div>
     <div class="grid auto">${ranked.map(r => `<div class="panel uni pass">
       <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px">
@@ -1892,7 +2013,12 @@ function renderUniversities(root) {
     </div>`; }).join('') || '<div class="empty">No universities match.</div>'}</div>`;
   }
 
-  root.innerHTML = `${pageHead(`<div class="seg" id="uM"><button type="button" data-m="ranked" aria-pressed="${app.f.uniMode === 'ranked'}">Ranked for you</button><button type="button" data-m="census" aria-pressed="${app.f.uniMode === 'census'}">Full census</button></div>`)}
+  root.innerHTML = `${pageHead(`<div class="seg" id="uM">
+    <button type="button" data-m="u15" aria-pressed="${app.f.uniMode === 'u15'}">🏛️ National U15 Rank</button>
+    <button type="button" data-m="ranked" aria-pressed="${app.f.uniMode === 'ranked'}">⭐ Custom Fit</button>
+    <button type="button" data-m="census" aria-pressed="${app.f.uniMode === 'census'}">📋 Full Census</button>
+    <button type="button" data-m="fetcher" aria-pressed="${app.f.uniMode === 'fetcher'}">🔍 Intel Fetcher</button>
+  </div>`)}
     ${stats([['Institutions audited', census.length, 'degree-granting public'], ['Clear the gate', c('PASS'), '16+ months, thesis, funded', 'ok'],
       ['Partial', c('PARTIAL'), 'one route qualifies', 'warn'], ['Fail the gate', c('FAIL'), 'excluded', 'bad'], ['Unverified', c('UNVERIFIED'), 'not yet confirmed']])}
     ${body}`;
@@ -2063,9 +2189,18 @@ function openUniModal(u) {
     ${note ? `<div class="field" style="margin-top:12px"><div class="field-k">Funding &amp; Gate Verification</div><div class="field-v" style="color:var(--ink-2)">${esc(note)}</div></div>` : ''}
     ${fac.length ? `
       <div class="field" style="margin-top:16px">
-        <div class="field-k">Tracked Faculty with Research Dossiers</div>
-        <div class="tags" style="margin-top:8px">
-          ${fac.map(p => `<button class="btn btn-sm btn-primary" type="button" data-modalprof="${esc(p.name)}">${esc(p.name)}${p.deep ? ' ★' : ''} → View Dossier</button>`).join('')}
+        <div class="field-k">Tracked Faculty (${fac.length}) — Finance, Quant &amp; Supply Chain</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+          ${fac.map(p => {
+            const isZ = p.track === 'zarin';
+            const isV = (typeof PROF_VERIFIED !== 'undefined' && PROF_VERIFIED.professors && PROF_VERIFIED.professors[p.name]);
+            return `<button class="btn btn-sm btn-primary" type="button" data-modalprof="${esc(p.name)}" data-modtrack="${isZ ? 'zarin' : 'hasibul'}">
+              <span>${isZ ? '👩‍💼' : '👨‍💼'}</span>
+              <span>${esc(p.name)}</span>
+              ${isV ? '✓' : ''}
+              ${p.deep ? '★' : ''} → Dossier
+            </button>`;
+          }).join('')}
         </div>
       </div>
     ` : ''}
@@ -2076,7 +2211,12 @@ function openUniModal(u) {
 
   $$('#modalInner [data-modalprof]').forEach(b => {
     b.onclick = () => {
-      const p = app.profs.professors.find(x => x.name === b.dataset.modalprof);
+      const name = b.dataset.modalprof;
+      const isZ = b.dataset.modtrack === 'zarin';
+      let p = null;
+      if (isZ && typeof ZARIN_PROFESSORS !== 'undefined') p = ZARIN_PROFESSORS.find(x => x.name === name);
+      if (!p && app.profs && app.profs.professors) p = app.profs.professors.find(x => x.name === name);
+      if (!p && typeof ZARIN_PROFESSORS !== 'undefined') p = ZARIN_PROFESSORS.find(x => x.name === name);
       if (p) openProf(p);
     };
   });
