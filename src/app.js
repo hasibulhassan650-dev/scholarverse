@@ -8,7 +8,7 @@ const app = {
   state: null, content: null, missions: null, unis: null, profs: null, cits: null, res: null, excel: null,
   profileMode: (typeof localStorage !== 'undefined' && localStorage.getItem('sv-profile-mode')) || 'hasibul',
   view: 'dashboard',
-  f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'u15', uniQuery: '',
+  f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'u15', uniQuery: '', mpGate: 'all', mpQuery: '',
        profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
   calDate: null
 };
@@ -1982,6 +1982,67 @@ function renderUniversities(root) {
         </div>
       </div>
     `;
+  } else if (app.f.uniMode === 'mastersportal') {
+    const mpAll = (typeof MASTERSPORTAL_CANADA_AUDIT !== 'undefined' ? MASTERSPORTAL_CANADA_AUDIT : (app.res && app.res.MASTERSPORTAL_CANADA_AUDIT) || []);
+    let mpList = mpAll.slice();
+    if (app.f.mpGate && app.f.mpGate !== 'all') {
+      mpList = mpList.filter(x => x.gateStatus === app.f.mpGate);
+    }
+    if (app.f.mpQuery) {
+      const q = app.f.mpQuery.toLowerCase().trim();
+      mpList = mpList.filter(x => (x.university + ' ' + x.program + ' ' + x.degree + ' ' + x.verdict + ' ' + x.gateReason).toLowerCase().includes(q));
+    }
+    const passCount = mpAll.filter(x => x.gateStatus === 'PASS').length;
+    const failCount = mpAll.filter(x => x.gateStatus === 'FAIL').length;
+    const exclCount = mpAll.filter(x => x.gateStatus === 'EXCLUDED').length;
+
+    body = `
+      <div class="note acc" style="margin-bottom:16px">
+        <div><strong>🇨🇦 MastersPortal Canadian Economics Master's Audit (64 Degrees Exhausted):</strong>
+        Every single economics master's and graduate program in Canada listed on MastersPortal was audited against the 16-month spousal work-permit gate, degree qualifications, and departmental funding.
+        <strong>Critical Finding:</strong> Over 50% are either 12-month coursework traps (ineligible for spousal OWP) or college post-grad diplomas. 16 genuine research/thesis targets identified.</div>
+      </div>
+
+      <div class="toolbar">
+        ${chips('mpG', [['all', 'All (' + mpAll.length + ')'], ['PASS', 'Clears Gate (' + passCount + ')'], ['FAIL', 'Fails Gate (' + failCount + ')'], ['EXCLUDED', 'Diploma / Unfunded (' + exclCount + ')']], app.f.mpGate || 'all')}
+        <input class="input" id="mpQ" type="search" placeholder="Search by university or program..." value="${esc(app.f.mpQuery || '')}" style="max-width:320px">
+      </div>
+
+      <div class="panel">
+        <div class="table-wrap" style="max-height:none">
+          <table class="tbl dense">
+            <thead>
+              <tr>
+                <th>University</th>
+                <th>Program &amp; Degree</th>
+                <th>Duration</th>
+                <th>Tuition / Year</th>
+                <th>Spousal Gate (16-mo)</th>
+                <th>Funding Status</th>
+                <th>Strategic Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${mpList.map(item => `
+                <tr style="background:${item.gateStatus === 'PASS' ? 'var(--card-bg, #fff)' : 'rgba(239, 68, 68, 0.04)'}">
+                  <td><strong>${esc(item.university)}</strong></td>
+                  <td>
+                    <strong>${esc(item.program)}</strong> <span class="tag plain" style="font-size:11px">${esc(item.degree)}</span>
+                    <div class="dim" style="font-size:11.5px;margin-top:2px">${esc(item.gateReason)}</div>
+                  </td>
+                  <td class="num">${esc(item.duration)}</td>
+                  <td class="num">${esc(item.tuition)}</td>
+                  <td><span class="tag ${item.gateStatus === 'PASS' ? 'ok' : item.gateStatus === 'PARTIAL' ? 'warn' : 'bad'}">${esc(item.gateStatus)}</span></td>
+                  <td style="font-size:12px">${esc(item.fundingStatus)}</td>
+                  <td><span class="tag ${item.gateStatus === 'PASS' ? 'ok' : 'plain'}" style="font-size:11.5px">${esc(item.verdict)}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          ${mpList.length ? '' : '<div class="empty">No programs match your search.</div>'}
+        </div>
+      </div>
+    `;
   } else if (app.f.uniMode === 'ranked') {
     body = `<div class="note acc" style="margin-bottom:16px"><div>This is not a reputation ranking. McGill, Toronto and UBC sit low or off the list because they fail the 16-month spousal work-permit gate, the funding requirement, or both. Order reflects what is usable to you.</div></div>
     <div class="grid auto">${ranked.map(r => `<div class="panel uni pass">
@@ -2014,7 +2075,8 @@ function renderUniversities(root) {
   }
 
   root.innerHTML = `${pageHead(`<div class="seg" id="uM">
-    <button type="button" data-m="u15" aria-pressed="${app.f.uniMode === 'u15'}">🏛️ National U15 Rank</button>
+    <button type="button" data-m="u15" aria-pressed="${app.f.uniMode === 'u15'}">🏛️ National U15</button>
+    <button type="button" data-m="mastersportal" aria-pressed="${app.f.uniMode === 'mastersportal'}">🇨🇦 MastersPortal Audit (64)</button>
     <button type="button" data-m="ranked" aria-pressed="${app.f.uniMode === 'ranked'}">⭐ Custom Fit</button>
     <button type="button" data-m="census" aria-pressed="${app.f.uniMode === 'census'}">📋 Full Census</button>
     <button type="button" data-m="fetcher" aria-pressed="${app.f.uniMode === 'fetcher'}">🔍 Intel Fetcher</button>
@@ -2024,8 +2086,11 @@ function renderUniversities(root) {
     ${body}`;
   $$('#uM button', root).forEach(b => b.onclick = () => { app.f.uniMode = b.dataset.m; renderUniversities(root); });
   wireChips(root, 'uG', k => { app.f.uniGate = k; renderUniversities(root); });
+  wireChips(root, 'mpG', k => { app.f.mpGate = k; renderUniversities(root); });
   const inp = $('#uQ');
   if (inp) inp.oninput = () => { app.f.uniQuery = inp.value; const p = inp.selectionStart; renderUniversities(root); const n = $('#uQ'); n.focus(); n.setSelectionRange(p, p); };
+  const mpInp = $('#mpQ');
+  if (mpInp) mpInp.oninput = () => { app.f.mpQuery = mpInp.value; const p = mpInp.selectionStart; renderUniversities(root); const n = $('#mpQ'); n.focus(); n.setSelectionRange(p, p); };
   wireProfLinks(root);
 
   $$('.panel.uni', root).forEach(panel => {

@@ -720,10 +720,563 @@ const UNI_RANKED = [
   { rank: 9, name: "University of British Columbia", prog: "Sauder MSc Business Administration", gate: "~20 mo", why: "Higher prestige, 31 Dec deadline. Cost and funding unclear." }
 ];
 
+const MASTERSPORTAL_CANADA_AUDIT = [
+  {
+    "university": "Douglas College",
+    "program": "Global Banking and Economics",
+    "degree": "Post-Degree Diploma",
+    "duration": "12 months (1 yr)",
+    "tuition": "$16,248 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Postgraduate Diploma, NOT a master's degree. Fails the 16-month rule and is NOT exempt from IRCC field-of-study restrictions.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (College Diploma)"
+  },
+  {
+    "university": "Algoma University",
+    "program": "Global Business and Economy",
+    "degree": "Master (Course-based)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$12,131 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "Course-based professional degree at a primarily undergraduate institution; no research funding.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Unfunded Coursework)"
+  },
+  {
+    "university": "Douglas College",
+    "program": "Sales / Marketing Studies",
+    "degree": "Postgraduate Diploma",
+    "duration": "12 months (1 yr)",
+    "tuition": "$16,248 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "College sales diploma; not an academic master's.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (College Diploma)"
+  },
+  {
+    "university": "Cape Breton University",
+    "program": "Community Economic Development",
+    "degree": "M.B.A.",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$36,342 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "MBA with extremely high tuition ($36.3k/yr); non-thesis and unfunded.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (High Cost MBA)"
+  },
+  {
+    "university": "Douglas College",
+    "program": "Accounting Studies",
+    "degree": "Postgraduate Diploma",
+    "duration": "12 months (1 yr)",
+    "tuition": "$16,248 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "College accounting post-degree diploma.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (College Diploma)"
+  },
+  {
+    "university": "Dalhousie University",
+    "program": "Master of Economics",
+    "degree": "M.A.",
+    "duration": "12 months intensive",
+    "tuition": "$13,294 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "Intensive 12-month program. Strictly fails the 16-month spousal open work permit gate unless formal extension granted.",
+    "fundingStatus": "Departmental TA/Scholarships",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Dalhousie University",
+    "program": "Master of Development Economics (MDE)",
+    "degree": "Master",
+    "duration": "12 to 24 months",
+    "tuition": "$13,294 / yr",
+    "gateStatus": "PARTIAL",
+    "gateReason": "Can be extended to 2 years with thesis, but subject is development economics rather than financial economics.",
+    "fundingStatus": "Departmental Aid",
+    "verdict": "Secondary Alternative"
+  },
+  {
+    "university": "University of Windsor",
+    "program": "Applied Economics and Policy (MAEP)",
+    "degree": "Master",
+    "duration": "16 months (4 terms)",
+    "tuition": "$13,201 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16 months duration technically clears the IRCC C42 spousal gate.",
+    "fundingStatus": "Coursework / Unfunded",
+    "verdict": "Viable Settlement (Unfunded)"
+  },
+  {
+    "university": "Thompson Rivers University",
+    "program": "Mathematics and Economics",
+    "degree": "Postgraduate Diploma",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$18,175 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Postgraduate diploma, not a degree-granting graduate master's.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Diploma)"
+  },
+  {
+    "university": "Thompson Rivers University",
+    "program": "Economics",
+    "degree": "Postgraduate Diploma",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$36,350 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Postgraduate diploma.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Diploma)"
+  },
+  {
+    "university": "Memorial University of Newfoundland",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 months (1 yr)",
+    "tuition": "$1,533 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "Remarkably low tuition ($1,533/yr), but standard program is 12 months, failing the spousal gate.",
+    "fundingStatus": "Low Tuition (~$1.5k)",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Royal Roads University",
+    "program": "Indigenous Economic Development",
+    "degree": "Postgraduate Certificate",
+    "duration": "12 months online",
+    "tuition": "$7,598 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Online certificate; study permit ineligible.",
+    "fundingStatus": "Unfunded",
+    "verdict": "Disqualified (Online Certificate)"
+  },
+  {
+    "university": "Queen's University",
+    "program": "Economics and Law (MA/JD)",
+    "degree": "M.A. / J.D.",
+    "duration": "36 months (3 yrs)",
+    "tuition": "$9,225 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "Combined law/econ degree; requires LSAT and separate Law Faculty admission.",
+    "fundingStatus": "Mixed Law Funding",
+    "verdict": "Specialized Legal Track"
+  },
+  {
+    "university": "University of Alberta",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 months (course-based)",
+    "tuition": "$7,506 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "Strictly course-based 12-month program. No research thesis.",
+    "fundingStatus": "Unfunded Coursework",
+    "verdict": "Disqualified (Course-based 12mo)"
+  },
+  {
+    "university": "University of Saskatchewan",
+    "program": "MSc in Agricultural Economics",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$6,699 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month research thesis degree with low tuition ($6.7k/yr). Co-locates with USask Edwards targets in Saskatoon.",
+    "fundingStatus": "Departmental RA/TA Available",
+    "verdict": "⭐ Viable Co-Location Target"
+  },
+  {
+    "university": "University of Guelph",
+    "program": "Marketing and Consumer Studies",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$15,435 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month thesis degree; consumer research focus.",
+    "fundingStatus": "Departmental Stipend",
+    "verdict": "Zarin Alternative"
+  },
+  {
+    "university": "University of Guelph",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "8 months (2 terms)",
+    "tuition": "$9,759 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "8-month intensive coursework. Fails the 16-month spousal gate.",
+    "fundingStatus": "Limited",
+    "verdict": "Disqualified (8 months)"
+  },
+  {
+    "university": "University of Manitoba",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 months (1 yr)",
+    "tuition": "$9,862 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "Standard MA is 12 months.",
+    "fundingStatus": "UMGF ($14k/yr)",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Carleton University",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 to 24 months",
+    "tuition": "$14,454 / yr",
+    "gateStatus": "PARTIAL",
+    "gateReason": "Standard coursework is 12mo; extended thesis track can reach 24mo.",
+    "fundingStatus": "TA/RA Packages",
+    "verdict": "Check Extended Thesis Track"
+  },
+  {
+    "university": "Carleton University",
+    "program": "M.A. in Political Economy",
+    "degree": "M.A. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$17,431 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "2-year interdisciplinary thesis program; political economy focus.",
+    "fundingStatus": "TA Support",
+    "verdict": "Interdisciplinary Alternative"
+  },
+  {
+    "university": "University of Toronto",
+    "program": "Master of Financial Economics (MFE)",
+    "degree": "Master (Professional)",
+    "duration": "20 months (1.6 yrs)",
+    "tuition": "$21,772 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "20 months with mandatory 4-month summer internship; passes 16-month gate.",
+    "fundingStatus": "Professional (Unfunded)",
+    "verdict": "High Prestige (Unfunded)"
+  },
+  {
+    "university": "York University",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 months (3 terms)",
+    "tuition": "$8,956 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month coursework degree. Fails the 16-month spousal work permit gate.",
+    "fundingStatus": "Limited",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Windsor",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A. (Thesis stream)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$18,720 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "2-year thesis stream available; passes 16-month gate.",
+    "fundingStatus": "Graduate Assistantships",
+    "verdict": "Viable 2-Year Route"
+  },
+  {
+    "university": "Lakehead University",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A. (Thesis / Co-op)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$10,942 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month degree with co-op option in Thunder Bay; clears 16-month gate.",
+    "fundingStatus": "Graduate Assistantships",
+    "verdict": "Regional Backup (Co-op)"
+  },
+  {
+    "university": "University of Guelph",
+    "program": "M.A. in Financial Economics",
+    "degree": "M.A.",
+    "duration": "8 months (2 terms)",
+    "tuition": "$9,759 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "8-month intensive. Fails the 16-month spousal gate.",
+    "fundingStatus": "None",
+    "verdict": "Disqualified (8 months)"
+  },
+  {
+    "university": "University of Ottawa",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 months",
+    "tuition": "$14,008 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "Standard MA is 12 months coursework. (Contrast with MSc Math & Stats which is 24mo thesis).",
+    "fundingStatus": "Unfunded Coursework",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Western University",
+    "program": "Economics M.A.",
+    "degree": "M.A.",
+    "duration": "12 months (3 terms)",
+    "tuition": "$11,676 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "3-term coursework degree. Fails 16-month gate.",
+    "fundingStatus": "Departmental",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Victoria",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A. (Thesis & Co-op)",
+    "duration": "20 months (1.6 yrs)",
+    "tuition": "$3,998 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ HIDDEN GEM: 20-month thesis stream with co-op option; exceptionally low tuition ($3,998/yr). Faculty Chair Prof. Vasco Gabriel.",
+    "fundingStatus": "Low Tuition + TA ($12k)",
+    "verdict": "⭐ Top Comprehensive Target"
+  },
+  {
+    "university": "University of British Columbia",
+    "program": "Master of Food and Resource Economics (MFRE)",
+    "degree": "Professional Master",
+    "duration": "12 months",
+    "tuition": "$39,979 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month professional degree with $40k tuition; unfunded.",
+    "fundingStatus": "Unfunded ($40k)",
+    "verdict": "Disqualified (High Cost 12mo)"
+  },
+  {
+    "university": "McGill University",
+    "program": "M.Sc. in Agricultural Economics",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "18 months (1.5 yrs)",
+    "tuition": "$14,790 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "18-month thesis program based at Macdonald Campus; clears the 16-month spousal gate.",
+    "fundingStatus": "Graduate Fellowships",
+    "verdict": "Viable McGill Thesis Target"
+  },
+  {
+    "university": "Concordia University",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A. (Thesis Option)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$11,094 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "2-year (24-month) research thesis degree in Montreal; clears spousal gate.",
+    "fundingStatus": "Departmental TA/RA",
+    "verdict": "⭐ Strong Montreal Co-Location"
+  },
+  {
+    "university": "University of Waterloo",
+    "program": "Master of Arts in Economics (Water)",
+    "degree": "M.A. (Collaborative)",
+    "duration": "16 months",
+    "tuition": "$10,984 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16-month interdisciplinary program; clears 16-month gate.",
+    "fundingStatus": "Waterloo Fellowships",
+    "verdict": "Viable Waterloo Target"
+  },
+  {
+    "university": "Toronto Metropolitan University",
+    "program": "International Economics & Finance",
+    "degree": "M.A.",
+    "duration": "12 months",
+    "tuition": "$20,698 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month intensive coursework degree.",
+    "fundingStatus": "Unfunded Coursework",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Brock University",
+    "program": "Master of Business Economics (MBE)",
+    "degree": "Master",
+    "duration": "12 months",
+    "tuition": "$9,598 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month coursework degree.",
+    "fundingStatus": "Unfunded Coursework",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Alberta",
+    "program": "M.A. in Economics and Finance",
+    "degree": "M.A. (Course-based)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$7,506 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "2-year program combining economics and finance; clears 16-month gate.",
+    "fundingStatus": "Self-funded / Partial",
+    "verdict": "Viable 2-Year Program"
+  },
+  {
+    "university": "University of British Columbia",
+    "program": "Master of Arts in Economics (VSE)",
+    "degree": "M.A.",
+    "duration": "12 months core",
+    "tuition": "$22,227 / yr",
+    "gateStatus": "PARTIAL",
+    "gateReason": "Standard MA is 12 months (fails gate). Thesis extension adds up to 12 months (ambiguous if guaranteed at entry).",
+    "fundingStatus": "VSE Merit Awards",
+    "verdict": "Check Thesis Guarantee"
+  },
+  {
+    "university": "McMaster University",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 months",
+    "tuition": "$19,622 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month coursework program. Fails 16-month gate.",
+    "fundingStatus": "Departmental",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Winnipeg",
+    "program": "Master of Arts in Applied Economics",
+    "degree": "M.A.",
+    "duration": "12 months",
+    "tuition": "$14,000 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month coursework degree.",
+    "fundingStatus": "None",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Toronto",
+    "program": "Master of Financial Insurance (MFI)",
+    "degree": "Master (Professional)",
+    "duration": "12 months",
+    "tuition": "$45,541 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "12-month professional program ($45.5k tuition); unfunded.",
+    "fundingStatus": "Unfunded ($45k)",
+    "verdict": "Disqualified (Cost & Length)"
+  },
+  {
+    "university": "Western University",
+    "program": "Master of Financial Economics (MFE)",
+    "degree": "Professional Master",
+    "duration": "16 months",
+    "tuition": "$31,762 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16-month duration with summer internship; professional unfunded tuition.",
+    "fundingStatus": "Unfunded ($31.7k/yr)",
+    "verdict": "Unfunded Professional"
+  },
+  {
+    "university": "University of New Brunswick",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A.",
+    "duration": "12 months",
+    "tuition": "$12,500 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month program. Fails 16-month gate.",
+    "fundingStatus": "Limited",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "Queen's University",
+    "program": "Master of Finance (Toronto)",
+    "degree": "Professional Master",
+    "duration": "12 months",
+    "tuition": "$60,672 / yr",
+    "gateStatus": "EXCLUDED",
+    "gateReason": "Executive weekend format ($60k tuition); unfunded.",
+    "fundingStatus": "Unfunded ($60k)",
+    "verdict": "Disqualified (Executive)"
+  },
+  {
+    "university": "University of Northern British Columbia (UNBC)",
+    "program": "Master of Arts in Development Economics",
+    "degree": "M.A. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$3,783 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ HIDDEN GEM: 24-month thesis program with exceptionally low tuition ($3,783/yr). Clears 16-month spousal gate.",
+    "fundingStatus": "Low Tuition + TA",
+    "verdict": "⭐ High Value Regional"
+  },
+  {
+    "university": "HEC Montréal",
+    "program": "M.Sc. in Applied Financial Economics",
+    "degree": "M.Sc. (Thesis/Project)",
+    "duration": "16 to 24 months",
+    "tuition": "$17,929 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "16-24 months in Montreal; English instruction; Quebec tuition fee exemptions available for thesis stream.",
+    "fundingStatus": "Quebec Differential Waiver",
+    "verdict": "⭐ Top Sibling Target"
+  },
+  {
+    "university": "University of Manitoba",
+    "program": "Agribusiness and Agricultural Economics",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$9,862 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month thesis degree with agricultural trade and risk management; clears spousal gate.",
+    "fundingStatus": "UMGF ($14k/yr)",
+    "verdict": "Viable 2-Year Thesis"
+  },
+  {
+    "university": "Wilfrid Laurier University",
+    "program": "Master of Arts in Business Economics",
+    "degree": "M.A.",
+    "duration": "12 months",
+    "tuition": "$11,219 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month program. (Contrast with Research MSc Management which is longer).",
+    "fundingStatus": "Limited",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Lethbridge",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$7,451 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month research thesis degree with low tuition ($7.4k/yr); clears 16-month spousal gate.",
+    "fundingStatus": "Graduate Assistantships",
+    "verdict": "Viable Regional Target"
+  },
+  {
+    "university": "Simon Fraser University",
+    "program": "Master of Arts in Economics",
+    "degree": "M.A. (Thesis Option)",
+    "duration": "16 to 20 months",
+    "tuition": "$3,068 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "⭐ TOP TARGET: Thesis stream runs 16-20 months; international tuition is remarkably low (~$3,068/yr continuation fees). Prof. Lucas Herrenbrueck.",
+    "fundingStatus": "Low Fees + TA ($12k–$18k)",
+    "verdict": "⭐ Lead Canadian Target"
+  },
+  {
+    "university": "Saint Mary's University",
+    "program": "Master of Applied Economics (MAE)",
+    "degree": "Master",
+    "duration": "12 months",
+    "tuition": "$15,435 / yr",
+    "gateStatus": "FAIL",
+    "gateReason": "12-month intensive applied coursework. Fails 16-month gate.",
+    "fundingStatus": "Unfunded Coursework",
+    "verdict": "Disqualified (Length < 16mo)"
+  },
+  {
+    "university": "University of Alberta",
+    "program": "Resource Economics & Environmental Sociology",
+    "degree": "M.Sc. (Thesis)",
+    "duration": "24 months (2 yrs)",
+    "tuition": "$7,506 / yr",
+    "gateStatus": "PASS",
+    "gateReason": "24-month thesis degree with empirical econometric modeling; clears 16-month spousal gate.",
+    "fundingStatus": "Departmental RA/TA",
+    "verdict": "Viable Resource Econ Thesis"
+  }
+];
+
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { SUBJECT_OPTIONS, SUBJECT_RANKED, SUBJECT_FALLBACK,
+  module.exports = {SUBJECT_OPTIONS, SUBJECT_RANKED, SUBJECT_FALLBACK,
                      FUNDING_SCHEMES, FUNDING_DEAD_ENDS, FUNDING_COSTS,
-                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED, CANADA_U15_RANKED };
+                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED, CANADA_U15_RANKED, MASTERSPORTAL_CANADA_AUDIT };
 }
 
 function normalizeName(n) {
