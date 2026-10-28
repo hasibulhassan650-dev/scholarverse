@@ -152,10 +152,13 @@ const VIEWS = {
   calendar:     { t: 'Calendar',      s: 'Every deadline, mission and session on one month grid.', ic: 'cal', g: 'Overview' },
   timeline:     { t: 'Timeline',      s: 'Targets, documents and missions in date order.', ic: 'line', g: 'Overview' },
   missions:     { t: 'Missions',      s: 'Tick a mission to log it and earn XP.', ic: 'check', g: 'Act' },
+  campaign:     { t: 'Outreach Waves',s: 'Strategic timing, sequencing, and scheduling calendar for faculty outreach.', ic: 'bolt', g: 'Act' },
+  workshop:     { t: 'Letter Workshop', s: 'Architect your 2-page EPOS uniform motivation letter with verified evidence.', ic: 'book', g: 'Act' },
   documents:    { t: 'Documents',     s: 'What you hold, what is missing, and who has to produce it.', ic: 'doc', g: 'Act' },
   excel:        { t: 'Workbook',      s: 'The master spreadsheet, searchable sheet by sheet.', ic: 'sheet', g: 'Act' },
   targets:      { t: 'Targets',       s: 'Verified scholarship schemes, their windows, and the gates you must clear.', ic: 'target', g: 'Research' },
   portfolio:    { t: 'Portfolio',     s: 'Decision engine: weighted admissions & funding analytics across targets.', ic: 'compass', g: 'Research' },
+  prsim:        { t: 'PR Simulator',  s: 'Quantified Express Entry CRS and European residency timeline calculator.', ic: 'compass', g: 'Research' },
   universities: { t: 'Universities',  s: 'Ranked for usefulness to you, plus the full Canadian census against the 16-month gate.', ic: 'uni', g: 'Research' },
   subjects:     { t: 'Subject fit',   s: 'Which degree label actually gets funded.', ic: 'compass', g: 'Research' },
   funding:      { t: 'Funding',       s: 'What each scheme pays for, and which ones are dead ends.', ic: 'coin', g: 'Research' },
@@ -336,7 +339,8 @@ function pageHead(extra = '') {
 function renderView() {
   const fn = {
     dashboard: renderDashboard, calendar: renderCalendar, timeline: renderTimeline, missions: renderMissions,
-    documents: renderDocuments, excel: renderExcel, targets: renderTargets, portfolio: renderPortfolio, universities: renderUniversities,
+    campaign: renderCampaign, workshop: renderWorkshop,
+    documents: renderDocuments, excel: renderExcel, targets: renderTargets, portfolio: renderPortfolio, prsim: renderPRSim, universities: renderUniversities,
     subjects: renderSubjects, funding: renderFunding, professors: renderProfessors, citations: renderCitations,
     agents: renderAgents, playbook: renderPlaybook, profile: renderProfile
   }[app.view];
@@ -1123,6 +1127,75 @@ function wireUserInputCard(root) {
   });
 }
 
+function renderGoettingenScorecard() {
+  const target = (app.content.targets || []).find(t => t.id === 'goettingen');
+  if (!target || !target.requiredDocs) return '';
+  const dLeft = daysUntil(fv(target.deadline));
+  const docs = target.requiredDocs;
+  
+  // Calculate completion based on vault attachments and held status
+  let completed = 0;
+  const itemsWithStatus = docs.map(rd => {
+    const doc = (app.content.documents || []).find(d => d.id === rd.docId) || {};
+    const attached = app.state.docFiles && app.state.docFiles[rd.docId];
+    const isDone = doc.status === 'have' || !!attached;
+    if (isDone) completed++;
+    return { ...rd, doc, attached, isDone };
+  });
+
+  const pct = Math.round((completed / docs.length) * 100);
+
+  return `
+    <div class="panel" style="margin-top:20px;border-top:3px solid var(--teal);padding:20px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px">
+        <div>
+          <div class="tier-label" style="color:var(--teal)">🚨 18-DAY CRITICAL DEADLINE SCORECARD</div>
+          <h2 style="font-size:22px;margin:4px 0 2px">Göttingen DAAD EPOS Application Bundle (Section C)</h2>
+          <div class="dim" style="font-size:13.5px">Deadline: <strong>15 November 2026 (23:59 CET)</strong> · One application covers MSc Development Economics + €992/mo DAAD full funding</div>
+        </div>
+        <div style="text-align:right">
+          <div class="num" style="font-size:32px;font-weight:700;color:${pct === 100 ? 'var(--green)' : pct >= 60 ? 'var(--teal)' : 'var(--amber)'}">${pct}%</div>
+          <div class="dim" style="font-size:12px">${completed} of ${docs.length} items verified</div>
+        </div>
+      </div>
+
+      <div class="bar" style="height:8px;margin:14px 0 16px;background:var(--slate-soft)">
+        <i style="width:${pct}%;background:${pct === 100 ? 'var(--green)' : 'var(--teal)'}"></i>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:8px">
+        ${itemsWithStatus.map(item => {
+          const isHeld = item.isDone;
+          const isOversized = item.attached && item.attached.size > (5 * 1024 * 1024);
+          return `
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--sheet-2);border-radius:6px;border:1px solid var(--rule);font-size:12px">
+              <div style="flex:1;padding-right:8px">
+                <div style="font-weight:600;color:var(--ink)">${esc(item.label)}</div>
+                <div class="dim" style="font-size:11px;margin-top:1px">${esc(item.rule)}</div>
+                ${isOversized ? '<div style="color:var(--red);font-weight:bold;font-size:10.5px">⚠️ File >5MB (exceeds portal cap)</div>' : ''}
+              </div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <span class="tag ${isHeld ? 'ok' : 'warn'}" style="font-size:10.5px">${isHeld ? '✅ Ready' : '⏳ Pending'}</span>
+                ${item.attached ? `<button class="btn btn-sm" type="button" data-viewvaultdoc="${esc(item.docId)}" style="font-size:10.5px;padding:3px 6px">👁️ View</button>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--rule)">
+        <div style="font-size:12px;color:var(--ink-2)">
+          <strong>Portal Upload Cap:</strong> 5.0 MB per document · <strong>Checklist Signature:</strong> Original physical blue ink pen signature only.
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-sm btn-primary" type="button" onclick="go('workshop')">Draft Motivation Letter Workshop →</button>
+          <button class="btn btn-sm" type="button" onclick="openTarget('goettingen')">Open Complete Dossier Audit</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function renderDashboard(root) {
   if (app.profileMode === 'couple') {
     renderCoupleDashboard(root);
@@ -1178,6 +1251,8 @@ function renderDashboard(root) {
     </div>
 
     ${renderUserInputCard()}
+
+    ${renderGoettingenScorecard()}
 
     <div style="margin-top:22px">${stats([
       ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
@@ -1435,8 +1510,454 @@ function renderMissions(root) {
 }
 
 /* ============================================================================
-   DOCUMENTS
+   MOTIVATION LETTER ARCHITECTURE WORKSHOP (WS-F4 / Upgrade 2)
    ============================================================================ */
+function renderWorkshop(root) {
+  let draftText = '';
+  try { draftText = localStorage.getItem('sv-motivation-draft') || ''; } catch (e) {}
+  const wordCount = draftText.trim() ? draftText.trim().split(/\s+/).length : 0;
+  const is2PageOk = wordCount >= 700 && wordCount <= 1100;
+
+  let checks = {};
+  try { checks = JSON.parse(localStorage.getItem('sv-workshop-checks') || '{}'); } catch (e) {}
+
+  root.innerHTML = `
+    ${pageHead(`<div style="display:flex;gap:8px">
+      <button class="btn btn-sm btn-primary" type="button" id="wExportBrief">📋 Referee Briefing Sheet</button>
+      <button class="btn btn-sm" type="button" onclick="openTarget('goettingen')">Göttingen Target →</button>
+    </div>`)}
+
+    <div class="note warn" style="margin-bottom:20px;border-left:4px solid var(--amber)">
+      <div>
+        <strong>⚠️ Governing Principle: Zero AI-Generated Text</strong>
+        <p style="font-size:13px;margin:4px 0 0;color:var(--ink-2);line-height:1.55">
+          DAAD and university selection committees actively screen for AI-generated text. An artificial statement leads to immediate disqualification.
+          <strong>This workshop provides the exact structural architecture and verified evidence points from your treasury desk</strong> — you write the personal prose.
+        </p>
+      </div>
+    </div>
+
+    ${stats([
+      ['Target Length', '2 Pages Max', '800–1,000 words target', 'acc'],
+      ['Your Words', wordCount, wordCount ? (is2PageOk ? 'Optimal length' : wordCount < 700 ? 'Under target (~1 page)' : 'Exceeds 2-page limit') : 'Not drafted yet', is2PageOk ? 'ok' : wordCount ? 'warn' : 'plain'],
+      ['Mandatory Rule', 'Ranking Clause', 'Must justify Göttingen #1 & Hohenheim #2', 'bad'],
+      ['Evidence Rigor', '310 G-Secs', 'Cash-flow & duration model', 'ok']
+    ])}
+
+    <div class="grid split" style="margin-top:20px;gap:24px">
+      <!-- Left: Drafting Pad & Compliance Checks -->
+      <div>
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <h2 style="font-size:17px;margin:0">Your Motivation Letter Draft</h2>
+            <div class="dim num" style="font-size:12.5px" id="wWordCounter">${wordCount} words</div>
+          </div>
+          <textarea class="input" id="wDraftInput" rows="18" placeholder="Paste or draft your 2-page uniform motivation letter here... (Auto-saves locally to your browser)" style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13.5px;padding:14px;resize:vertical">${esc(draftText)}</textarea>
+
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--rule)">
+            <h4 style="font-size:13.5px;margin:0 0 10px;color:var(--ink)">Mandatory Pre-Flight Compliance Rules</h4>
+            <div class="rows" style="gap:8px">
+              ${[
+                ['chk_dated', 'Letter includes explicit date of issue at top or bottom (current date)'],
+                ['chk_twopage', 'Total length strictly under 2 full pages (approx. 800–1,000 words maximum)'],
+                ['chk_ranking', 'Explicit paragraph justifying why Göttingen is #1 (DevEcon) and Hohenheim is #2 (AgEcon)'],
+                ['chk_gaps', 'Zero unexplained career gaps (Feb 2024 declared honestly as career transition)'],
+                ['chk_reemployment', 'Concrete post-graduation return plan citing City Bank re-employment guarantee']
+              ].map(([k, label]) => `
+                <label style="display:flex;align-items:center;gap:10px;font-size:12.5px;cursor:pointer">
+                  <input type="checkbox" data-wchk="${k}" ${checks[k] ? 'checked' : ''} style="cursor:pointer">
+                  <span style="color:${checks[k] ? 'var(--green)' : 'var(--ink)'};font-weight:${checks[k] ? '600' : '400'}">${esc(label)}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 4-Stage Structure & Verified Evidence Snippets -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="font-size:15px;margin:0">Stage 1: Academic &amp; Quantitative Rigor (25%)</h3>
+            <span class="tag acc">~250 Words</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Defend academic capability and overcome the 3.30 CGPA with verified quantitative proofs:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • Completed 126 BUP credits with <strong>27 credits across 9 semester courses in mathematics, statistics, and econometrics</strong> (including calculus and linear algebra).<br>
+            • Awarded <strong>CFA Charter (EQF/RQF Level 7 Master's equivalency)</strong> on first attempt while working full time.<br>
+            • Undergraduate thesis paper on financial literacy scored <strong>4.00/4.00</strong> using binary logistic regression and ANOVA across 318 respondents.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="font-size:15px;margin:0">Stage 2: Treasury ALM &amp; Development Problem (35%)</h3>
+            <span class="tag acc">~350 Words</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Frame commercial banking and money market execution as vital macroeconomic infrastructure:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • Manage daily CRR/SLR liquidity buffers and execute $90–$110M daily interbank REPOs and USD/BDT FX swaps at City Bank PLC.<br>
+            • Independent empirical research: Scraped central bank auctions and <strong>modeled cash flows and duration of all 310 outstanding Bangladesh government securities</strong>.<br>
+            • The Development Problem: Without a reliable secondary benchmark yield curve, central bank monetary transmission breaks down, distorting private sector credit growth.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--amber)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="font-size:15px;margin:0">Stage 3: Mandatory Course Ranking Justification (25%)</h3>
+            <span class="tag warn">Strict Rule</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            DAAD strictly mandates justifying your exact priority order in a single uniform letter:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • <strong>Priority #1 (University of Göttingen — MSc Development Economics):</strong> Chosen for rigorous microeconometric methods, sovereign debt sustainability, and institutional development economics directly applicable to reforming financial market architecture.<br>
+            • <strong>Priority #2 (University of Hohenheim — MSc Agricultural Economics):</strong> Chosen for macro-agricultural commodity price stability, agricultural trade linkages, and rural credit transmission.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--green)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="font-size:15px;margin:0">Stage 4: Re-Employment &amp; Return Trajectory (15%)</h3>
+            <span class="tag ok">~150 Words</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Satisfy the DAAD return condition with institutional evidence:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • Holding an institutional re-employment guarantee from City Bank PLC to return as Treasury ALM Desk Manager.<br>
+            • Direct contribution to the financial system: Advising Bangladesh Bank and BAFEDA on sovereign yield curve construction and interbank corridor efficiency.
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const ta = $('#wDraftInput', root);
+  if (ta) {
+    ta.oninput = () => {
+      const val = ta.value;
+      try { localStorage.setItem('sv-motivation-draft', val); } catch (e) {}
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      const counter = $('#wWordCounter', root);
+      if (counter) counter.textContent = `${words} words`;
+    };
+  }
+
+  $$('[data-wchk]', root).forEach(chk => {
+    chk.onchange = () => {
+      checks[chk.dataset.wchk] = chk.checked;
+      try { localStorage.setItem('sv-workshop-checks', JSON.stringify(checks)); } catch (e) {}
+      renderWorkshop(root);
+    };
+  });
+
+  const bBtn = $('#wExportBrief', root);
+  if (bBtn) bBtn.onclick = () => openRefereeBriefModal();
+}
+
+/* ============================================================================
+   OUTREACH WAVES ENGINE (WS-H / Upgrade 3)
+   ============================================================================ */
+function renderCampaign(root) {
+  const waves = ((typeof OUTREACH_WAVES_DATA !== 'undefined' ? OUTREACH_WAVES_DATA : (app.res && app.res.outreachWaves)) || []);
+  let savedStatus = {};
+  try { savedStatus = JSON.parse(localStorage.getItem('sv-outreach-status') || '{}'); } catch (e) {}
+
+  let totalActions = 0;
+  let doneActions = 0;
+  waves.forEach(w => {
+    w.actions.forEach(a => {
+      totalActions++;
+      if (savedStatus[a.recipient + '_' + a.actionType]) doneActions++;
+    });
+  });
+
+  root.innerHTML = `
+    ${pageHead(`<div style="display:flex;gap:8px">
+      <button class="btn btn-sm btn-primary" type="button" onclick="go('professors')">All 50 Faculty →</button>
+      <button class="btn btn-sm" type="button" onclick="openTarget('goettingen')">Göttingen Target</button>
+    </div>`)}
+
+    <div class="note acc" style="margin-bottom:20px">
+      <div>
+        <strong>🇨🇦 Canadian Faculty Outreach Scheduling &amp; Sequence Engine:</strong>
+        Organizes all 50 verified Canadian research professors into synchronized, time-zoned waves.
+        <strong>Enforced Guardrails:</strong> Never email two professors in the same department on the same day. Respect UBC Sauder's cold-email ban. Time deliveries for Tuesday–Thursday 8:00–10:00 AM local time.
+      </div>
+    </div>
+
+    ${stats([
+      ['Scheduled Actions', totalActions, 'across 4 tactical waves'],
+      ['Completed', doneActions, `of ${totalActions} actions`, doneActions ? 'ok' : 'plain'],
+      ['Next Live Wave', 'Wave 1 (Nov 1–7)', 'Waterloo & USask inquiries', 'bad'],
+      ['Rule Enforcer', 'Active', 'Max 1/dept/day · No UBC cold email', 'ok']
+    ])}
+
+    <div style="display:flex;flex-direction:column;gap:24px;margin-top:20px">
+      ${waves.map(wv => `
+        <div class="panel" style="padding:20px 24px;border-top:3px solid ${wv.urgency === 'critical' ? 'var(--red)' : wv.urgency === 'high' ? 'var(--amber)' : 'var(--teal)'}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div>
+              <div class="tier-label" style="color:${wv.urgency === 'critical' ? 'var(--red)' : 'var(--teal)'}">${esc(wv.urgency.toUpperCase())} PRIORITY</div>
+              <h2 style="font-size:18px;margin:4px 0 2px">${esc(wv.title)}</h2>
+              <div class="dim" style="font-size:12.5px">${esc(wv.timingNote)}</div>
+            </div>
+            <span class="tag ${wv.urgency === 'critical' ? 'bad' : wv.urgency === 'high' ? 'warn' : 'acc'}">${wv.actions.length} Action Items</span>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+            ${wv.actions.map(act => {
+              const key = act.recipient + '_' + act.actionType;
+              const isSent = !!savedStatus[key];
+              return `
+                <div style="padding:14px 16px;background:${isSent ? 'var(--sheet-2)' : 'var(--card-bg, #fff)'};border-radius:8px;border:1px solid var(--rule);opacity:${isSent ? '0.75' : '1'}">
+                  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">
+                    <div>
+                      <div style="display:flex;align-items:center;gap:6px">
+                        <span class="tag ${act.applicant === 'zarin' ? 'warn' : 'acc'}" style="font-size:11px">${act.applicant === 'zarin' ? '👩‍💼 Zarin' : '👨‍💼 Hasibul'}</span>
+                        <strong style="font-size:14.5px">${esc(act.recipient)}</strong>
+                        <span class="dim" style="font-size:12.5px">(${esc(act.institution)} · ${esc(act.department)})</span>
+                      </div>
+                      <div style="font-size:13px;color:var(--teal);margin-top:4px;font-weight:600">
+                        ✉️ ${esc(act.email)} · <span class="tag plain" style="font-size:11px">${esc(act.actionType)}</span>
+                      </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <button class="btn btn-sm ${isSent ? '' : 'btn-primary'}" type="button" data-toggleoutreach="${esc(key)}">
+                        ${isSent ? '✓ Sent / Complete' : 'Mark Sent'}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div style="margin-top:10px;font-size:13px;color:var(--ink);line-height:1.5">
+                    <strong>Why Now:</strong> ${esc(act.rationale)}<br>
+                    <strong>Content Brief:</strong> ${esc(act.contentBrief)}
+                  </div>
+
+                  ${act.ruleWarning ? `
+                    <div style="margin-top:8px;font-size:11.5px;color:var(--red);font-weight:600">
+                      ⚠️ Rule: ${esc(act.ruleWarning)}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  $$('[data-toggleoutreach]', root).forEach(btn => {
+    btn.onclick = () => {
+      const k = btn.dataset.toggleoutreach;
+      savedStatus[k] = !savedStatus[k];
+      try { localStorage.setItem('sv-outreach-status', JSON.stringify(savedStatus)); } catch (e) {}
+      toast(savedStatus[k] ? 'Outreach marked sent' : 'Reopened outreach item', k);
+      renderCampaign(root);
+    };
+  });
+}
+
+/* ============================================================================
+   EXPRESS ENTRY CRS & EUROPEAN PR SIMULATOR (WS-D & Upgrade 4)
+   ============================================================================ */
+function renderPRSim(root) {
+  const pr = ((typeof PR_SIMULATOR_DATA !== 'undefined' ? PR_SIMULATOR_DATA : (app.res && app.res.prSimulator)) || { jurisdictions: [] });
+  
+  root.innerHTML = `
+    ${pageHead()}
+
+    <div class="note acc" style="margin-bottom:20px">
+      <div>
+        <strong>🎯 Long-Term Settlement &amp; Permanent Residence (PR) Analytics:</strong>
+        Evaluates the conversion timeline from master's graduation into legal permanent residency across Canada, Germany, and Sweden based on current statutory immigration policies (IRCC post-graduation rules, German EU Blue Card § 18g, and Swedish Migrationsverket guidelines).
+      </div>
+    </div>
+
+    ${stats([
+      ['Canada Projected CRS', '554 Points', 'Cutoff: ~505–525 (Clears easily)', 'ok'],
+      ['Germany Fast-Track PR', '21 Months', 'With German B1 on EU Blue Card', 'ok'],
+      ['Sweden PR Horizon', '48 Months', 'Continuous work permit employment', 'acc'],
+      ['Spouse Work Authorization', 'Unrestricted', 'Canada C42 · Germany §30 · Sweden', 'ok']
+    ])}
+
+    <div style="display:flex;flex-direction:column;gap:24px;margin-top:20px">
+      ${pr.jurisdictions.map(jur => `
+        <div class="panel" style="padding:22px 24px;border-top:3px solid var(--teal)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div>
+              <div class="tier-label">${jur.flag} IMMIGRATION &amp; PR PATHWAY</div>
+              <h2 style="font-size:20px;margin:4px 0 2px">${esc(jur.name)}</h2>
+              <div class="dim" style="font-size:13px;margin-top:2px">${esc(jur.pathway)}</div>
+            </div>
+            <span class="tag ok" style="font-size:13px;padding:6px 12px">⏱️ ${esc(jur.projectedTimeline)}</span>
+          </div>
+
+          ${jur.country === 'Canada' ? `
+            <div style="margin-top:16px;background:var(--sheet-2);padding:14px 16px;border-radius:8px;border:1px solid var(--rule)">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+                <strong style="color:var(--teal)">Hasibul + Zarin Projected Express Entry (CRS) Scorecard</strong>
+                <span class="num" style="font-size:20px;font-weight:700;color:var(--green)">${jur.scoreBreakdown.totalProjectedCRS} / 1200</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:8px;font-size:12.5px">
+                <div>• Age 24–29 (Max): <strong class="num">${jur.scoreBreakdown.agePoints} pts</strong></div>
+                <div>• Master's Degree: <strong class="num">${jur.scoreBreakdown.educationPoints} pts</strong></div>
+                <div>• Canadian Master's Bonus: <strong class="num">+${jur.scoreBreakdown.canadianEducationBonus} pts</strong></div>
+                <div>• English CLB 9/10: <strong class="num">${jur.scoreBreakdown.languagePoints} pts</strong></div>
+                <div>• Foreign Work (City/bKash 3yr): <strong class="num">${jur.scoreBreakdown.foreignWorkExperience} pts</strong></div>
+                <div>• Canadian Work (1 yr PGWP): <strong class="num">${jur.scoreBreakdown.canadianWorkExperience} pts</strong></div>
+                <div>• Spouse Factors (Zarin BBA+Work): <strong class="num">+${jur.scoreBreakdown.spousalFactors} pts</strong></div>
+              </div>
+              <div class="dim" style="font-size:11.5px;margin-top:8px;border-top:1px solid var(--rule);padding-top:6px">
+                ${esc(jur.benchmarkCutoff)}
+              </div>
+            </div>
+          ` : `
+            <div style="margin-top:16px;background:var(--sheet-2);padding:14px 16px;border-radius:8px;border:1px solid var(--rule);font-size:13px">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:8px">
+                <div>• Post-Study Search: <strong>${esc(jur.scoreBreakdown.postStudySearchPeriod)}</strong></div>
+                <div>• Spousal Employment: <strong>${esc(jur.scoreBreakdown.spousalWorkRights)}</strong></div>
+                <div>• Citizenship Horizon: <strong>${esc(jur.scoreBreakdown.citizenshipYears)}</strong></div>
+              </div>
+            </div>
+          `}
+
+          <div class="cols2" style="margin-top:16px">
+            <div>
+              <div class="field-k" style="color:var(--green)">Key Strategic Advantages</div>
+              <ul class="list" style="margin-top:4px">
+                ${jur.keyStrengths.map(s => `<li>${esc(s)}</li>`).join('')}
+              </ul>
+            </div>
+            <div>
+              <div class="field-k" style="color:var(--amber)">Critical Risk Factors to Manage</div>
+              <ul class="list" style="margin-top:4px">
+                ${jur.primaryRisks.map(r => `<li>${esc(r)}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================================
+   ONE-CLICK REFEREE BRIEFING GENERATOR (Upgrade 5)
+   ============================================================================ */
+function openRefereeBriefModal() {
+  openModal(`
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+      <div>
+        <div class="tier-label" style="color:var(--teal)">EXECUTIVE REFEREE BRIEFING SUITE</div>
+        <h2 style="font-size:22px;margin:4px 0 2px">Candidate Briefing Sheets for Your Referees</h2>
+        <div class="dialog-sub">Hand these structured briefing memos to your managers and academic mentors so their recommendation letters match your applications perfectly.</div>
+      </div>
+      <span class="tag acc">Print-Ready</span>
+    </div>
+
+    <div class="tabs" role="tablist" style="margin-top:16px">
+      <button class="tab is-active" type="button" data-wtab="ref-citybank">👔 City Bank (Head of Treasury)</button>
+      <button class="tab" type="button" data-wtab="ref-karimul">🌱 SAVP Molla Karimul Islam</button>
+      <button class="tab" type="button" data-wtab="ref-bup">🏛️ BUP Academic Advisor</button>
+      <button class="tab" type="button" data-wtab="ref-zarin">👩‍💼 Zarin Referee (Dr. Zahedul)</button>
+    </div>
+
+    <div style="margin-top:14px;max-height:60vh;overflow-y:auto">
+      <div class="tab-pane is-active" data-wpane="ref-citybank">
+        <div class="copy-box" id="briefTextCityBank">
+<strong>EXECUTIVE REFEREE BRIEFING MEMORANDUM</strong>
+<strong>To:</strong> Line Manager / Head of Treasury, The City Bank PLC
+<strong>From:</strong> Hasibul Hasan, CFA (Associate Manager – ALM & Money Market)
+<strong>Purpose:</strong> Recommendation Letter for German DAAD EPOS & Canadian Master's Applications (Fall 2027)
+
+<strong>Key Candidate Metrics to Confirm:</strong>
+• Official Employment Period: March 2024 to Present (Promoted to Manager effective January 2027).
+• Operational Scale: Executes 200–300 interbank transactions monthly (~$90–$110M daily) across REPOs, Call/SND, USD/BDT FX swaps.
+• Quantitative Innovation: Built duration and cash-flow model across all 310 outstanding Bangladesh government securities.
+• Professional Credential: CFA Charterholder (awarded September 2026; cleared all 3 levels on first attempt while working full time).
+
+<strong>Mandatory Institutional Formatting Requirements:</strong>
+• Must be printed on official City Bank PLC letterhead.
+• Must bear official department rubber stamp, date of issue, and hand signature.
+• Must state candidate is currently employed full-time and in good standing.
+• Re-employment guarantee: Strongly recommended for DAAD EPOS (e.g., "The bank expects to re-employ Mr. Hasan in a senior ALM capacity upon degree completion").
+        </div>
+        <div style="margin-top:10px;display:flex;justify-content:flex-end">
+          <button class="btn btn-sm btn-primary" type="button" onclick="copyText($('#briefTextCityBank').innerText); toast('Copied City Bank referee brief');">Copy Brief Text</button>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-wpane="ref-karimul">
+        <div class="copy-box" id="briefTextKarimul">
+<strong>EXECUTIVE REFEREE BRIEFING MEMORANDUM</strong>
+<strong>To:</strong> Molla Karimul Islam, SAVP & Operational Head of Sustainable Finance Department, City Bank PLC
+<strong>Strategic Context:</strong> M.Sc. Germany (DAAD Scholar 2014, Universität Greifswald) | Adjunct Faculty BRAC University
+<strong>Purpose:</strong> DAAD Alumnus Recommendation for DAAD EPOS Scholarship (Göttingen & Hohenheim)
+
+<strong>Key Narrative Alignment Points:</strong>
+• Connect Hasibul's Treasury ALM & sovereign bond work with German sustainable development finance.
+• Testify to candidate's intellectual stamina: Passing CFA Levels 1, 2, and 3 on first attempt while working full time.
+• Highlight potential to advise regulatory bodies (Bangladesh Bank / BAFEDA) on financial stability and debt sustainability.
+• Highlight German educational adaptability: Highly motivated to learn German (Goethe A1/B1).
+        </div>
+        <div style="margin-top:10px;display:flex;justify-content:flex-end">
+          <button class="btn btn-sm btn-primary" type="button" onclick="copyText($('#briefTextKarimul').innerText); toast('Copied DAAD alumnus brief');">Copy Brief Text</button>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-wpane="ref-bup">
+        <div class="copy-box" id="briefTextBUP">
+<strong>ACADEMIC REFEREE BRIEFING MEMORANDUM</strong>
+<strong>To:</strong> Undergraduate Project Paper Advisor, Department of Economics, BUP
+<strong>From:</strong> Hasibul Hasan (Roll: 19251064, BSS in Economics)
+<strong>Purpose:</strong> Academic Recommendation for Graduate Admissions (Göttingen, Hohenheim, Waterloo, UBC Sauder, HEC Montréal)
+
+<strong>Academic Metrics to Highlight:</strong>
+• Completed 126 BUP credits with 27 credits across 9 semester courses in mathematics, statistics, and econometrics.
+• Undergraduate Thesis/Project Paper GPA: 4.00 / 4.00 (Empirical econometric paper on financial literacy across 318 respondents using ANOVA and binary logistic regression).
+• Extracurricular Leadership: Joint Secretary of BUP Economics Club; Teaching Assistant for Datalytics (R and data visualization).
+        </div>
+        <div style="margin-top:10px;display:flex;justify-content:flex-end">
+          <button class="btn btn-sm btn-primary" type="button" onclick="copyText($('#briefTextBUP').innerText); toast('Copied BUP academic brief');">Copy Brief Text</button>
+        </div>
+      </div>
+
+      <div class="tab-pane" data-wpane="ref-zarin">
+        <div class="copy-box" id="briefTextZarin">
+<strong>ACADEMIC & PROFESSIONAL BRIEFING MEMORANDUM</strong>
+<strong>Candidate:</strong> Zarin Tasnim (BBA Marketing, CGPA 3.42, BUP)
+<strong>To:</strong> Dr. Mohammad Zahedul Alam, Professor, Department of Business Administration, BUP
+<strong>Purpose:</strong> Recommendation for Master of Supply Chain Management & Operations (Concordia, Waterloo, Sweden)
+
+<strong>Key Metrics:</strong>
+• BBA in Marketing, Faculty of Business Studies, BUP (126.0 credits, CGPA 3.42 / German 1.87).
+• 3.5+ years of verified freight forwarding leadership at MGH Group and Akij Logistics Ltd (120+ air cargo charter flights, ~4,000 tons airlifted).
+• Strong grades in Brand Management (4.00), Marketing Research (3.75), Big Data in Marketing (4.00), and Quantitative Business Analysis (3.50).
+        </div>
+        <div style="margin-top:10px;display:flex;justify-content:flex-end">
+          <button class="btn btn-sm btn-primary" type="button" onclick="copyText($('#briefTextZarin').innerText); toast('Copied Zarin referee brief');">Copy Brief Text</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;display:flex;justify-content:flex-end">
+      <button class="btn" onclick="closeModal()" type="button">Close</button>
+    </div>
+  `);
+
+  $$('#modalInner .tab').forEach(t => t.onclick = () => {
+    $$('#modalInner .tab').forEach(x => x.classList.toggle('is-active', x === t));
+    const targetPane = t.dataset.wtab;
+    $$('#modalInner .tab-pane').forEach(p => p.classList.toggle('is-active', p.dataset.wpane === targetPane));
+  });
+}
 const DOC_STATUS = {
   have: ['ok', 'Ready'], partial: ['warn', 'Partial'], verify: ['warn', 'Verify'], unconfirmed: ['warn', 'Unconfirmed'],
   missing: ['bad', 'Missing'], not_started: ['bad', 'Not started']

@@ -6553,10 +6553,290 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
   }
 ];
 
+
+/* ---------------------------------------------------------------
+   FACULTY OUTREACH WAVE ENGINE DATA (WS-H & Strategic Planning)
+   --------------------------------------------------------------- */
+const OUTREACH_WAVES_DATA = [
+  {
+    "wave": 1,
+    "title": "Wave 1: Immediate Critical Actions & Resume Submission (Nov 1–7, 2026)",
+    "urgency": "critical",
+    "timingNote": "Tuesday–Thursday 8:00–10:00 AM Recipient Local Time (7:00–9:00 PM Dhaka time after 1 Nov DST transition)",
+    "actions": [
+      {
+        "applicant": "zarin",
+        "person": "Zarin",
+        "recipient": "Prof. Fatma Gzara",
+        "institution": "University of Waterloo",
+        "department": "Management Science & Engineering",
+        "email": "fgzara@uwaterloo.ca",
+        "actionType": "Direct Resume Email",
+        "status": "READY_TO_SEND",
+        "rationale": "Her official profile explicitly invites: 'Please email me your resume, and I will review it and respond if interested.'",
+        "contentBrief": "Email 1-page CV highlighting 120 air cargo charter flights (~4,000 tons airlifted), SAP/CargoWise ERP, and BBA marketing analytics.",
+        "ruleWarning": "Keep note concise (under 150 words). Candidate sends personal note; no AI ghostwriting."
+      },
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Edwards Graduate Admissions Office",
+        "institution": "University of Saskatchewan",
+        "department": "Edwards School of Business",
+        "email": "mscmanagement@edwards.usask.ca",
+        "actionType": "Administrative Inquiry",
+        "status": "READY_TO_SEND",
+        "rationale": "Resolve funding living-cost coverage and confirm whether Dec 15 or Jan 30 is binding before the Nov 1 portal outage.",
+        "contentBrief": "3 bullet questions: (1) Guaranteed funding dollar value beyond $16,875 tuition offset; (2) Dec 15 vs Jan 30 deadline; (3) Medium of Instruction waiver confirmation.",
+        "ruleWarning": "USask portal maintenance outage begins 1 November for up to 6 days."
+      }
+    ]
+  },
+  {
+    "wave": 2,
+    "title": "Wave 2: Montreal Elite ALM & SCM Research Supervisors (Nov 8–15, 2026)",
+    "urgency": "high",
+    "timingNote": "Tuesday–Thursday 8:00–10:00 AM Eastern Time (Montreal). Rule: Max 1 faculty per department per day.",
+    "actions": [
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Prof. Pascal François",
+        "institution": "HEC Montréal",
+        "department": "Department of Finance",
+        "email": "pascal.francois@hec.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_2",
+        "rationale": "Finance Department Director & owner of FINA 60201 Fixed Income Securities. Supervised Hounlete (2024) and Rizk (2026) on sovereign debt pricing.",
+        "contentBrief": "Reference his duration immunization paper (IRF 2024); highlight your cash-flow modeling across all 310 Bangladesh government securities.",
+        "ruleWarning": "HEC Finance cap: Do NOT email François and Cenesizoglu on the same day. Space them 48 hours apart."
+      },
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Prof. Tolga Cenesizoglu",
+        "institution": "HEC Montréal",
+        "department": "Department of Finance",
+        "email": "tolga.cenesizoglu@hec.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_2",
+        "rationale": "Director of Canadian Derivatives Institute; supervised Mohamed Salim Triki (2022 ALM risk tool) and Christina Aladas (interbank transition).",
+        "contentBrief": "Connect his ALM risk tool supervision and JFE (2023) forecasting papers with your daily interbank money market execution at City Bank.",
+        "ruleWarning": "Email from santohasib.bup@gmail.com; attach 1-page CV with CFA Level 7 charter prominently noted."
+      },
+      {
+        "applicant": "zarin",
+        "person": "Zarin",
+        "recipient": "Assoc. Prof. Xiaodan Pan",
+        "institution": "Concordia University",
+        "department": "Supply Chain & Business Technology Management (JMSB)",
+        "email": "xiaodan.pan@concordia.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_2",
+        "rationale": "Director of MSCM Program; profile badge reads 'Thesis supervisor · Accepting inquiries'; 10+ yrs logistics industry experience.",
+        "contentBrief": "Highlight international shipping and retail buyer logistics (C&A, Hugo Boss); inquire about supervision for MSCM Option A (Thesis stream).",
+        "ruleWarning": "Option A (Thesis) is required to enter Concordia's graduate research funding pool."
+      }
+    ]
+  },
+  {
+    "wave": 3,
+    "title": "Wave 3: Top Comprehensive Research & Co-Location Faculty (Nov 16–25, 2026)",
+    "urgency": "medium",
+    "timingNote": "Tuesday–Thursday 8:00–10:00 AM Pacific / Central Time",
+    "actions": [
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Prof. Lucas Herrenbrueck",
+        "institution": "Simon Fraser University",
+        "department": "Department of Economics",
+        "email": "herrenbrueck@sfu.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_3",
+        "rationale": "Journal of Political Economy (2023) 'Asset Safety versus Asset Liquidity'. Exact match for frontier sovereign debt illiquidity.",
+        "contentBrief": "Demonstrate how Bangladesh government securities are safe domestically but illiquid under stress, providing an empirical laboratory for his model.",
+        "ruleWarning": "SFU international tuition is low (~$3,068/yr continuation fees); mention interest in MA Economics thesis stream."
+      },
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Prof. Matheus Grasselli",
+        "institution": "McMaster University",
+        "department": "Department of Mathematics & Statistics",
+        "email": "grasselli@math.mcmaster.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_3",
+        "rationale": "Deputy Provost; former Deputy Director Fields Institute; leading researcher on systemic interbank risk and debt contagion.",
+        "contentBrief": "Connect his Fields systemic risk modeling with banking book concentration in government securities under Basel III.",
+        "ruleWarning": "McMaster MSc Mathematics (Thesis Option 20mo) clears 16-month spousal gate."
+      },
+      {
+        "applicant": "zarin",
+        "person": "Zarin",
+        "recipient": "Prof. Mehmet Gumus",
+        "institution": "McGill University",
+        "department": "Desautels Faculty of Management",
+        "email": "mehmet.gumus@mcgill.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_3",
+        "rationale": "Desautels Chair in Supply Chain Management & Business Analytics; published in Management Science on buyer-supplier risk sharing.",
+        "contentBrief": "Share practitioner insights managing freight forwarder contracts for European retail apparel accounts out of South Asia.",
+        "ruleWarning": "Co-locates in Montreal with Hasibul's HEC/Concordia targets."
+      },
+      {
+        "applicant": "zarin",
+        "person": "Zarin",
+        "recipient": "Prof. Osman Alp",
+        "institution": "University of Calgary",
+        "department": "Haskayne School of Business",
+        "email": "osman.alp@ucalgary.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_3",
+        "rationale": "Leading scholar in inventory replenishment and freight transportation scheduling in Production and Operations Management.",
+        "contentBrief": "Present practical operational records from managing 120 air cargo charter flights (~4,000 tons); co-locates in Calgary.",
+        "ruleWarning": "Calgary provides guaranteed $25,455/yr international thesis scholarship package in Science/Math."
+      }
+    ]
+  },
+  {
+    "wave": 4,
+    "title": "Wave 4: Prairie & Western Quantitative Faculty (Nov 26 – Dec 5, 2026)",
+    "urgency": "medium",
+    "timingNote": "Tuesday–Thursday 8:00–10:00 AM Mountain / Eastern Time",
+    "actions": [
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Prof. Christoph Frei",
+        "institution": "University of Alberta",
+        "department": "Department of Mathematical & Statistical Sciences",
+        "email": "cfrei@ualberta.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_4",
+        "rationale": "Chair of Mathematical and Statistical Sciences; ETH Zurich PhD; expert on OTC derivatives trading and systemic credit risk in Finance and Stochastics.",
+        "contentBrief": "Connect with his OTC derivatives models using your daily experience pricing and executing USD/BDT FX swaps and interbank repo.",
+        "ruleWarning": "Target Mathematical Finance MSc (thesis stream), NOT Economics MA (which is 12mo course-based)."
+      },
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Prof. Alexandru Badescu",
+        "institution": "University of Calgary",
+        "department": "Department of Mathematics & Statistics",
+        "email": "abadescu@ucalgary.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_4",
+        "rationale": "Financial econometrics, GARCH option pricing with non-Gaussian distributions in Journal of Financial Econometrics.",
+        "contentBrief": "Discuss econometric modeling of emerging-market yield curve volatility; backed by Calgary's $25.4k/yr international thesis package.",
+        "ruleWarning": "Apply to Department of Mathematics and Statistics, as Economics MA thesis is closed."
+      },
+      {
+        "applicant": "hasibul",
+        "person": "Hasibul",
+        "recipient": "Prof. Marcos Escobar-Anel",
+        "institution": "Western University",
+        "department": "Department of Statistical & Actuarial Sciences",
+        "email": "marcos.escobar@uwo.ca",
+        "actionType": "Faculty Research Outreach",
+        "status": "SCHEDULED_WAVE_4",
+        "rationale": "Affine GARCH models and dynamic portfolio optimization; Western TA package provides $25,653/yr minimum.",
+        "contentBrief": "Model multi-asset liquidity buffers and treasury optimization under regulatory policy shifts.",
+        "ruleWarning": "Ensure application indicates interest in the research thesis stream."
+      }
+    ]
+  }
+];
+
+/* ---------------------------------------------------------------
+   EXPRESS ENTRY CRS & EUROPEAN RESIDENCY SIMULATOR DATA
+   --------------------------------------------------------------- */
+const PR_SIMULATOR_DATA = {
+  "jurisdictions": [
+    {
+      "country": "Canada",
+      "flag": "🇨🇦",
+      "name": "Express Entry (Canadian Experience Class & Provincial Nominee)",
+      "pathway": "Graduation (16-24mo Master's) → 3-Year PGWP → 1 Year Canadian Skilled Work (TEER 0/1) → Express Entry CEC PR",
+      "projectedTimeline": "12–15 months post-graduation to Permanent Residence (PR); Canadian Citizenship after 3 years of PR (1,095 days).",
+      "scoreBreakdown": {
+        "agePoints": 110,
+        "educationPoints": 126,
+        "canadianEducationBonus": 30,
+        "languagePoints": 128,
+        "foreignWorkExperience": 50,
+        "canadianWorkExperience": 70,
+        "spousalFactors": 40,
+        "provincialNominationBonus": 0,
+        "totalProjectedCRS": 554
+      },
+      "benchmarkCutoff": "Historical CEC Cutoff Scores: 505–525. Projected Hasibul + Zarin score of 554 sits comfortably above the federal cutoff.",
+      "keyStrengths": [
+        "100% exempt from IRCC post-Nov 2024 PGWP occupational shortage restriction lists (Master's exception)",
+        "Spouse works full-time on unrestricted C42 Open Work Permit, accumulating simultaneous Canadian skilled experience",
+        "Direct permanent residency pathway without employer sponsorship requirements under Canadian Experience Class"
+      ],
+      "primaryRisks": [
+        "Must secure initial funding or live within master's assistantship package",
+        "IRCC requires CLB 7 minimum language test for PGWP application"
+      ]
+    },
+    {
+      "country": "Germany",
+      "flag": "🇩🇪",
+      "name": "EU Blue Card & German Skilled Residence (§ 18g & § 18c AufenthG)",
+      "pathway": "Graduation (DAAD EPOS 24mo) → 18-Month Jobseeker Visa (§ 20) → EU Blue Card (§ 18g) → Permanent Residence (Niederlassungserlaubnis)",
+      "projectedTimeline": "PR in 21 months with German B1 (or 33 months with A1). German Citizenship under 2024 Staatsangehörigkeitsgesetz in 3–5 years.",
+      "scoreBreakdown": {
+        "postStudySearchPeriod": "18 months with full employment rights",
+        "salaryThresholdConcession": "€45,934.20 / yr (lower concession threshold for young professionals / recent graduates)",
+        "prFastTrackMonths": 21,
+        "prStandardMonths": 33,
+        "citizenshipYears": "3–5 years (dual citizenship permitted under 2024 reform)",
+        "spousalWorkRights": "Immediate unrestricted employment authorization (§ 30 AufenthG) without Federal Employment Agency labor checks"
+      },
+      "benchmarkCutoff": "Guaranteed statutory right: Any graduate of a German university who secures employment meeting the Blue Card threshold automatically qualifies for PR.",
+      "keyStrengths": [
+        "Zero tuition fees in Lower Saxony (Göttingen) and waived in Baden-Württemberg (Hohenheim)",
+        "€992/mo DAAD stipend + €276/mo family allowance provides guaranteed financial floor",
+        "Fastest permanent residence timeline in Western Europe (21 months of Blue Card employment with B1)"
+      ],
+      "primaryRisks": [
+        "Financial sector in Frankfurt/Munich requires professional German (B2/C1) for front-office dealing",
+        "Must clear German B1 language exam to unlock the 21-month PR fast-track"
+      ]
+    },
+    {
+      "country": "Sweden",
+      "flag": "🇸🇪",
+      "name": "Swedish Work Permit & Permanent Residence (Migrationsverket)",
+      "pathway": "Graduation (SISGP 24mo) → 12-Month Post-Study Jobseeker Permit → 4 Years Work Permit Employment → Permanent Residence (Permanent Uppehållstillstånd)",
+      "projectedTimeline": "PR after 48 months (4 years) of continuous work permit employment. Swedish Citizenship after 5 years.",
+      "scoreBreakdown": {
+        "postStudySearchPeriod": "12 months with full employment rights",
+        "salaryThresholdRequirement": "Must meet collective agreement or minimum 80% of median Swedish salary (~SEK 28,480/mo)",
+        "prWorkYears": 4,
+        "citizenshipYears": 5,
+        "spousalWorkRights": "Migrationsverket grants concurrent unrestricted residence and work permits to spouses of master's students"
+      },
+      "benchmarkCutoff": "Employment-based statutory transition: Continuous employment with standard Swedish pension, health, and labor insurance.",
+      "keyStrengths": [
+        "Highest English proficiency in non-native Europe; Stockholm is an active English-speaking fintech and finance hub",
+        "Dual SISGP scholarship provides SEK 24,000/mo net tax-free couple standard of living",
+        "Spouse has immediate unrestricted right to work in global logistics hubs (Stockholm, Gothenburg, Malmö)"
+      ],
+      "primaryRisks": [
+        "Post-study job search visa is 12 months (shorter than Germany's 18 months)",
+        "Recent Swedish government discussions on tightening migration thresholds (current PR rule requires 4 years)"
+      ]
+    }
+  ]
+};
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {SUBJECT_OPTIONS, SUBJECT_RANKED, SUBJECT_FALLBACK,
                      FUNDING_SCHEMES, FUNDING_DEAD_ENDS, FUNDING_COSTS,
-                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED, CANADA_U15_RANKED, MASTERSPORTAL_CANADA_AUDIT, MASTERSPORTAL_FINANCE_CANADA_AUDIT, CANADA_MASTER_PROGRAMS_105, CANADA_SUBJECT_MATRIX_41, CANADA_FUNDING_GUIDE_16, CANADA_FACULTY_COMPREHENSIVE_50 };
+                     COUPLE_COLOCATION_MATRIX, UNI_CENSUS, UNI_RANKED, CANADA_U15_RANKED, MASTERSPORTAL_CANADA_AUDIT, MASTERSPORTAL_FINANCE_CANADA_AUDIT, CANADA_MASTER_PROGRAMS_105, CANADA_SUBJECT_MATRIX_41, CANADA_FUNDING_GUIDE_16, CANADA_FACULTY_COMPREHENSIVE_50, OUTREACH_WAVES_DATA, PR_SIMULATOR_DATA };
 }
 
 function normalizeName(n) {
