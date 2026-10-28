@@ -1484,6 +1484,110 @@ var PROF_VERIFIED = {
       "verdict": "KEEP (Top Zarin Montreal Match)",
       "verdict_reason": "Canada Research Chair in Supply Chain Analytics at HEC Montréal. Multiple primary thesis PDFs verified on Biblos library (Mishra, Drave, Ghaniabadi). 100% English MSc Global Supply Chain Management program. Outstanding co-location with Hasibul at HEC Montréal; Quebec international tuition exemption available for research thesis students.",
       "unverified": []
+    },
+    "Prof. Osman Alp": {
+      "name": "Prof. Osman Alp",
+      "university": "University of Calgary",
+      "department": "Haskayne School of Business, Operations and Supply Chain Management (OSCM)",
+      "title": "Full Professor of Operations and Supply Chain Management; Co-Director, Digitization for Innovative Supply Chains (DISC) Consortium; Former Area Chair",
+      "email": "osman.alp@ucalgary.ca",
+      "email_source": "Official UCalgary Haskayne Faculty Directory & CV (Jan 2026): https://profiles.ucalgary.ca/osman-alp",
+      "accepting_students_quote": "Active graduate supervisor (MSc and PhD). Teaches SCMA 631 Supply Chain Analytics and SCMA 455 Logistics Management.",
+      "accepting_source": "https://profiles.ucalgary.ca/osman-alp",
+      "grants": [
+        {
+          "program": "SSHRC Partnership Engage Grants",
+          "title": "Managing Customer Expectations in On-Demand Service Platforms",
+          "amount": "Federal Partnership Grant",
+          "years": "2021–2022",
+          "source": "Official Haskayne CV (Jan 2026)"
+        },
+        {
+          "program": "SSHRC Insight Grants",
+          "title": "Analyzing Potential Bias and Unfairness in AI Algorithms and Assessing Societal Impact",
+          "amount": "Multi-year Federal Research Award",
+          "years": "2019–2022",
+          "source": "Official Haskayne CV (Jan 2026)"
+        },
+        {
+          "program": "SSHRC Partnership Development Grants",
+          "title": "Canadian Northern Corridor Program: Multi-modal Rights-of-Way in Canada's North",
+          "amount": "Federal Research Infrastructure Project",
+          "years": "2018–2021",
+          "source": "Official Haskayne CV (Jan 2026)"
+        }
+      ],
+      "programme": {
+        "name": "Master of Science in Management (Operations & Supply Chain Management), Haskayne School of Business",
+        "type": "Thesis-based (24 months). Clears the IRCC C42 16-month spousal work-permit gate.",
+        "supervisor_required": "Applicants are encouraged to identify prospective research supervisors in OSCM.",
+        "funding_package": "University of Calgary guarantees ~$25,455 CAD/year for all full-time international thesis master's students + Alberta Graduate Excellence Scholarship (AGES $11k-$15k eligible).",
+        "funding_source": "https://grad.ucalgary.ca/awards-and-funding/funding-TB-students",
+        "deadline": "January 15, 2027 (Fall 2027 intake)",
+        "notes": "100% campus co-location in Calgary with Hasibul (MSc Mathematics & Statistics under Prof. Alexandru Badescu)."
+      },
+      "students": [
+        {
+          "name": "Samira Nazarinia",
+          "thesis_title": "Operations and Sustainable Supply Chain Optimization",
+          "year": "2024–Present",
+          "degree": "Ph.D. Student",
+          "url": "https://profiles.ucalgary.ca/sites/default/files/2026-01/OALP-CV.pdf"
+        },
+        {
+          "name": "Saman TeymoorianMotlagh",
+          "thesis_title": "Community Solar Model for Adoption of Solar Energy",
+          "year": "2021–Present",
+          "degree": "Ph.D. Thesis",
+          "url": "https://profiles.ucalgary.ca/sites/default/files/2026-01/OALP-CV.pdf"
+        },
+        {
+          "name": "Nouran Habib",
+          "thesis_title": "Dynamic Shared Autonomous Vehicle Fleet Operations with Consideration of Fairness",
+          "year": "2021–2022",
+          "degree": "M.Sc. Thesis (PRISM Repository)",
+          "url": "https://prism.ucalgary.ca/"
+        },
+        {
+          "name": "Amin Aslani",
+          "thesis_title": "Three Essays on Assortment Planning in Omni-Channel Retail Supply Chains (Placed at Postdoc / Faculty)",
+          "year": "2018–2023",
+          "degree": "Ph.D. Thesis",
+          "url": "https://profiles.ucalgary.ca/sites/default/files/2026-01/OALP-CV.pdf"
+        },
+        {
+          "name": "Pelin Elaldi",
+          "thesis_title": "Distribution of Petroleum Products by Using Multiple Modes of Transportation",
+          "year": "2011",
+          "degree": "M.S. Thesis",
+          "url": "https://profiles.ucalgary.ca/sites/default/files/2026-01/OALP-CV.pdf"
+        }
+      ],
+      "papers": [
+        {
+          "citation": "Cui, R., Tan, T., Alp, O. and Udenio, M. (2026). Fleet electrification: Classification and research agenda from an operations management perspective. Mathematical Methods of Operations Research.",
+          "doi_or_url": "https://doi.org/10.1007/s00186-026-00918-6"
+        },
+        {
+          "citation": "Aslani, A. and Alp, O. (2025). Assortment Planning for Omni-Channel Retailers under Product Returns. Naval Research Logistics.",
+          "doi_or_url": "https://doi.org/10.1002/nav.70011"
+        },
+        {
+          "citation": "Alp, O. and Ajam, M. (2024). An Approach to Plan Infrastructural Investments to Facilitate Domestic Trade. INFOR: Information Systems and Operational Research 62(3): 529-555.",
+          "doi_or_url": "https://doi.org/10.1080/03155986.2024.2311472"
+        },
+        {
+          "citation": "Alp, O., Tan, T. and Udenio, M. (2022). Transitioning to Sustainable Freight Transportation by Integrating Fleet Replacement and Charging Infrastructure Decisions. OMEGA 109: 102595.",
+          "doi_or_url": "https://doi.org/10.1016/j.omega.2022.102595"
+        },
+        {
+          "citation": "Alp, O. and Sen, A. (2021). Delegation of Stocking Decisions Under Asymmetric Demand Information. Manufacturing & Service Operations Management 23(1): 55-69.",
+          "doi_or_url": "https://doi.org/10.1287/msom.2019.0810"
+        }
+      ],
+      "verdict": "KEEP (Top Calgary SCM Match)",
+      "verdict_reason": "Leading Canadian scholar on sustainable freight transportation scheduling and fleet operations in OMEGA, MSOM, and NRL. Direct alignment with Zarin's operational background coordinating multimodal charter cargo shipments and route dispatching. Co-locates 100% on campus in Calgary with Hasibul's funded Math/Stats thesis route ($25,455/yr guarantee). 24-month thesis MSc program clears the spousal work permit gate.",
+      "unverified": []
     }
   },
   "hec": {
