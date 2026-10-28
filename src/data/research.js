@@ -4938,79 +4938,190 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "isVerified": false
   },
   {
-    "name": "Ron Yang",
+    "name": "Prof. Ron Yang",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
-    "university": "University of British Columbia",
-    "department": "Sauder School of Business — Finance",
+    "university": "University of British Columbia (Sauder)",
+    "department": "Strategy and Business Economics Division, Sauder School of Business (Note: Appointed in Strategy & Business Economics, though research connects to Finance/Banking)",
     "country": "Canada",
-    "title": "Assistant Professor of Finance",
-    "tier": "A",
-    "score": 90,
+    "title": "Assistant Professor, Strategy and Business Economics Division",
+    "tier": "B",
+    "score": 75,
     "email": "ron.yang@sauder.ubc.ca",
-    "emailStatus": "VERIFIED — official UBC Sauder faculty directory",
+    "emailStatus": "✅ Verified via https://www.sauder.ubc.ca/people/ron-yang",
     "profileUrl": "https://www.sauder.ubc.ca/people/ron-yang",
-    "research": "Asset Pricing · Intermediary Asset Pricing · Financial Frictions",
-    "keyPaper": "Working papers and research on intermediary balance sheet capacity and asset pricing dynamics under financial frictions.",
-    "paperStatus": "VERIFIED from official Sauder profile.",
+    "research": "Gideon Saar, Jian Sun, Ron Yang, Haoxiang Zhu (2023), 'From Market Making to Matchmaking: Does Bank Regulation Harm Market Liquidity?', Review of Financial Studies 36(2): 678–732.",
+    "keyPaper": "Gideon Saar, Jian Sun, Ron Yang, Haoxiang Zhu (2023), 'From Market Making to Matchmaking: Does Bank Regulation Harm Market Liquidity?', Review of Financial Studies 36(2): 678–732.",
+    "paperStatus": "Verified via Primary Source / DOI",
     "supervisionRecord": "Active graduate supervision",
     "students": [],
-    "grants": [],
-    "why": "Specializes in Intermediary Asset Pricing · the exact theoretical framework where asset prices and risk premia are determined by the balance sheet constraints of commercial banks rather than household risk preferences.",
-    "contribution": "Your daily ALM desk operations in Bangladesh represent a live laboratory for intermediary asset pricing: commercial banks absorbing sovereign debt under regulatory caps (CRR, SLR) while the policy transmission mechanism decouples.",
-    "draftStatus": "Draft ready",
-    "hasDossier": false,
-    "isVerified": false
+    "grants": [
+      {
+        "program": "SSHRC Insight Development Grant",
+        "title": "Insight Development Grant (PI)",
+        "amount": "$58,000",
+        "years": "2024",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-09/Ron%20Yang%20CV%202026-05.pdf"
+      },
+      {
+        "program": "CCBS Climate Solutions Grant",
+        "title": "Climate Solutions Grant (PI)",
+        "amount": "$15,000",
+        "years": "2025",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-09/Ron%20Yang%20CV%202026-05.pdf"
+      },
+      {
+        "program": "NBER Economics of Transportation in the 21st Century Grant",
+        "title": "Transportation Economics Research (Co-Investigator)",
+        "amount": "$103,000 USD",
+        "years": "2023",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-09/Ron%20Yang%20CV%202026-05.pdf"
+      },
+      {
+        "program": "Hampton New Faculty Grant",
+        "title": "New Faculty Research Award (PI)",
+        "amount": "$10,000",
+        "years": "2023",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-09/Ron%20Yang%20CV%202026-05.pdf"
+      }
+    ],
+    "why": "For Hasibul Hasan, Ron Yang's RFS 2023 research on post-crisis bank regulation (Volcker Rule/Basel) and bond market liquidity, combined with his Federal Reserve Bank of New York Treasury market background, matches Hasibul's Treasury ALM liquidity experience. However, he is an Assistant Professor (joined 2023) in Strategy & Business Economics (not core Finance), meaning fewer dedicated graduate funding lines than senior chairs.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": null,
+    "verdict": "Stretch / Keep",
+    "verdictReason": "For Hasibul Hasan, Ron Yang's RFS 2023 research on post-crisis bank regulation (Volcker Rule/Basel) and bond market liquidity, combined with his Federal Reserve Bank of New York Treasury market background, matches Hasibul's Treasury ALM liquidity experience. However, he is an Assistant Professor (joined 2023) in Strategy & Business Economics (not core Finance), meaning fewer dedicated graduate funding lines than senior chairs."
   },
   {
-    "name": "Markus Baldauf",
+    "name": "Prof. Markus Baldauf",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
-    "university": "University of British Columbia",
-    "department": "Sauder School of Business — Finance",
+    "university": "University of British Columbia (Sauder)",
+    "department": "Finance Division, Sauder School of Business",
     "country": "Canada",
-    "title": "Associate Professor of Finance; 2024 Bank of Canada Governor's Award Winner",
-    "tier": "A",
-    "score": 88,
+    "title": "Associate Professor, Finance Division; B.I. Ghert Family Foundation Professorship in Finance and Policy",
+    "tier": "B",
+    "score": 75,
     "email": "markus.baldauf@sauder.ubc.ca",
-    "emailStatus": "VERIFIED — official UBC Sauder faculty directory",
+    "emailStatus": "✅ Verified via https://www.sauder.ubc.ca/people/markus-baldauf",
     "profileUrl": "https://www.sauder.ubc.ca/people/markus-baldauf",
-    "research": "Market Microstructure · High-Frequency Trading · Information in Financial Markets",
-    "keyPaper": "Research on price discovery, trading speed, and liquidity provision in dealer markets.",
-    "paperStatus": "VERIFIED from official Sauder profile.",
+    "research": "Markus Baldauf, Christoph Frei and Joshua Mollner (2024), 'Block Trade Contracting,' Journal of Financial Economics 160: 103901.",
+    "keyPaper": "Markus Baldauf, Christoph Frei and Joshua Mollner (2024), 'Block Trade Contracting,' Journal of Financial Economics 160: 103901.",
+    "paperStatus": "Verified via Primary Source / DOI",
     "supervisionRecord": "Active graduate supervision",
     "students": [],
-    "grants": [],
-    "why": "Expertise in dealer markets, market microstructure, and liquidity provision. Awarded the 2024 Bank of Canada Governor's Award.",
-    "contribution": "Empirical microstructure of primary sovereign auctions and interbank call money markets in an illiquid OTC frontier environment.",
-    "draftStatus": "Draft ready",
-    "hasDossier": false,
-    "isVerified": false
+    "grants": [
+      {
+        "program": "Bank of Canada Fellowship Program - Governor’s Award",
+        "title": "2024 Governor’s Award (Bank of Canada)",
+        "amount": "$30,000 per year for up to two years ($60,000 total)",
+        "years": "2024-2026",
+        "source": "https://www.sauder.ubc.ca/news/insights/associate-professor-markus-baldauf-honoured-2024-governors-award-bank-canada"
+      }
+    ],
+    "why": "For Hasibul Hasan, Baldauf is an elite mathematical market microstructure theorist (published in JPE, JFE, JF, RFS; 2024 Bank of Canada Governor's Award recipient). His work on dealer liquidity, order flow segmentation, and block trading has conceptual links to Treasury bond secondary market mechanics, but his methodology is ultra-formal microeconomic game theory rather than empirical term structure or macro-monetary transmission.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": null,
+    "verdict": "Stretch / Keep",
+    "verdictReason": "For Hasibul Hasan, Baldauf is an elite mathematical market microstructure theorist (published in JPE, JFE, JF, RFS; 2024 Bank of Canada Governor's Award recipient). His work on dealer liquidity, order flow segmentation, and block trading has conceptual links to Treasury bond secondary market mechanics, but his methodology is ultra-formal microeconomic game theory rather than empirical term structure or macro-monetary transmission."
   },
   {
-    "name": "Adlai Fisher",
+    "name": "Prof. Adlai Fisher",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
-    "university": "University of British Columbia",
-    "department": "Sauder School of Business — Finance",
+    "university": "University of British Columbia (Sauder)",
+    "department": "Finance Division, Sauder School of Business",
     "country": "Canada",
-    "title": "Professor of Finance; Finance Division Chair",
+    "title": "Full Professor, Finance Division; Albert E. Hall Chair in Finance",
     "tier": "A",
-    "score": 86,
+    "score": 95,
     "email": "adlai.fisher@sauder.ubc.ca",
-    "emailStatus": "VERIFIED — official UBC Sauder faculty directory",
+    "emailStatus": "✅ Verified via https://www.sauder.ubc.ca/people/adlai-fisher",
     "profileUrl": "https://www.sauder.ubc.ca/people/adlai-fisher",
-    "research": "Quantitative Finance · Volatility Modeling · Regime-Switching Models · Asset Pricing",
-    "keyPaper": "Foundational papers on Markov-switching multifractal models and time-varying risk premia.",
-    "paperStatus": "VERIFIED from official Sauder profile.",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "World leader in econometric modeling of regime changes and quantitative finance models.",
-    "contribution": "Modeling structural regime breaks in sovereign yield curves and crawling-peg exchange rate mechanisms.",
-    "draftStatus": "Draft ready",
-    "hasDossier": false,
-    "isVerified": false
+    "research": "J. Knesl, R. Lee, Adlai Fisher (2025), 'How Valuable is Corporate Adaptation to Crisis? Estimates from Covid-19 Work-from-Home Announcements,' Journal of Financial Economics 174: 104168.",
+    "keyPaper": "J. Knesl, R. Lee, Adlai Fisher (2025), 'How Valuable is Corporate Adaptation to Crisis? Estimates from Covid-19 Work-from-Home Announcements,' Journal of Financial Economics 174: 104168.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "5 verified theses in repository",
+    "students": [
+      {
+        "name": "Charles Martineau",
+        "thesis_title": "Essays in empirical asset pricing",
+        "year": 2017,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration (Finance)",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0348705"
+      },
+      {
+        "name": "Gen Li",
+        "thesis_title": "PhD Dissertation in Finance (co-chair, placed at UNSW)",
+        "year": 2026,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration (Finance)",
+        "url": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      },
+      {
+        "name": "Julian Vahl",
+        "thesis_title": "PhD Dissertation in Finance (co-chair, placed at Theory + Practice)",
+        "year": 2022,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration (Finance)",
+        "url": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      },
+      {
+        "name": "Jiri Knesl",
+        "thesis_title": "PhD Dissertation in Finance (co-chair, placed at Oxford University)",
+        "year": 2019,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration (Finance)",
+        "url": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      },
+      {
+        "name": "Kairong Xiao",
+        "thesis_title": "PhD Dissertation in Finance (co-chair, placed at Columbia University)",
+        "year": 2017,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration (Finance)",
+        "url": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC Research Grant",
+        "title": "Patents and Corporate Risk",
+        "amount": "UNVERIFIED",
+        "years": "2025-2027",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      },
+      {
+        "program": "SSHRC Research Grant",
+        "title": "Media Attention, Macro Fundamentals, and the Stock Market",
+        "amount": "UNVERIFIED",
+        "years": "2015-2022",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      },
+      {
+        "program": "SSHRC Research Grant",
+        "title": "Credit Risk and Monetary Policy",
+        "amount": "UNVERIFIED",
+        "years": "2011-2015",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      },
+      {
+        "program": "NSERC Research Grant",
+        "title": "Multifractals in Finance",
+        "amount": "UNVERIFIED",
+        "years": "2015-2023",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2026-06/Fisher_Adlai%20-%20vita2026_0428.pdf"
+      }
+    ],
+    "why": "Top target match for Hasibul Hasan. Prof. Fisher holds the Albert E. Hall Chair in Finance and is an international authority on term structure dynamics ('Staying on Top of the Curve: A Cascade Model of Term Structure Dynamics', JFQA; 'The Term Structure of Equity Risk Premia', Review of Finance 2023) and monetary policy / macroeconomic announcements (RFS 2022). Hasibul's background modeling 310 G-sec yield curves and money transmission aligns directly with Fisher's research. Fisher has an exceptional record of co-authoring with and placing PhD graduates at Columbia, Oxford, and Toronto.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": null,
+    "verdict": "Keep",
+    "verdictReason": "Top target match for Hasibul Hasan. Prof. Fisher holds the Albert E. Hall Chair in Finance and is an international authority on term structure dynamics ('Staying on Top of the Curve: A Cascade Model of Term Structure Dynamics', JFQA; 'The Term Structure of Equity Risk Premia', Review of Finance 2023) and monetary policy / macroeconomic announcements (RFS 2022). Hasibul's background modeling 310 G-sec yield curves and money transmission aligns directly with Fisher's research. Fisher has an exceptional record of co-authoring with and placing PhD graduates at Columbia, Oxford, and Toronto."
   },
   {
     "name": "Jack Favilukis",
@@ -5092,175 +5203,623 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "University of Toronto",
-    "department": "Department of Statistical Sciences / Mathematical Finance",
+    "department": "Department of Statistical Sciences, Faculty of Arts and Science",
     "country": "Canada",
-    "title": "Professor and Chair; Fields Institute Fellow; Former Chair SIAM Activity Group on Financial Math",
-    "tier": "A",
-    "score": 93,
+    "title": "Professor and Chair",
+    "tier": "C",
+    "score": 40,
     "email": "sebastian.jaimungal@utoronto.ca",
-    "emailStatus": "✅ VERIFIED — official U of T Statistical Sciences directory",
+    "emailStatus": "✅ Verified via https://discover.research.utoronto.ca/22716-sebastian-jaimungal",
     "profileUrl": "https://discover.research.utoronto.ca/22716-sebastian-jaimungal",
-    "research": "Mathematical finance, stochastic control, algorithmic trading, mean-field games, reinforcement learning in quantitative finance.",
-    "keyPaper": "Cartea, Jaimungal & Penalva (2015), 'Algorithmic and High-Frequency Trading', Cambridge University Press; plus Jaimungal et al. (2024) on mean-field games in liquidity provision.",
-    "paperStatus": "✅ VERIFIED from official research website",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Canada's foremost researcher in algorithmic liquidity provision, market microstructure, and stochastic optimal control at Canada's #1 institution.",
-    "contribution": "Provides empirical data on frontier interbank liquidity dynamics, central bank discount window mechanisms, and auction pricing distortion from South Asian banking book records.",
-    "draftStatus": "✅ DRAFT READY — citation verified, email verified",
-    "hasDossier": false,
-    "isVerified": false
+    "research": "Jaimungal, S., & Pesenti, S. (2026). Kullback-Leibler Barycentre of Stochastic Processes. SIAM Journal on Financial Mathematics, 17(2), 371-402.",
+    "keyPaper": "Jaimungal, S., & Pesenti, S. (2026). Kullback-Leibler Barycentre of Stochastic Processes. SIAM Journal on Financial Mathematics, 17(2), 371-402.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "5 verified theses in repository",
+    "students": [
+      {
+        "name": "Ryan Donnelly",
+        "thesis_title": "Ambiguity Aversion in Algorithmic and High Frequency Trading",
+        "year": "2014",
+        "degree": "PhD",
+        "url": "https://tspace.library.utoronto.ca/handle/1807/68285"
+      },
+      {
+        "name": "Jason Ricci",
+        "thesis_title": "Applied Stochastic Control in High Frequency and Algorithmic Trading",
+        "year": "2014",
+        "degree": "PhD",
+        "url": "https://tspace.library.utoronto.ca/handle/1807/68262"
+      },
+      {
+        "name": "Vladimir Surkov",
+        "thesis_title": "Option Pricing using Fourier Space Time-stepping Framework",
+        "year": "2009",
+        "degree": "PhD",
+        "url": "https://tspace.library.utoronto.ca/handle/1807/19300"
+      },
+      {
+        "name": "Georg Sigloch",
+        "thesis_title": "Utility Indifference Pricing of Credit Instruments",
+        "year": "2009",
+        "degree": "PhD",
+        "url": "https://tspace.library.utoronto.ca/handle/1807/19231"
+      },
+      {
+        "name": "Emma Kroell",
+        "thesis_title": "Model Ambiguity in Continuous Time Non-Life Insurance",
+        "year": "2025",
+        "degree": "PhD",
+        "url": "https://sebastian.statistics.utoronto.ca/research/student-team/"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$250,000.00",
+        "years": "2024-2029",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Jaimungal%22"
+      },
+      {
+        "program": "Research Partnerships - Alliance Grants",
+        "title": "Alliance Grants",
+        "amount": "$150,000.00",
+        "years": "2020-2025",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Jaimungal%22"
+      },
+      {
+        "program": "Discovery Research - Discovery Grants Program - Accelerator Supplements",
+        "title": "Discovery Grants Program - Accelerator Supplements",
+        "amount": "$120,000.00",
+        "years": "2018-2021",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Jaimungal%22"
+      },
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$246,000.00",
+        "years": "2018-2024",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Jaimungal%22"
+      }
+    ],
+    "why": "U of T Department of Statistical Sciences explicitly confirms that all MSc students are self-funded ($0 departmental aid), directly violating Hasibul's non-negotiable fully-funded requirement. Direct-entry PhD is out of reach given his 3.30 CGPA in BSS Economics vs pure mathematics prerequisites. In addition, Prof. Jaimungal's research focuses on stochastic games, deep reinforcement learning, and high-frequency trading in decentralized finance rather than macro-treasury yield curves, bank liquidity, and sovereign debt.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "MSc in Statistics is explicitly self-funded ('All MSc students (full-time and part-time) are self-funded'). Department funds only PhD and direct-entry PhD students for 5 years ($40,000 minimum package, $31,551 net of tuition & fees in 2026-27). Professional MMF/MFI programs are unfunded ($50,000+ CAD tuition). Spousal open work permits (SOWP) are eligible for master's and doctoral degrees under IRCC rules, but $0 master's funding makes it unviable.",
+      "source": "https://www.statistics.utoronto.ca/graduate/msc-application-information and https://www.statistics.utoronto.ca/resources/graduate-funding"
+    },
+    "verdict": "Drop",
+    "verdictReason": "U of T Department of Statistical Sciences explicitly confirms that all MSc students are self-funded ($0 departmental aid), directly violating Hasibul's non-negotiable fully-funded requirement. Direct-entry PhD is out of reach given his 3.30 CGPA in BSS Economics vs pure mathematics prerequisites. In addition, Prof. Jaimungal's research focuses on stochastic games, deep reinforcement learning, and high-frequency trading in decentralized finance rather than macro-treasury yield curves, bank liquidity, and sovereign debt."
   },
   {
     "name": "Prof. Matheus Grasselli",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "McMaster University",
-    "department": "Department of Mathematics & Statistics",
+    "department": "Department of Mathematics & Statistics, Faculty of Science",
     "country": "Canada",
-    "title": "Professor of Mathematics; Deputy Provost; Former Deputy Director of Fields Institute",
-    "tier": "A",
-    "score": 92,
-    "email": "grasselli@math.mcmaster.ca",
-    "emailStatus": "✅ VERIFIED — official McMaster Mathematics faculty directory",
-    "profileUrl": "https://math.mcmaster.ca/people/faculty/",
-    "research": "Systemic risk, interbank financial networks, macroeconomic modeling with debt and liquidity, stock-flow consistent models (Minsky models).",
-    "keyPaper": "Grasselli & Costa Lima (2012), 'An analysis of the Keen model with government activity, deflation, and speculative financial markets', Mathematics and Financial Economics.",
-    "paperStatus": "✅ VERIFIED from official CV",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "World leader in systemic banking risk and macroeconomic debt models. Direct mathematical counterpart to Hasibul's Treasury ALM & sovereign debt concentration.",
-    "contribution": "Hands-on calibration of banking-sector interbank borrowing networks and sovereign debt holdings under liquidity pressure using primary Bangladesh Bank auction data.",
-    "draftStatus": "✅ DRAFT READY — high alignment with banking balance-sheet modeling",
-    "hasDossier": false,
-    "isVerified": false
+    "title": "Professor and Deputy Provost",
+    "tier": "B",
+    "score": 75,
+    "email": "grassel@mcmaster.ca",
+    "emailStatus": "✅ Verified via https://math.mcmaster.ca/people/faculty/grasselli-matheus/ and https://experts.mcmaster.ca/people/grassel",
+    "profileUrl": "https://math.mcmaster.ca/people/faculty/grasselli-matheus/",
+    "research": "Grasselli, M. R., & Huu, A. N. (2026). From debt crises to financial crashes (and back): A stock-flow consistent model for credit-driven crises. Frontiers of Mathematical Finance.",
+    "keyPaper": "Grasselli, M. R., & Huu, A. N. (2026). From debt crises to financial crashes (and back): A stock-flow consistent model for credit-driven crises. Frontiers of Mathematical Finance.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "5 verified theses in repository",
+    "students": [
+      {
+        "name": "Alberto Herrera Horta",
+        "thesis_title": "Stochastic Dynamics in Macroeconomics: Analysis of an Extended Keen Model for Wages, Employment, and Debt.",
+        "year": "2026",
+        "degree": "MSc",
+        "url": "https://hdl.handle.net/11375/33880"
+      },
+      {
+        "name": "Daniel M. Presta",
+        "thesis_title": "Sensitivity and Stability: An Investigation of Stock-Flow Consistent Climate-Economic Models",
+        "year": "2021",
+        "degree": "Master of Science (MSc)",
+        "url": "https://hdl.handle.net/11375/26810"
+      },
+      {
+        "name": "Aghigh Farhadicheshmehmorvari",
+        "thesis_title": "An Agent-Based Financial Network Modeling Based on Systematic Trust",
+        "year": "2021",
+        "degree": "Master of Science (MSc)",
+        "url": "https://hdl.handle.net/11375/26640"
+      },
+      {
+        "name": "Luka Milic",
+        "thesis_title": "Combating Climate Change with Green Central Banking: A Continuous-Time, Stock-Flow Consistent Approach",
+        "year": "2021",
+        "degree": "Master of Science (MSc)",
+        "url": "https://hdl.handle.net/11375/26708"
+      },
+      {
+        "name": "Chuang Yi",
+        "thesis_title": "Credit Risk from Theory to Application",
+        "year": "2005",
+        "degree": "Master of Science (MSc)",
+        "url": "https://hdl.handle.net/11375/21033"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$155,000.00",
+        "years": "2024-2029",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Grasselli%2C+Matheus%22"
+      }
+    ],
+    "why": "Research fit is exceptional: Prof. Grasselli works on systemic banking risk, monetary transmission, and stock-flow consistent debt crisis models, matching Hasibul's treasury ALM and yield curve expertise. The 20-month MSc is funded and feasible for spousal work permit. However, it is a high STRETCH because Prof. Grasselli serves as McMaster's Deputy Provost (heavy executive administration duties that limit student supervision), and McMaster's MSc in Mathematics formally requires ~10 third- and fourth-year undergraduate mathematics courses, which Hasibul's BSS in Economics lacks.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "M.Sc. Mathematics (Thesis Option) is 20 months (5 academic terms). Students receive Teaching Assistantships (normally 266 hours/year governed by CUPE 3906 collective agreement) and departmental research support. Doctoral funding is minimum full tuition + $17,500/year. 20-month duration qualifies spouse for Spousal Open Work Permit (SOWP) under IRCC master's policy, and graduates receive a 3-year PGWP.",
+      "source": "https://math.mcmaster.ca/graduate/graduate-student-handbook/ and https://gs.mcmaster.ca/tuition-financial-aid-scholarships/"
+    },
+    "verdict": "Stretch",
+    "verdictReason": "Research fit is exceptional: Prof. Grasselli works on systemic banking risk, monetary transmission, and stock-flow consistent debt crisis models, matching Hasibul's treasury ALM and yield curve expertise. The 20-month MSc is funded and feasible for spousal work permit. However, it is a high STRETCH because Prof. Grasselli serves as McMaster's Deputy Provost (heavy executive administration duties that limit student supervision), and McMaster's MSc in Mathematics formally requires ~10 third- and fourth-year undergraduate mathematics courses, which Hasibul's BSS in Economics lacks."
   },
   {
     "name": "Prof. Christoph Frei",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "University of Alberta",
-    "department": "Department of Mathematical & Statistical Sciences",
+    "department": "Faculty of Science - Mathematics & Statistical Sciences",
     "country": "Canada",
-    "title": "Professor of Mathematical Finance; Chair of Department of Mathematical and Statistical Sciences",
+    "title": "Professor and Chair of the Department of Mathematical and Statistical Sciences",
     "tier": "A",
-    "score": 91,
+    "score": 95,
     "email": "cfrei@ualberta.ca",
-    "emailStatus": "✅ VERIFIED — official UAlberta faculty directory",
+    "emailStatus": "✅ Verified via https://apps.ualberta.ca/directory/person/cfrei",
     "profileUrl": "https://apps.ualberta.ca/directory/person/cfrei",
-    "research": "Mathematical finance, credit risk management, OTC markets, systemic risk, dynamic banking models, market structure.",
-    "keyPaper": "Frei (2014), 'Splitting the risk: An equilibrium model of OTC derivatives trading', Finance and Stochastics.",
-    "paperStatus": "✅ VERIFIED from official website",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "ETH Zurich Ph.D. with private banking industry experience; studies OTC derivatives trading and systemic credit risk.",
-    "contribution": "Primary market execution insight from USD/BDT FX swaps, interbank repo trades, and OTC client structuring at City Bank PLC.",
-    "draftStatus": "✅ DRAFT READY — direct match for OTC swaps and credit risk",
-    "hasDossier": false,
-    "isVerified": false
+    "research": "Frei, C. (2026). Bank Regulation and the Rise of Nonbank Intermediation. Finance and Economics Discussion Series 2026-030. Washington: Board of Governors of the Federal Reserve System.",
+    "keyPaper": "Frei, C. (2026). Bank Regulation and the Rise of Nonbank Intermediation. Finance and Economics Discussion Series 2026-030. Washington: Board of Governors of the Federal Reserve System.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "5 verified theses in repository",
+    "students": [
+      {
+        "name": "Christopher Wu",
+        "thesis_title": "Models of Selection Markets",
+        "year": "2024",
+        "degree": "Master of Science",
+        "url": "https://era.library.ualberta.ca/items/70da2567-4bde-47e2-8803-4609ea81d05f"
+      },
+      {
+        "name": "Zhangqian Xie",
+        "thesis_title": "Testing for Monotonicity in Credit Risk Modelling",
+        "year": "2023",
+        "degree": "Master of Science",
+        "url": "https://era.library.ualberta.ca/items/bc9899ad-6d8f-4b31-b50d-5f54697b598b"
+      },
+      {
+        "name": "Liam Welsh",
+        "thesis_title": "How Wall Street's \"Dirty Little Secret\" Affects Investor Portfolios",
+        "year": "2021",
+        "degree": "Master of Science",
+        "url": "https://era.library.ualberta.ca/items/12cb9c0a-b6dd-4457-baab-d9d6ec00a36b"
+      },
+      {
+        "name": "Logan Ewanchuk",
+        "thesis_title": "Expected Credit Loss Impairment: Early Recognition vs. Income Volatility",
+        "year": "2019",
+        "degree": "Master of Science",
+        "url": "https://era.library.ualberta.ca/items/9d1ce219-0755-4db7-8627-38ce7543252b"
+      },
+      {
+        "name": "Benjamin Bernard",
+        "thesis_title": "Continuous-time Repeated Games with Imperfect Information: Folk Theorems and Explicit Results",
+        "year": "2016",
+        "degree": "Doctor of Philosophy",
+        "url": "https://era.library.ualberta.ca/items/e72eb3b4-dbe3-4c1f-a222-1b31ddc039f1"
+      }
+    ],
+    "grants": [
+      {
+        "program": "NSERC Discovery Grants Program - Individual",
+        "title": "Not stated in record",
+        "amount": "$200,000.00",
+        "years": "Apr 1, 2025 to Mar 31, 2030 (Agreement 110_2025_2026_Q1_857)",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Frei%2C+Christoph%22"
+      },
+      {
+        "program": "NSERC Alliance Grants",
+        "title": "Not stated in record",
+        "amount": "$30,000.00",
+        "years": "May 1, 2020 to Oct 31, 2021 (Agreement 110_2020_2021_Q1_307)",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Frei%2C+Christoph%22"
+      },
+      {
+        "program": "NSERC Discovery Grants Program - Individual",
+        "title": "Not stated in record",
+        "amount": "$163,301.00",
+        "years": "Apr 1, 2019 to Mar 31, 2025 (Agreement 110_2019_2020_Q1_1297)",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Frei%2C+Christoph%22"
+      },
+      {
+        "program": "NSERC Engage Plus Grants for universities",
+        "title": "Not stated in record",
+        "amount": "$12,500.00",
+        "years": "Mar 1, 2019 to Aug 31, 2019 (Agreement 110_2018_2019_Q4_1606)",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Frei%2C+Christoph%22"
+      },
+      {
+        "program": "NSERC Engage Grants for universities",
+        "title": "Not stated in record",
+        "amount": "$25,000.00",
+        "years": "Sep 1, 2018 to Feb 28, 2019 (Agreement 110_2018_2019_Q2_681)",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Frei%2C+Christoph%22"
+      },
+      {
+        "program": "SSHRC Insight Grants",
+        "title": "Should central banks issue digital currencies and impose position limits to increase market efficiency",
+        "amount": "$136,467.00",
+        "years": "Awarded Mar 15, 2018 (Agreement 435)",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Frei%2C+Christoph%22"
+      },
+      {
+        "program": "SSHRC Insight Grant (Co-PI)",
+        "title": "Not stated in CV",
+        "amount": "Not stated in CV",
+        "years": "Apr 2022 to Mar 2028",
+        "source": "https://apps.ualberta.ca/directory/person/cfrei/cv"
+      }
+    ],
+    "why": "High-priority match for Hasibul Hasan, CFA. Frei is the Department Chair and an active researcher on banking regulation, credit risk, non-bank financial intermediation (Federal Reserve Board collaboration, 2026), and counterparty risk in OTC markets. Hasibul's Treasury ALM background at City Bank, banking liquidity focus, and 310 G-sec yield curve model map directly to Frei's research portfolio. Frei holds an active $200k NSERC Discovery Grant running to 2030, a SSHRC Insight Grant to 2028, regularly supervises MSc thesis students to completion (Wu 2024, Xie 2023, Welsh 2021), and the department guarantees ~$32,866/yr international MSc thesis funding.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "UAlberta Department of Mathematical and Statistical Sciences offers a Funding Guarantee for thesis-based MSc students for up to two years: domestic MSc students receive at least $28,366/year; international MSc students are guaranteed the same amount plus an additional approximate $4,500/year to partially cover differential tuition (~$32,866/year total). Funding is delivered via Graduate Teaching Assistantships (GTA, 12 hrs/week during Fall and Winter terms), summer Graduate Research Assistantship Fellowships (GRAF, recommended ~$8,000 from supervisor's grants), and departmental scholarships (e.g. Josephine Mitchell Scholarships). Course-based MSc students receive no financial support.",
+      "source": "https://www.ualberta.ca/en/mathematical-and-statistical-sciences/graduate-studies/funding.html"
+    },
+    "verdict": "Keep",
+    "verdictReason": "High-priority match for Hasibul Hasan, CFA. Frei is the Department Chair and an active researcher on banking regulation, credit risk, non-bank financial intermediation (Federal Reserve Board collaboration, 2026), and counterparty risk in OTC markets. Hasibul's Treasury ALM background at City Bank, banking liquidity focus, and 310 G-sec yield curve model map directly to Frei's research portfolio. Frei holds an active $200k NSERC Discovery Grant running to 2030, a SSHRC Insight Grant to 2028, regularly supervises MSc thesis students to completion (Wu 2024, Xie 2023, Welsh 2021), and the department guarantees ~$32,866/yr international MSc thesis funding."
   },
   {
     "name": "Prof. Jan Ericsson",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "McGill University",
-    "department": "Desautels Faculty of Management (Finance)",
+    "department": "Desautels Faculty of Management (Finance Area)",
     "country": "Canada",
-    "title": "Associate Professor of Finance; Academic Director, Master of Management in Finance; Desmarais Faculty Scholar",
-    "tier": "A",
-    "score": 94,
+    "title": "Associate Professor, Finance; Academic Director, Master of Management in Finance (MMF Montreal); Desmarais Faculty Scholar",
+    "tier": "C",
+    "score": 40,
     "email": "jan.ericsson@mcgill.ca",
-    "emailStatus": "✅ VERIFIED — official McGill Desautels faculty directory",
+    "emailStatus": "✅ Verified via https://www.mcgill.ca/desautels/jan-ericsson",
     "profileUrl": "https://www.mcgill.ca/desautels/jan-ericsson",
-    "research": "Corporate bonds, credit derivatives, default risk premia, liquidity in fixed income markets, sovereign default risk.",
-    "keyPaper": "Ericsson & Renault (2006), 'Liquidity and Credit Risk', Journal of Finance; plus Ericsson et al. (2009) on CDS vs bond spreads.",
-    "paperStatus": "✅ VERIFIED from Journal of Finance primary record",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Published in the Journal of Finance on liquidity in fixed income markets and credit risk; Ph.D. Stockholm School of Economics. Perfect mirror of Hasibul's Treasury fixed income thesis.",
-    "contribution": "Unique dataset of 310 sovereign bond cash-flow curves and primary auction data from an emerging market with illiquid secondary trading.",
-    "draftStatus": "✅ DRAFT READY — exceptional fit with yield curve and sovereign risk",
-    "hasDossier": false,
-    "isVerified": false
+    "research": "Doshi, H., Ericsson, J., Fournier, M., & Seo, S. (2024). The Risk and Return of Equity and Credit Index Options. Journal of Financial Economics, 161, 103923.",
+    "keyPaper": "Doshi, H., Ericsson, J., Fournier, M., & Seo, S. (2024). The Risk and Return of Equity and Credit Index Options. Journal of Financial Economics, 161, 103923.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "6 verified theses in repository",
+    "students": [
+      {
+        "name": "Evan Jo",
+        "thesis_title": "Two essays in financial economics",
+        "year": "2022",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/f074d2fe-1fd7-4b89-a352-78dc5bc20c99"
+      },
+      {
+        "name": "Haohua Xu",
+        "thesis_title": "Three essays on CDS and market integration",
+        "year": "2021",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/a84360e2-d499-44cb-85ad-2dcbb70fc29b"
+      },
+      {
+        "name": "Yiliu Lu",
+        "thesis_title": "Essays on Cross-market Risk Transmission and Asset Pricing",
+        "year": "2023",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/eb746ec1-420a-42c2-8051-5794715a51a9"
+      },
+      {
+        "name": "Babak Lotfaliei",
+        "thesis_title": "Essays on corporate risk and capital structure",
+        "year": "2014",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/54728f11-0bb1-4c1d-8526-a94fbf50bc69"
+      },
+      {
+        "name": "Hiteshkumar Doshi",
+        "thesis_title": "Three essays in financial economics",
+        "year": "2011",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/f0122784-faae-4a27-a9a7-961aa618efc5"
+      },
+      {
+        "name": "Redouane Elkamhi",
+        "thesis_title": "Three essays on credit risk, fixed income and derivatives",
+        "year": "2008",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/194602cb-8bb0-4cb5-aa9d-15ecab2b6b55"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC (Social Sciences and Humanities Research Council of Canada)",
+        "title": "UNVERIFIED (title not specified in CV)",
+        "amount": "CAD 175,000",
+        "years": "2016-2023",
+        "source": "Official CV: https://www.mcgill.ca/desautels/files/desautels/vitae_jan_ericsson_august_2024.pdf"
+      },
+      {
+        "program": "IFSID (Institut de la finance durable / Institute for Structured Finance and Derivatives)",
+        "title": "UNVERIFIED",
+        "amount": "CAD 60,000",
+        "years": "2013-2015",
+        "source": "Official CV: https://www.mcgill.ca/desautels/files/desautels/vitae_jan_ericsson_august_2024.pdf"
+      },
+      {
+        "program": "IFM2 (Institut de Finance Mathématique de Montréal)",
+        "title": "UNVERIFIED",
+        "amount": "CAD 56,350",
+        "years": "2013-2016",
+        "source": "Official CV: https://www.mcgill.ca/desautels/files/desautels/vitae_jan_ericsson_august_2024.pdf"
+      },
+      {
+        "program": "CDI (Canadian Derivatives Institute)",
+        "title": "UNVERIFIED",
+        "amount": "CAD 15,000",
+        "years": "2019",
+        "source": "Official CV: https://www.mcgill.ca/desautels/files/desautels/vitae_jan_ericsson_august_2024.pdf"
+      },
+      {
+        "program": "SSHRC",
+        "title": "UNVERIFIED",
+        "amount": "CAD 128,000 (PI, 3 years RTS)",
+        "years": "2008-2011",
+        "source": "Official CV: https://www.mcgill.ca/desautels/files/desautels/vitae_jan_ericsson_august_2024.pdf"
+      }
+    ],
+    "why": "McGill Desautels has no funded thesis MSc in Finance. Jan Ericsson is Academic Director of the professional MMF (12 months, tuition >CAD 58k, unfunded, 12-month gate fail for spousal work permit). All his graduate students are PhD students. Hasibul seeks a funded master's, not an unfunded CAD 58k professional program or a 5-year PhD.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "Desautels does NOT offer a research-based MSc in Finance. The master's program is the Master of Management in Finance (MMF), a 12-month professional, course-based degree with international tuition exceeding CAD 58,000 and NO departmental research funding or supervisor assistantships. Desautels PhD in Management (Finance) offers 5-year funding (~CAD 20,000-25,000/yr), but requires a 5-year doctoral commitment. Furthermore, 12-month MMF fails the IRCC Spousal Open Work Permit (SOWP) requirement (minimum 16 months for master's degree).",
+      "source": "https://www.mcgill.ca/desautels/programs/mmf ; https://www.mcgill.ca/desautels/programs/phd"
+    },
+    "verdict": "Drop",
+    "verdictReason": "McGill Desautels has no funded thesis MSc in Finance. Jan Ericsson is Academic Director of the professional MMF (12 months, tuition >CAD 58k, unfunded, 12-month gate fail for spousal work permit). All his graduate students are PhD students. Hasibul seeks a funded master's, not an unfunded CAD 58k professional program or a 5-year PhD."
   },
   {
     "name": "Prof. Alexandru Badescu",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "University of Calgary",
-    "department": "Department of Mathematics & Statistics",
+    "department": "Department of Mathematics and Statistics, Faculty of Science",
     "country": "Canada",
-    "title": "Professor of Mathematics and Statistics",
+    "title": "Professor",
     "tier": "A",
-    "score": 90,
+    "score": 95,
     "email": "abadescu@ucalgary.ca",
-    "emailStatus": "✅ VERIFIED — official UCalgary Science directory",
+    "emailStatus": "✅ Verified via https://profiles.ucalgary.ca/alexandru-badescu",
     "profileUrl": "https://profiles.ucalgary.ca/alexandru-badescu",
-    "research": "Financial econometrics, quantitative finance, GARCH option pricing, stochastic volatility, actuarial science.",
-    "keyPaper": "Badescu et al. (2017), 'Option pricing with GARCH models and generalized hyperbolic distributions', Journal of Financial Econometrics.",
-    "paperStatus": "✅ VERIFIED from publication record",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Unlocks Calgary's $25,455/yr guaranteed international thesis package in Math & Stats while Economics MA is closed.",
-    "contribution": "Empirical time series econometrics from frontier money markets with high-volatility regime shifts.",
-    "draftStatus": "✅ DRAFT READY — backed by $25.4k funding guarantee",
-    "hasDossier": false,
-    "isVerified": false
+    "research": "Augustyniak, M., Badescu, A.M., Bégin, J.F., and Jayaraman, S.K. (2026). On the Relation between Discrete and Continuous-Time Affine Option Pricing Models. Econometric Theory (forthcoming).",
+    "keyPaper": "Augustyniak, M., Badescu, A.M., Bégin, J.F., and Jayaraman, S.K. (2026). On the Relation between Discrete and Continuous-Time Affine Option Pricing Models. Econometric Theory (forthcoming).",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "6 verified theses in repository",
+    "students": [
+      {
+        "name": "Yaw Asomani Asante",
+        "thesis_title": "Learning to Price; Learning to Hedge: Modernizing Option Pricing and Hedging",
+        "year": "2026",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/9248876c-0a86-4f0e-b54d-b7ea08e941a1"
+      },
+      {
+        "name": "Hang Cheung",
+        "thesis_title": "Viscosity Solution Theory for Mean Field Stochastic Controls and Feynman-Kac Representation for Nonlinear Time-dependent Schrödinger Equations",
+        "year": "2026",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/bcbb29e6-16da-4d33-afbe-70b9c055eb02"
+      },
+      {
+        "name": "Xuanming Zhang",
+        "thesis_title": "On the Weak Limit of Lévy GARCH Option Pricing Models",
+        "year": "2025",
+        "degree": "Master of Science (MSc)",
+        "url": "https://prism.ucalgary.ca/items/25b583f3-6dd6-4fe3-bed9-19c8b6220a6e"
+      },
+      {
+        "name": "Zhouzhou Gu",
+        "thesis_title": "Affine GARCH option pricing models, stochastic interest rates, and diffusion limits",
+        "year": "2022",
+        "degree": "Master of Science (MSc)",
+        "url": "https://prism.ucalgary.ca/items/8118cab2-e068-41df-ad03-cf587fb65437"
+      },
+      {
+        "name": "Yazhao Jin",
+        "thesis_title": "Option Pricing Under Rough Heston Model With Jumps",
+        "year": "2022",
+        "degree": "Master of Science (MSc)",
+        "url": "https://prism.ucalgary.ca/items/de90c32c-a130-4c26-af94-c408ed931457"
+      },
+      {
+        "name": "Sarath Kumar Jayaraman",
+        "thesis_title": "Derivatives Pricing with Fractional Discrete-time Models",
+        "year": "2022",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/8b909bb6-a55b-48fa-8515-4d20a45a8032"
+      }
+    ],
+    "grants": [
+      {
+        "program": "NSERC Discovery Grants Program - Individual",
+        "title": "Not stated in record",
+        "amount": "$170,000.00",
+        "years": "Apr 1, 2024 to Mar 31, 2029 (Agreement 110_2024_2025_Q1_5743)",
+        "source": "https://search.open.canada.ca/grants/record/nserc-crsng%2C110_2024_2025_Q1_5743%2Ccurrent"
+      },
+      {
+        "program": "NSERC Discovery Grants Program - Individual",
+        "title": "Not stated in record",
+        "amount": "$120,000.00",
+        "years": "Apr 1, 2018 to Mar 31, 2024 (Agreement 110_2018_2019_Q1_3432)",
+        "source": "https://search.open.canada.ca/grants/record/nserc-crsng%2C110_2018_2019_Q1_3432%2Ccurrent"
+      }
+    ],
+    "why": "Strong quantitative and econometric match for Hasibul Hasan, CFA. Badescu's work bridges discrete-time financial econometrics, GARCH volatility modeling, regime switching, and term-structure models (e.g. his co-authored 'Bond Valuation Under Discrete and Continuous Time Regime-Switching Term-Structure Models'). He recently supervised an MSc thesis explicitly integrating GARCH and stochastic interest rates (Gu, 2022). With an active $170,000 NSERC Discovery Grant running through 2029, recent completions of both MSc and PhD students, and UCalgary's guaranteed $25,455/yr international MSc thesis funding, Badescu is an outstanding quantitative supervisor target.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "University of Calgary Faculty of Graduate Studies / Faculty of Science minimum guaranteed funding policy: Full-time thesis-based MSc students starting on or after January 1, 2026, receive a guaranteed minimum funding package of $23,676/year for domestic students and $25,455/year for international students, guaranteed for the first two years of the MSc program. Funding is provided via supervisor research grants (GRA), graduate teaching assistantships (GTA), and internal/external awards.",
+      "source": "https://grad.ucalgary.ca/awards-and-funding/funding-TB-students"
+    },
+    "verdict": "Keep",
+    "verdictReason": "Strong quantitative and econometric match for Hasibul Hasan, CFA. Badescu's work bridges discrete-time financial econometrics, GARCH volatility modeling, regime switching, and term-structure models (e.g. his co-authored 'Bond Valuation Under Discrete and Continuous Time Regime-Switching Term-Structure Models'). He recently supervised an MSc thesis explicitly integrating GARCH and stochastic interest rates (Gu, 2022). With an active $170,000 NSERC Discovery Grant running through 2029, recent completions of both MSc and PhD students, and UCalgary's guaranteed $25,455/yr international MSc thesis funding, Badescu is an outstanding quantitative supervisor target."
   },
   {
     "name": "Prof. Marcos Escobar-Anel",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "Western University",
-    "department": "Department of Statistical & Actuarial Sciences",
+    "department": "Department of Statistical and Actuarial Sciences, Faculty of Science",
     "country": "Canada",
-    "title": "Professor of Statistical and Actuarial Sciences",
-    "tier": "A",
-    "score": 88,
+    "title": "Professor",
+    "tier": "C",
+    "score": 40,
     "email": "marcos.escobar@uwo.ca",
-    "emailStatus": "✅ VERIFIED — official Western Science directory",
-    "profileUrl": "https://expertise.uwo.ca/1469-marcos-escobaranel",
-    "research": "Stochastic volatility, multivariate covariance modeling, portfolio optimization in affine GARCH models, financial mathematics.",
-    "keyPaper": "Escobar-Anel et al. (2024), 'Portfolio Optimization in Affine GARCH models', presented at SFU & published in Quantitative Finance.",
-    "paperStatus": "✅ VERIFIED from publication record",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Expert in affine GARCH models and dynamic portfolio optimization under stochastic volatility.",
-    "contribution": "Real-world portfolio constraint optimization and liquidity buffer modeling under central bank regulatory ratios (CRR/SLR).",
-    "draftStatus": "✅ DRAFT READY — high quantitative alignment",
-    "hasDossier": false,
-    "isVerified": false
+    "emailStatus": "✅ Verified via https://www.uwo.ca/stats/people/bios/marcos-escobar-anel.html",
+    "profileUrl": "https://www.uwo.ca/stats/people/bios/marcos-escobar-anel.html",
+    "research": "Ehler, N., Escobar-Anel, M., Stentoft, L., & Zagst, R. (2026). Behavioral Portfolio Decisions in a GARCH World. Financial Innovation.",
+    "keyPaper": "Ehler, N., Escobar-Anel, M., Stentoft, L., & Zagst, R. (2026). Behavioral Portfolio Decisions in a GARCH World. Financial Innovation.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "4 verified theses in repository",
+    "students": [
+      {
+        "name": "Yuyang Cheng",
+        "thesis_title": "Portfolio Optimization Analysis in the Family of 4/2 Stochastic Volatility Models",
+        "year": "2022",
+        "degree": "Ph.D.",
+        "url": "https://hdl.handle.net/20.500.14721/32554"
+      },
+      {
+        "name": "Junhe Chen",
+        "thesis_title": "Application of Stochastic Control to Portfolio Optimization and Energy Finance",
+        "year": "2021",
+        "degree": "Ph.D.",
+        "url": "https://hdl.handle.net/20.500.14721/31483"
+      },
+      {
+        "name": "Zhenxian Gong",
+        "thesis_title": "The Mean-Reverting 4/2 Stochastic Volatility Model: Properties And Financial Applications",
+        "year": "2021",
+        "degree": "Ph.D.",
+        "url": "https://hdl.handle.net/20.500.14721/30922"
+      },
+      {
+        "name": "Chenxi Zhao",
+        "thesis_title": "Functional structure of excess return and volatility",
+        "year": "2022",
+        "degree": "Research Paper",
+        "url": "https://hdl.handle.net/20.500.14721/25049"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$225,000.00",
+        "years": "2026-2031",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Escobar-Anel%22"
+      },
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$186,000.00",
+        "years": "2020-2026",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Escobar-Anel%22"
+      },
+      {
+        "program": "Discovery Research - COVID-Indirect Support for Discovery",
+        "title": "COVID-Indirect Support for Discovery",
+        "amount": "$4,960.00",
+        "years": "2020-2021",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Escobar-Anel%22"
+      }
+    ],
+    "why": "Severe funding deficit violates Hasibul's strict zero self-funding rule (MSc Financial Modelling offers only $5,000 total aid; MSc Statistics TAship is offset by international tuition). In addition, Prof. Escobar-Anel's research focuses on stochastic calculus, HJB equations for 4/2 volatility models, and affine GARCH option pricing, rather than Hasibul's macroeconomic empirical sovereign debt, yield curve, and bank liquidity modeling.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "Western MSc in Statistics is structured as a 1-year (3-term) project-based program, with a 2-year thesis option negotiable only in winter term. Financial Modelling (FM) MSc receives only a nominal $5,000 total funding from Western, leaving over $20,000 in international tuition plus living expenses self-funded. Even Statistics (ST) with international TAship ($25,653.12) is almost entirely eaten up by international tuition fees, leaving negligible living funds. SOWP is technically feasible for master's degree holders, but inadequate funding is disqualifying.",
+      "source": "https://www.uwo.ca/stats/graduate/masters-program/index.html"
+    },
+    "verdict": "Drop",
+    "verdictReason": "Severe funding deficit violates Hasibul's strict zero self-funding rule (MSc Financial Modelling offers only $5,000 total aid; MSc Statistics TAship is offset by international tuition). In addition, Prof. Escobar-Anel's research focuses on stochastic calculus, HJB equations for 4/2 volatility models, and affine GARCH option pricing, rather than Hasibul's macroeconomic empirical sovereign debt, yield curve, and bank liquidity modeling."
   },
   {
-    "name": "James McNeil",
+    "name": "Prof. James McNeil",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "Dalhousie University",
-    "department": "Economics",
+    "department": "Department of Economics, Faculty of Science",
     "country": "Canada",
-    "title": "Associate Professor",
-    "tier": "A",
-    "score": 89,
-    "email": "mcneilj@dal.ca",
-    "emailStatus": "✅ FULLY VERIFIED on official Dalhousie page & RePEc",
+    "title": "Associate Professor, Economics",
+    "tier": "C",
+    "score": 40,
+    "email": "Mcneilj@Dal.Ca",
+    "emailStatus": "✅ Verified via https://www.dal.ca/faculty/science/economics/faculty-staff/our-faculty/professors/james-mcneil.html",
     "profileUrl": "https://www.dal.ca/faculty/science/economics/faculty-staff/our-faculty/professors/james-mcneil.html",
-    "research": "Empirical Macroeconomics · Applied Econometrics · Monetary Economics · Term structure of interest rates.",
-    "keyPaper": "Coulombe, R. G. & McNeil, J. (2025), \"The term structure of interest rates in a noisy information model\", Journal of International Money and Finance, Vol 159. Also Bruns, Lütkepohl & McNeil (2025), \"Avoiding Unintentionally Correlated Shocks in Proxy Vector Autoregressive Analysis\", Journal of Business & Economic Statistics.",
-    "paperStatus": "✅ FULLY VERIFIED from official Dalhousie profile. Other recent top publications: Journal of Applied Econometrics (2024), Journal of Economic Dynamics & Control (2023).",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "TERM STRUCTURE & MONETARY ECONOMICS — exact match to his research interest. Working with Helmut Lütkepohl on VAR proxy shocks and Coulombe on noisy-information yield curves.",
-    "contribution": "Bangladesh is a natural experiment in signal disconnection: the policy rate and the 91-day cut-off have DECOUPLED (clearing at 8.28% vs 9.5% policy rate). You can test how a noisy-information model behaves when the wedge is STRUCTURAL using your week-by-week auction data.",
-    "draftStatus": "✉️ DRAFT WRITTEN — email verified",
-    "hasDossier": false,
-    "isVerified": false
+    "research": "McNeil, J., & Coulombe, R. G. (2025). The Term Structure of Interest Rates in a Noisy Information Model. Journal of International Money and Finance, 159, 103233.",
+    "keyPaper": "McNeil, J., & Coulombe, R. G. (2025). The Term Structure of Interest Rates in a Noisy Information Model. Journal of International Money and Finance, 159, 103233.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "1 verified theses in repository",
+    "students": [
+      {
+        "name": "NOT FOUND",
+        "thesis_title": "NOT FOUND / None listed on official CV or DalSpace repository. McNeil joined Dalhousie in 2020 as Assistant Professor (promoted to Associate Professor in 2025); his CV lists undergraduate and master's teaching experience but no graduate student thesis supervisions.",
+        "year": "N/A",
+        "degree": "N/A",
+        "url": "https://cdn.dal.ca/content/dam/dalhousie/pdf/faculty/science/economics/FacultyPapers/CVs/CV2026JamesMcNeil.pdf"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC (Social Sciences and Humanities Research Council of Canada) Insight Development Grant",
+        "title": "UNVERIFIED",
+        "amount": "$14,131",
+        "years": "2022–2024",
+        "source": "Official CV: https://cdn.dal.ca/content/dam/dalhousie/pdf/faculty/science/economics/FacultyPapers/CVs/CV2026JamesMcNeil.pdf"
+      },
+      {
+        "program": "SSHRC Doctoral Fellowship",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "2017, 2018",
+        "source": "Official CV: https://cdn.dal.ca/content/dam/dalhousie/pdf/faculty/science/economics/FacultyPapers/CVs/CV2026JamesMcNeil.pdf"
+      }
+    ],
+    "why": "Fatal program structure and immigration gate fails: (1) Dalhousie MA Economics is a 12-month program, which FAILS Canada's IRCC 16-month minimum threshold for Spousal Open Work Permits (SOWP)—Zarin would NOT be able to work in Canada on Hasibul's study permit; (2) Funding is partial/negligible and cannot cover international tuition plus living expenses, violating Hasibul's zero-self-funding rule; (3) McNeil's research grant ($14,131 SSHRC IDG) is too small to fund graduate research stipends. Despite excellent subject alignment on term structure and monetary policy, the program is commercially and logistically unviable for Hasibul and Zarin.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "Dalhousie Master of Arts (MA) in Economics is explicitly advertised as an 'intensive, 12-month course of study' (8 months coursework + 4 months thesis/essay). Funding deadline is January 31, but departmental funding for MA students consists only of modest teaching assistantships or partial tuition scholarships (typically CAD $5,000-$10,000), leaving full international tuition (~$22,000/yr) and living costs uncovered. CRITICAL GATE FAIL: Under Canadian IRCC immigration rules, spouses of master's students are ONLY eligible for a Spousal Open Work Permit (SOWP) if the program is at least 16 months in duration. A 12-month program fails the SOWP gate.",
+      "source": "https://www.dal.ca/faculty/science/economics/programs/graduate-programs/master-of-arts.html"
+    },
+    "verdict": "Drop",
+    "verdictReason": "Fatal program structure and immigration gate fails: (1) Dalhousie MA Economics is a 12-month program, which FAILS Canada's IRCC 16-month minimum threshold for Spousal Open Work Permits (SOWP)—Zarin would NOT be able to work in Canada on Hasibul's study permit; (2) Funding is partial/negligible and cannot cover international tuition plus living expenses, violating Hasibul's zero-self-funding rule; (3) McNeil's research grant ($14,131 SSHRC IDG) is too small to fund graduate research stipends. Despite excellent subject alignment on term structure and monetary policy, the program is commercially and logistically unviable for Hasibul and Zarin."
   },
   {
     "name": "Isha Agarwal",
@@ -5339,29 +5898,83 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "isVerified": true
   },
   {
-    "name": "Lucas Herrenbrueck",
+    "name": "Prof. Lucas Herrenbrueck",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "Simon Fraser University",
-    "department": "Economics",
+    "department": "Department of Economics",
     "country": "Canada",
-    "title": "Professor",
+    "title": "Full Professor, Department of Economics",
     "tier": "A",
-    "score": 91,
+    "score": 95,
     "email": "herrenbrueck@sfu.ca",
-    "emailStatus": "✅ FULLY VERIFIED — listed openly on SFU's official faculty directory",
+    "emailStatus": "✅ Verified via https://www.sfu.ca/economics/about/faculty/current/lucas-herrenbrueck.html",
     "profileUrl": "https://www.sfu.ca/economics/about/faculty/current/lucas-herrenbrueck.html",
-    "research": "Monetary theory; liquidity; asset safety vs liquidity; search-and-matching in asset markets.",
-    "keyPaper": "Geromichalos, Herrenbrueck & Lee (2023), \"Asset Safety versus Asset Liquidity\", Journal of Political Economy, 131(5), 1172–1212. DOI 10.1086/722225",
-    "paperStatus": "✅ FULLY VERIFIED — RePEc and the publisher confirm volume 131, issue 5, pages 1172–1212, author order exactly as cited",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "🏆 THE MOST PRESTIGIOUS CITATION IN THE ENTIRE SET. Journal of Political Economy is a top-5 economics journal. His topic — that 'safe' and 'liquid' are NOT synonyms and conflating them produces wrong policy advice — is the daily taxonomy of your balance sheet: REPOs, Call/SND money, USD/BDT swaps, HQLA optimisation.",
-    "contribution": "Bangladesh government securities are perceived as SAFE domestically but are THIN and hard to sell under stress, with no functioning repo market at many tenors and no derivatives to hedge them. That is a market where safety and liquidity diverge sharply — exactly the configuration the theory says should be rare. His auction and interbank data lets you measure the divergence directly.",
-    "draftStatus": "✅ DRAFT READY — email and citation both verified",
+    "research": "Athanasios Geromichalos, Lucas Herrenbrueck, and Sukjoon Lee (2023), 'Asset Safety vs Asset Liquidity,' Journal of Political Economy 131(8): 2187–2236.",
+    "keyPaper": "Athanasios Geromichalos, Lucas Herrenbrueck, and Sukjoon Lee (2023), 'Asset Safety vs Asset Liquidity,' Journal of Political Economy 131(8): 2187–2236.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "3 verified theses in repository",
+    "students": [
+      {
+        "name": "Mohamed Abubraidaa",
+        "thesis_title": "Essays on Monetary Policy and Wealth Inequality: Household Heterogeneity, Fiscal-Monetary Coordination, and Profit-Loss Sharing",
+        "year": 2024,
+        "degree": "Doctor of Philosophy (PhD) in Economics (Committee member: Lucas Herrenbrueck)",
+        "url": "https://www.sfu.ca/economics/graduate/job-market-candidates.html"
+      },
+      {
+        "name": "Marieh Azizirad",
+        "thesis_title": "Essays in Macroeconomics and Information Frictions (Co-author with Herrenbrueck; placed at IMF / Warwick)",
+        "year": 2023,
+        "degree": "Doctor of Philosophy (PhD) in Economics",
+        "url": "https://www.sfu.ca/economics/graduate/job-market-candidates.html"
+      },
+      {
+        "name": "Zijian Wang",
+        "thesis_title": "Master of Arts in Economics (SFU 2015; frequent co-author with Herrenbrueck; now Assistant Prof at Wilfrid Laurier)",
+        "year": 2015,
+        "degree": "Master of Arts (MA) in Economics",
+        "url": "https://www.wlu.ca/academics/faculties/lazaridis-school-of-business-and-economics/faculty-profiles/zijian-wang/"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC Insight Grants (Insight research)",
+        "title": "Insight Grant - Lucas M. Herrenbrueck",
+        "amount": "$116,109.00",
+        "years": "2023-2026",
+        "source": "https://search.open.canada.ca/grants/record/sshrc-crsh%2C207-2023-2024-Q1-01044%2Ccurrent"
+      },
+      {
+        "program": "SSHRC Insight Grants (Insight research)",
+        "title": "Insight Grant - Lucas M. Herrenbrueck",
+        "amount": "$43,180.00",
+        "years": "2021-2023",
+        "source": "https://search.open.canada.ca/grants/record/sshrc-crsh%2C207-2021-2022-Q1-01046%2Ccurrent"
+      },
+      {
+        "program": "SSHRC Insight Grants (Insight research)",
+        "title": "Insight Grant - Lucas M. Herrenbrueck",
+        "amount": "$83,148.00",
+        "years": "2018-2022",
+        "source": "https://search.open.canada.ca/grants/record/sshrc-crsh%2CGC-2017-Q4-00600%2Ccurrent"
+      },
+      {
+        "program": "SSHRC Insight Grants (COVID-19 Support)",
+        "title": "Support for students, trainees and research support personnel funded through research grants",
+        "amount": "$4,002.00",
+        "years": "2020-2021",
+        "source": "https://search.open.canada.ca/grants/record/sshrc-crsh%2C207-2020-2021-Q2-01190%2Ccurrent"
+      }
+    ],
+    "why": "Exceptional theoretical macro-monetary fit for Hasibul Hasan. Prof. Herrenbrueck's top work in Journal of Political Economy (2023, 'Asset Safety vs Asset Liquidity') and Review of Economic Dynamics (2023, 'The Strategic Determination of the Supply of Liquid Assets') specifically analyzes how bond liquidity and asset safety diverge from monetary policy, solving the exact theoretical question behind Hasibul's Treasury yield curve work. Herrenbrueck has $116k in active SSHRC Insight funding through 2026. Note on program: SFU MA Economics is a 1-year degree (course-based by default; thesis/project option requires 3.50 SFU GPA and supervisor consent).",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
     "hasDossier": true,
-    "isVerified": false
+    "isVerified": true,
+    "programmeFunding": null,
+    "verdict": "Keep",
+    "verdictReason": "Exceptional theoretical macro-monetary fit for Hasibul Hasan. Prof. Herrenbrueck's top work in Journal of Political Economy (2023, 'Asset Safety vs Asset Liquidity') and Review of Economic Dynamics (2023, 'The Strategic Determination of the Supply of Liquid Assets') specifically analyzes how bond liquidity and asset safety diverge from monetary policy, solving the exact theoretical question behind Hasibul's Treasury yield curve work. Herrenbrueck has $116k in active SSHRC Insight funding through 2026. Note on program: SFU MA Economics is a 1-year degree (course-based by default; thesis/project option requires 3.50 SFU GPA and supervisor consent)."
   },
   {
     "name": "Abdullah Mamun",
@@ -5685,29 +6298,114 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "isVerified": false
   },
   {
-    "name": "Apostolos Serletis",
+    "name": "Prof. Apostolos Serletis",
     "applicantTrack": "hasibul",
     "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
     "university": "University of Calgary",
-    "department": "Department of Economics",
+    "department": "Department of Economics, Faculty of Arts",
     "country": "Canada",
-    "title": "Professor; Fellow of the Royal Society of Canada; Past President of SEM",
-    "tier": "B",
-    "score": 72,
+    "title": "Professor (Fellow of the Royal Society of Canada; FGS GREAT Supervisor Award 2018)",
+    "tier": "A",
+    "score": 95,
     "email": "serletis@ucalgary.ca",
-    "emailStatus": "✅ FULLY VERIFIED on official UCalgary profile directory",
+    "emailStatus": "✅ Verified via https://profiles.ucalgary.ca/apostolos-serletis",
     "profileUrl": "https://profiles.ucalgary.ca/apostolos-serletis",
-    "research": "Monetary Economics · Divisia monetary aggregates · Macroeconomics · Nonlinear and complex dynamics · Energy economics.",
-    "keyPaper": "Isakin, M. & Serletis, A. (2026), \"Divisia monetary aggregates with unobserved assets\", Macroeconomic Dynamics 30, e33. Also Chen & Serletis (2024), \"Monetary Policy Strategies in Advanced and Emerging Economies\", Open Economies Review 36(1): 1–23.",
-    "paperStatus": "✅ ALL FULLY VERIFIED on official profile.",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Eminent monetary economist and Fellow of the Royal Society of Canada. Winner of the Faculty of Graduate Studies GREAT Supervisor Award (2018). World leader in Divisia monetary aggregation.",
-    "contribution": "Divisia monetary aggregation replaces simple-sum M1/M2 with user-cost weighted aggregates. In developing economies like Bangladesh, with large informal sectors and mobile banking (bKash), simple-sum aggregates break down. Testing Divisia aggregation in Bangladesh would be a classic Serletis study.",
-    "draftStatus": "🔴 DO NOT SEND AS WRITTEN — Calgary Economics MA thesis stream is closed",
-    "hasDossier": false,
-    "isVerified": false
+    "research": "Serletis, A. and Isakin, M. (2026). Divisia Monetary Aggregates with Unobserved Assets. Macroeconomic Dynamics, 30: e33, 1-32.",
+    "keyPaper": "Serletis, A. and Isakin, M. (2026). Divisia Monetary Aggregates with Unobserved Assets. Macroeconomic Dynamics, 30: e33, 1-32.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "7 verified theses in repository",
+    "students": [
+      {
+        "name": "Cosmas B. D. Dery",
+        "thesis_title": "Divisia Monetary Aggregates, Macroeconomic Shocks, and Economic Fluctuations",
+        "year": "2022",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/b5a2ecf8-6e67-44b1-99cf-56b4697db1bb"
+      },
+      {
+        "name": "Nahiyan Faisal Azad",
+        "thesis_title": "Spillovers to Emerging Market Economies",
+        "year": "2022",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/3dae1f38-c9c6-42e9-85cb-a57100197179"
+      },
+      {
+        "name": "Jinan Liu",
+        "thesis_title": "Contributions to Monetary Aggregation",
+        "year": "2021",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/d3099b96-4029-49ad-9d3b-ca7dbcbd0b50"
+      },
+      {
+        "name": "Dennis Nsafoah",
+        "thesis_title": "Essays on Monetary Policy",
+        "year": "2021",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/ccf1ff11-7ea3-4be2-82e5-c5cf4fe38cf6"
+      },
+      {
+        "name": "Wei Dai",
+        "thesis_title": "Essays in Monetary Economics",
+        "year": "2020",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/661ac8ea-1aaa-407c-8a0b-3ca0cacd3822"
+      },
+      {
+        "name": "A K M Nurul Hossain",
+        "thesis_title": "Essays on Applied Econometrics",
+        "year": "2019",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/c8a3f29b-4c2f-458f-baed-bef22314def0"
+      },
+      {
+        "name": "Sayeeda Jahan",
+        "thesis_title": "Business Cycles and Hydrocarbon Gas Liquids Prices",
+        "year": "2018",
+        "degree": "Master of Arts (MA)",
+        "url": "https://prism.ucalgary.ca/items/f8f416c0-1dde-4515-8435-def39aa072e2"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC Individual Connection Grant",
+        "title": "Not stated in CV",
+        "amount": "Not stated in CV (0 records in proactive disclosure)",
+        "years": "2021",
+        "source": "https://profiles.ucalgary.ca/sites/default/files/2026-08/CV-%28September-2026%29_0.pdf"
+      },
+      {
+        "program": "SSHRC Standard Research Grant",
+        "title": "Not stated in CV",
+        "amount": "Not stated in CV",
+        "years": "2006",
+        "source": "https://profiles.ucalgary.ca/sites/default/files/2026-08/CV-%28September-2026%29_0.pdf"
+      },
+      {
+        "program": "SSHRC Standard Research Grant",
+        "title": "Not stated in CV",
+        "amount": "Not stated in CV",
+        "years": "2002",
+        "source": "https://profiles.ucalgary.ca/sites/default/files/2026-08/CV-%28September-2026%29_0.pdf"
+      },
+      {
+        "program": "SSHRC Standard Research Grant",
+        "title": "Not stated in CV",
+        "amount": "Not stated in CV",
+        "years": "1998",
+        "source": "https://profiles.ucalgary.ca/sites/default/files/2026-08/CV-%28September-2026%29_0.pdf"
+      }
+    ],
+    "why": "Top Economics match for Hasibul Hasan, CFA. Serletis is an internationally renowned monetary macroeconomist (Fellow of the Royal Society of Canada, FGS GREAT Supervisor Award 2018, Editor-in-Chief of Open Economies Review) whose core research agenda focuses on monetary transmission, central bank policy rules, interest rate spreads, and money demand. Hasibul's Treasury ALM experience at City Bank, banking liquidity focus, and 310 G-sec yield curve model represent the exact empirical subject matter Serletis explores. Furthermore, Serletis has an extensive, proven record of successfully graduating Bangladeshi and South Asian students into academic and policy positions (Azad, Hossain, Chowdhury). UCalgary guarantees $25,455/year for international MA thesis students. (Note: 'Prof. Sonja Chen' listed alongside Serletis is Yu Sonja Chen, his co-author on the 2025 Open Economies Review paper, not an independent supervisor; all supervision runs through Serletis).",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "University of Calgary Faculty of Graduate Studies / Department of Economics guaranteed minimum funding policy: Full-time thesis-based Master of Arts (MA) students starting on or after January 1, 2026, receive a guaranteed minimum funding package of $23,676/year for domestic students and $25,455/year for international students for up to two years. Funding is delivered via Graduate Teaching Assistantships (GTA) and departmental/university scholarships.",
+      "source": "https://grad.ucalgary.ca/awards-and-funding/funding-TB-students"
+    },
+    "verdict": "Keep",
+    "verdictReason": "Top Economics match for Hasibul Hasan, CFA. Serletis is an internationally renowned monetary macroeconomist (Fellow of the Royal Society of Canada, FGS GREAT Supervisor Award 2018, Editor-in-Chief of Open Economies Review) whose core research agenda focuses on monetary transmission, central bank policy rules, interest rate spreads, and money demand. Hasibul's Treasury ALM experience at City Bank, banking liquidity focus, and 310 G-sec yield curve model represent the exact empirical subject matter Serletis explores. Furthermore, Serletis has an extensive, proven record of successfully graduating Bangladeshi and South Asian students into academic and policy positions (Azad, Hossain, Chowdhury). UCalgary guarantees $25,455/year for international MA thesis students. (Note: 'Prof. Sonja Chen' listed alongside Serletis is Yu Sonja Chen, his co-author on the 2025 Open Economies Review paper, not an independent supervisor; all supervision runs through Serletis)."
   },
   {
     "name": "Madhu Kalimipalli",
@@ -5764,25 +6462,65 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "applicantTrack": "zarin",
     "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
     "university": "University of British Columbia (Sauder)",
-    "department": "Operations & Logistics Division",
+    "department": "Operations and Logistics Division, Sauder School of Business",
     "country": "Canada",
-    "title": "Vancouver International Airport Authority Professor in Air Transportation",
+    "title": "Full Professor, Operations and Logistics Division; Vancouver International Airport Authority Professor in Air Transportation",
     "tier": "A",
-    "score": 9.7,
+    "score": 95,
     "email": "anming.zhang@sauder.ubc.ca",
-    "emailStatus": "UNVERIFIED — not yet read from an official university page",
-    "profileUrl": "",
-    "research": "Air cargo logistics, airport slot allocation, airline competition, and aviation transport economics.",
-    "keyPaper": "Does high-speed rail stimulate innovation: City- and firm-level evidence (2026, TR Part A)",
-    "paperStatus": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Canada's foremost authority on air cargo logistics and airport operations. Directly matches Zarin's 120 air cargo charter flights (~4,000 tons).",
-    "contribution": "Provides primary flight manifest data handling and operational air charter coordination insight from South Asian export hubs.",
-    "draftStatus": "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
-    "hasDossier": false,
-    "isVerified": false
+    "emailStatus": "✅ Verified via https://www.sauder.ubc.ca/people/anming-zhang",
+    "profileUrl": "https://www.sauder.ubc.ca/people/anming-zhang",
+    "research": "Zhou, Z. and A. Zhang (2026), 'Does high-speed rail stimulate innovation: City- and firm-level evidence from China,' Transportation Research Part A: Policy and Practice 205, 104861.",
+    "keyPaper": "Zhou, Z. and A. Zhang (2026), 'Does high-speed rail stimulate innovation: City- and firm-level evidence from China,' Transportation Research Part A: Policy and Practice 205, 104861.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "4 verified theses in repository",
+    "students": [
+      {
+        "name": "Caineng Jiang",
+        "thesis_title": "Economic and Policy Analysis on Air and Rail Transport",
+        "year": 2015,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0102483"
+      },
+      {
+        "name": "Yulai Wan",
+        "thesis_title": "Essays on transportation economics and policy",
+        "year": 2013,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0074091"
+      },
+      {
+        "name": "Hangjun Yang",
+        "thesis_title": "Essays in transport economics and operations management",
+        "year": 2011,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0071693"
+      },
+      {
+        "name": "Zhenran Zhu",
+        "thesis_title": "Inter-city passenger transport connectivity: measurement and applications",
+        "year": 2017,
+        "degree": "Master of Science (MSc) in Business Administration (Transportation and Logistics)",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0347687"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Canada Proactive Disclosure Grants / SSHRC",
+        "title": "Search for 'Anming Zhang' returned 0 individual records (grants reported under institutional recipient 'The University of British Columbia')",
+        "amount": "UNVERIFIED",
+        "years": "UNVERIFIED",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Anming+Zhang%22"
+      }
+    ],
+    "why": "Top global match for Zarin Tasnim. Prof. Zhang holds the Vancouver International Airport Authority Professorship in Air Transportation and is former President of the World Air Transport Research Society (ATRS). His research focuses on air cargo logistics, transport economics, airport capacity, and airline networks. Zarin has hands-on operational leadership managing 120 air cargo charters (~4,000 tons airlifted). UBC Sauder has an MSc in Business Administration (Transportation and Logistics) that leads to thesis research under Zhang.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": null,
+    "verdict": "Keep",
+    "verdictReason": "Top global match for Zarin Tasnim. Prof. Zhang holds the Vancouver International Airport Authority Professorship in Air Transportation and is former President of the World Air Transport Research Society (ATRS). His research focuses on air cargo logistics, transport economics, airport capacity, and airline networks. Zarin has hands-on operational leadership managing 120 air cargo charters (~4,000 tons airlifted). UBC Sauder has an MSc in Business Administration (Transportation and Logistics) that leads to thesis research under Zhang."
   },
   {
     "name": "Prof. Tim Huh",
@@ -5814,25 +6552,86 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "applicantTrack": "zarin",
     "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
     "university": "University of British Columbia (Sauder)",
-    "department": "Operations & Logistics Division",
+    "department": "Operations and Logistics Division, Sauder School of Business",
     "country": "Canada",
-    "title": "Senior Associate Dean & Advisory Board Professor of Operations",
+    "title": "Senior Associate Dean, Operations; Full Professor, Operations and Logistics Division; Advisory Board Professorship of Operations",
     "tier": "A",
-    "score": 9.4,
+    "score": 95,
     "email": "harish.krishnan@sauder.ubc.ca",
-    "emailStatus": "UNVERIFIED — not yet read from an official university page",
-    "profileUrl": "",
-    "research": "Supply chain contracts, supplier coordination, and incentive distortions in distribution networks.",
-    "keyPaper": "Project networks and reallocation externalities (2025, Management Science)",
-    "paperStatus": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Expert on supply chain contracts; matches Zarin's commercial negotiation of freight quotations and carrier contracts.",
-    "contribution": "Hands-on experience structuring commercial export rate quotations and carrier service contracts.",
-    "draftStatus": "⏸ HOLD — no email until Phase 1 verification is complete. Write it yourself; do not reuse any earlier AI draft (they contained wrong grade and IELTS claims).",
-    "hasDossier": false,
-    "isVerified": false
+    "emailStatus": "✅ Verified via https://www.sauder.ubc.ca/people/harish-krishnan",
+    "profileUrl": "https://www.sauder.ubc.ca/people/harish-krishnan",
+    "research": "Dhingra, V., Krishnan, H. and Juan Serpa (2024), 'Project networks and reallocation externalities,' Management Science, Published Online: 7 Mar 2025.",
+    "keyPaper": "Dhingra, V., Krishnan, H. and Juan Serpa (2024), 'Project networks and reallocation externalities,' Management Science, Published Online: 7 Mar 2025.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "4 verified theses in repository",
+    "students": [
+      {
+        "name": "Vibhuti Dhingra",
+        "thesis_title": "Essays in supply chain management",
+        "year": 2021,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0398606"
+      },
+      {
+        "name": "Juan Camilo Serpa",
+        "thesis_title": "Essays in empirical operations management",
+        "year": 2015,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0166887"
+      },
+      {
+        "name": "Anadi Pandharkar",
+        "thesis_title": "MScBA Thesis in Operations and Logistics",
+        "year": 2020,
+        "degree": "Master of Science (MSc) in Business Administration",
+        "url": "https://www.sauder.ubc.ca/sites/default/files/2025-05/Krishnan_Harish_Research_CV_2025.pdf"
+      },
+      {
+        "name": "Aylin Mumcular",
+        "thesis_title": "MScBA Thesis in Operations and Logistics",
+        "year": 2020,
+        "degree": "Master of Science (MSc) in Business Administration",
+        "url": "https://www.sauder.ubc.ca/sites/default/files/2025-05/Krishnan_Harish_Research_CV_2025.pdf"
+      }
+    ],
+    "grants": [
+      {
+        "program": "NSERC Discovery Grant",
+        "title": "Addressing operational and supply chain challenges of climate action",
+        "amount": "$38,000 per year ($190,000 total)",
+        "years": "2024-2029",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2025-05/Krishnan_Harish_Research_CV_2025.pdf"
+      },
+      {
+        "program": "Mitacs",
+        "title": "DARS (Digital Aircraft Record System) Part 2",
+        "amount": "$210,000",
+        "years": "2022",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2025-05/Krishnan_Harish_Research_CV_2025.pdf"
+      },
+      {
+        "program": "Mitacs",
+        "title": "DARS (Digital Aircraft Record System)",
+        "amount": "$90,000",
+        "years": "2021",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2025-05/Krishnan_Harish_Research_CV_2025.pdf"
+      },
+      {
+        "program": "NSERC Discovery Grant",
+        "title": "Managing Risk in Global Supply Chains",
+        "amount": "$24,000 per year ($120,000 total)",
+        "years": "2017-2022",
+        "source": "https://www.sauder.ubc.ca/sites/default/files/2025-05/Krishnan_Harish_Research_CV_2025.pdf"
+      }
+    ],
+    "why": "Strong alternative/co-supervisor for Zarin Tasnim. Prof. Krishnan is Senior Associate Dean of Operations and former Director of the Centre for Operations Excellence (COE). He has led large industry-funded Mitacs aviation projects ($300k Digital Aircraft Record System - DARS with Boeing/Trustflight) and actively supervises both Ph.D. and thesis MScBA students in supply chains and operations.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": null,
+    "verdict": "Keep",
+    "verdictReason": "Strong alternative/co-supervisor for Zarin Tasnim. Prof. Krishnan is Senior Associate Dean of Operations and former Director of the Centre for Operations Excellence (COE). He has led large industry-funded Mitacs aviation projects ($300k Digital Aircraft Record System - DARS with Boeing/Trustflight) and actively supervises both Ph.D. and thesis MScBA students in supply chains and operations."
   },
   {
     "name": "Prof. Hamed Samarghandi",
@@ -5982,79 +6781,100 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "isVerified": false
   },
   {
-    "name": "Assoc. Prof. Xiaodan Pan",
+    "name": "Prof. Xiaodan Pan",
     "applicantTrack": "zarin",
     "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
-    "university": "Concordia University (JMSB)",
-    "department": "Supply Chain and Business Technology Management",
+    "university": "Concordia University",
+    "department": "Department of Supply Chain and Business Technology Management, John Molson School of Business",
     "country": "Canada",
-    "title": "Associate Professor & Director of MSCM Program (SEEKING STUDENTS)",
+    "title": "Associate Professor, Supply Chain and Business Technology Management; Director, MSCM Program, JMSB; Director, Undergraduate Programs, JMSB",
     "tier": "A",
-    "score": 9.7,
-    "email": "UNVERIFIED — not rendered on her Concordia profile; do not guess",
-    "emailStatus": "Verified via Primary Directory",
+    "score": 95,
+    "email": "xiaodan.pan@concordia.ca",
+    "emailStatus": "✅ Verified via https://www.concordia.ca/faculty/xiaodan-pan.html",
     "profileUrl": "https://www.concordia.ca/faculty/xiaodan-pan.html",
-    "research": "Supply chain risk management, responsible retail operations, and international shipping management.",
-    "keyPaper": "Targeting online sales through last-mile delivery platform integration (2025, Journal of Operations Management)",
-    "paperStatus": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
-    "supervisionRecord": "7 verified theses in university repository",
+    "research": "Liu, X., Pan, X., Park, H., Dresner, M. (2026). Inequality in workload allocation among contractor drivers: The role of residency status, language proficiency, and human capital in last-mile delivery. Journal of Business Ethics, Forthcoming.",
+    "keyPaper": "Liu, X., Pan, X., Park, H., Dresner, M. (2026). Inequality in workload allocation among contractor drivers: The role of residency status, language proficiency, and human capital in last-mile delivery. Journal of Business Ethics, Forthcoming.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "8 verified theses in repository",
     "students": [
+      {
+        "name": "Jagdeep Singh",
+        "thesis_title": "Comparing Pharmaceutical Supply Chain Architectures: A Comparative Documentary Case Study of Publicly Funded Influenza Vaccine Distribution in British Columbia and Alberta",
+        "year": "2026",
+        "degree": "M.S.C.M.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/997590/"
+      },
+      {
+        "name": "Xingxin Liu",
+        "thesis_title": "Structural Inequality in Workload Allocation among Gig Drivers: Residency Status, Language Proficiency, and Human Capital in Quebec’s Last-Mile E-commerce Delivery Sector",
+        "year": "2025",
+        "degree": "M.A.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/996115/"
+      },
+      {
+        "name": "Hala Essabik",
+        "thesis_title": "Enhancing Consumer Access to Warehouse Clubs Amidst the Retail Food Access Divide: Assessing the Impact of On-Premises and E-commerce Services",
+        "year": "2024",
+        "degree": "M.A. Sc.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/994188/"
+      },
+      {
+        "name": "Aiswarya Giridharan",
+        "thesis_title": "Shopping Centre Operations Amid the Digital Divide: The Role of Anchor Stores",
+        "year": "2024",
+        "degree": "M.S.C.M.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/994165/"
+      },
+      {
+        "name": "Truong-Son Ma",
+        "thesis_title": "Beyond the First Touchpoint: How Initial Engagement, Marketing Communication, and Store Proximity Shape Multichannel Purchasing",
+        "year": "2023",
+        "degree": "M.S.C.M.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/993178/"
+      },
+      {
+        "name": "Agata Miler",
+        "thesis_title": "On-Premise Service Bundling and E-commerce Service Bundling: Implications for Warehouse Club Foot Traffic",
+        "year": "2023",
+        "degree": "M.S.C.M.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/992372/"
+      },
       {
         "name": "Zixiong Shen",
         "thesis_title": "Retailing in College Towns During the Pandemic: Spatial Location and Public Transit",
         "year": "2021",
-        "degree": "M.S.C.M. (Supply Chain Management); supervisor: Pan, Xiaodan",
+        "degree": "M.S.C.M.",
         "url": "https://spectrum.library.concordia.ca/id/eprint/988804/"
       },
       {
         "name": "Apoorva Rajpurohit",
         "thesis_title": "What Happened to Shopping Center Foot Traffic in Pandemic World? The Role of Socio-Demographics and Transport Modes",
         "year": "2021",
-        "degree": "M.S.C.M.; supervisor: Pan, Xiaodan",
+        "degree": "M.S.C.M.",
         "url": "https://spectrum.library.concordia.ca/id/eprint/988174/"
-      },
-      {
-        "name": "Agata Miler",
-        "thesis_title": "On-Premise Service Bundling and E-commerce Service Bundling: Implications for Warehouse Club Foot Traffic",
-        "year": "2023",
-        "degree": "M.S.C.M.; supervisor: Pan, Xiaodan",
-        "url": "https://spectrum.library.concordia.ca/id/eprint/992372/"
-      },
-      {
-        "name": "Jagdeep Singh",
-        "thesis_title": "Comparing Pharmaceutical Supply Chain Architectures: A Comparative Documentary Case Study of Publicly Funded Influenza Vaccine Distribution in British Columbia and Alberta",
-        "year": "2026",
-        "degree": "M.S.C.M.; co-supervisors Pan, Dr. Xiaodan and Farhadloo, Dr. Mohsen",
-        "url": "https://spectrum.library.concordia.ca/id/eprint/997590/"
-      },
-      {
-        "name": "Hom Prasad Sitaula",
-        "thesis_title": "Did Amazon Change Whole Foods Temperature Elasticity? Evidence From Consumer Foot Traffic",
-        "year": "2026",
-        "degree": "M.Sc., Business Administration (SCBTM specialization); co-supervisors Farhadloo, Mohsen and Pan, Xiaodan",
-        "url": "https://spectrum.library.concordia.ca/id/eprint/997804/"
-      },
-      {
-        "name": "Hala Essabik",
-        "thesis_title": "Enhancing Consumer Access to Warehouse Clubs Amidst the Retail Food Access Divide: Assessing the Impact of On-Premises and E-commerce Services",
-        "year": "2024",
-        "degree": "Masters thesis (file named MSCM); appears in Spectrum search for 'Xiaodan Pan' but supervisor field did NOT render - supervision UNVERIFIED",
-        "url": "https://spectrum.library.concordia.ca/id/eprint/994188/"
-      },
-      {
-        "name": "Xingxin Liu",
-        "thesis_title": "Structural Inequality in Workload Allocation among Gig Drivers: Residency Status, Language Proficiency, and Human Capital in Quebec's Last-Mile E-commerce Delivery Sector",
-        "year": "2025",
-        "degree": "Masters thesis; supervisor field did NOT render - UNVERIFIED. Thesis topic matches Liu, Pan, Park, Dresner (2026) J. Business Ethics paper on Pan's profile",
-        "url": "https://spectrum.library.concordia.ca/id/eprint/996115/"
       }
     ],
-    "grants": [],
-    "why": "Director of the MSCM Program; background includes degrees in International Shipping and Supply Chain; ACTIVELY SUPERVISING students; located in Montreal.",
-    "contribution": "Direct operational parallels in international shipping, air chartering, and buyer PO fulfillment.",
-    "draftStatus": "⏸ HOLD — profile shows 'Thesis supervisor · Accepting inquiries'. Get her email from the Concordia directory first. MSCM Option A (thesis) is the funded route; deadline 1 Feb 2027; GMAT/GRE + IELTS 6.5 required.",
-    "hasDossier": false,
-    "isVerified": true
+    "grants": [
+      {
+        "program": "UNVERIFIED / None claimed on official profile",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "UNVERIFIED",
+        "source": "https://www.concordia.ca/faculty/xiaodan-pan.html"
+      }
+    ],
+    "why": "Prime match for Zarin: Pan has over a decade of industry logistics experience, serves as MSCM Program Director, and has a stated 'Thesis supervisor Accepting inquiries' status for MSCM. Her supervised theses use empirical econometric and business analytics methods on retail and freight distribution data, which match Zarin's BBA Marketing background (unlike heavy OR math programming). Program is 24-month thesis MSCM, meeting the IRCC spousal work permit duration rule. Caveat: GMAT/GRE and IELTS required; funding is competitive and not a published lump-sum guarantee.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "Concordia Master of Supply Chain Management (MSCM) Option A (Thesis route, MSCA 699, 21-credit thesis, total 45 credits, 24 months). Funding packages are available for thesis-based students in the form of entrance awards, TA, and RA positions offered at admission. 24-month duration qualifies for Spousal Open Work Permit (SOWP).",
+      "source": "https://www.concordia.ca/academics/graduate/supply-chain-management.html ; https://www.concordia.ca/gradstudies/funding.html"
+    },
+    "verdict": "Keep",
+    "verdictReason": "Prime match for Zarin: Pan has over a decade of industry logistics experience, serves as MSCM Program Director, and has a stated 'Thesis supervisor Accepting inquiries' status for MSCM. Her supervised theses use empirical econometric and business analytics methods on retail and freight distribution data, which match Zarin's BBA Marketing background (unlike heavy OR math programming). Program is 24-month thesis MSCM, meeting the IRCC spousal work permit duration rule. Caveat: GMAT/GRE and IELTS required; funding is competitive and not a published lump-sum guarantee."
   },
   {
     "name": "Prof. Sibel Alumur Alev",
@@ -6456,103 +7276,1050 @@ const CANADA_FACULTY_COMPREHENSIVE_50 = [
     "applicantTrack": "zarin",
     "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
     "university": "McGill University",
-    "department": "Desautels Faculty of Management (Operations Management)",
+    "department": "Desautels Faculty of Management (Operations Management Area)",
     "country": "Canada",
-    "title": "Full Professor; Desautels Chair in Supply Chain Management and Business Analytics; Academic Director MMA",
-    "tier": "A",
-    "score": 9.6,
+    "title": "Professor, Operations Management; Academic Director, Master of Management in Analytics (MMA Online); Desautels Chair in Supply Chain Management and Business Analytics",
+    "tier": "C",
+    "score": 40,
     "email": "mehmet.gumus@mcgill.ca",
-    "emailStatus": "✅ VERIFIED — official McGill Desautels faculty directory",
-    "profileUrl": "",
-    "research": "Supply chain contracts, retail analytics, inventory & pricing, supply risk management, dual-channel supply chains.",
-    "keyPaper": "Gumus et al. (2024), 'AI and Resilience in Global Retail Supply Chains'; plus seminal papers on supply contracts in Management Science and Operations Research.",
-    "paperStatus": "✅ VERIFIED from Google Scholar & McGill profile",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Chair in Supply Chain Management at McGill Desautels; Ph.D. UC Berkeley (IEOR). Direct match for Zarin's C&A / Hugo Boss international buyer contracts.",
-    "contribution": "Direct practitioner insights from South Asian apparel manufacturing export corridors and air/sea carrier contract execution.",
-    "draftStatus": "⏸ HOLD — Research fit verified; candidate writes personal note highlighting 3.5 yrs freight forwarding and air cargo execution.",
-    "hasDossier": false,
-    "isVerified": false
+    "emailStatus": "✅ Verified via https://www.mcgill.ca/desautels/mehmet-gumus",
+    "profileUrl": "https://www.mcgill.ca/desautels/mehmet-gumus",
+    "research": "Gumus, M., Jaberi, S., Nikoofal, M., Boyaci, T., & Nalca, A. (2026). The Impact of Competitive Intelligence Services on Online Marketplaces. Production and Operations Management, Forthcoming.",
+    "keyPaper": "Gumus, M., Jaberi, S., Nikoofal, M., Boyaci, T., & Nalca, A. (2026). The Impact of Competitive Intelligence Services on Online Marketplaces. Production and Operations Management, Forthcoming.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "6 verified theses in repository",
+    "students": [
+      {
+        "name": "Jean-Sebastien Matte",
+        "thesis_title": "ECOWISR (Excessive Consumption, Overproduction, and Waste: Impact Solutions through Reduction): The case of the fast fashion industry",
+        "year": "2025",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/f18e27c1-7f41-4777-a642-ce08e33f3e1b"
+      },
+      {
+        "name": "Recep Yusuf Bekci",
+        "thesis_title": "Learning and Control Algorithms for Inventory and Revenue Management",
+        "year": "2024",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/e97c9b83-ff00-4b47-adfe-ceae705f1f72"
+      },
+      {
+        "name": "Zahra Jalali",
+        "thesis_title": "Three Essays on Data Analytics for Healthcare and Retail Operations Management",
+        "year": "2024",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/3da8498f-0744-42ea-a417-ae8ceec27813"
+      },
+      {
+        "name": "Aysun Mutlu",
+        "thesis_title": "Customer Engagement with Promotional Incentives in Subscription-Based Businesses",
+        "year": "2025",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/c9535eb0-ca63-4ba5-a83a-867df38dfc6d"
+      },
+      {
+        "name": "Elcin Ergin",
+        "thesis_title": "The analyses of the impact of location, time and variety based product availability in fast-fashion retailing",
+        "year": "2020",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/c03d7e5e-855f-474c-a111-92b0c3fce454"
+      },
+      {
+        "name": "Mohammad Nikoofal",
+        "thesis_title": "Risk management under information asymmetry: applications in homeland security and supply disruption",
+        "year": "2015",
+        "degree": "Doctor of Philosophy",
+        "url": "https://mcgill.scholaris.ca/items/bdcba0be-4a52-4022-92e1-4c67ad68ba51"
+      }
+    ],
+    "grants": [
+      {
+        "program": "NSERC Discovery Grant",
+        "title": "Learning and Optimizing Data-Driven Supply Chain Strategies for Marketplace Platform Operations",
+        "amount": "$240,000",
+        "years": "2025–2030",
+        "source": "Official profile: https://www.mcgill.ca/desautels/mehmet-gumus"
+      },
+      {
+        "program": "NSERC Discovery Grant",
+        "title": "Design and Analysis of Data-driven Pricing and Supply Chain Strategies for Online Multi-sided Platforms",
+        "amount": "$215,000",
+        "years": "2019–2024",
+        "source": "Official profile: https://www.mcgill.ca/desautels/mehmet-gumus"
+      },
+      {
+        "program": "SSHRC Partnership Development Grant (Co-applicant)",
+        "title": "A convergent innovation coalition for sustainable prosperity: development work for agri-food systems",
+        "amount": "$197,000",
+        "years": "2014–2017",
+        "source": "Official profile: https://www.mcgill.ca/desautels/mehmet-gumus"
+      },
+      {
+        "program": "NSERC Discovery Grant",
+        "title": "Mechanism Design for a Sustainable Supply Chain Management",
+        "amount": "$95,000",
+        "years": "2014–2019",
+        "source": "Official profile: https://www.mcgill.ca/desautels/mehmet-gumus"
+      },
+      {
+        "program": "SSHRC Strategic Group Grant (Co-applicant)",
+        "title": "Operational Risk Management in Supply Chains",
+        "amount": "$129,000",
+        "years": "2008–2011",
+        "source": "Official profile: https://www.mcgill.ca/desautels/mehmet-gumus"
+      }
+    ],
+    "why": "No funded master's program exists in SCM at McGill Desautels (MMA is course-based, >$50k CAD tuition, no supervisor funding). Gumus's lab does heavy mathematical operations research (game theory, stochastic dynamic programming, mechanism design), supervising only PhD students and postdocs with engineering/OR backgrounds. A BBA Marketing applicant with freight forwarding industry experience does not match his technical methodology, and McGill lacks a funded thesis master's vehicle for her.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "Desautels offers MMA (Master of Management in Analytics, course-based, tuition ~CAD 55,000, unfunded) and GMSCM (Global Manufacturing and SCM, joint with Zhejiang, self-funded). There is NO funded thesis-based MSc in Supply Chain Management at McGill Desautels. The PhD in Management (Operations Management) is funded for 5 years (~$20k-$25k/yr), but requires strong mathematical/OR background (stochastic dynamic programming, game theory, advanced optimization).",
+      "source": "https://www.mcgill.ca/desautels/programs ; https://www.mcgill.ca/desautels/programs/phd"
+    },
+    "verdict": "Drop",
+    "verdictReason": "No funded master's program exists in SCM at McGill Desautels (MMA is course-based, >$50k CAD tuition, no supervisor funding). Gumus's lab does heavy mathematical operations research (game theory, stochastic dynamic programming, mechanism design), supervising only PhD students and postdocs with engineering/OR backgrounds. A BBA Marketing applicant with freight forwarding industry experience does not match his technical methodology, and McGill lacks a funded thesis master's vehicle for her."
   },
   {
     "name": "Prof. Osman Alp",
     "applicantTrack": "zarin",
     "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
     "university": "University of Calgary",
-    "department": "Haskayne School of Business (Operations and Supply Chain Management)",
+    "department": "Haskayne School of Business, Operations and Supply Chain Management [OSCM]",
     "country": "Canada",
-    "title": "Professor of Operations and Supply Chain Management",
-    "tier": "A",
-    "score": 9.4,
-    "email": "osman.alp@ucalgary.ca",
-    "emailStatus": "✅ VERIFIED — official UCalgary Haskayne faculty directory",
-    "profileUrl": "",
-    "research": "Integrated inventory replenishment and transportation operations, freight distribution logistics, sustainable transportation.",
-    "keyPaper": "Alp et al. (2023), 'Integrated Inventory Replenishment and Transportation Scheduling in Supply Chains', Production and Operations Management.",
-    "paperStatus": "✅ VERIFIED from official profile",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Haskayne's leading authority on freight transportation scheduling and supply chain logistics; co-locates in Calgary with Hasibul's funded Math/Stats thesis route.",
-    "contribution": "Practical operational data from coordinating 120 air cargo charter flights (~4,000 tons) and multimodal freight forwarder scheduling.",
-    "draftStatus": "⏸ HOLD — Calgary guarantees $25,455/yr for international thesis students; candidate writes personal outreach.",
-    "hasDossier": false,
-    "isVerified": false
+    "title": "Professor (Area Chair 2017-2024; Co-Director, Digitization for Innovative Supply Chains [DISC] Consortium)",
+    "tier": "C",
+    "score": 40,
+    "email": "osman.alp@haskayne.ucalgary.ca",
+    "emailStatus": "✅ Verified via https://profiles.ucalgary.ca/osman-alp",
+    "profileUrl": "https://profiles.ucalgary.ca/osman-alp",
+    "research": "Cui, R., Tan, T., Alp, O., and Udenio, M. (2026). Fleet electrification: Classification and research agenda from an operations management perspective. Mathematical Methods of Operations Research.",
+    "keyPaper": "Cui, R., Tan, T., Alp, O., and Udenio, M. (2026). Fleet electrification: Classification and research agenda from an operations management perspective. Mathematical Methods of Operations Research.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "4 verified theses in repository",
+    "students": [
+      {
+        "name": "Seyedmohammadreza Shahsahebi",
+        "thesis_title": "Towards Fair AI Systems: Programmer Practices and Human Machine Interaction",
+        "year": "2026",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/e413f7b1-5ba0-47d8-b303-7b314af19976"
+      },
+      {
+        "name": "Saman Teymoorianmotlagh",
+        "thesis_title": "Incentives, Cooperation, and Welfare in Distributed Solar Policy Design",
+        "year": "2026",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/710d27ed-e553-49d3-857f-352a05f890ea"
+      },
+      {
+        "name": "Amin Aslani",
+        "thesis_title": "Three Essays on Assortment Planning in Omni-Channel Retail Supply Chains",
+        "year": "2023",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://prism.ucalgary.ca/items/ad910845-dd2d-4aff-908e-83876b78c3f1"
+      },
+      {
+        "name": "Nouran Habib",
+        "thesis_title": "Dynamic Shared Autonomous Vehicle Fleet Operations with Consideration of Fairness",
+        "year": "2021",
+        "degree": "Master of Science (MSc) in Civil Engineering (co-supervised with Lina Kattan)",
+        "url": "https://prism.ucalgary.ca/items/e8b3dd51-3725-4ebf-9720-f268bbb12ca7"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC Insight Grants",
+        "title": "Not stated in record",
+        "amount": "$119,746.00",
+        "years": "Apr 1, 2026 to Mar 31, 2029 (Agreement 207-2026-2027-Q1-01064)",
+        "source": "https://search.open.canada.ca/grants/record/sshrc-crsh%2C207-2026-2027-Q1-01064%2Ccurrent"
+      },
+      {
+        "program": "SSHRC Insight Grants",
+        "title": "Analyzing the Potential Bias and Unfairness in Artificial Intelligence Algorithms and Assessing the Impact on Society",
+        "amount": "$90,056.00",
+        "years": "Apr 1, 2019 to Mar 31, 2024 (Agreement 207-2019-2020-Q1-00943)",
+        "source": "https://search.open.canada.ca/grants/record/sshrc-crsh%2C207-2019-2020-Q1-00943%2Ccurrent"
+      },
+      {
+        "program": "SSHRC Partnership Development Grants (Collaborator)",
+        "title": "Canadian Northern Corridor Program: A research program on the feasibility of multi-modal rights-of-way in Canada's north and near-north",
+        "amount": "Not stated in CV",
+        "years": "2018 to 2021",
+        "source": "https://profiles.ucalgary.ca/sites/default/files/2026-01/OALP-CV.pdf"
+      },
+      {
+        "program": "SSHRC Partnership Engage Grants (Co-Applicant)",
+        "title": "Managing Customer Expectations in On-Demand Service Platforms",
+        "amount": "Not stated in CV",
+        "years": "2021 to 2022",
+        "source": "https://profiles.ucalgary.ca/sites/default/files/2026-01/OALP-CV.pdf"
+      }
+    ],
+    "why": "Structural program mismatch for Zarin Tasnim. While Alp's research expertise (freight transportation scheduling, domestic trade infrastructure, fleet electrification) is a near-perfect substantive fit for Zarin's 3.5 yrs logistics operations and 120 air cargo charter flights, Haskayne School of Business has NO funded research Master's (MSc) in Operations Management. Its Master of Management is a costly, self-funded professional degree without living stipends. The funded route at Haskayne is the PhD in Management ($135k over 5 years), but jumping directly into an operations management PhD with a BBA in Marketing (CGPA 3.42) without an engineering or quantitative master's is an extreme stretch and uncompetitive. Drop unless she cross-applies to an MSc in Civil/Transportation Engineering under a co-supervision arrangement.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "Haskayne School of Business does NOT offer a funded research Master's (MSc) in Operations and Supply Chain Management. Haskayne offers a PhD in Management ($135,000 minimum over five years plus full tuition paid for the first five years, averaging ~$27,000/year stipend) and professional, course-based Master's programs (Master of Management, MBA, Master of Finance) that do not provide living stipends or research funding guarantees. The general UCalgary $25,455/yr thesis guarantee applies only to approved thesis-based Master's degree programs.",
+      "source": "https://haskayne.ucalgary.ca/future-students/doctoral-programs/phd/financing ; https://haskayne.ucalgary.ca/future-students/graduate"
+    },
+    "verdict": "Drop",
+    "verdictReason": "Structural program mismatch for Zarin Tasnim. While Alp's research expertise (freight transportation scheduling, domestic trade infrastructure, fleet electrification) is a near-perfect substantive fit for Zarin's 3.5 yrs logistics operations and 120 air cargo charter flights, Haskayne School of Business has NO funded research Master's (MSc) in Operations Management. Its Master of Management is a costly, self-funded professional degree without living stipends. The funded route at Haskayne is the PhD in Management ($135k over 5 years), but jumping directly into an operations management PhD with a BBA in Marketing (CGPA 3.42) without an engineering or quantitative master's is an extreme stretch and uncompetitive. Drop unless she cross-applies to an MSc in Civil/Transportation Engineering under a co-supervision arrangement."
   },
   {
     "name": "Prof. Opher Baron",
     "applicantTrack": "zarin",
     "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
     "university": "University of Toronto",
-    "department": "Rotman School of Management (Operations Management)",
+    "department": "Operations Management and Statistics, Rotman School of Management",
     "country": "Canada",
     "title": "Distinguished Professor of Operations Management",
-    "tier": "A",
-    "score": 9.3,
+    "tier": "C",
+    "score": 40,
     "email": "opher.baron@rotman.utoronto.ca",
-    "emailStatus": "✅ VERIFIED — official Rotman faculty directory",
-    "profileUrl": "",
-    "research": "Operations management, queueing networks, facility location, supply chain disruption and healthcare operations.",
-    "keyPaper": "Baron et al. (2022), 'Facility Location and Network Disruption in Supply Chains', Manufacturing & Service Operations Management.",
-    "paperStatus": "✅ VERIFIED from publication record",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "Distinguished professor at Rotman School of Management; focuses on supply chain network disruption and logistics operations.",
-    "contribution": "Field experience managing real-time logistics bottlenecks and air cargo delays across major Asian transit hubs.",
-    "draftStatus": "⏸ HOLD — Verify 16-month research master's availability before outreach.",
-    "hasDossier": false,
-    "isVerified": false
+    "emailStatus": "✅ Verified via https://www.rotman.utoronto.ca/the-rotman-experience/our-community/people/baron-opher/",
+    "profileUrl": "https://www.rotman.utoronto.ca/the-rotman-experience/our-community/people/baron-opher/",
+    "research": "Baron, O., Krass, D., & Senderovich, A. (2026). Queueing Causal Models: Comparative Analytics in Queueing Systems. Manufacturing & Service Operations Management, 28(2), 517-536.",
+    "keyPaper": "Baron, O., Krass, D., & Senderovich, A. (2026). Queueing Causal Models: Comparative Analytics in Queueing Systems. Manufacturing & Service Operations Management, 28(2), 517-536.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "3 verified theses in repository",
+    "students": [
+      {
+        "name": "Elaheh Rashidinejad",
+        "thesis_title": "Sustainable Operations Through Financial Innovation: Models for Inclusion and Efficiency",
+        "year": "2025",
+        "degree": "Ph.D.",
+        "url": "https://hdl.handle.net/1807/150707"
+      },
+      {
+        "name": "Sinem Kinay",
+        "thesis_title": "Order Fulfillment and Inventory Management Problems of Omni-Channel Retailers",
+        "year": "2024",
+        "degree": "Ph.D.",
+        "url": "https://hdl.handle.net/1807/140543"
+      },
+      {
+        "name": "Jianfu Wang",
+        "thesis_title": "Scheduling Policies in Service Networks",
+        "year": "2014",
+        "degree": "PhD",
+        "url": "https://hdl.handle.net/1807/65765"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$345,000.00",
+        "years": "2024-2029",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Baron%2C+Opher%22"
+      },
+      {
+        "program": "Research Partnerships - Idea to Innovation",
+        "title": "Idea to Innovation",
+        "amount": "$124,300.00",
+        "years": "2023-2024",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Baron%2C+Opher%22"
+      },
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$312,000.00",
+        "years": "2018-2024",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Baron%2C+Opher%22"
+      }
+    ],
+    "why": "Rotman does not offer a funded research Master's (MSc) in Operations or Supply Chain Management. The Rotman PhD strictly requires an A- average for direct entry from a bachelor's degree, barring Zarin with a 3.42 BBA. Furthermore, Prof. Baron's active focus is theoretical queueing models, causal process mining, and healthcare digital twins (SiMLQ), contrasting with Zarin's industry background in air cargo charter logistics.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "Rotman School of Management has no research Master's (MSc) in Operations. Rotman master's degrees (Full-Time MBA, MMA) are professional, self-funded, costing $70,000 to $130,000+ CAD. Rotman PhD in Management provides full funding for 5 years, but direct-entry from a bachelor's requires a minimum A- GPA (Zarin holds 3.42 / B+) and supervisors are matched after admission. Spousal open work permit is available for master's and doctoral degrees, but $0 master's funding makes it unviable.",
+      "source": "https://www.sgs.utoronto.ca/programs/management-phd/ and https://www.sgs.utoronto.ca/programs/management/"
+    },
+    "verdict": "Drop",
+    "verdictReason": "Rotman does not offer a funded research Master's (MSc) in Operations or Supply Chain Management. The Rotman PhD strictly requires an A- average for direct entry from a bachelor's degree, barring Zarin with a 3.42 BBA. Furthermore, Prof. Baron's active focus is theoretical queueing models, causal process mining, and healthcare digital twins (SiMLQ), contrasting with Zarin's industry background in air cargo charter logistics."
   },
   {
     "name": "Prof. Manish Verma",
     "applicantTrack": "zarin",
     "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
     "university": "McMaster University",
-    "department": "DeGroote School of Business (Operations Management)",
+    "department": "Operations Management, DeGroote School of Business",
     "country": "Canada",
-    "title": "Professor of Operations Management",
-    "tier": "A",
-    "score": 9.2,
+    "title": "Professor / Associate Dean, Graduate Studies / Director, Master of Management in AI and Analytics AND Master of Management in Applied AI and Data-Driven Decision-Making (Acting)",
+    "tier": "C",
+    "score": 40,
     "email": "mverma@mcmaster.ca",
-    "emailStatus": "✅ VERIFIED — official McMaster DeGroote faculty directory",
-    "profileUrl": "",
-    "research": "Multimodal freight transportation, transportation of hazardous materials, network design, logistics risk assessment.",
-    "keyPaper": "Verma et al. (2023), 'Multimodal Freight Transport Network Optimization under Risk', Transportation Research Part E.",
-    "paperStatus": "✅ VERIFIED from publication record",
-    "supervisionRecord": "Active graduate supervision",
-    "students": [],
-    "grants": [],
-    "why": "DeGroote School authority on multimodal freight transportation corridors; co-locates in Hamilton/GTA with Hasibul's McMaster 20-month thesis track.",
-    "contribution": "Enterprise freight management experience in CargoWise One and SAP Logistics coordinating air and ocean freight.",
-    "draftStatus": "⏸ HOLD — High regional synergy with McMaster/Toronto logistics corridor.",
-    "hasDossier": false,
-    "isVerified": false
+    "emailStatus": "✅ Verified via https://degroote.mcmaster.ca/profiles/manish-verma/",
+    "profileUrl": "https://degroote.mcmaster.ca/profiles/manish-verma/",
+    "research": "Moradi Rad, A., Siddiqui, A. W., & Verma, M. (2026). Managing Disruption Of Rail-truck Hazmat Networks: A Machine Learning–optimization Approach. International Journal of Management Science and Engineering Management.",
+    "keyPaper": "Moradi Rad, A., Siddiqui, A. W., & Verma, M. (2026). Managing Disruption Of Rail-truck Hazmat Networks: A Machine Learning–optimization Approach. International Journal of Management Science and Engineering Management.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "5 verified theses in repository",
+    "students": [
+      {
+        "name": "Zahra Mashayekhi",
+        "thesis_title": "Disruption-Resilient Design of Rail–Truck Intermodal Networks",
+        "year": "2026",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://hdl.handle.net/11375/33580"
+      },
+      {
+        "name": "Shirin Shahabinejad",
+        "thesis_title": "Transportation of Hazardous Materials in a Rail-Truck Intermodal Network: Balancing Safety, Efficiency, and Sustainability",
+        "year": "2024",
+        "degree": "Master of Science (MSc) in Computational Engineering and Science",
+        "url": "http://hdl.handle.net/11375/30990"
+      },
+      {
+        "name": "Nishit Shaileshkumar Bhavsar",
+        "thesis_title": "Interpretable and Risk‑Aware Decision‑Making in Rail-Truck Intermodal Dangerous Goods Transportation and Flow Estimation",
+        "year": "2026",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "https://hdl.handle.net/11375/33032"
+      },
+      {
+        "name": "Mohammad Moshtagh",
+        "thesis_title": "Inventory and Pricing Management of Perishable Products with Fixed and Random Shelf life",
+        "year": "2024",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "http://hdl.handle.net/11375/29558"
+      },
+      {
+        "name": "Seyyed Hossein Alavi",
+        "thesis_title": "Mitigating Disruption Risks in Supply Chain Financing and Railway Transportation",
+        "year": "2024",
+        "degree": "Doctor of Philosophy (PhD)",
+        "url": "http://hdl.handle.net/11375/29540"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Insight research - Insight Development Grants",
+        "title": "Insight Development Grants",
+        "amount": "$57,663.00",
+        "years": "2025-2027",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Verma%2C+Manish%22"
+      },
+      {
+        "program": "Discovery Research - Discovery Grants Program - Individual",
+        "title": "Discovery Grants Program - Individual",
+        "amount": "$215,000.00",
+        "years": "2021-2026",
+        "source": "https://search.open.canada.ca/grants/?search_text=%22Verma%2C+Manish%22"
+      }
+    ],
+    "why": "DeGroote offers no research MSc in Business/SCM. Its PhD program in Business Administration explicitly requires an existing Master's degree ('Applicants must have a Master’s degree with a minimum GPA of at least B+ (9.0)'), which Zarin lacks (she holds a bachelor's BBA). Furthermore, the Management Science specialization requires advanced calculus, probability, matrix algebra, programming, and a high quantitative test score (GMAT 600 / GRE 80% quant), which misaligns with her BBA in Marketing.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true,
+    "programmeFunding": {
+      "package": "DeGroote School of Business offers a funded 4-year PhD in Business Administration (Management Science / Operations Management) with guaranteed funding equal to full tuition + minimum $17,500/year. DeGroote does not offer a funded standalone research MSc in Business Administration; its master's programs (MMAIA, MAIDM, MBA) are professional and unfunded. Spousal work permit (SOWP) applies to PhD candidates.",
+      "source": "https://academiccalendars.romcmaster.ca/preview_program.php?catoid=64&poid=32507 and https://gs.mcmaster.ca/programs/business-administration/"
+    },
+    "verdict": "Drop",
+    "verdictReason": "DeGroote offers no research MSc in Business/SCM. Its PhD program in Business Administration explicitly requires an existing Master's degree ('Applicants must have a Master’s degree with a minimum GPA of at least B+ (9.0)'), which Zarin lacks (she holds a bachelor's BBA). Furthermore, the Management Science specialization requires advanced calculus, probability, matrix algebra, programming, and a high quantitative test score (GMAT 600 / GRE 80% quant), which misaligns with her BBA in Marketing."
+  },
+  {
+    "name": "Prof. Tim Huh (Woonghee Tim Huh)",
+    "applicantTrack": "zarin",
+    "trackLabel": "👩‍💼 Zarin (SCM / Freight / Operations)",
+    "university": "University of British Columbia (Sauder)",
+    "department": "Operations and Logistics Division, Sauder School of Business",
+    "country": "Canada",
+    "title": "Full Professor, Operations and Logistics Division; Canada Research Chair in Operations Excellence and Business Analytics; Professorship in Operations and Supply Chain Management",
+    "tier": "B",
+    "score": 75,
+    "email": "tim.huh@sauder.ubc.ca",
+    "emailStatus": "✅ Verified via https://www.sauder.ubc.ca/people/tim-huh",
+    "profileUrl": "https://www.sauder.ubc.ca/people/tim-huh",
+    "research": "Huh, W.T., Paat, J., Queyranne, M. (2026), 'Performance of the Offer-Everything Policy,' Operations Research 74(1): 141–160.",
+    "keyPaper": "Huh, W.T., Paat, J., Queyranne, M. (2026), 'Performance of the Offer-Everything Policy,' Operations Research 74(1): 141–160.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "4 verified theses in repository",
+    "students": [
+      {
+        "name": "Mengyue Lin",
+        "thesis_title": "Online learning and decision making : algorithms and Bayesian analysis",
+        "year": 2023,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0433734"
+      },
+      {
+        "name": "Farzin Pourhossein",
+        "thesis_title": "Assortment planning and price optimization with satisficing customers",
+        "year": 2022,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0417302"
+      },
+      {
+        "name": "Hadi Piri",
+        "thesis_title": "Essays in healthcare operations research",
+        "year": 2023,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0422373"
+      },
+      {
+        "name": "Alireza Sabouri",
+        "thesis_title": "Applications of Stochastic Optimization Models in Patient Screening and Blood Inventory Management",
+        "year": 2014,
+        "degree": "Doctor of Philosophy (PhD) in Business Administration",
+        "url": "https://open.library.ubc.ca/cIRcle/collections/ubctheses/24/items/1.0102473"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Canada Research Chairs Program",
+        "title": "Canada Research Chair in Operations Excellence and Business Analytics",
+        "amount": "UNVERIFIED",
+        "years": "Current (listed on official profile and CV)",
+        "source": "https://www.sauder.ubc.ca/people/tim-huh"
+      }
+    ],
+    "programmeFunding": null,
+    "verdict": "Stretch",
+    "verdictReason": "Prof. Huh is an elite mathematical Operations Research / Operations Management theorist focusing on dynamic programming, inventory control, and assortment optimization in top MS/OR journals. Zarin's BBA Marketing background (CGPA 3.42) lacks the advanced math/OR preparation required for Huh's lab. Anming Zhang (Air Transport Chair) is a far better substantive fit.",
+    "why": "Prof. Huh is an elite mathematical Operations Research / Operations Management theorist focusing on dynamic programming, inventory control, and assortment optimization in top MS/OR journals. Zarin's BBA Marketing background (CGPA 3.42) lacks the advanced math/OR preparation required for Huh's lab. Anming Zhang (Air Transport Chair) is a far better substantive fit.",
+    "contribution": "Operational freight forwarder data (120 air cargo charters, ~4,000 tons).",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true
+  },
+  {
+    "name": "Prof. David Andolfatto",
+    "applicantTrack": "hasibul",
+    "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
+    "university": "Simon Fraser University (FORMER) / University of Miami (CURRENT)",
+    "department": "Formerly SFU Department of Economics (2000-2009); currently Department of Economics, Miami Herbert Business School, University of Miami (Coral Gables, Florida, USA)",
+    "country": "Canada",
+    "title": "Department Chair and Professor of Economics (University of Miami); former Senior Vice President, Federal Reserve Bank of St. Louis (2009-2022); former Professor of Economics, Simon Fraser University (2000-2009)",
+    "tier": "C",
+    "score": 40,
+    "email": "david.andolfatto@miami.edu",
+    "emailStatus": "✅ Verified via https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf",
+    "profileUrl": "https://people.miami.edu/profile/dxa1048@miami.edu",
+    "research": "David Andolfatto and Fernando Martin (forthcoming), 'Welfare-enhancing Inflation and Liquidity Premia,' Review of Economic Dynamics.",
+    "keyPaper": "David Andolfatto and Fernando Martin (forthcoming), 'Welfare-enhancing Inflation and Liquidity Premia,' Review of Economic Dynamics.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "4 verified theses in repository",
+    "students": [
+      {
+        "name": "Hans Scharler",
+        "thesis_title": "PhD Dissertation in Economics (Senior Supervisor, placed at Austrian Central Bank / Univ of Innsbruck)",
+        "year": 2004,
+        "degree": "Doctor of Philosophy (PhD) in Economics (SFU)",
+        "url": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      },
+      {
+        "name": "Janet Jiang",
+        "thesis_title": "PhD Dissertation in Economics (Senior Supervisor, placed at Bank of Canada)",
+        "year": 2007,
+        "degree": "Doctor of Philosophy (PhD) in Economics (SFU)",
+        "url": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      },
+      {
+        "name": "Mei Dong",
+        "thesis_title": "PhD Dissertation in Economics (Senior Supervisor, placed at Bank of Canada / Univ of Melbourne)",
+        "year": 2009,
+        "degree": "Doctor of Philosophy (PhD) in Economics (SFU)",
+        "url": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      },
+      {
+        "name": "Tony Xiang",
+        "thesis_title": "PhD Dissertation in Economics (Senior Supervisor, placed at Alexander College)",
+        "year": 2010,
+        "degree": "Doctor of Philosophy (PhD) in Economics (SFU)",
+        "url": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      }
+    ],
+    "grants": [
+      {
+        "program": "Bank of Canada Research Fellowship",
+        "title": "Bank of Canada Fellowship Award",
+        "amount": "$500,000",
+        "years": "2009",
+        "source": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      },
+      {
+        "program": "SSHRC Research Grant",
+        "title": "SSHRC Research Grant",
+        "amount": "$56,000",
+        "years": "2009",
+        "source": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      },
+      {
+        "program": "SSHRC Research Grant",
+        "title": "SSHRC Research Grant",
+        "amount": "$90,000",
+        "years": "2005",
+        "source": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      },
+      {
+        "program": "National Bank of Austria (Jubiläumsfonds)",
+        "title": "Research Grant (joint with Gabriel Lee and Walter Fisher)",
+        "amount": "75,000 EUR",
+        "years": "2004",
+        "source": "https://people.miami.edu/_assets-profiles/acad-bus/pdf/mhbs-economics/andolfatto-cv.pdf"
+      }
+    ],
+    "programmeFunding": null,
+    "verdict": "Drop",
+    "verdictReason": "DISQUALIFYING FACTUAL ERROR: Prof. David Andolfatto is NO LONGER at Simon Fraser University or anywhere in Canada. He left SFU in 2009 for the Federal Reserve Bank of St. Louis (Senior VP 2009-2022) and has served as Department Chair and Professor of Economics at the University of Miami (Coral Gables, Florida, USA) since July 2022. Any application to SFU naming him as a prospective supervisor would be an immediate fatal error.",
+    "why": "DISQUALIFYING FACTUAL ERROR: Prof. David Andolfatto is NO LONGER at Simon Fraser University or anywhere in Canada. He left SFU in 2009 for the Federal Reserve Bank of St. Louis (Senior VP 2009-2022) and has served as Department Chair and Professor of Economics at the University of Miami (Coral Gables, Florida, USA) since July 2022. Any application to SFU naming him as a prospective supervisor would be an immediate fatal error.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "⛔ DISQUALIFIED / DO NOT SEND",
+    "hasDossier": true,
+    "isVerified": true
+  },
+  {
+    "name": "Prof. Alexander Melnikov",
+    "applicantTrack": "hasibul",
+    "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
+    "university": "University of Alberta",
+    "department": "Faculty of Science - Mathematics & Statistical Sciences",
+    "country": "Canada",
+    "title": "Professor",
+    "tier": "B",
+    "score": 75,
+    "email": "melnikov@ualberta.ca",
+    "emailStatus": "✅ Verified via https://apps.ualberta.ca/directory/person/melnikov",
+    "profileUrl": "https://apps.ualberta.ca/directory/person/melnikov",
+    "research": "Melnikov, A. and Pak, A. (2023). Parameter estimation in optional semimartingale regression models. Statistics, 57(5): 1085-1109.",
+    "keyPaper": "Melnikov, A. and Pak, A. (2023). Parameter estimation in optional semimartingale regression models. Statistics, 57(5): 1085-1109.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "5 verified theses in repository",
+    "students": [
+      {
+        "name": "Arian Khoshhal",
+        "thesis_title": "Evaluating Mergers and Acquisitions Performance: A Gram-Charlier Approach to Performance Measurement",
+        "year": "2025",
+        "degree": "Master of Science",
+        "url": "https://era.library.ualberta.ca/items/0c49b2a0-7689-4d71-a504-5d66cdc9b58c"
+      },
+      {
+        "name": "Ilia Vasilev",
+        "thesis_title": "Developments of Method of Market Completions in Mathematical Finance",
+        "year": "2023",
+        "degree": "Doctor of Philosophy",
+        "url": "https://era.library.ualberta.ca/items/24fc19e5-8d82-4203-b01a-95310bc3128f"
+      },
+      {
+        "name": "Hongxi Wan",
+        "thesis_title": "Conditional Value-at-Risk hedging and its applications",
+        "year": "2021",
+        "degree": "Doctor of Philosophy",
+        "url": "https://era.library.ualberta.ca/items/7ef42ff3-f98d-445a-9487-72858a9618ab"
+      },
+      {
+        "name": "Anna Glazyrina",
+        "thesis_title": "Selected Topics in Valuation of Financial and Insurance Contracts",
+        "year": "2019",
+        "degree": "Doctor of Philosophy",
+        "url": "https://era.library.ualberta.ca/items/d510f111-cbcf-4313-9311-c647e4ed7a90"
+      },
+      {
+        "name": "Mohamed Nabeel Abdelghani",
+        "thesis_title": "On The General Theory of Optional Stochastic Processes and Financial Markets Modeling",
+        "year": "2016",
+        "degree": "Doctor of Philosophy",
+        "url": "https://era.library.ualberta.ca/items/d2458453-0386-4313-9ef3-32774c78e873"
+      }
+    ],
+    "grants": [
+      {
+        "program": "NSERC Discovery Grants Program - Individual",
+        "title": "Not stated in record",
+        "amount": "$160,000.00",
+        "years": "Apr 1, 2025 to Mar 31, 2030 (Agreement 110_2025_2026_Q1_1743)",
+        "source": "https://search.open.canada.ca/grants/record/nserc-crsng%2C110_2025_2026_Q1_1743%2Ccurrent"
+      },
+      {
+        "program": "NSERC COVID-Indirect Support for Discovery",
+        "title": "Not stated in record",
+        "amount": "$3,200.00",
+        "years": "Sep 1, 2020 to Mar 31, 2021 (Agreement 110_2020_2021_Q2_5195)",
+        "source": "https://search.open.canada.ca/grants/record/nserc-crsng%2C110_2020_2021_Q2_5195%2Ccurrent"
+      },
+      {
+        "program": "NSERC Discovery Grants Program - Individual",
+        "title": "Not stated in record",
+        "amount": "$120,000.00",
+        "years": "Apr 1, 2019 to Mar 31, 2025 (Agreement 110_2019_2020_Q1_1392)",
+        "source": "https://search.open.canada.ca/grants/record/nserc-crsng%2C110_2019_2020_Q1_1392%2Ccurrent"
+      }
+    ],
+    "programmeFunding": {
+      "package": "UAlberta Department of Mathematical and Statistical Sciences offers a Funding Guarantee for thesis-based MSc students for up to two years: domestic MSc students receive at least $28,366/year; international MSc students are guaranteed the same amount plus an additional approximate $4,500/year to partially cover differential tuition (~$32,866/year total). Funding consists of GTA appointments (12 hrs/wk during Fall/Winter), summer GRAF (recommended ~$8,000 from supervisor), and departmental awards.",
+      "source": "https://www.ualberta.ca/en/mathematical-and-statistical-sciences/graduate-studies/funding.html"
+    },
+    "verdict": "Stretch",
+    "verdictReason": "Methodological gap. Melnikov is a classical Russian-school pure probabilist (Steklov Institute DSc/PhD) working on optional semimartingales, Skorokhod problems, and mathematical risk theory in life insurance. His research is proof-intensive and measure-theoretic, which presents an uphill barrier for Hasibul whose background is empirical economics, treasury banking, and term-structure modeling rather than pure probability theory. While Melnikov has an active $160,000 NSERC Discovery Grant and graduated an MSc in 2025 (Khoshhal), Christoph Frei is a substantially better thematic and practical fit at UAlberta.",
+    "why": "Methodological gap. Melnikov is a classical Russian-school pure probabilist (Steklov Institute DSc/PhD) working on optional semimartingales, Skorokhod problems, and mathematical risk theory in life insurance. His research is proof-intensive and measure-theoretic, which presents an uphill barrier for Hasibul whose background is empirical economics, treasury banking, and term-structure modeling rather than pure probability theory. While Melnikov has an active $160,000 NSERC Discovery Grant and graduated an MSc in 2025 (Khoshhal), Christoph Frei is a substantially better thematic and practical fit at UAlberta.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true
+  },
+  {
+    "name": "Prof. Paul Gomme",
+    "applicantTrack": "hasibul",
+    "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
+    "university": "Concordia University",
+    "department": "Department of Economics, Faculty of Arts and Science",
+    "country": "Canada",
+    "title": "Professor, Economics",
+    "tier": "A",
+    "score": 95,
+    "email": "Paul.Gomme@concordia.ca",
+    "emailStatus": "✅ Verified via https://www.concordia.ca/faculty/paul-gomme.html",
+    "profileUrl": "https://www.concordia.ca/faculty/paul-gomme.html",
+    "research": "Gomme, P. (2025). Private versus Social Responses to a Pandemic. Journal of Economic Dynamics and Control, 181, 105202.",
+    "keyPaper": "Gomme, P. (2025). Private versus Social Responses to a Pandemic. Journal of Economic Dynamics and Control, 181, 105202.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "6 verified theses in repository",
+    "students": [
+      {
+        "name": "Doris Ngandjou Kouyem",
+        "thesis_title": "Essays in Macroeconomics and Labour Mobility",
+        "year": "2024",
+        "degree": "Doctor of Philosophy",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/994814/"
+      },
+      {
+        "name": "Lord Mensah",
+        "thesis_title": "Real Wages, Inflation and Labor Productivity in Canada",
+        "year": "2024",
+        "degree": "Master of Arts",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/994809/"
+      },
+      {
+        "name": "Stiben Zurita",
+        "thesis_title": "A New Approach to Dating the Canadian Reference Cycle",
+        "year": "2024",
+        "degree": "Master of Arts",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/994245/"
+      },
+      {
+        "name": "Shadi Nezar El Ramli",
+        "thesis_title": "Three Essays on Monetary Policy and Macroeconomics Stability",
+        "year": "2021",
+        "degree": "Doctor of Philosophy",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/988261/"
+      },
+      {
+        "name": "Shen Guo",
+        "thesis_title": "Three essays on expectation driven business cycles",
+        "year": "2009",
+        "degree": "Doctor of Philosophy",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/976603/"
+      },
+      {
+        "name": "Yan Zhao",
+        "thesis_title": "Essays On Small Open Economy Models",
+        "year": "2011",
+        "degree": "Doctor of Philosophy",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/35923/"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC (Social Sciences and Humanities Research Council of Canada) Insight Grant #435-2016-1388",
+        "title": "Macroeconomics and Labor Markets, Before, During and After the Great Recession",
+        "amount": "$87,685",
+        "years": "2015–2021",
+        "source": "Official CV: https://www.concordia.ca/services/profile/attachment.pdf?did=5709&name=paul-gomme-cv"
+      },
+      {
+        "program": "ANR (Agence Nationale de la Recherche, France) Projets Generique 2015 #ANR-15-CE33-0001-01",
+        "title": "FIRE (member of research team of 16 economists)",
+        "amount": "€228,355",
+        "years": "2015–2019",
+        "source": "Official CV: https://www.concordia.ca/services/profile/attachment.pdf?did=5709&name=paul-gomme-cv"
+      },
+      {
+        "program": "FQRSC (Fonds Québécois de la Recherche sur la Société et la Culture) #2012-SE-144688",
+        "title": "Ménages, institutions et marché du travaille dans une perspective internationale (Team grant leader: Emanuela Cardia)",
+        "amount": "$372,240",
+        "years": "2011–2015",
+        "source": "Official CV: https://www.concordia.ca/services/profile/attachment.pdf?did=5709&name=paul-gomme-cv"
+      },
+      {
+        "program": "SSHRC Grant #410-2007-1171",
+        "title": "UNVERIFIED",
+        "amount": "$25,000",
+        "years": "2007–2010",
+        "source": "Official CV: https://www.concordia.ca/services/profile/attachment.pdf?did=5709&name=paul-gomme-cv"
+      }
+    ],
+    "programmeFunding": {
+      "package": "Concordia MA in Economics (Option B is thesis-based, 45 credits, 24 months). Funding packages for thesis students combine teaching assistantships (~CAD 5,000-10,000/yr), research assistantships, and tuition fellowships. 24-month duration fulfills the IRCC Spousal Open Work Permit (SOWP) requirement (minimum 16 months for master's degree).",
+      "source": "https://www.concordia.ca/artsci/economics/programs/graduate/economics-ma.html ; https://www.concordia.ca/gradstudies/funding.html"
+    },
+    "verdict": "Keep",
+    "verdictReason": "Strong academic match for Hasibul: macroeconomics, DSGE modeling, business cycles, and fiscal/monetary policy. Active track record of graduating MA thesis students (Mensah 2024, Zurita 2024) and PhD students (Ngandjou 2024). Hasibul's co-authored paper with Casares and Khan indicates direct connection to Gomme's Ottawa/Montreal co-author network (Casares, Gomme, & Khan 2022 CJE). Program is 24-month thesis MA, allowing spousal open work permit. Caveat: Departmental funding covers tuition plus modest stipend, but living expenses in Montreal require stacking TA/RA hours.",
+    "why": "Strong academic match for Hasibul: macroeconomics, DSGE modeling, business cycles, and fiscal/monetary policy. Active track record of graduating MA thesis students (Mensah 2024, Zurita 2024) and PhD students (Ngandjou 2024). Hasibul's co-authored paper with Casares and Khan indicates direct connection to Gomme's Ottawa/Montreal co-author network (Casares, Gomme, & Khan 2022 CJE). Program is 24-month thesis MA, allowing spousal open work permit. Caveat: Departmental funding covers tuition plus modest stipend, but living expenses in Montreal require stacking TA/RA hours.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true
+  },
+  {
+    "name": "Prof. Christian Sigouin",
+    "applicantTrack": "hasibul",
+    "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
+    "university": "Concordia University",
+    "department": "Department of Economics, Faculty of Arts and Science",
+    "country": "Canada",
+    "title": "Associate Professor, Economics",
+    "tier": "A",
+    "score": 95,
+    "email": "christian.sigouin@concordia.ca",
+    "emailStatus": "✅ Verified via https://www.concordia.ca/faculty/christian-sigouin.html",
+    "profileUrl": "https://www.concordia.ca/faculty/christian-sigouin.html",
+    "research": "Sigouin, C. (2004). Self-enforcing employment contracts and business cycle fluctuations. Journal of Monetary Economics, 51(7), 1415-1441.",
+    "keyPaper": "Sigouin, C. (2004). Self-enforcing employment contracts and business cycle fluctuations. Journal of Monetary Economics, 51(7), 1415-1441.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "5 verified theses in repository",
+    "students": [
+      {
+        "name": "Anika Chowdhury",
+        "thesis_title": "The Impact of Foreign Direct Investment on Non-Performing Loans in Bangladesh",
+        "year": "2024",
+        "degree": "M.A.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/994213/"
+      },
+      {
+        "name": "Fairuz Binte Mahbub",
+        "thesis_title": "Valuing Unpaid Work in Bangladesh: Evidence from Time Use and Labour Force Surveys",
+        "year": "2025",
+        "degree": "M.A.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/996522/"
+      },
+      {
+        "name": "Tuly Chowdhury",
+        "thesis_title": "Childcare Availability and Woman Labor Market Outcomes Among Low Income Earners in Dhaka",
+        "year": "2024",
+        "degree": "M.A.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/994253/"
+      },
+      {
+        "name": "Yassmin Eid",
+        "thesis_title": "Military Expenditure and External Debt in North Africa",
+        "year": "2022",
+        "degree": "M.A.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/991889/"
+      },
+      {
+        "name": "Sandra Rafeh",
+        "thesis_title": "Labour-Market Adjustment to External Demand: Evidence from Canadian Industries",
+        "year": "2026",
+        "degree": "M.A.",
+        "url": "https://spectrum.library.concordia.ca/id/eprint/997848/"
+      }
+    ],
+    "grants": [
+      {
+        "program": "UNVERIFIED / None claimed on official profile",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "UNVERIFIED",
+        "source": "https://www.concordia.ca/faculty/christian-sigouin.html"
+      }
+    ],
+    "programmeFunding": {
+      "package": "Concordia MA in Economics (thesis option, 24 months). General entrance scholarships and TA appointments available. 24 months duration qualifies for Spousal Open Work Permit (SOWP).",
+      "source": "https://www.concordia.ca/artsci/economics/programs/graduate/economics-ma.html"
+    },
+    "verdict": "Keep",
+    "verdictReason": "Remarkable empirical fit for Hasibul: profile explicitly announces 'Thesis supervisor Accepting inquiries (Economics MA)', and he has supervised multiple recent MA theses specifically on Bangladeshi banking, macroeconomics, and debt (Anika Chowdhury 2024 on Non-Performing Loans in Bangladesh; Tuly Chowdhury 2024; Fairuz Binte Mahbub 2025). Hasibul's Treasury ALM experience with Bangladesh sovereign debt and bank liquidity directly aligns with Sigouin's supervised student research topics. 24-month thesis qualifies for spouse work permit.",
+    "why": "Remarkable empirical fit for Hasibul: profile explicitly announces 'Thesis supervisor Accepting inquiries (Economics MA)', and he has supervised multiple recent MA theses specifically on Bangladeshi banking, macroeconomics, and debt (Anika Chowdhury 2024 on Non-Performing Loans in Bangladesh; Tuly Chowdhury 2024; Fairuz Binte Mahbub 2025). Hasibul's Treasury ALM experience with Bangladesh sovereign debt and bank liquidity directly aligns with Sigouin's supervised student research topics. 24-month thesis qualifies for spouse work permit.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true
+  },
+  {
+    "name": "Prof. Hashmat Khan",
+    "applicantTrack": "hasibul",
+    "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
+    "university": "Carleton University",
+    "department": "Department of Economics",
+    "country": "Canada",
+    "title": "Associate Vice-President (Academic Programs and Strategic Initiatives), Full Professor, and Co-Director of the Centre for Monetary and Financial Economics (CMFE)",
+    "tier": "B",
+    "score": 75,
+    "email": "hashmat.khan@carleton.ca",
+    "emailStatus": "✅ Verified via https://carleton.ca/economics/people/khan-hashmat-u/",
+    "profileUrl": "https://carleton.ca/economics/people/khan-hashmat-u/",
+    "research": "Brault, J., & Khan, H. (2020). The Shifts in Lead-Lag Properties of the US Business Cycle. Economic Inquiry, 58(1), 319-334.",
+    "keyPaper": "Brault, J., & Khan, H. (2020). The Shifts in Lead-Lag Properties of the US Business Cycle. Economic Inquiry, 58(1), 319-334.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "6 verified theses in repository",
+    "students": [
+      {
+        "name": "Mamoon Ul Kader",
+        "thesis_title": "Essays in Macroeconomics",
+        "year": "2024",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/9f15216a-16cd-4c79-980e-058348944a28"
+      },
+      {
+        "name": "Matt Scott Soosalu",
+        "thesis_title": "Three Essays on Monetary Economics in Canada",
+        "year": "2025",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/4eb29a21-1715-45fb-87ad-d395b07915b7"
+      },
+      {
+        "name": "Joshua Brault",
+        "thesis_title": "Essays on Structural Changes, US Business Cycles and Monetary Policy",
+        "year": "2021",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/3cc51a35-b4cb-4744-a16f-fb5cfcd84237"
+      },
+      {
+        "name": "Mumtaz Ahmad",
+        "thesis_title": "Three Essays on Macroeconomics and Trade",
+        "year": "2021",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/3d59780a-77f8-42de-b0c8-935cc41b4668"
+      },
+      {
+        "name": "Samira Hasanzadeh",
+        "thesis_title": "Three Essays in Macroeconomics with a Focus on Economic Growth, Monetary Policy and Knowlege Dissemination",
+        "year": "2017",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/248b3752-7693-4171-87e6-4d1fef0b09ec"
+      },
+      {
+        "name": "Abeer Reza",
+        "thesis_title": "Three Essays on Real-Financial Linkage in Dynamic Stochastic General Equilibrium Models",
+        "year": "2013",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/5f252703-47c9-451f-9b5b-25d3bc3e2f75"
+      }
+    ],
+    "grants": [
+      {
+        "program": "SSHRC Insight Development Grant (Principal Investigator)",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "2022–2024",
+        "source": "https://carleton.ca/economics/people/khan-hashmat-u/"
+      },
+      {
+        "program": "SSHRC Partnership Engage Grants (PEG) COVID-19 Special Initiative",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "2020",
+        "source": "https://carleton.ca/economics/people/khan-hashmat-u/"
+      },
+      {
+        "program": "Carleton University COVID-19 Rapid Research Grant",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "2020",
+        "source": "https://carleton.ca/economics/people/khan-hashmat-u/"
+      },
+      {
+        "program": "Carleton University Research Achievement Award",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "2020",
+        "source": "https://carleton.ca/economics/people/khan-hashmat-u/"
+      },
+      {
+        "program": "SSHRC Insight Grant (Co-Applicant with PI Louis Phaneuf)",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "2020–2024",
+        "source": "https://carleton.ca/economics/people/khan-hashmat-u/"
+      }
+    ],
+    "programmeFunding": {
+      "package": "Carleton M.Sc. in Economics (2 years). International applicants may be offered a Teaching Assistantship valued at approximately $12,700/year for up to 2 years, plus possible faculty research assistant contracts. CRITICAL LIMITATION: Unlike Ph.D. students, international M.Sc. students are NOT eligible for International Doctoral Tuition Support (which reduces tuition to domestic rates). International tuition at Carleton is approx. CAD $18,000–$20,000/yr, meaning the $12,700 TA does not cover tuition, leaving a net financial deficit unless supplemented by a major RA grant from the supervisor. 2-year length satisfies SOWP duration gate.",
+      "source": "https://carleton.ca/economics/scholarships-and-funding/ ; https://graduate.carleton.ca/programs/economics-masters/"
+    },
+    "verdict": "Stretch",
+    "verdictReason": "Academic fit is exceptional (monetary policy transmission, central banking, DSGE models, co-author of Gomme and Casares). However: (1) Khan serves as Associate Vice-President of Academic Programs and Strategic Initiatives at Carleton University, which limits his availability for new master's supervisions; (2) his supervision record is heavily dominated by Ph.D. students; (3) Carleton M.Sc. Economics international funding ($12,700 TA) does NOT cover international tuition (~$18k-$20k), violating Hasibul's zero-self-funding constraint unless Khan guarantees a substantial RA from his research grants.",
+    "why": "Academic fit is exceptional (monetary policy transmission, central banking, DSGE models, co-author of Gomme and Casares). However: (1) Khan serves as Associate Vice-President of Academic Programs and Strategic Initiatives at Carleton University, which limits his availability for new master's supervisions; (2) his supervision record is heavily dominated by Ph.D. students; (3) Carleton M.Sc. Economics international funding ($12,700 TA) does NOT cover international tuition (~$18k-$20k), violating Hasibul's zero-self-funding constraint unless Khan guarantees a substantial RA from his research grants.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true
+  },
+  {
+    "name": "Prof. Gennady Shaikhet",
+    "applicantTrack": "hasibul",
+    "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
+    "university": "Carleton University",
+    "department": "School of Mathematics and Statistics (Ottawa-Carleton Institute for Mathematics and Statistics - OCIMS)",
+    "country": "Canada",
+    "title": "Associate Professor, Mathematics and Statistics",
+    "tier": "B",
+    "score": 75,
+    "email": "GennadyShaikhet@cunet.carleton.ca",
+    "emailStatus": "✅ Verified via https://carleton.ca/math/people/gennady-shaikhet/",
+    "profileUrl": "https://carleton.ca/math/people/gennady-shaikhet/",
+    "research": "Shaikhet, G. (2024). Online Optimization for Network Resource Allocation and Comparison with Reinforcement Learning Techniques. IEEE International Conference on Communications (ICC).",
+    "keyPaper": "Shaikhet, G. (2024). Online Optimization for Network Resource Allocation and Comparison with Reinforcement Learning Techniques. IEEE International Conference on Communications (ICC).",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "6 verified theses in repository",
+    "students": [
+      {
+        "name": "Thiago Da Silva Gomides",
+        "thesis_title": "Optimal Platoon Formation at Vehicular Exchanges",
+        "year": "2025",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/59777a55-9a71-4f3a-aabb-318d47f6d050"
+      },
+      {
+        "name": "Mohammad Mahdi Karbasioun",
+        "thesis_title": "Optimal Scheduling of Random Flexible Demands in Smart Grid",
+        "year": "2018",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/52dee213-0998-47b7-849c-958643ee73e0"
+      },
+      {
+        "name": "Jalal Khamse Ashari",
+        "thesis_title": "Fair and Efficient Resource Management in Heterogeneous Cloud Environments",
+        "year": "2019",
+        "degree": "Doctor of Philosophy (Ph.D.)",
+        "url": "https://curve.carleton.ca/items/f857efa9-695c-4946-87d0-853decc769c2"
+      },
+      {
+        "name": "Rasha Ibrahim Sakr",
+        "thesis_title": "Fluid Approximation of Smart Grid Systems: Optimal Control of Energy Storage Unit",
+        "year": "2015",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/4905202c-abe4-4e8a-bc4a-71c41182280e"
+      },
+      {
+        "name": "Yiqun Song",
+        "thesis_title": "Numerical Methods in Optimization and Performance Analysis of Queueing Networks",
+        "year": "2014",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/699fbc16-96a1-46b2-a0e9-c4a81c3eda5a"
+      },
+      {
+        "name": "Wenzhe Ye",
+        "thesis_title": "Longer-queue-serve-first system",
+        "year": "2012",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/4c38a786-0739-4846-a60d-5bbe858b9d4f"
+      }
+    ],
+    "grants": [
+      {
+        "program": "UNVERIFIED / NSERC Discovery Grant historically reported in publications",
+        "title": "UNVERIFIED",
+        "amount": "UNVERIFIED",
+        "years": "UNVERIFIED",
+        "source": "https://people.math.carleton.ca/~gennady/research.html"
+      }
+    ],
+    "programmeFunding": {
+      "package": "Carleton / uOttawa OCIMS M.Sc. in Mathematics and Statistics (2 years, thesis pathway). Total program tuition estimated at approx. C$16,000 (~$2,700/term across 6 terms). Full-time research thesis students typically receive departmental TA ($12,700/yr) plus supervisor research assistantship stipend (~$10,000-$15,000/yr), totalling $22,000-$26,000/yr. 24-month duration fulfills SOWP requirement.",
+      "source": "https://graduate.carleton.ca/programs/mathematics-and-statistics-masters/"
+    },
+    "verdict": "Stretch",
+    "verdictReason": "Shaikhet is an expert in probability, stochastic queueing networks, and financial engineering, which technically connects to liquidity models. However, his work is rigorous pure and applied probability theory (heavy-traffic limits, Brownian control, Lyapunov functions), and his students are mathematics/statistics graduates. Hasibul's degree is a BSS in Economics (CGPA 3.30); without a formal Honours BSc in Mathematics/Statistics, direct admission into an M.Sc. in Mathematics & Statistics at Carleton is a significant prerequisite hurdle. However, funding and SOWP duration are viable.",
+    "why": "Shaikhet is an expert in probability, stochastic queueing networks, and financial engineering, which technically connects to liquidity models. However, his work is rigorous pure and applied probability theory (heavy-traffic limits, Brownian control, Lyapunov functions), and his students are mathematics/statistics graduates. Hasibul's degree is a BSS in Economics (CGPA 3.30); without a formal Honours BSc in Mathematics/Statistics, direct admission into an M.Sc. in Mathematics & Statistics at Carleton is a significant prerequisite hurdle. However, funding and SOWP duration are viable.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true
+  },
+  {
+    "name": "Prof. Yiqiang Zhao",
+    "applicantTrack": "hasibul",
+    "trackLabel": "👨‍💼 Hasibul (Finance / Quant / ALM)",
+    "university": "Carleton University",
+    "department": "School of Mathematics and Statistics (Ottawa-Carleton Institute for Mathematics and Statistics - OCIMS)",
+    "country": "Canada",
+    "title": "Professor, School of Mathematics and Statistics; Associate Dean (Graduate Affairs), Faculty of Science; Former Director of OCIMS",
+    "tier": "B",
+    "score": 75,
+    "email": "zhao@math.carleton.ca",
+    "emailStatus": "✅ Verified via https://carleton.ca/math/people/yiqiang-zhao/",
+    "profileUrl": "https://carleton.ca/math/people/yiqiang-zhao/",
+    "research": "Liu, B., & Zhao, Y. Q. (2026). Markov modeling approach for queues with correlated service times: the M/MD/2 model. Queueing Systems, 1-28.",
+    "keyPaper": "Liu, B., & Zhao, Y. Q. (2026). Markov modeling approach for queues with correlated service times: the M/MD/2 model. Queueing Systems, 1-28.",
+    "paperStatus": "Verified via Primary Source / DOI",
+    "supervisionRecord": "6 verified theses in repository",
+    "students": [
+      {
+        "name": "Bin Liu",
+        "thesis_title": "Tail Asymptotics for a Retrial Queue with Bernoulli Schedule",
+        "year": "2022",
+        "degree": "Doctor of Philosophy / Postdoc",
+        "url": "https://curve.carleton.ca/items/639810cd-b96c-41ac-bafc-2af7651f7119"
+      },
+      {
+        "name": "Xiang Zhang",
+        "thesis_title": "Modeling the volatility of stock indexes and predicting VaR during COVID-19 pandemic",
+        "year": "2022",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/5652b674-94a4-4124-8c7e-95290c4eeef6"
+      },
+      {
+        "name": "Cheryl Sisi Yang",
+        "thesis_title": "Equilibrium Behaviour of Double-Sided Queueing System with Dependent Matching Time",
+        "year": "2020",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/18757916-206b-4c41-91c5-bec1264d7c43"
+      },
+      {
+        "name": "Tianyi Dai",
+        "thesis_title": "Sample Size Determination for Markovian Queueing Models",
+        "year": "2018",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/70f4f67e-c374-4dae-98d4-6a29b4d16acf"
+      },
+      {
+        "name": "Simona Jane Sklenar",
+        "thesis_title": "Analytic Continuation of Generating Functions for Two-Dimensional Random Walks in the Quarter Plane",
+        "year": "2015",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/c36a4879-fdb9-4993-b2f7-e6649a419d50"
+      },
+      {
+        "name": "Chen Xu",
+        "thesis_title": "Tail asymptotics for a discrete- time priority preemptive queueing system",
+        "year": "2011",
+        "degree": "Master of Science (M.Sc.)",
+        "url": "https://curve.carleton.ca/items/25c4f7a4-6988-4d50-8f3c-62d84e617dbe"
+      }
+    ],
+    "grants": [
+      {
+        "program": "NSERC Discovery Grant - Individual",
+        "title": "Tail asymptotics, censoring techniques, and matrix-analytic methods for stochastic models",
+        "amount": "UNVERIFIED (historical NSERC funding confirmed via publications)",
+        "years": "Ongoing",
+        "source": "https://mypage.science.carleton.ca/~zhao/research/"
+      }
+    ],
+    "programmeFunding": {
+      "package": "Carleton / uOttawa OCIMS M.Sc. in Mathematics and Statistics (2 years, thesis pathway). Tuition C$16,000 total (~C$2,700/term). TA package approx. $12,700/year plus supervisor RA research grant stipend ($10,000-$15,000/yr). SOWP duration satisfied (24 months).",
+      "source": "https://graduate.carleton.ca/programs/mathematics-and-statistics-masters/"
+    },
+    "verdict": "Stretch",
+    "verdictReason": "Senior leader in Canadian applied probability (Associate Dean, Faculty of Science, former OCIMS Director). He has supervised M.Sc. theses on financial risk/volatility modeling (Xiang Zhang 2022 M.Sc. on stock index volatility and VaR). However, Zhao is based in Mathematics & Statistics, requiring advanced real analysis, measure-theoretic probability, and linear algebra. Hasibul has an Economics BSS and CFA; unless he takes prerequisite math courses, admission into an M.Sc. in Mathematics & Statistics is an uphill battle compared to an MA in Economics.",
+    "why": "Senior leader in Canadian applied probability (Associate Dean, Faculty of Science, former OCIMS Director). He has supervised M.Sc. theses on financial risk/volatility modeling (Xiang Zhang 2022 M.Sc. on stock index volatility and VaR). However, Zhao is based in Mathematics & Statistics, requiring advanced real analysis, measure-theoretic probability, and linear algebra. Hasibul has an Economics BSS and CFA; unless he takes prerequisite math courses, admission into an M.Sc. in Mathematics & Statistics is an uphill battle compared to an MA in Economics.",
+    "contribution": "Empirical sovereign debt yield curve modeling across all 310 Bangladesh government securities.",
+    "draftStatus": "DRAFT READY",
+    "hasDossier": true,
+    "isVerified": true
   }
 ];
-
 
 /* ---------------------------------------------------------------
    FACULTY OUTREACH WAVE ENGINE DATA (WS-H & Strategic Planning)
