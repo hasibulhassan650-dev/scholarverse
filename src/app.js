@@ -1185,7 +1185,7 @@ function renderGoettingenScorecard() {
 
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--rule)">
         <div style="font-size:12px;color:var(--ink-2)">
-          <strong>Portal Upload Cap:</strong> 5.0 MB per document · <strong>Checklist Signature:</strong> Original physical blue ink pen signature only.
+          <strong>Portal Upload Cap:</strong> 5.0 MB per document · <strong>Confirmed 29 Oct 2026:</strong> Clean scans of originals &amp; self-compiled course descriptions officially permitted · <strong>Checklist Signature:</strong> Original physical blue ink pen.
         </div>
         <div style="display:flex;gap:8px">
           <button class="btn btn-sm btn-primary" type="button" onclick="go('workshop')">Draft Motivation Letter Workshop →</button>

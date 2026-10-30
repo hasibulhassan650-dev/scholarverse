@@ -1114,9 +1114,9 @@ const TARGETS = [
   "effortRationale": "12-document Section C bundle, signed checklist, 2-page motivation, syllabus extraction."
 },
     requiredDocs: [
-      { docId: "degree", label: "1. University Degree Certificate", rule: "BSS Economics certificate (notarized copy or electronic verification key)" },
-      { docId: "transcript", label: "2. Official Academic Transcript", rule: "8-semester transcript with official grading scale on reverse" },
-      { docId: "course-descriptions", label: "3. Official Course Descriptions / Syllabus", rule: "Handbook extract proving 87 cr Economics + 27 cr Math/Stats/Econometrics" },
+      { docId: "degree", label: "1. University Degree Certificate", rule: "BSS Economics certificate (clean scan of original officially permitted on portal; confirmed 29 Oct 2026)" },
+      { docId: "transcript", label: "2. Official Academic Transcript", rule: "8-semester transcript with grading scale (clean scan of original officially permitted; confirmed 29 Oct 2026)" },
+      { docId: "course-descriptions", label: "3. Official Course Descriptions / Syllabus", rule: "Self-compiled document officially permitted (confirmed 29 Oct 2026); held PDF: 189 KB, 42 courses, 126 cr" },
       { docId: "europass", label: "4. Europass Resume / CV", rule: "Reverse chronological order, dated, zero unexplained gaps" },
       { docId: "motivation", label: "5. Uniform Letter of Motivation", rule: "Max 2 pages, dated, justifies ranking (Göttingen #1, Hohenheim #2)" },
       { docId: "moi", label: "6. English Verification (MOI)", rule: "BUP Medium of Instruction certificate (confirmed accepted 13 Oct 2026)" },
@@ -1577,7 +1577,7 @@ const DOCUMENTS = [
   { id: "hohcampus", name: "HohCampus application", type: "Application", status: "missing", req: ["Hohenheim"], spec: "Hohenheim requires a TWO-PART application: email AND HohCampus. Both.", owner: "You" },
   { id: "pretest", name: "AgEcon PreTest", type: "Application", status: "missing", req: ["Hohenheim"], spec: "Self-evaluation required by Hohenheim.", owner: "You" },
   { id: "working-paper", name: "Yield-curve working paper", type: "Research", status: "not_started", req: ["All"], spec: "⚡ HIGHEST-LEVERAGE ASSET. Fit Nelson-Siegel to your 310-security dataset. Converts 'no publications' into independent empirical research and becomes your professor-outreach attachment.", owner: "You" },
-  { id: "course-descriptions", name: "Official Course Descriptions (Syllabus)", type: "Academic", status: "have", req: ["Göttingen"], spec: "Official course handbook/syllabus extract proving 87 cr Economics and 27 cr Math/Stats/Econometrics (verified against transcript).", owner: "You" },
+  { id: "course-descriptions", name: "Official Course Descriptions (Syllabus)", type: "Academic", status: "have", req: ["Göttingen"], spec: "✅ SELF-COMPILATION OFFICIALLY PERMITTED — Göttingen EPOS Coordination Team confirmed in writing on 29 Oct 2026: 'Additionally, you can compiled the course description yourself into one document which can be uploaded for our application.' Clean scan of original certificates/transcripts also officially allowed on portal. Held file: 'Hasibul Hasan_Course Module_BSS in Economics.pdf' (189 KB, 42 courses, 126 credits).", owner: "You" },
   { id: "achievements-summary", name: "Summary & Proof of Additional Achievements", type: "Academic", status: "have", req: ["Göttingen"], spec: "Max 1 page bullet summary + single combined PDF of supporting certificates (CFA Level 7 Charter, BAFEDA, Level 2 MIS Award, BNCC).", owner: "You" }
 ];
 
@@ -25390,7 +25390,7 @@ function renderGoettingenScorecard() {
 
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--rule)">
         <div style="font-size:12px;color:var(--ink-2)">
-          <strong>Portal Upload Cap:</strong> 5.0 MB per document · <strong>Checklist Signature:</strong> Original physical blue ink pen signature only.
+          <strong>Portal Upload Cap:</strong> 5.0 MB per document · <strong>Confirmed 29 Oct 2026:</strong> Clean scans of originals &amp; self-compiled course descriptions officially permitted · <strong>Checklist Signature:</strong> Original physical blue ink pen.
         </div>
         <div style="display:flex;gap:8px">
           <button class="btn btn-sm btn-primary" type="button" onclick="go('workshop')">Draft Motivation Letter Workshop →</button>
