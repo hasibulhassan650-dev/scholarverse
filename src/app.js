@@ -10,7 +10,7 @@ const app = {
   view: 'dashboard',
   f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'directory105', uniQuery: '', mpGate: 'all', mpQuery: '',
        dirDiscipline: 'all', dirGate: 'all', dirProvince: 'all', dirQuery: '',
-       profTrack: 'all', profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
+       profTrack: 'all', profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '', workshopTab: 'goettingen' },
   calDate: null
 };
 if (typeof window !== 'undefined') window.app = app;
@@ -172,11 +172,15 @@ const VIEWS = {
 /* fixed milestones that aren't stored as targets */
 const CRITICAL_DATES = [
   { name: 'Göttingen EPOS', date: '2026-11-15' },
+  { name: 'SSE Finance (Early Round)', date: '2026-11-15' },
   { name: 'ETH ESOP', date: '2026-11-30' },
   { name: 'EPFL Excellence', date: '2026-12-15' },
   { name: 'Hohenheim EPOS', date: '2026-12-15' },
+  { name: 'USask Edwards (Priority Funding)', date: '2026-12-15' },
+  { name: 'SSE Finance (General Round)', date: '2027-01-15' },
   { name: 'Swedish universities (ranking locked)', date: '2027-01-15' },
-  { name: 'Sweden 900 SEK fee & document upload', date: '2027-02-01' }
+  { name: 'Sweden 900 SEK fee & document upload', date: '2027-02-01' },
+  { name: 'Swedish Institute (SISGP) Portal', date: '2027-02-09' }
 ];
 const ZOOM = { name: 'Göttingen info session', date: '2026-10-26' };
 
@@ -743,12 +747,29 @@ function horizonEvents() {
   const seen = new Set(), out = [];
   const add = (name, rawDate, kind, open) => {
     const date = fv(rawDate);
-    const key = name.toLowerCase().split(' ')[0] + date;
-    if (!date || seen.has(key)) return; seen.add(key);
+    if (!date) return;
+    const key = name.toLowerCase().replace(/[^a-z0-9]/g, '') + '_' + date;
+    if (seen.has(key)) return;
+    seen.add(key);
     out.push({ name, date, kind, d: daysUntil(date), open });
   };
-  app.content.targets.forEach(t => {
-    add(t.short || t.name, t.deadline, 'target', () => openTarget(t.id));
+  (app.content.targets || []).forEach(t => {
+    const sName = t.short || t.name;
+    add(sName, t.deadline, 'target', () => openTarget(t.id));
+    if (t.earlyDeadline) {
+      add(`${sName} (Early Round)`, t.earlyDeadline, 'target', () => openTarget(t.id));
+    }
+    if (t.regularDeadline && fv(t.regularDeadline) !== fv(t.deadline)) {
+      add(`${sName} (General Round)`, t.regularDeadline, 'target', () => openTarget(t.id));
+    }
+    if (t.gateDeadline) {
+      add(`${sName} (Gate)`, t.gateDeadline, 'target', () => openTarget(t.id));
+    }
+    if (Array.isArray(t.rounds)) {
+      t.rounds.forEach(r => {
+        if (r.deadline) add(`${sName} (${r.name})`, r.deadline, 'target', () => openTarget(t.id));
+      });
+    }
   });
   CRITICAL_DATES.forEach(c => add(c.name, c.date, 'critical', () => openCritical(c)));
   add(ZOOM.name, ZOOM.date, 'session', openZoom);
@@ -1127,6 +1148,75 @@ function wireUserInputCard(root) {
   });
 }
 
+function renderSSEScorecard() {
+  const target = (app.content.targets || []).find(t => t.id === 'sse-finance');
+  if (!target || !target.requiredDocs) return '';
+  const dLeft = daysUntil(fv(target.deadline));
+  const docs = target.requiredDocs;
+
+  let completed = 0;
+  const itemsWithStatus = docs.map(rd => {
+    const doc = (app.content.documents || []).find(d => d.id === rd.docId) || {};
+    const attached = app.state.docFiles && app.state.docFiles[rd.docId];
+    const isDone = doc.status === 'have' || !!attached;
+    if (isDone) completed++;
+    return { ...rd, doc, attached, isDone };
+  });
+
+  const pct = Math.round((completed / docs.length) * 100);
+
+  return `
+    <div class="panel" style="margin-top:16px;border-top:3px solid var(--amber);padding:20px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px">
+        <div>
+          <div class="tier-label" style="color:var(--amber)">⚡ PRIORITY EARLY ADMISSIONS ROUND · 15 NOV 2026</div>
+          <h2 style="font-size:22px;margin:4px 0 2px">🇸🇪 Stockholm School of Economics (SSE) — MSc in Finance</h2>
+          <div class="dim" style="font-size:13.5px">
+            Early Deadline: <strong>15 November 2026 (23:59 CET)</strong> (${dLeft !== null ? dLeft + ' days left' : '—'}) · Portal: <strong>hhs.fullfabric.com</strong> (Independent portal — does NOT use central portal!)
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="num" style="font-size:32px;font-weight:700;color:${pct === 100 ? 'var(--green)' : pct >= 60 ? 'var(--teal)' : 'var(--amber)'}">${pct}%</div>
+          <div class="dim" style="font-size:12px">${completed} of ${docs.length} items ready</div>
+        </div>
+      </div>
+
+      <div class="bar" style="height:8px;margin:14px 0 16px;background:var(--slate-soft)">
+        <i style="width:${pct}%;background:${pct === 100 ? 'var(--green)' : 'var(--amber)'}"></i>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:8px">
+        ${itemsWithStatus.map(item => {
+          const isHeld = item.isDone;
+          return `
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--sheet-2);border-radius:6px;border:1px solid var(--rule);font-size:12px">
+              <div style="flex:1;padding-right:8px">
+                <div style="font-weight:600;color:var(--ink)">${esc(item.label)}</div>
+                <div class="dim" style="font-size:11px;margin-top:1px">${esc(item.rule)}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <span class="tag ${isHeld ? 'ok' : 'warn'}" style="font-size:10.5px">${isHeld ? '✅ Ready' : '⏳ Action'}</span>
+                ${item.attached ? `<button class="btn btn-sm" type="button" data-viewvaultdoc="${esc(item.docId)}" style="font-size:10.5px;padding:3px 6px">👁️ View</button>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--rule)">
+        <div style="font-size:12px;color:var(--ink-2)">
+          <strong>Eligibility Cleared:</strong> GMAT Focus 585 beats 555 cutoff · English test WAIVED via MOI · Dual funding shot: SSE Tuition Waiver + SISGP.
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-sm btn-primary" type="button" onclick="app.f.workshopTab='sse'; go('workshop');">Draft SSE Essays Workshop →</button>
+          <a href="https://hhs.fullfabric.com/" target="_blank" rel="noopener" class="btn btn-sm">Open SSE Portal ↗</a>
+          <button class="btn btn-sm" type="button" onclick="openTarget('sse-finance')">Dossier Audit</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function renderGoettingenScorecard() {
   const target = (app.content.targets || []).find(t => t.id === 'goettingen');
   if (!target || !target.requiredDocs) return '';
@@ -1252,7 +1342,25 @@ function renderDashboard(root) {
 
     ${renderUserInputCard()}
 
+    <div class="note warn" style="margin-top:16px;border-left:4px solid var(--red)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div>
+          <strong style="color:var(--red);font-size:14px">🚨 DUAL 15-NOVEMBER EMERGENCY COUNTDOWN: 14 DAYS TO SUBMISSION</strong>
+          <p style="margin:4px 0 0;font-size:12.5px;color:var(--ink-2)">
+            Two premier European master's applications close simultaneously on <strong>15 November 2026 at 23:59 CET</strong>:
+            <br>• <strong>🇩🇪 Göttingen DAAD EPOS</strong> (MSc Development Economics · Full Funding €992/mo · 12-doc bundle)
+            <br>• <strong>🇸🇪 Stockholm School of Economics (SSE)</strong> (MSc Finance · Early Application Round · Portal: hhs.fullfabric.com)
+          </p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-sm btn-primary" type="button" onclick="go('workshop')">Open Application Workshop →</button>
+        </div>
+      </div>
+    </div>
+
     ${renderGoettingenScorecard()}
+
+    ${renderSSEScorecard()}
 
     <div style="margin-top:22px">${stats([
       ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
@@ -1513,6 +1621,15 @@ function renderMissions(root) {
    MOTIVATION LETTER ARCHITECTURE WORKSHOP (WS-F4 / Upgrade 2)
    ============================================================================ */
 function renderWorkshop(root) {
+  const curTab = app.f.workshopTab || 'goettingen';
+  if (curTab === 'sse') {
+    renderSSEWorkshop(root);
+  } else {
+    renderGoettingenWorkshop(root);
+  }
+}
+
+function renderGoettingenWorkshop(root) {
   let draftText = '';
   try { draftText = localStorage.getItem('sv-motivation-draft') || ''; } catch (e) {}
   const wordCount = draftText.trim() ? draftText.trim().split(/\s+/).length : 0;
@@ -1526,6 +1643,13 @@ function renderWorkshop(root) {
       <button class="btn btn-sm btn-primary" type="button" id="wExportBrief">📋 Referee Briefing Sheet</button>
       <button class="btn btn-sm" type="button" onclick="openTarget('goettingen')">Göttingen Target →</button>
     </div>`)}
+
+    <div class="toolbar" style="margin-bottom:16px">
+      ${chips('wTab', [
+        ['goettingen', '🇩🇪 Göttingen EPOS Uniform Letter (2 Pages)'],
+        ['sse', '🇸🇪 SSE Finance Application Workshop (Nov 15 Early Round)']
+      ], 'goettingen')}
+    </div>
 
     <div class="note warn" style="margin-bottom:20px;border-left:4px solid var(--amber)">
       <div>
@@ -1637,6 +1761,8 @@ function renderWorkshop(root) {
     </div>
   `;
 
+  wireChips(root, 'wTab', k => { app.f.workshopTab = k; renderWorkshop(root); });
+
   const ta = $('#wDraftInput', root);
   if (ta) {
     ta.oninput = () => {
@@ -1658,6 +1784,196 @@ function renderWorkshop(root) {
 
   const bBtn = $('#wExportBrief', root);
   if (bBtn) bBtn.onclick = () => openRefereeBriefModal();
+}
+
+function renderSSEWorkshop(root) {
+  let essay1 = '', essay2 = '', scholarship = '';
+  try {
+    essay1 = localStorage.getItem('sv-sse-essay1') || '';
+    essay2 = localStorage.getItem('sv-sse-essay2') || '';
+    scholarship = localStorage.getItem('sv-sse-scholarship') || '';
+  } catch (e) {}
+
+  const w1 = essay1.trim() ? essay1.trim().split(/\s+/).length : 0;
+  const w2 = essay2.trim() ? essay2.trim().split(/\s+/).length : 0;
+
+  let sseChecks = {};
+  try { sseChecks = JSON.parse(localStorage.getItem('sv-sse-checks') || '{}'); } catch (e) {}
+
+  root.innerHTML = `
+    ${pageHead(`<div style="display:flex;gap:8px">
+      <a href="https://hhs.fullfabric.com/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Open SSE Portal ↗</a>
+      <button class="btn btn-sm" type="button" onclick="openTarget('sse-finance')">SSE Dossier Audit →</button>
+    </div>`)}
+
+    <div class="toolbar" style="margin-bottom:16px">
+      ${chips('wTab', [
+        ['goettingen', '🇩🇪 Göttingen EPOS Uniform Letter (2 Pages)'],
+        ['sse', '🇸🇪 SSE Finance Application Workshop (Nov 15 Early Round)']
+      ], 'sse')}
+    </div>
+
+    <div class="note ok" style="margin-bottom:20px;border-left:4px solid var(--teal)">
+      <div>
+        <strong>🇸🇪 Stockholm School of Economics (SSE) — MSc in Finance Application Workshop</strong>
+        <p style="font-size:13px;margin:4px 0 0;color:var(--ink-2);line-height:1.55">
+          <strong>Early Application Deadline: 15 November 2026 (23:59 CET)</strong> · Application Portal: <strong>https://hhs.fullfabric.com/</strong>
+          <br>Applying early yields decisions by late December and grants priority access to SSE Full/Half Tuition Scholarships.
+          <strong>Eligibility verified:</strong> Official GMAT Focus score 585 (beats 555 minimum) + English test WAIVED based on BUP degree conducted entirely in English.
+        </p>
+      </div>
+    </div>
+
+    ${stats([
+      ['Essay 1 (Reasons)', `${w1} / 300`, w1 ? (w1 <= 300 ? 'Within limit' : 'Exceeds 300-word limit') : 'Not drafted', w1 && w1 <= 300 ? 'ok' : w1 > 300 ? 'bad' : 'plain'],
+      ['Essay 2 (International)', `${w2} / 200`, w2 ? (w2 <= 200 ? 'Within limit' : 'Exceeds 200-word limit') : 'Not drafted', w2 && w2 <= 200 ? 'ok' : w2 > 200 ? 'bad' : 'plain'],
+      ['GMAT Focus Score', '585 Official', 'Code: MFV-98-26 (clears 555 bar)', 'ok'],
+      ['English Proof', '100% Waived', 'BUP MOI letter satisfies exemption', 'ok']
+    ])}
+
+    <div class="grid split" style="margin-top:20px;gap:24px">
+      <!-- Left: In-Portal Essay Drafting Pad -->
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="font-size:16px;margin:0">Prompt 1: Reasons for Applying to the Program</h3>
+            <span class="dim num" style="font-size:12px" id="sseW1Counter">${w1} / 300 words</span>
+          </div>
+          <p class="dim" style="font-size:12px;margin:0 0 10px">"Describe your reasons for applying to the program (maximum 300 words)."</p>
+          <textarea class="input" id="sseEssay1Input" rows="10" placeholder="Draft Question 1 here... (Auto-saves locally to browser)" style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13px;padding:12px;resize:vertical">${esc(essay1)}</textarea>
+        </div>
+
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="font-size:16px;margin:0">Prompt 2: International Motivation</h3>
+            <span class="dim num" style="font-size:12px" id="sseW2Counter">${w2} / 200 words</span>
+          </div>
+          <p class="dim" style="font-size:12px;margin:0 0 10px">"Describe your motivation for studying or working internationally (maximum 200 words)."</p>
+          <textarea class="input" id="sseEssay2Input" rows="8" placeholder="Draft Question 2 here... (Auto-saves locally to browser)" style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13px;padding:12px;resize:vertical">${esc(essay2)}</textarea>
+        </div>
+
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="font-size:16px;margin:0">Scholarship Tab: Tuition Fee Waiver Statement</h3>
+            <span class="tag acc" style="font-size:11px">Portal Tab</span>
+          </div>
+          <p class="dim" style="font-size:12px;margin:0 0 10px">Statement submitted on the 'Scholarships' tab in hhs.fullfabric.com requesting SSE Full/Half Tuition Scholarship.</p>
+          <textarea class="input" id="sseScholarshipInput" rows="6" placeholder="Draft your scholarship statement here..." style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13px;padding:12px;resize:vertical">${esc(scholarship)}</textarea>
+        </div>
+
+        <div class="panel" style="padding:18px 20px">
+          <h4 style="font-size:14px;margin:0 0 10px;color:var(--ink)">SSE Early Round Pre-Flight Checkpoints</h4>
+          <div class="rows" style="gap:8px">
+            ${[
+              ['sse_chk_portal', 'Account created at https://hhs.fullfabric.com/ with MSc in Finance selected'],
+              ['sse_chk_gmat', 'GMAT Focus 585 score report ordered to program code MFV-98-26'],
+              ['sse_chk_moi', 'BUP Medium of Instruction certificate uploaded to claim English test waiver'],
+              ['sse_chk_cv', '1-page concise Finance CV attached'],
+              ['sse_chk_video', '60-second video introduction recorded and link/file attached'],
+              ['sse_chk_refs', 'Contact details of 2 referees entered in portal (referees submit directly)'],
+              ['sse_chk_scholarship', 'Scholarship tab completed requesting SSE Full/Half Tuition Fee Waiver']
+            ].map(([k, label]) => `
+              <label style="display:flex;align-items:center;gap:10px;font-size:12.5px;cursor:pointer">
+                <input type="checkbox" data-ssechk="${k}" ${sseChecks[k] ? 'checked' : ''} style="cursor:pointer">
+                <span style="color:${sseChecks[k] ? 'var(--green)' : 'var(--ink)'};font-weight:${sseChecks[k] ? '600' : '400'}">${esc(label)}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Structural Guidance, Evidence Hooks & Video Script -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+          <h3 style="font-size:15px;margin:0">Prompt 1 Structure &amp; Evidence Hooks (300 Words)</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Focus directly on the <strong>Investment Management specialization</strong> and rigorous financial asset pricing:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • <strong>Program Fit:</strong> Apply to MSc in Finance — Investment Management specialization to master advanced fixed income securities, empirical asset pricing, and portfolio optimization.<br>
+            • <strong>Professional Track Record:</strong> CFA Charterholder (first attempt while working full time) + Associate Manager ALM at City Bank executing $90–110M daily money market and FX swaps.<br>
+            • <strong>Quantitative Innovation:</strong> Scraped central bank auctions and modeled duration/cash flows across all 310 outstanding Bangladesh government securities.<br>
+            • <strong>SSE Ecosystem:</strong> Eager to engage with the <em>Swedish House of Finance (SHoF)</em> and SSE's #23 FT global finance network.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+          <h3 style="font-size:15px;margin:0">Prompt 2 Structure &amp; Evidence Hooks (200 Words)</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Articulate why studying in Stockholm and working across international capital markets is essential:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • <strong>International Perspective:</strong> Emerging markets require global fixed-income and debt-capital market frameworks to develop liquid secondary sovereign yield curves.<br>
+            • <strong>Nordic Advantage:</strong> Stockholm is the financial hub of Northern Europe and a global pioneer in green bonds and sustainable debt instruments.<br>
+            • <strong>Career Trajectory:</strong> Aspiring to work in institutional fixed income asset management or debt capital markets in Europe before driving bond market reforms internationally.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--amber)">
+          <h3 style="font-size:15px;margin:0">60-Second Video Introduction Script Architecture</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Record a sharp, professional 60-second video on your smartphone (upload unlisted YouTube link):
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.55;color:var(--ink)">
+            • <strong>[0:00 – 0:15] Introduction:</strong> "Hello, my name is Hasibul Hasan. I am a CFA Charterholder with a background in economics and currently work in Treasury Asset-Liability Management at The City Bank in Dhaka."<br>
+            • <strong>[0:15 – 0:35] Professional Substance:</strong> "Every day, I execute 90 to 110 million dollars in interbank money market and FX transactions, and independently modeled the duration and cash flows of all 310 outstanding Bangladesh government securities."<br>
+            • <strong>[0:35 – 0:50] Why SSE:</strong> "I am applying to the Master of Science in Finance at Stockholm School of Economics for its world-class Investment Management track and proximity to the Swedish House of Finance."<br>
+            • <strong>[0:50 – 1:00] Closing:</strong> "I look forward to contributing my emerging-market fixed-income experience to SSE's dynamic cohort this coming August."
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--green)">
+          <h3 style="font-size:15px;margin:0">Scholarship Tab: SSE Tuition Waiver Strategy</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            On the portal 'Scholarships' tab, request consideration for the SSE Full/Half Tuition Fee Waiver:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • Emphasize non-EU emerging market residency and inability to self-fund SEK 360,000 total tuition without scholarships.<br>
+            • Reinforce academic merit: CFA Charterholder (first attempt), 27 quantitative credits, 4.00 thesis grade, and daily treasury execution responsibility.
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  wireChips(root, 'wTab', k => { app.f.workshopTab = k; renderWorkshop(root); });
+
+  const ta1 = $('#sseEssay1Input', root);
+  if (ta1) {
+    ta1.oninput = () => {
+      const val = ta1.value;
+      try { localStorage.setItem('sv-sse-essay1', val); } catch (e) {}
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      const counter = $('#sseW1Counter', root);
+      if (counter) counter.textContent = `${words} / 300 words`;
+    };
+  }
+
+  const ta2 = $('#sseEssay2Input', root);
+  if (ta2) {
+    ta2.oninput = () => {
+      const val = ta2.value;
+      try { localStorage.setItem('sv-sse-essay2', val); } catch (e) {}
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      const counter = $('#sseW2Counter', root);
+      if (counter) counter.textContent = `${words} / 200 words`;
+    };
+  }
+
+  const taSch = $('#sseScholarshipInput', root);
+  if (taSch) {
+    taSch.oninput = () => {
+      try { localStorage.setItem('sv-sse-scholarship', taSch.value); } catch (e) {}
+    };
+  }
+
+  $$('[data-ssechk]', root).forEach(chk => {
+    chk.onchange = () => {
+      sseChecks[chk.dataset.ssechk] = chk.checked;
+      try { localStorage.setItem('sv-sse-checks', JSON.stringify(sseChecks)); } catch (e) {}
+      renderWorkshop(root);
+    };
+  });
 }
 
 /* ============================================================================
@@ -2287,6 +2603,27 @@ function openTarget(id) {
     <div class="field"><div class="field-k">Funding</div><div class="field-v">${esc(fv(t.funding))}${factBadge(t.funding)}${t.fundingDetail ? `\n<span class="muted">${esc(fv(t.fundingDetail))}</span>${factBadge(t.fundingDetail)}` : ''}</div></div>
     ${t.subjectFit ? `<div class="field"><div class="field-k">Subject fit</div><div class="field-v">${esc(t.subjectFit)}</div></div>` : ''}
     <div class="field"><div class="field-k">How to apply</div><div class="field-v">${esc(t.route)}${t.gateLabel ? `\n<span class="muted">${esc(t.gateLabel)}</span>` : ''}</div></div>
+    ${t.rounds?.length ? `
+      <div class="field" style="margin-top:14px">
+        <div class="field-k" style="color:var(--amber)">⚡ Multi-Round Deadlines &amp; Portal Windows</div>
+        <div class="rows" style="gap:8px;margin-top:6px">
+          ${t.rounds.map(r => {
+            const rd = daysUntil(r.deadline);
+            return `
+              <div style="padding:10px 12px;background:var(--sheet-2);border-radius:var(--r-ctl);border:1px solid var(--rule);font-size:12.5px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <strong>${esc(r.name)}</strong>
+                  <span class="tag ${rd <= 30 && rd >= 0 ? 'warn' : 'plain'}">${dueText(rd)}</span>
+                </div>
+                <div style="font-weight:600;color:var(--ink-2);margin-top:3px">${esc(r.label)}</div>
+                <div class="dim" style="font-size:12px;margin-top:3px">${esc(r.description)}</div>
+                ${r.portalUrl ? `<div style="margin-top:6px"><a href="${esc(r.portalUrl)}" target="_blank" rel="noopener" class="btn btn-sm">Open Portal ↗</a></div>` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    ` : ''}
     <div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(t.why)}</div></div>
     <div class="field"><div class="field-k">Eligible programmes</div>${list(t.eligibleProgrammes)}</div>
     ${t.requiredDocs?.length ? `

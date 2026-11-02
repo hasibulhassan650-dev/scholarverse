@@ -233,6 +233,102 @@ const TARGETS = [
     nextAction: "Create a universityadmissions.se account — the Swedish application window opens ~16 October (10 days)."
   },
   {
+    id: "sse-finance",
+    name: "Stockholm School of Economics (SSE) — MSc in Finance",
+    short: "SSE Finance",
+    country: "Sweden",
+    flag: "🇸🇪",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "PERFECT — FT Top 25 Master in Finance globally; Corporate Finance & Investment Management specializations",
+    funding: {"value":"SEK 180,000/yr tuition fee waiver (Full or Half scholarship) + Swedish Institute (SISGP) eligible","source":"https://www.hhs.se/education/information/scholarships/","checked":"2026-10-31","status":"verified"},
+    fundingDetail: {"value":"24 months, 120 ECTS, English-taught. Direct SSE portal scholarships cover full/half tuition. Also eligible for Swedish Institute SISGP (tuition + SEK 12,000/mo living stipend + SEK 15,000 travel).","source":"https://www.hhs.se/education/information/scholarships/ ; https://si.se","checked":"2026-10-31","status":"verified"},
+    deadline: {"value":"2026-11-15","source":"https://www.hhs.se/education/master/finance/mfin-application/","checked":"2026-10-31","status":"verified"},
+    deadlineLabel: "15 Nov 2026 (Early Round) / 15 Jan 2027 (General Round)",
+    gateDeadline: {"value":"2027-01-15","source":"https://www.hhs.se/education/master/finance/mfin-application/","checked":"2026-10-31","status":"verified"},
+    gateLabel: "General Application Deadline: 15 January 2027",
+    status: "open",
+    earlyDeadline: "2026-11-15",
+    regularDeadline: "2027-01-15",
+    rounds: [
+      {
+        name: "Early Application Round",
+        type: "early",
+        deadline: "2026-11-15",
+        label: "15 November 2026 (23:59 CET) — Early Round",
+        portalUrl: "https://hhs.fullfabric.com/",
+        description: "Admissions decision released by end of December 2026. Early scholarship consideration for SSE full/half tuition waivers."
+      },
+      {
+        name: "General Application Round",
+        type: "regular",
+        deadline: "2027-01-15",
+        label: "15 January 2027 (23:59 CET) — General Round",
+        portalUrl: "https://hhs.fullfabric.com/",
+        description: "Final deadline for Fall 2027 intake. Notification regarding selection results on March 17, 2027."
+      },
+      {
+        name: "Swedish Institute (SISGP) Round",
+        type: "scholarship",
+        deadline: "2027-02-25",
+        label: "09–25 February 2027 — SISGP Portal",
+        portalUrl: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/",
+        description: "SSE Master programs are explicitly eligible for SISGP scholarships even though SSE does not use universityadmissions.se."
+      }
+    ],
+    route: "DIRECT to university portal: https://hhs.fullfabric.com/ (Does NOT use universityadmissions.se!). Apply for SSE scholarships directly under the 'Scholarships' tab in the application.",
+    why: "Top Nordic finance school (#23 Financial Times global). CFA Charterholder is a massive asset. GMAT Focus 585 clears the 555 minimum. English test is WAIVED for degrees taught in English (BUP MOI accepted).",
+    eligibleProgrammes: [
+      "MSc in Finance — Corporate Finance Specialization (120 ECTS, 2 years)",
+      "MSc in Finance — Investment Management Specialization (120 ECTS, 2 years)"
+    ],
+    scoring: {
+      admitOdds: 4,
+      admitRationale: "GMAT Focus 585 beats 555 cutoff; CFA Charterholder; 87 cr Econ + 27 cr Math/Stats clears academic requirement; MOI waives English test.",
+      fundingOdds: 4,
+      fundingRationale: "Dual funding shot: SSE internal merit/need scholarships (full/half tuition waivers) + Swedish Institute SISGP full scholarship.",
+      fullCostCovered: "yes",
+      fullCostRationale: "SSE full tuition waiver + SISGP living stipend (SEK 12,000/mo) or personal savings / spouse income.",
+      subjectFit: 5,
+      subjectRationale: "100% pure finance. Investment Management specialization directly aligns with Treasury ALM, fixed income and markets.",
+      careerPR: 4,
+      careerPRRationale: "Stockholm is the Nordic finance & fintech capital; English is widely used in high finance; Sweden 12mo post-study work visa → PR at 4 yrs.",
+      coupleFit: 5,
+      coupleFitRationale: "Stockholm co-location with Zarin; spouse receives full unrestricted work permit in Sweden.",
+      effort: 3,
+      effortRationale: "Short concise application: 300 words reason + 200 words international motivation + 1-page CV + 60-sec video + 2 references + transcript/degree."
+    },
+    requiredDocs: [
+      { docId: "degree", label: "1. University Degree Certificate", rule: "BSS Economics degree certificate (or provisional certificate)" },
+      { docId: "transcript", label: "2. Academic Transcript of Records", rule: "English transcript showing courses and grades (87 cr Econ + 27 cr Math/Stats)" },
+      { docId: "gmat-report", label: "3. Official GMAT Focus Score Report", rule: "Score 585 (beats 555 minimum); code MFV-98-26" },
+      { docId: "moi", label: "4. English Test Exemption Proof (MOI)", rule: "Exempt based on bachelor degree conducted entirely in English; BUP MOI certificate" },
+      { docId: "cv-onepage", label: "5. One-Page CV", rule: "Concise 1-page CV highlighting CFA charter, City Bank ALM experience, BUP BSS" },
+      { docId: "sse-essays", label: "6. Motivation & Program Fit Essays", rule: "In-portal essays: max 300 words reasons for program + max 200 words international motivation" },
+      { docId: "sse-video", label: "7. Short Video Introduction", rule: "Max 60 seconds smartphone video explaining why you want to study at SSE" },
+      { docId: "referees", label: "8. Up to Two References", rule: "Enter contact details of 2 referees in the portal (referees submit directly)" },
+      { docId: "sse-scholarship", label: "9. SSE Scholarship Motivation Statement", rule: "Submitted within the portal on the 'Scholarships' tab requesting full tuition fee waiver" }
+    ],
+    gates: [
+      "Bachelor's degree with ≥60 ECTS social sciences and ≥30 ECTS quantitative fields (MET: 87 cr Econ + 27 cr Math/Stats ✅)",
+      "GMAT Focus minimum 555 (MET: Hasibul holds official 585 ✅)",
+      "English proficiency proof (MET: Degree taught entirely in English exempts IELTS/TOEFL ✅)",
+      "Must submit complete application before 15 November 2026 for early round or 15 January 2027 for general round"
+    ],
+    gatesMet: [
+      "GMAT Focus score 585 clears 555 threshold ✅",
+      "Quantitative and social science credit prerequisites cleared ✅",
+      "English test requirement waived via Medium of Instruction ✅",
+      "CFA Charterholder (Level 7) credential verified ✅"
+    ],
+    gatesRisk: [
+      "Competitive global admissions pool (#23 FT Global)",
+      "Must submit high-quality 60-sec video and concise essays by 15 November 2026"
+    ],
+    source: "https://www.hhs.se/education/master/finance/mfin-application/ — verified 31 October 2026",
+    nextAction: "Complete the 300-word and 200-word essays in #workshop, record the 60-second video, and submit at https://hhs.fullfabric.com/ before 15 November 2026 (23:59 CET)."
+  },
+  {
     id: "goettingen",
     name: "DAAD EPOS — MSc Development Economics",
     short: "Göttingen EPOS",
@@ -730,7 +826,12 @@ const DOCUMENTS = [
   { id: "pretest", name: "AgEcon PreTest", type: "Application", status: "missing", req: ["Hohenheim"], spec: "Self-evaluation required by Hohenheim.", owner: "You" },
   { id: "working-paper", name: "Yield-curve working paper", type: "Research", status: "not_started", req: ["All"], spec: "⚡ HIGHEST-LEVERAGE ASSET. Fit Nelson-Siegel to your 310-security dataset. Converts 'no publications' into independent empirical research and becomes your professor-outreach attachment.", owner: "You" },
   { id: "course-descriptions", name: "Official Course Descriptions (Syllabus)", type: "Academic", status: "have", req: ["Göttingen"], spec: "✅ SELF-COMPILATION OFFICIALLY PERMITTED — Göttingen EPOS Coordination Team confirmed in writing on 29 Oct 2026: 'Additionally, you can compiled the course description yourself into one document which can be uploaded for our application.' Clean scan of original certificates/transcripts also officially allowed on portal. Held file: 'Hasibul Hasan_Course Module_BSS in Economics.pdf' (189 KB, 42 courses, 126 credits).", owner: "You" },
-  { id: "achievements-summary", name: "Summary & Proof of Additional Achievements", type: "Academic", status: "have", req: ["Göttingen"], spec: "Max 1 page bullet summary + single combined PDF of supporting certificates (CFA Level 7 Charter, BAFEDA, Level 2 MIS Award, BNCC).", owner: "You" }
+  { id: "achievements-summary", name: "Summary & Proof of Additional Achievements", type: "Academic", status: "have", req: ["Göttingen"], spec: "Max 1 page bullet summary + single combined PDF of supporting certificates (CFA Level 7 Charter, BAFEDA, Level 2 MIS Award, BNCC).", owner: "You" },
+  { id: "gmat-report", name: "Official GMAT Focus score report", type: "Tests", status: "have", req: ["SSE", "Edwards", "UBC"], spec: "Official GMAC Score Report (Score: 585, Quantitative 80, Verbal 79, Data Insights 77). Code for SSE MSc Finance: MFV-98-26.", owner: "You" },
+  { id: "cv-onepage", name: "One-page Finance CV", type: "Writing", status: "have", req: ["SSE", "Professors"], spec: "1-page concise executive CV highlighting CFA Level 7 Charter, City Bank Treasury ALM metrics ($90-110M/day), and BUP BSS Economics.", owner: "You" },
+  { id: "sse-essays", name: "SSE Motivation Essays (300w + 200w)", type: "Writing", status: "not_started", req: ["SSE"], spec: "In-portal essays: Question 1 (Reasons for choosing SSE MSc Finance, max 300 words) + Question 2 (Motivation for studying/working internationally, max 200 words). Draftable in #workshop.", owner: "You", blocker: true, critical: true },
+  { id: "sse-video", name: "SSE 60-Second Video Introduction", type: "Application", status: "not_started", req: ["SSE"], spec: "Max 60 seconds video explaining why you want to study at SSE. Unlisted YouTube link or direct video upload.", owner: "You" },
+  { id: "sse-scholarship", name: "SSE Scholarship Motivation Statement", type: "Writing", status: "not_started", req: ["SSE"], spec: "Statement on portal 'Scholarships' tab justifying need and merit for SSE Full/Half Tuition Fee Waiver.", owner: "You" }
 ];
 
 /* ---------------------------------------------------------------------------

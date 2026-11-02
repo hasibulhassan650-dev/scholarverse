@@ -484,6 +484,95 @@ const MISSIONS = [
     ]
   },
 
+  /* =====  STOCKHOLM SCHOOL OF ECONOMICS (SSE) EARLY ROUND  ===== */
+  {
+    id: "sse-portal-setup",
+    title: "Register & Start SSE Application (hhs.fullfabric.com)",
+    detail: "Create an applicant profile on Stockholm School of Economics' independent application portal at https://hhs.fullfabric.com/. Select MSc in Finance (Corporate Finance or Investment Management specialization). Enter GMAT Focus score 585 (Code: MFV-98-26).",
+    why: "SSE does NOT use universityadmissions.se. It uses its own portal with an Early Application Deadline of 15 November 2026 (23:59 CET). Submitting early provides early decisions (by late December) and priority consideration for SSE Full/Half Tuition Scholarships.",
+    xp: 50,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-05",
+    urgency: "critical",
+    category: "Submission",
+    actionUrl: "https://hhs.fullfabric.com/",
+    actionLabel: "🇸🇪 SSE Application Portal",
+    submissionGuide: "Where & how: Visit https://hhs.fullfabric.com/, create an account, select 'Master of Science in Finance', and begin filling in academic background. Upload BUP BSS Economics transcript, provisional certificate, and MOI letter (for English test waiver).",
+    sources: [
+      { label: "SSE MSc Finance Application Guide", url: "https://www.hhs.se/education/master/finance/mfin-application/" }
+    ],
+    checklist: [
+      "Create account at https://hhs.fullfabric.com/",
+      "Select Master of Science in Finance",
+      "Enter GMAT Focus score 585 and request official score report to MFV-98-26",
+      "Upload BUP Medium of Instruction certificate to claim English test exemption",
+      "Fill in BUP Bachelor degree coursework"
+    ]
+  },
+  {
+    id: "sse-draft-essays",
+    title: "Draft SSE Motivation Essays (300w Reasons + 200w International)",
+    detail: "Complete the two required application essay prompts for SSE MSc in Finance: (1) Reasons for applying (max 300 words), (2) Motivation for studying/working internationally (max 200 words). Also prepare the scholarship motivation statement for the 'Scholarships' tab.",
+    why: "SSE evaluates applicants holistically. Your CFA charter, 27 math/stats credits, and City Bank ALM experience ($90-110M daily execution and 310 G-sec yield curve modeling) make a compelling case for the Investment Management specialization.",
+    xp: 100,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-08",
+    urgency: "critical",
+    category: "Writing",
+    actionUrl: "https://www.hhs.se/education/master/finance/mfin-application/",
+    actionLabel: "📝 Open SSE Essay Workshop",
+    checklist: [
+      "Draft Question 1: Reasons for choosing SSE MSc Finance (max 300 words) in #workshop",
+      "Draft Question 2: Motivation for studying/working internationally (max 200 words) in #workshop",
+      "Draft Scholarship Statement for full/half tuition fee waiver on the 'Scholarships' tab",
+      "Ensure word counts strictly stay within limits (300 and 200 words)"
+    ]
+  },
+  {
+    id: "sse-record-video",
+    title: "Record 60-Second Video Introduction for SSE",
+    detail: "Record a 60-second smartphone elevator pitch explaining why you want to study at SSE and how your CFA charter / Treasury ALM experience makes you an ideal fit for the Investment Management specialization.",
+    why: "SSE states the video introduction is 'highly recommended'. A clear, confident 60-second video presenting your professional communication skills sets your application apart in the early round.",
+    xp: 80,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-10",
+    urgency: "high",
+    category: "Application",
+    checklist: [
+      "Follow the 60-second script outline in #workshop",
+      "Record in good lighting with clean audio (smartphone camera)",
+      "Upload video as an unlisted YouTube link or directly to hhs.fullfabric.com",
+      "Verify video link opens and audio is crisp"
+    ]
+  },
+  {
+    id: "sse-early-submission",
+    title: "SUBMIT SSE MSc Finance Early Application & Scholarship",
+    detail: "Finalize document uploads (degree, transcript, GMAT report MFV-98-26, BUP MOI exemption certificate, 1-page CV, video, 2 referee contacts) and submit by the Early Application Deadline of 15 November 2026 at 23:59 CET.",
+    why: "Submitting by the 15 November Early Deadline gives you an admissions decision by the end of December 2026, locks in priority consideration for SSE Tuition Waivers, and allows you to use your admission for the Swedish Institute (SISGP) scholarship portal in February.",
+    xp: 250,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-15",
+    urgency: "critical",
+    category: "Submission",
+    actionUrl: "https://hhs.fullfabric.com/",
+    actionLabel: "🇸🇪 Final Submit at hhs.fullfabric.com",
+    sources: [
+      { label: "SSE MSc Finance Application Timeline", url: "https://www.hhs.se/education/master/finance/mfin-application/" }
+    ],
+    checklist: [
+      "Review all application tabs on hhs.fullfabric.com",
+      "Confirm GMAT Focus score 585 is entered and report ordered to MFV-98-26",
+      "Verify 2 referee contact emails are entered",
+      "Confirm 'Scholarships' tab is completed with fee waiver request",
+      "Submit application before 15 November 2026 at 23:59 CET"
+    ]
+  },
+
   /* =====  HOHENHEIM PATH  ===== */
   {
     id: "agecon-pretest",
@@ -753,11 +842,11 @@ const ROUTINE = [
    FIVE THINGS THIS WEEK — the standing answer to "what now?"
    ------------------------------------------------------------ */
 const THIS_WEEK = [
-  { id: "credit-audit",          label: "Send Göttingen Credit Breakdown", note: "PASSED: 27 cr Math/Stats (triple requirement)" },
-  { id: "employer-cert",         label: "Request Certificate of Employment", note: "Mandatory for EPOS" },
-  { id: "employer-letter",       label: "Request employer recommendation letter", note: "Mandatory for EPOS" },
-  { id: "ranking-letter",        label: "Request BUP ranking + ECTS letter", note: "Your CGPA defence" },
-  { id: "confirm-passport",      label: "Confirm passport number and expiry", note: "Needed everywhere" }
+  { id: "sse-portal-setup",      label: "Register on SSE Portal (hhs.fullfabric.com)", note: "Early Deadline: 15 Nov (14 days left!)" },
+  { id: "sse-draft-essays",      label: "Draft SSE 300w & 200w Essays", note: "Use #workshop for SSE Finance" },
+  { id: "credit-audit",          label: "Review Göttingen Credit Breakdown", note: "PASSED: 27 cr Math/Stats (triple requirement)" },
+  { id: "employer-cert",         label: "Request Certificate of Employment", note: "Mandatory for EPOS & SISGP" },
+  { id: "employer-letter",       label: "Request employer recommendation letter", note: "Mandatory for EPOS" }
 ];
 
 /* ------------------------------------------------------------

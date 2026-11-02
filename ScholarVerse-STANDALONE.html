@@ -1081,6 +1081,102 @@ const TARGETS = [
     nextAction: "Create a universityadmissions.se account — the Swedish application window opens ~16 October (10 days)."
   },
   {
+    id: "sse-finance",
+    name: "Stockholm School of Economics (SSE) — MSc in Finance",
+    short: "SSE Finance",
+    country: "Sweden",
+    flag: "🇸🇪",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "PERFECT — FT Top 25 Master in Finance globally; Corporate Finance & Investment Management specializations",
+    funding: {"value":"SEK 180,000/yr tuition fee waiver (Full or Half scholarship) + Swedish Institute (SISGP) eligible","source":"https://www.hhs.se/education/information/scholarships/","checked":"2026-10-31","status":"verified"},
+    fundingDetail: {"value":"24 months, 120 ECTS, English-taught. Direct SSE portal scholarships cover full/half tuition. Also eligible for Swedish Institute SISGP (tuition + SEK 12,000/mo living stipend + SEK 15,000 travel).","source":"https://www.hhs.se/education/information/scholarships/ ; https://si.se","checked":"2026-10-31","status":"verified"},
+    deadline: {"value":"2026-11-15","source":"https://www.hhs.se/education/master/finance/mfin-application/","checked":"2026-10-31","status":"verified"},
+    deadlineLabel: "15 Nov 2026 (Early Round) / 15 Jan 2027 (General Round)",
+    gateDeadline: {"value":"2027-01-15","source":"https://www.hhs.se/education/master/finance/mfin-application/","checked":"2026-10-31","status":"verified"},
+    gateLabel: "General Application Deadline: 15 January 2027",
+    status: "open",
+    earlyDeadline: "2026-11-15",
+    regularDeadline: "2027-01-15",
+    rounds: [
+      {
+        name: "Early Application Round",
+        type: "early",
+        deadline: "2026-11-15",
+        label: "15 November 2026 (23:59 CET) — Early Round",
+        portalUrl: "https://hhs.fullfabric.com/",
+        description: "Admissions decision released by end of December 2026. Early scholarship consideration for SSE full/half tuition waivers."
+      },
+      {
+        name: "General Application Round",
+        type: "regular",
+        deadline: "2027-01-15",
+        label: "15 January 2027 (23:59 CET) — General Round",
+        portalUrl: "https://hhs.fullfabric.com/",
+        description: "Final deadline for Fall 2027 intake. Notification regarding selection results on March 17, 2027."
+      },
+      {
+        name: "Swedish Institute (SISGP) Round",
+        type: "scholarship",
+        deadline: "2027-02-25",
+        label: "09–25 February 2027 — SISGP Portal",
+        portalUrl: "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/",
+        description: "SSE Master programs are explicitly eligible for SISGP scholarships even though SSE does not use universityadmissions.se."
+      }
+    ],
+    route: "DIRECT to university portal: https://hhs.fullfabric.com/ (Does NOT use universityadmissions.se!). Apply for SSE scholarships directly under the 'Scholarships' tab in the application.",
+    why: "Top Nordic finance school (#23 Financial Times global). CFA Charterholder is a massive asset. GMAT Focus 585 clears the 555 minimum. English test is WAIVED for degrees taught in English (BUP MOI accepted).",
+    eligibleProgrammes: [
+      "MSc in Finance — Corporate Finance Specialization (120 ECTS, 2 years)",
+      "MSc in Finance — Investment Management Specialization (120 ECTS, 2 years)"
+    ],
+    scoring: {
+      admitOdds: 4,
+      admitRationale: "GMAT Focus 585 beats 555 cutoff; CFA Charterholder; 87 cr Econ + 27 cr Math/Stats clears academic requirement; MOI waives English test.",
+      fundingOdds: 4,
+      fundingRationale: "Dual funding shot: SSE internal merit/need scholarships (full/half tuition waivers) + Swedish Institute SISGP full scholarship.",
+      fullCostCovered: "yes",
+      fullCostRationale: "SSE full tuition waiver + SISGP living stipend (SEK 12,000/mo) or personal savings / spouse income.",
+      subjectFit: 5,
+      subjectRationale: "100% pure finance. Investment Management specialization directly aligns with Treasury ALM, fixed income and markets.",
+      careerPR: 4,
+      careerPRRationale: "Stockholm is the Nordic finance & fintech capital; English is widely used in high finance; Sweden 12mo post-study work visa → PR at 4 yrs.",
+      coupleFit: 5,
+      coupleFitRationale: "Stockholm co-location with Zarin; spouse receives full unrestricted work permit in Sweden.",
+      effort: 3,
+      effortRationale: "Short concise application: 300 words reason + 200 words international motivation + 1-page CV + 60-sec video + 2 references + transcript/degree."
+    },
+    requiredDocs: [
+      { docId: "degree", label: "1. University Degree Certificate", rule: "BSS Economics degree certificate (or provisional certificate)" },
+      { docId: "transcript", label: "2. Academic Transcript of Records", rule: "English transcript showing courses and grades (87 cr Econ + 27 cr Math/Stats)" },
+      { docId: "gmat-report", label: "3. Official GMAT Focus Score Report", rule: "Score 585 (beats 555 minimum); code MFV-98-26" },
+      { docId: "moi", label: "4. English Test Exemption Proof (MOI)", rule: "Exempt based on bachelor degree conducted entirely in English; BUP MOI certificate" },
+      { docId: "cv-onepage", label: "5. One-Page CV", rule: "Concise 1-page CV highlighting CFA charter, City Bank ALM experience, BUP BSS" },
+      { docId: "sse-essays", label: "6. Motivation & Program Fit Essays", rule: "In-portal essays: max 300 words reasons for program + max 200 words international motivation" },
+      { docId: "sse-video", label: "7. Short Video Introduction", rule: "Max 60 seconds smartphone video explaining why you want to study at SSE" },
+      { docId: "referees", label: "8. Up to Two References", rule: "Enter contact details of 2 referees in the portal (referees submit directly)" },
+      { docId: "sse-scholarship", label: "9. SSE Scholarship Motivation Statement", rule: "Submitted within the portal on the 'Scholarships' tab requesting full tuition fee waiver" }
+    ],
+    gates: [
+      "Bachelor's degree with ≥60 ECTS social sciences and ≥30 ECTS quantitative fields (MET: 87 cr Econ + 27 cr Math/Stats ✅)",
+      "GMAT Focus minimum 555 (MET: Hasibul holds official 585 ✅)",
+      "English proficiency proof (MET: Degree taught entirely in English exempts IELTS/TOEFL ✅)",
+      "Must submit complete application before 15 November 2026 for early round or 15 January 2027 for general round"
+    ],
+    gatesMet: [
+      "GMAT Focus score 585 clears 555 threshold ✅",
+      "Quantitative and social science credit prerequisites cleared ✅",
+      "English test requirement waived via Medium of Instruction ✅",
+      "CFA Charterholder (Level 7) credential verified ✅"
+    ],
+    gatesRisk: [
+      "Competitive global admissions pool (#23 FT Global)",
+      "Must submit high-quality 60-sec video and concise essays by 15 November 2026"
+    ],
+    source: "https://www.hhs.se/education/master/finance/mfin-application/ — verified 31 October 2026",
+    nextAction: "Complete the 300-word and 200-word essays in #workshop, record the 60-second video, and submit at https://hhs.fullfabric.com/ before 15 November 2026 (23:59 CET)."
+  },
+  {
     id: "goettingen",
     name: "DAAD EPOS — MSc Development Economics",
     short: "Göttingen EPOS",
@@ -1578,7 +1674,12 @@ const DOCUMENTS = [
   { id: "pretest", name: "AgEcon PreTest", type: "Application", status: "missing", req: ["Hohenheim"], spec: "Self-evaluation required by Hohenheim.", owner: "You" },
   { id: "working-paper", name: "Yield-curve working paper", type: "Research", status: "not_started", req: ["All"], spec: "⚡ HIGHEST-LEVERAGE ASSET. Fit Nelson-Siegel to your 310-security dataset. Converts 'no publications' into independent empirical research and becomes your professor-outreach attachment.", owner: "You" },
   { id: "course-descriptions", name: "Official Course Descriptions (Syllabus)", type: "Academic", status: "have", req: ["Göttingen"], spec: "✅ SELF-COMPILATION OFFICIALLY PERMITTED — Göttingen EPOS Coordination Team confirmed in writing on 29 Oct 2026: 'Additionally, you can compiled the course description yourself into one document which can be uploaded for our application.' Clean scan of original certificates/transcripts also officially allowed on portal. Held file: 'Hasibul Hasan_Course Module_BSS in Economics.pdf' (189 KB, 42 courses, 126 credits).", owner: "You" },
-  { id: "achievements-summary", name: "Summary & Proof of Additional Achievements", type: "Academic", status: "have", req: ["Göttingen"], spec: "Max 1 page bullet summary + single combined PDF of supporting certificates (CFA Level 7 Charter, BAFEDA, Level 2 MIS Award, BNCC).", owner: "You" }
+  { id: "achievements-summary", name: "Summary & Proof of Additional Achievements", type: "Academic", status: "have", req: ["Göttingen"], spec: "Max 1 page bullet summary + single combined PDF of supporting certificates (CFA Level 7 Charter, BAFEDA, Level 2 MIS Award, BNCC).", owner: "You" },
+  { id: "gmat-report", name: "Official GMAT Focus score report", type: "Tests", status: "have", req: ["SSE", "Edwards", "UBC"], spec: "Official GMAC Score Report (Score: 585, Quantitative 80, Verbal 79, Data Insights 77). Code for SSE MSc Finance: MFV-98-26.", owner: "You" },
+  { id: "cv-onepage", name: "One-page Finance CV", type: "Writing", status: "have", req: ["SSE", "Professors"], spec: "1-page concise executive CV highlighting CFA Level 7 Charter, City Bank Treasury ALM metrics ($90-110M/day), and BUP BSS Economics.", owner: "You" },
+  { id: "sse-essays", name: "SSE Motivation Essays (300w + 200w)", type: "Writing", status: "not_started", req: ["SSE"], spec: "In-portal essays: Question 1 (Reasons for choosing SSE MSc Finance, max 300 words) + Question 2 (Motivation for studying/working internationally, max 200 words). Draftable in #workshop.", owner: "You", blocker: true, critical: true },
+  { id: "sse-video", name: "SSE 60-Second Video Introduction", type: "Application", status: "not_started", req: ["SSE"], spec: "Max 60 seconds video explaining why you want to study at SSE. Unlisted YouTube link or direct video upload.", owner: "You" },
+  { id: "sse-scholarship", name: "SSE Scholarship Motivation Statement", type: "Writing", status: "not_started", req: ["SSE"], spec: "Statement on portal 'Scholarships' tab justifying need and merit for SSE Full/Half Tuition Fee Waiver.", owner: "You" }
 ];
 
 /* ---------------------------------------------------------------------------
@@ -2479,6 +2580,95 @@ const MISSIONS = [
     ]
   },
 
+  /* =====  STOCKHOLM SCHOOL OF ECONOMICS (SSE) EARLY ROUND  ===== */
+  {
+    id: "sse-portal-setup",
+    title: "Register & Start SSE Application (hhs.fullfabric.com)",
+    detail: "Create an applicant profile on Stockholm School of Economics' independent application portal at https://hhs.fullfabric.com/. Select MSc in Finance (Corporate Finance or Investment Management specialization). Enter GMAT Focus score 585 (Code: MFV-98-26).",
+    why: "SSE does NOT use universityadmissions.se. It uses its own portal with an Early Application Deadline of 15 November 2026 (23:59 CET). Submitting early provides early decisions (by late December) and priority consideration for SSE Full/Half Tuition Scholarships.",
+    xp: 50,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-05",
+    urgency: "critical",
+    category: "Submission",
+    actionUrl: "https://hhs.fullfabric.com/",
+    actionLabel: "🇸🇪 SSE Application Portal",
+    submissionGuide: "Where & how: Visit https://hhs.fullfabric.com/, create an account, select 'Master of Science in Finance', and begin filling in academic background. Upload BUP BSS Economics transcript, provisional certificate, and MOI letter (for English test waiver).",
+    sources: [
+      { label: "SSE MSc Finance Application Guide", url: "https://www.hhs.se/education/master/finance/mfin-application/" }
+    ],
+    checklist: [
+      "Create account at https://hhs.fullfabric.com/",
+      "Select Master of Science in Finance",
+      "Enter GMAT Focus score 585 and request official score report to MFV-98-26",
+      "Upload BUP Medium of Instruction certificate to claim English test exemption",
+      "Fill in BUP Bachelor degree coursework"
+    ]
+  },
+  {
+    id: "sse-draft-essays",
+    title: "Draft SSE Motivation Essays (300w Reasons + 200w International)",
+    detail: "Complete the two required application essay prompts for SSE MSc in Finance: (1) Reasons for applying (max 300 words), (2) Motivation for studying/working internationally (max 200 words). Also prepare the scholarship motivation statement for the 'Scholarships' tab.",
+    why: "SSE evaluates applicants holistically. Your CFA charter, 27 math/stats credits, and City Bank ALM experience ($90-110M daily execution and 310 G-sec yield curve modeling) make a compelling case for the Investment Management specialization.",
+    xp: 100,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-08",
+    urgency: "critical",
+    category: "Writing",
+    actionUrl: "https://www.hhs.se/education/master/finance/mfin-application/",
+    actionLabel: "📝 Open SSE Essay Workshop",
+    checklist: [
+      "Draft Question 1: Reasons for choosing SSE MSc Finance (max 300 words) in #workshop",
+      "Draft Question 2: Motivation for studying/working internationally (max 200 words) in #workshop",
+      "Draft Scholarship Statement for full/half tuition fee waiver on the 'Scholarships' tab",
+      "Ensure word counts strictly stay within limits (300 and 200 words)"
+    ]
+  },
+  {
+    id: "sse-record-video",
+    title: "Record 60-Second Video Introduction for SSE",
+    detail: "Record a 60-second smartphone elevator pitch explaining why you want to study at SSE and how your CFA charter / Treasury ALM experience makes you an ideal fit for the Investment Management specialization.",
+    why: "SSE states the video introduction is 'highly recommended'. A clear, confident 60-second video presenting your professional communication skills sets your application apart in the early round.",
+    xp: 80,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-10",
+    urgency: "high",
+    category: "Application",
+    checklist: [
+      "Follow the 60-second script outline in #workshop",
+      "Record in good lighting with clean audio (smartphone camera)",
+      "Upload video as an unlisted YouTube link or directly to hhs.fullfabric.com",
+      "Verify video link opens and audio is crisp"
+    ]
+  },
+  {
+    id: "sse-early-submission",
+    title: "SUBMIT SSE MSc Finance Early Application & Scholarship",
+    detail: "Finalize document uploads (degree, transcript, GMAT report MFV-98-26, BUP MOI exemption certificate, 1-page CV, video, 2 referee contacts) and submit by the Early Application Deadline of 15 November 2026 at 23:59 CET.",
+    why: "Submitting by the 15 November Early Deadline gives you an admissions decision by the end of December 2026, locks in priority consideration for SSE Tuition Waivers, and allows you to use your admission for the Swedish Institute (SISGP) scholarship portal in February.",
+    xp: 250,
+    targets: ["sse-finance"],
+    owner: "You",
+    deadline: "2026-11-15",
+    urgency: "critical",
+    category: "Submission",
+    actionUrl: "https://hhs.fullfabric.com/",
+    actionLabel: "🇸🇪 Final Submit at hhs.fullfabric.com",
+    sources: [
+      { label: "SSE MSc Finance Application Timeline", url: "https://www.hhs.se/education/master/finance/mfin-application/" }
+    ],
+    checklist: [
+      "Review all application tabs on hhs.fullfabric.com",
+      "Confirm GMAT Focus score 585 is entered and report ordered to MFV-98-26",
+      "Verify 2 referee contact emails are entered",
+      "Confirm 'Scholarships' tab is completed with fee waiver request",
+      "Submit application before 15 November 2026 at 23:59 CET"
+    ]
+  },
+
   /* =====  HOHENHEIM PATH  ===== */
   {
     id: "agecon-pretest",
@@ -2748,11 +2938,11 @@ const ROUTINE = [
    FIVE THINGS THIS WEEK — the standing answer to "what now?"
    ------------------------------------------------------------ */
 const THIS_WEEK = [
-  { id: "credit-audit",          label: "Send Göttingen Credit Breakdown", note: "PASSED: 27 cr Math/Stats (triple requirement)" },
-  { id: "employer-cert",         label: "Request Certificate of Employment", note: "Mandatory for EPOS" },
-  { id: "employer-letter",       label: "Request employer recommendation letter", note: "Mandatory for EPOS" },
-  { id: "ranking-letter",        label: "Request BUP ranking + ECTS letter", note: "Your CGPA defence" },
-  { id: "confirm-passport",      label: "Confirm passport number and expiry", note: "Needed everywhere" }
+  { id: "sse-portal-setup",      label: "Register on SSE Portal (hhs.fullfabric.com)", note: "Early Deadline: 15 Nov (14 days left!)" },
+  { id: "sse-draft-essays",      label: "Draft SSE 300w & 200w Essays", note: "Use #workshop for SSE Finance" },
+  { id: "credit-audit",          label: "Review Göttingen Credit Breakdown", note: "PASSED: 27 cr Math/Stats (triple requirement)" },
+  { id: "employer-cert",         label: "Request Certificate of Employment", note: "Mandatory for EPOS & SISGP" },
+  { id: "employer-letter",       label: "Request employer recommendation letter", note: "Mandatory for EPOS" }
 ];
 
 /* ------------------------------------------------------------
@@ -24215,7 +24405,7 @@ const app = {
   view: 'dashboard',
   f: { mission: 'all', doc: 'all', target: 'all', uniGate: 'all', uniMode: 'directory105', uniQuery: '', mpGate: 'all', mpQuery: '',
        dirDiscipline: 'all', dirGate: 'all', dirProvince: 'all', dirQuery: '',
-       profTrack: 'all', profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '' },
+       profTrack: 'all', profTier: 'all', profStatus: 'all', profQuery: '', fundKind: 'all', fundQuery: '', citStatus: 'all', cal: 'all', sheet: null, sheetQuery: '', workshopTab: 'goettingen' },
   calDate: null
 };
 if (typeof window !== 'undefined') window.app = app;
@@ -24377,11 +24567,15 @@ const VIEWS = {
 /* fixed milestones that aren't stored as targets */
 const CRITICAL_DATES = [
   { name: 'Göttingen EPOS', date: '2026-11-15' },
+  { name: 'SSE Finance (Early Round)', date: '2026-11-15' },
   { name: 'ETH ESOP', date: '2026-11-30' },
   { name: 'EPFL Excellence', date: '2026-12-15' },
   { name: 'Hohenheim EPOS', date: '2026-12-15' },
+  { name: 'USask Edwards (Priority Funding)', date: '2026-12-15' },
+  { name: 'SSE Finance (General Round)', date: '2027-01-15' },
   { name: 'Swedish universities (ranking locked)', date: '2027-01-15' },
-  { name: 'Sweden 900 SEK fee & document upload', date: '2027-02-01' }
+  { name: 'Sweden 900 SEK fee & document upload', date: '2027-02-01' },
+  { name: 'Swedish Institute (SISGP) Portal', date: '2027-02-09' }
 ];
 const ZOOM = { name: 'Göttingen info session', date: '2026-10-26' };
 
@@ -24948,12 +25142,29 @@ function horizonEvents() {
   const seen = new Set(), out = [];
   const add = (name, rawDate, kind, open) => {
     const date = fv(rawDate);
-    const key = name.toLowerCase().split(' ')[0] + date;
-    if (!date || seen.has(key)) return; seen.add(key);
+    if (!date) return;
+    const key = name.toLowerCase().replace(/[^a-z0-9]/g, '') + '_' + date;
+    if (seen.has(key)) return;
+    seen.add(key);
     out.push({ name, date, kind, d: daysUntil(date), open });
   };
-  app.content.targets.forEach(t => {
-    add(t.short || t.name, t.deadline, 'target', () => openTarget(t.id));
+  (app.content.targets || []).forEach(t => {
+    const sName = t.short || t.name;
+    add(sName, t.deadline, 'target', () => openTarget(t.id));
+    if (t.earlyDeadline) {
+      add(`${sName} (Early Round)`, t.earlyDeadline, 'target', () => openTarget(t.id));
+    }
+    if (t.regularDeadline && fv(t.regularDeadline) !== fv(t.deadline)) {
+      add(`${sName} (General Round)`, t.regularDeadline, 'target', () => openTarget(t.id));
+    }
+    if (t.gateDeadline) {
+      add(`${sName} (Gate)`, t.gateDeadline, 'target', () => openTarget(t.id));
+    }
+    if (Array.isArray(t.rounds)) {
+      t.rounds.forEach(r => {
+        if (r.deadline) add(`${sName} (${r.name})`, r.deadline, 'target', () => openTarget(t.id));
+      });
+    }
   });
   CRITICAL_DATES.forEach(c => add(c.name, c.date, 'critical', () => openCritical(c)));
   add(ZOOM.name, ZOOM.date, 'session', openZoom);
@@ -25332,6 +25543,75 @@ function wireUserInputCard(root) {
   });
 }
 
+function renderSSEScorecard() {
+  const target = (app.content.targets || []).find(t => t.id === 'sse-finance');
+  if (!target || !target.requiredDocs) return '';
+  const dLeft = daysUntil(fv(target.deadline));
+  const docs = target.requiredDocs;
+
+  let completed = 0;
+  const itemsWithStatus = docs.map(rd => {
+    const doc = (app.content.documents || []).find(d => d.id === rd.docId) || {};
+    const attached = app.state.docFiles && app.state.docFiles[rd.docId];
+    const isDone = doc.status === 'have' || !!attached;
+    if (isDone) completed++;
+    return { ...rd, doc, attached, isDone };
+  });
+
+  const pct = Math.round((completed / docs.length) * 100);
+
+  return `
+    <div class="panel" style="margin-top:16px;border-top:3px solid var(--amber);padding:20px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px">
+        <div>
+          <div class="tier-label" style="color:var(--amber)">⚡ PRIORITY EARLY ADMISSIONS ROUND · 15 NOV 2026</div>
+          <h2 style="font-size:22px;margin:4px 0 2px">🇸🇪 Stockholm School of Economics (SSE) — MSc in Finance</h2>
+          <div class="dim" style="font-size:13.5px">
+            Early Deadline: <strong>15 November 2026 (23:59 CET)</strong> (${dLeft !== null ? dLeft + ' days left' : '—'}) · Portal: <strong>hhs.fullfabric.com</strong> (Independent portal — does NOT use central portal!)
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="num" style="font-size:32px;font-weight:700;color:${pct === 100 ? 'var(--green)' : pct >= 60 ? 'var(--teal)' : 'var(--amber)'}">${pct}%</div>
+          <div class="dim" style="font-size:12px">${completed} of ${docs.length} items ready</div>
+        </div>
+      </div>
+
+      <div class="bar" style="height:8px;margin:14px 0 16px;background:var(--slate-soft)">
+        <i style="width:${pct}%;background:${pct === 100 ? 'var(--green)' : 'var(--amber)'}"></i>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:8px">
+        ${itemsWithStatus.map(item => {
+          const isHeld = item.isDone;
+          return `
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--sheet-2);border-radius:6px;border:1px solid var(--rule);font-size:12px">
+              <div style="flex:1;padding-right:8px">
+                <div style="font-weight:600;color:var(--ink)">${esc(item.label)}</div>
+                <div class="dim" style="font-size:11px;margin-top:1px">${esc(item.rule)}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <span class="tag ${isHeld ? 'ok' : 'warn'}" style="font-size:10.5px">${isHeld ? '✅ Ready' : '⏳ Action'}</span>
+                ${item.attached ? `<button class="btn btn-sm" type="button" data-viewvaultdoc="${esc(item.docId)}" style="font-size:10.5px;padding:3px 6px">👁️ View</button>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--rule)">
+        <div style="font-size:12px;color:var(--ink-2)">
+          <strong>Eligibility Cleared:</strong> GMAT Focus 585 beats 555 cutoff · English test WAIVED via MOI · Dual funding shot: SSE Tuition Waiver + SISGP.
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-sm btn-primary" type="button" onclick="app.f.workshopTab='sse'; go('workshop');">Draft SSE Essays Workshop →</button>
+          <a href="https://hhs.fullfabric.com/" target="_blank" rel="noopener" class="btn btn-sm">Open SSE Portal ↗</a>
+          <button class="btn btn-sm" type="button" onclick="openTarget('sse-finance')">Dossier Audit</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function renderGoettingenScorecard() {
   const target = (app.content.targets || []).find(t => t.id === 'goettingen');
   if (!target || !target.requiredDocs) return '';
@@ -25457,7 +25737,25 @@ function renderDashboard(root) {
 
     ${renderUserInputCard()}
 
+    <div class="note warn" style="margin-top:16px;border-left:4px solid var(--red)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div>
+          <strong style="color:var(--red);font-size:14px">🚨 DUAL 15-NOVEMBER EMERGENCY COUNTDOWN: 14 DAYS TO SUBMISSION</strong>
+          <p style="margin:4px 0 0;font-size:12.5px;color:var(--ink-2)">
+            Two premier European master's applications close simultaneously on <strong>15 November 2026 at 23:59 CET</strong>:
+            <br>• <strong>🇩🇪 Göttingen DAAD EPOS</strong> (MSc Development Economics · Full Funding €992/mo · 12-doc bundle)
+            <br>• <strong>🇸🇪 Stockholm School of Economics (SSE)</strong> (MSc Finance · Early Application Round · Portal: hhs.fullfabric.com)
+          </p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-sm btn-primary" type="button" onclick="go('workshop')">Open Application Workshop →</button>
+        </div>
+      </div>
+    </div>
+
     ${renderGoettingenScorecard()}
+
+    ${renderSSEScorecard()}
 
     <div style="margin-top:22px">${stats([
       ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
@@ -25718,6 +26016,15 @@ function renderMissions(root) {
    MOTIVATION LETTER ARCHITECTURE WORKSHOP (WS-F4 / Upgrade 2)
    ============================================================================ */
 function renderWorkshop(root) {
+  const curTab = app.f.workshopTab || 'goettingen';
+  if (curTab === 'sse') {
+    renderSSEWorkshop(root);
+  } else {
+    renderGoettingenWorkshop(root);
+  }
+}
+
+function renderGoettingenWorkshop(root) {
   let draftText = '';
   try { draftText = localStorage.getItem('sv-motivation-draft') || ''; } catch (e) {}
   const wordCount = draftText.trim() ? draftText.trim().split(/\s+/).length : 0;
@@ -25731,6 +26038,13 @@ function renderWorkshop(root) {
       <button class="btn btn-sm btn-primary" type="button" id="wExportBrief">📋 Referee Briefing Sheet</button>
       <button class="btn btn-sm" type="button" onclick="openTarget('goettingen')">Göttingen Target →</button>
     </div>`)}
+
+    <div class="toolbar" style="margin-bottom:16px">
+      ${chips('wTab', [
+        ['goettingen', '🇩🇪 Göttingen EPOS Uniform Letter (2 Pages)'],
+        ['sse', '🇸🇪 SSE Finance Application Workshop (Nov 15 Early Round)']
+      ], 'goettingen')}
+    </div>
 
     <div class="note warn" style="margin-bottom:20px;border-left:4px solid var(--amber)">
       <div>
@@ -25842,6 +26156,8 @@ function renderWorkshop(root) {
     </div>
   `;
 
+  wireChips(root, 'wTab', k => { app.f.workshopTab = k; renderWorkshop(root); });
+
   const ta = $('#wDraftInput', root);
   if (ta) {
     ta.oninput = () => {
@@ -25863,6 +26179,196 @@ function renderWorkshop(root) {
 
   const bBtn = $('#wExportBrief', root);
   if (bBtn) bBtn.onclick = () => openRefereeBriefModal();
+}
+
+function renderSSEWorkshop(root) {
+  let essay1 = '', essay2 = '', scholarship = '';
+  try {
+    essay1 = localStorage.getItem('sv-sse-essay1') || '';
+    essay2 = localStorage.getItem('sv-sse-essay2') || '';
+    scholarship = localStorage.getItem('sv-sse-scholarship') || '';
+  } catch (e) {}
+
+  const w1 = essay1.trim() ? essay1.trim().split(/\s+/).length : 0;
+  const w2 = essay2.trim() ? essay2.trim().split(/\s+/).length : 0;
+
+  let sseChecks = {};
+  try { sseChecks = JSON.parse(localStorage.getItem('sv-sse-checks') || '{}'); } catch (e) {}
+
+  root.innerHTML = `
+    ${pageHead(`<div style="display:flex;gap:8px">
+      <a href="https://hhs.fullfabric.com/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Open SSE Portal ↗</a>
+      <button class="btn btn-sm" type="button" onclick="openTarget('sse-finance')">SSE Dossier Audit →</button>
+    </div>`)}
+
+    <div class="toolbar" style="margin-bottom:16px">
+      ${chips('wTab', [
+        ['goettingen', '🇩🇪 Göttingen EPOS Uniform Letter (2 Pages)'],
+        ['sse', '🇸🇪 SSE Finance Application Workshop (Nov 15 Early Round)']
+      ], 'sse')}
+    </div>
+
+    <div class="note ok" style="margin-bottom:20px;border-left:4px solid var(--teal)">
+      <div>
+        <strong>🇸🇪 Stockholm School of Economics (SSE) — MSc in Finance Application Workshop</strong>
+        <p style="font-size:13px;margin:4px 0 0;color:var(--ink-2);line-height:1.55">
+          <strong>Early Application Deadline: 15 November 2026 (23:59 CET)</strong> · Application Portal: <strong>https://hhs.fullfabric.com/</strong>
+          <br>Applying early yields decisions by late December and grants priority access to SSE Full/Half Tuition Scholarships.
+          <strong>Eligibility verified:</strong> Official GMAT Focus score 585 (beats 555 minimum) + English test WAIVED based on BUP degree conducted entirely in English.
+        </p>
+      </div>
+    </div>
+
+    ${stats([
+      ['Essay 1 (Reasons)', `${w1} / 300`, w1 ? (w1 <= 300 ? 'Within limit' : 'Exceeds 300-word limit') : 'Not drafted', w1 && w1 <= 300 ? 'ok' : w1 > 300 ? 'bad' : 'plain'],
+      ['Essay 2 (International)', `${w2} / 200`, w2 ? (w2 <= 200 ? 'Within limit' : 'Exceeds 200-word limit') : 'Not drafted', w2 && w2 <= 200 ? 'ok' : w2 > 200 ? 'bad' : 'plain'],
+      ['GMAT Focus Score', '585 Official', 'Code: MFV-98-26 (clears 555 bar)', 'ok'],
+      ['English Proof', '100% Waived', 'BUP MOI letter satisfies exemption', 'ok']
+    ])}
+
+    <div class="grid split" style="margin-top:20px;gap:24px">
+      <!-- Left: In-Portal Essay Drafting Pad -->
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="font-size:16px;margin:0">Prompt 1: Reasons for Applying to the Program</h3>
+            <span class="dim num" style="font-size:12px" id="sseW1Counter">${w1} / 300 words</span>
+          </div>
+          <p class="dim" style="font-size:12px;margin:0 0 10px">"Describe your reasons for applying to the program (maximum 300 words)."</p>
+          <textarea class="input" id="sseEssay1Input" rows="10" placeholder="Draft Question 1 here... (Auto-saves locally to browser)" style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13px;padding:12px;resize:vertical">${esc(essay1)}</textarea>
+        </div>
+
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="font-size:16px;margin:0">Prompt 2: International Motivation</h3>
+            <span class="dim num" style="font-size:12px" id="sseW2Counter">${w2} / 200 words</span>
+          </div>
+          <p class="dim" style="font-size:12px;margin:0 0 10px">"Describe your motivation for studying or working internationally (maximum 200 words)."</p>
+          <textarea class="input" id="sseEssay2Input" rows="8" placeholder="Draft Question 2 here... (Auto-saves locally to browser)" style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13px;padding:12px;resize:vertical">${esc(essay2)}</textarea>
+        </div>
+
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="font-size:16px;margin:0">Scholarship Tab: Tuition Fee Waiver Statement</h3>
+            <span class="tag acc" style="font-size:11px">Portal Tab</span>
+          </div>
+          <p class="dim" style="font-size:12px;margin:0 0 10px">Statement submitted on the 'Scholarships' tab in hhs.fullfabric.com requesting SSE Full/Half Tuition Scholarship.</p>
+          <textarea class="input" id="sseScholarshipInput" rows="6" placeholder="Draft your scholarship statement here..." style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13px;padding:12px;resize:vertical">${esc(scholarship)}</textarea>
+        </div>
+
+        <div class="panel" style="padding:18px 20px">
+          <h4 style="font-size:14px;margin:0 0 10px;color:var(--ink)">SSE Early Round Pre-Flight Checkpoints</h4>
+          <div class="rows" style="gap:8px">
+            ${[
+              ['sse_chk_portal', 'Account created at https://hhs.fullfabric.com/ with MSc in Finance selected'],
+              ['sse_chk_gmat', 'GMAT Focus 585 score report ordered to program code MFV-98-26'],
+              ['sse_chk_moi', 'BUP Medium of Instruction certificate uploaded to claim English test waiver'],
+              ['sse_chk_cv', '1-page concise Finance CV attached'],
+              ['sse_chk_video', '60-second video introduction recorded and link/file attached'],
+              ['sse_chk_refs', 'Contact details of 2 referees entered in portal (referees submit directly)'],
+              ['sse_chk_scholarship', 'Scholarship tab completed requesting SSE Full/Half Tuition Fee Waiver']
+            ].map(([k, label]) => `
+              <label style="display:flex;align-items:center;gap:10px;font-size:12.5px;cursor:pointer">
+                <input type="checkbox" data-ssechk="${k}" ${sseChecks[k] ? 'checked' : ''} style="cursor:pointer">
+                <span style="color:${sseChecks[k] ? 'var(--green)' : 'var(--ink)'};font-weight:${sseChecks[k] ? '600' : '400'}">${esc(label)}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Structural Guidance, Evidence Hooks & Video Script -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+          <h3 style="font-size:15px;margin:0">Prompt 1 Structure &amp; Evidence Hooks (300 Words)</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Focus directly on the <strong>Investment Management specialization</strong> and rigorous financial asset pricing:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • <strong>Program Fit:</strong> Apply to MSc in Finance — Investment Management specialization to master advanced fixed income securities, empirical asset pricing, and portfolio optimization.<br>
+            • <strong>Professional Track Record:</strong> CFA Charterholder (first attempt while working full time) + Associate Manager ALM at City Bank executing $90–110M daily money market and FX swaps.<br>
+            • <strong>Quantitative Innovation:</strong> Scraped central bank auctions and modeled duration/cash flows across all 310 outstanding Bangladesh government securities.<br>
+            • <strong>SSE Ecosystem:</strong> Eager to engage with the <em>Swedish House of Finance (SHoF)</em> and SSE's #23 FT global finance network.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+          <h3 style="font-size:15px;margin:0">Prompt 2 Structure &amp; Evidence Hooks (200 Words)</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Articulate why studying in Stockholm and working across international capital markets is essential:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • <strong>International Perspective:</strong> Emerging markets require global fixed-income and debt-capital market frameworks to develop liquid secondary sovereign yield curves.<br>
+            • <strong>Nordic Advantage:</strong> Stockholm is the financial hub of Northern Europe and a global pioneer in green bonds and sustainable debt instruments.<br>
+            • <strong>Career Trajectory:</strong> Aspiring to work in institutional fixed income asset management or debt capital markets in Europe before driving bond market reforms internationally.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--amber)">
+          <h3 style="font-size:15px;margin:0">60-Second Video Introduction Script Architecture</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            Record a sharp, professional 60-second video on your smartphone (upload unlisted YouTube link):
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.55;color:var(--ink)">
+            • <strong>[0:00 – 0:15] Introduction:</strong> "Hello, my name is Hasibul Hasan. I am a CFA Charterholder with a background in economics and currently work in Treasury Asset-Liability Management at The City Bank in Dhaka."<br>
+            • <strong>[0:15 – 0:35] Professional Substance:</strong> "Every day, I execute 90 to 110 million dollars in interbank money market and FX transactions, and independently modeled the duration and cash flows of all 310 outstanding Bangladesh government securities."<br>
+            • <strong>[0:35 – 0:50] Why SSE:</strong> "I am applying to the Master of Science in Finance at Stockholm School of Economics for its world-class Investment Management track and proximity to the Swedish House of Finance."<br>
+            • <strong>[0:50 – 1:00] Closing:</strong> "I look forward to contributing my emerging-market fixed-income experience to SSE's dynamic cohort this coming August."
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px 20px;border-left:3px solid var(--green)">
+          <h3 style="font-size:15px;margin:0">Scholarship Tab: SSE Tuition Waiver Strategy</h3>
+          <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+            On the portal 'Scholarships' tab, request consideration for the SSE Full/Half Tuition Fee Waiver:
+          </p>
+          <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+            • Emphasize non-EU emerging market residency and inability to self-fund SEK 360,000 total tuition without scholarships.<br>
+            • Reinforce academic merit: CFA Charterholder (first attempt), 27 quantitative credits, 4.00 thesis grade, and daily treasury execution responsibility.
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  wireChips(root, 'wTab', k => { app.f.workshopTab = k; renderWorkshop(root); });
+
+  const ta1 = $('#sseEssay1Input', root);
+  if (ta1) {
+    ta1.oninput = () => {
+      const val = ta1.value;
+      try { localStorage.setItem('sv-sse-essay1', val); } catch (e) {}
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      const counter = $('#sseW1Counter', root);
+      if (counter) counter.textContent = `${words} / 300 words`;
+    };
+  }
+
+  const ta2 = $('#sseEssay2Input', root);
+  if (ta2) {
+    ta2.oninput = () => {
+      const val = ta2.value;
+      try { localStorage.setItem('sv-sse-essay2', val); } catch (e) {}
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      const counter = $('#sseW2Counter', root);
+      if (counter) counter.textContent = `${words} / 200 words`;
+    };
+  }
+
+  const taSch = $('#sseScholarshipInput', root);
+  if (taSch) {
+    taSch.oninput = () => {
+      try { localStorage.setItem('sv-sse-scholarship', taSch.value); } catch (e) {}
+    };
+  }
+
+  $$('[data-ssechk]', root).forEach(chk => {
+    chk.onchange = () => {
+      sseChecks[chk.dataset.ssechk] = chk.checked;
+      try { localStorage.setItem('sv-sse-checks', JSON.stringify(sseChecks)); } catch (e) {}
+      renderWorkshop(root);
+    };
+  });
 }
 
 /* ============================================================================
@@ -26492,6 +26998,27 @@ function openTarget(id) {
     <div class="field"><div class="field-k">Funding</div><div class="field-v">${esc(fv(t.funding))}${factBadge(t.funding)}${t.fundingDetail ? `\n<span class="muted">${esc(fv(t.fundingDetail))}</span>${factBadge(t.fundingDetail)}` : ''}</div></div>
     ${t.subjectFit ? `<div class="field"><div class="field-k">Subject fit</div><div class="field-v">${esc(t.subjectFit)}</div></div>` : ''}
     <div class="field"><div class="field-k">How to apply</div><div class="field-v">${esc(t.route)}${t.gateLabel ? `\n<span class="muted">${esc(t.gateLabel)}</span>` : ''}</div></div>
+    ${t.rounds?.length ? `
+      <div class="field" style="margin-top:14px">
+        <div class="field-k" style="color:var(--amber)">⚡ Multi-Round Deadlines &amp; Portal Windows</div>
+        <div class="rows" style="gap:8px;margin-top:6px">
+          ${t.rounds.map(r => {
+            const rd = daysUntil(r.deadline);
+            return `
+              <div style="padding:10px 12px;background:var(--sheet-2);border-radius:var(--r-ctl);border:1px solid var(--rule);font-size:12.5px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <strong>${esc(r.name)}</strong>
+                  <span class="tag ${rd <= 30 && rd >= 0 ? 'warn' : 'plain'}">${dueText(rd)}</span>
+                </div>
+                <div style="font-weight:600;color:var(--ink-2);margin-top:3px">${esc(r.label)}</div>
+                <div class="dim" style="font-size:12px;margin-top:3px">${esc(r.description)}</div>
+                ${r.portalUrl ? `<div style="margin-top:6px"><a href="${esc(r.portalUrl)}" target="_blank" rel="noopener" class="btn btn-sm">Open Portal ↗</a></div>` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    ` : ''}
     <div class="field"><div class="field-k">Why it matters</div><div class="field-v">${esc(t.why)}</div></div>
     <div class="field"><div class="field-k">Eligible programmes</div>${list(t.eligibleProgrammes)}</div>
     ${t.requiredDocs?.length ? `
