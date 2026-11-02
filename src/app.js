@@ -1135,7 +1135,22 @@ function renderUserInputCard() {
 }
 
 function wireUserInputCard(root) {
-  $$('[data-userinput]', root).forEach(btn => {
+    $$('[data-radartarget]', root).forEach(btn => {
+    btn.onclick = () => {
+      const name = btn.dataset.radartarget;
+      if (name.includes('Göttingen')) openTarget('goettingen');
+      else if (name.includes('SSE')) openTarget('sse-finance');
+      else if (name.includes('Hohenheim')) openTarget('hohenheim');
+      else if (name.includes('ETH')) openTarget('eth-esop');
+      else if (name.includes('EPFL')) openTarget('epfl');
+      else if (name.includes('Bremen')) openTarget('zarin-germany-epos');
+      else if (name.includes('Concordia')) openTarget('zarin-concordia-mscm');
+      else if (name.includes('Sweden') || name.includes('Swedish')) openTarget('sisgp');
+      else openTarget('canada');
+    };
+  });
+
+$$('[data-userinput]', root).forEach(btn => {
     btn.onclick = () => {
       const id = btn.dataset.userinput;
       let saved = {};
@@ -1216,6 +1231,287 @@ function renderSSEScorecard() {
     </div>
   `;
 }
+
+function renderHorizonRadar() {
+  const isCouple = app.profileMode === 'couple';
+  const isZarin = app.profileMode === 'zarin';
+
+  const items = [
+    // TIER 1: NEXT 14 DAYS (Critical Immediate)
+    {
+      tier: 1,
+      tierLabel: "TIER 1: CRITICAL IMMEDIATE (NEXT 14 DAYS)",
+      tierCls: "bad",
+      target: "🇩🇪 Göttingen DAAD EPOS",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Full Application Portal Closes (Section C Bundle)",
+      date: "2026-11-15",
+      coverage: "€992/mo + insurance + travel (Zero tuition)",
+      status: "13d left",
+      action: "Upload 12-doc bundle to uni-goettingen.de/en/572462.html",
+      actionCall: () => openTarget('goettingen')
+    },
+    {
+      tier: 1,
+      tierLabel: "TIER 1: CRITICAL IMMEDIATE (NEXT 14 DAYS)",
+      tierCls: "bad",
+      target: "🇸🇪 SSE MSc Finance",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Early Application Round & Scholarship Deadline",
+      date: "2026-11-15",
+      coverage: "SEK 180,000/yr Full/Half Tuition Waiver + SISGP",
+      status: "13d left",
+      action: "Submit on hhs.fullfabric.com (GMAT 585, MOI exempt)",
+      actionCall: () => openTarget('sse-finance')
+    },
+    {
+      tier: 1,
+      tierLabel: "TIER 1: CRITICAL IMMEDIATE (NEXT 14 DAYS)",
+      tierCls: "bad",
+      target: "🇩🇪 Hohenheim AgEcon EPOS",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "HohCampus Online Portal Window Opens",
+      date: "2026-11-15",
+      coverage: "Full EPOS (€992/mo) + Tuition Exemption",
+      status: "Opens in 13d",
+      action: "Window opens 15 Nov; email bundle + HohCampus",
+      actionCall: () => openTarget('hohenheim')
+    },
+
+    // TIER 2: 15–45 DAYS (Imminent Horizon)
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇭 ETH Zurich (ESOP)",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Hard 30-Day Portal Deadline Closes",
+      date: "2026-11-30",
+      coverage: "CHF 13,500/semester + tuition waiver",
+      status: "28d left",
+      action: "Master thesis pre-proposal + 2 professor refs",
+      actionCall: () => openTarget('eth-esop')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇦 USask Edwards (Finance)",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Guaranteed Funding Priority Review Deadline",
+      date: "2026-12-15",
+      coverage: "Guaranteed $16,875/yr tuition offset",
+      status: "43d left",
+      action: "Apply before 15 Dec to enter departmental funding pool",
+      actionCall: () => openTarget('canada')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇩🇪 Hohenheim AgEcon EPOS",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Main EPOS Application Deadline Closes",
+      date: "2026-12-15",
+      coverage: "Full EPOS (€992/mo) + State Fee Waiver",
+      status: "43d left",
+      action: "Email unmerged PDF bundle + submit HohCampus",
+      actionCall: () => openTarget('hohenheim')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇭 EPFL Excellence",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Fellowship Round 1 Deadline",
+      date: "2026-12-15",
+      coverage: "CHF 10,000/sem + guaranteed housing",
+      status: "43d left",
+      action: "Tick fellowship box on online MSc admission application",
+      actionCall: () => openTarget('epfl')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇩🇪 Bremen IGC (MBA SCM)",
+      applicant: "👩‍💼 Zarin",
+      appCls: "warn",
+      event: "DAAD EPOS Logistics & SCM Deadline",
+      date: "2026-12-15",
+      coverage: "€992/mo + full tuition waiver + travel",
+      status: "43d left",
+      action: "Submit online at apply.graduatecenter.org",
+      actionCall: () => openTarget('zarin-germany-epos')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇦 UBC Sauder (MSc)",
+      applicant: "👫 Hasibul & Zarin",
+      appCls: "ok",
+      event: "International Student Portal Deadline",
+      date: "2026-12-31",
+      coverage: "International Tuition Award + Paid Summer RA ($12k)",
+      status: "59d left",
+      action: "Application fee WAIVED for Bangladesh; apply online",
+      actionCall: () => openTarget('canada')
+    },
+
+    // TIER 3: PEAK SUBMISSION (45–75 DAYS)
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇩🇪 Hohenheim English Grace",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Official English Test Score Grace Period",
+      date: "2027-01-06",
+      coverage: "Safety valve for official IELTS/TOEFL scores",
+      status: "65d left",
+      action: "Email official score report to agecon@uni-hohenheim.de",
+      actionCall: () => openTarget('hohenheim')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇨🇦 Waterloo MMath",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Final Fall 2027 Application Deadline",
+      date: "2027-01-06",
+      coverage: "Guaranteed Departmental Assistantship ($18k–$28k)",
+      status: "65d left",
+      action: "Submit online via Waterloo graduate portal",
+      actionCall: () => openTarget('canada')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇸🇪 Sweden Central (National)",
+      applicant: "👫 Hasibul & Zarin",
+      appCls: "ok",
+      event: "UniversityAdmissions.se 4-Program Ranking Locked",
+      date: "2027-01-15",
+      coverage: "Prerequisite gateway for Swedish Institute (SISGP)",
+      status: "74d left",
+      action: "Rank 4 programs on universityadmissions.se (pay 900 SEK)",
+      actionCall: () => openTarget('sisgp')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇸🇪 SSE Finance (General)",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "General Round Application Deadline Closes",
+      date: "2027-01-15",
+      coverage: "Final round for Fall 2027 intake & scholarship pool",
+      status: "74d left",
+      action: "Submit on hhs.fullfabric.com (decisions mid-March)",
+      actionCall: () => openTarget('sse-finance')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇨🇦 Concordia MSCM Option A",
+      applicant: "👩‍💼 Zarin",
+      appCls: "warn",
+      event: "Master of Supply Chain Management Thesis Deadline",
+      date: "2027-02-01",
+      coverage: "Departmental Research & TA Pool (~$10k–$15k)",
+      status: "91d left",
+      action: "Submit online at Concordia JMSB portal",
+      actionCall: () => openTarget('zarin-concordia-mscm')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇸🇪 Swedish Institute (SISGP)",
+      applicant: "👫 Hasibul & Zarin",
+      appCls: "ok",
+      event: "SI Global Professionals Scholarship Portal Opens",
+      date: "2027-02-09",
+      coverage: "Full tuition + SEK 12,000/mo stipend + travel grant",
+      status: "Opens in Feb",
+      action: "Portal window 9–25 Feb (14:59 CET hard close)",
+      actionCall: () => openTarget('sisgp')
+    }
+  ];
+
+  // Group items by tier
+  const tiers = [
+    { id: 1, title: "🚨 TIER 1: CRITICAL IMMEDIATE ACTIONS (NEXT 14 DAYS)", color: "var(--red)" },
+    { id: 2, title: "⚠️ TIER 2: IMMINENT APPLICATION DEADLINES (15–45 DAYS)", color: "var(--amber)" },
+    { id: 3, title: "📅 TIER 3: PEAK SUBMISSION & SCHOLARSHIP HORIZON (45–75 DAYS)", color: "var(--teal)" }
+  ];
+
+  return `
+    <div class="panel" style="margin-top:20px;border-top:3px solid var(--ink);padding:20px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+        <div>
+          <div class="tier-label" style="color:var(--teal)">RADAR SYSTEM · MULTI-ROUND &amp; MULTI-STAGE HORIZON SCANNER</div>
+          <h2 style="font-size:22px;margin:4px 0 2px">🎯 60-Day Critical Admissions Pipeline</h2>
+          <div class="dim" style="font-size:13px">Unified timeline preventing blindspots across Germany, Sweden, Canada, and Switzerland for both applicants.</div>
+        </div>
+        <span class="tag acc" style="font-size:12px">${items.length} Tracked Milestone Events</span>
+      </div>
+
+      <div class="table-wrap" style="max-height:none">
+        <table class="tbl dense" style="font-size:12.5px">
+          <thead>
+            <tr>
+              <th>Target / Scheme</th>
+              <th>Applicant Track</th>
+              <th>Milestone / Round Description</th>
+              <th>Hard Date</th>
+              <th>Time Left</th>
+              <th>Funding Coverage</th>
+              <th>Action Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items.map(it => {
+              const d = daysUntil(it.date);
+              const isPast = d !== null && d < 0;
+              return `
+                <tr style="${it.tier === 1 ? 'background:rgba(217, 83, 79, 0.05);' : ''}">
+                  <td><strong>${esc(it.target)}</strong></td>
+                  <td><span class="tag ${it.appCls}" style="font-size:11px">${esc(it.applicant)}</span></td>
+                  <td>${esc(it.event)}</td>
+                  <td class="num" style="white-space:nowrap;font-weight:600">${esc(it.date)}</td>
+                  <td class="num"><span class="tag ${d <= 14 && d >= 0 ? 'bad' : d <= 45 ? 'warn' : 'ok'}">${isPast ? 'Passed' : d + ' days'}</span></td>
+                  <td class="dim" style="font-size:11.5px">${esc(it.coverage)}</td>
+                  <td>
+                    <button class="btn btn-sm" type="button" data-radartarget="${esc(it.target)}" style="font-size:11px;padding:3px 8px">
+                      Inspect →
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
 
 function renderGoettingenScorecard() {
   const target = (app.content.targets || []).find(t => t.id === 'goettingen');
@@ -1362,6 +1658,8 @@ function renderDashboard(root) {
 
     ${renderSSEScorecard()}
 
+    ${renderHorizonRadar()}
+
     <div style="margin-top:22px">${stats([
       ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
       ['Experience', st.xp, `${st.achievements.length} achievements`, 'acc', 'profile'],
@@ -1483,18 +1781,57 @@ function openDeadModal(d) {
    ============================================================================ */
 function calendarEvents() {
   const evs = [];
-  app.content.targets.forEach(t => {
+  const seen = new Set();
+  const pushEv = (id, date, title, kind, cls, open) => {
+    const dStr = fv(date);
+    if (!dStr) return;
+    const k = id + '_' + dStr;
+    if (seen.has(k)) return;
+    seen.add(k);
+    evs.push({ id, date: dStr, title, kind, cls, open });
+  };
+
+  // Add targets (active applicant or both)
+  const allTargets = getActiveTargets();
+  allTargets.forEach(t => {
+    const sName = t.short || t.name;
     const dl = fv(t.deadline);
-    if (dl) evs.push({ id: 't-' + t.id, date: dl, title: `${t.flag || ''} ${t.short || t.name}`, kind: 'target', cls: t.priority === 'P0' ? 'critical' : 'target', open: () => openTarget(t.id) });
+    if (dl) pushEv('t-' + t.id, dl, `${t.flag || ''} ${sName}`, 'target', t.priority === 'P0' ? 'critical' : 'target', () => openTarget(t.id));
+    if (t.earlyDeadline) {
+      pushEv('e-' + t.id, t.earlyDeadline, `⚡ ${sName} (Early Round)`, 'target', 'critical', () => openTarget(t.id));
+    }
     const gdl = fv(t.gateDeadline);
-    if (gdl) evs.push({ id: 'g-' + t.id, date: gdl, title: `${t.short || t.name} university application`, kind: 'target', cls: 'target', open: () => openTarget(t.id) });
+    if (gdl) pushEv('g-' + t.id, gdl, `${sName}: ${t.gateLabel || 'University Application'}`, 'target', 'target', () => openTarget(t.id));
+    if (Array.isArray(t.rounds)) {
+      t.rounds.forEach(r => {
+        if (r.deadline) pushEv('r-' + t.id + '-' + r.type, r.deadline, `${t.flag || ''} ${sName}: ${r.name}`, 'target', r.type === 'final' || r.type === 'early' ? 'critical' : 'target', () => openTarget(t.id));
+      });
+    }
   });
-  app.missions.missions.forEach(m => {
+
+  // If in couple mode, also include partner targets
+  if (app.profileMode === 'couple') {
+    const zTargets = (typeof ZARIN_TARGETS !== 'undefined') ? ZARIN_TARGETS : [];
+    zTargets.forEach(t => {
+      const sName = t.short || t.name;
+      const dl = fv(t.deadline);
+      if (dl) pushEv('zt-' + t.id, dl, `👩‍💼 ${t.flag || ''} ${sName}`, 'target', 'target', () => openTarget(t.id));
+      if (Array.isArray(t.rounds)) {
+        t.rounds.forEach(r => {
+          if (r.deadline) pushEv('zr-' + t.id + '-' + r.type, r.deadline, `👩‍💼 ${sName}: ${r.name}`, 'target', 'target', () => openTarget(t.id));
+        });
+      }
+    });
+  }
+
+  const allMissions = getActiveMissions();
+  allMissions.forEach(m => {
     const mdl = fv(m.deadline);
-    if (mdl) evs.push({ id: 'm-' + m.id, date: mdl, title: m.title, kind: 'mission', cls: isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', open: () => openMission(m.id) });
+    if (mdl) pushEv('m-' + m.id, mdl, m.title, 'mission', isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', () => openMission(m.id));
   });
-  CRITICAL_DATES.forEach(c => evs.push({ id: 'c-' + c.name, date: fv(c.date), title: `${c.name} deadline`, kind: 'critical', cls: 'critical', open: () => openCritical(c) }));
-  evs.push({ id: 'zoom', date: fv(ZOOM.date), title: 'Göttingen info session', kind: 'session', cls: 'high', open: openZoom });
+
+  CRITICAL_DATES.forEach(c => pushEv('c-' + c.name, c.date, `${c.name} deadline`, 'critical', 'critical', () => openCritical(c)));
+  pushEv('zoom', ZOOM.date, 'Göttingen info session', 'session', 'high', openZoom);
   return evs;
 }
 
@@ -1550,11 +1887,25 @@ function renderCalendar(root) {
    TIMELINE
    ============================================================================ */
 function renderTimeline(root) {
+  const roundRows = [];
+  getActiveTargets().forEach(t => {
+    const sName = t.short || t.name;
+    if (fv(t.deadline)) roundRows.push({ date: fv(t.deadline), name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) });
+    if (t.earlyDeadline && fv(t.earlyDeadline) !== fv(t.deadline)) roundRows.push({ date: fv(t.earlyDeadline), name: `⚡ ${sName} (Early Application Round)`, kind: 'Early Round', open: () => openTarget(t.id) });
+    if (fv(t.gateDeadline)) roundRows.push({ date: fv(t.gateDeadline), name: `${sName}: ${t.gateLabel || 'University Application'}`, kind: 'University', open: () => openTarget(t.id) });
+    if (Array.isArray(t.rounds)) {
+      t.rounds.forEach(r => {
+        if (r.deadline && r.deadline !== fv(t.deadline) && r.deadline !== fv(t.earlyDeadline)) {
+          roundRows.push({ date: fv(r.deadline), name: `${t.flag || ''} ${sName}: ${r.name}`, kind: 'Round', open: () => openTarget(t.id) });
+        }
+      });
+    }
+  });
+
   const rows = [
-    ...app.content.targets.filter(t => fv(t.deadline)).map(t => ({ date: fv(t.deadline), name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) })),
-    ...app.content.targets.filter(t => fv(t.gateDeadline)).map(t => ({ date: fv(t.gateDeadline), name: `${t.short || t.name}: ${t.gateLabel || 'university application'}`, kind: 'University', open: () => openTarget(t.id) })),
-    ...app.content.documents.filter(d => fv(d.deadline)).map(d => ({ date: fv(d.deadline), name: d.name, kind: 'Document' })),
-    ...app.missions.missions.filter(m => fv(m.deadline)).map(m => ({ date: fv(m.deadline), name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
+    ...roundRows,
+    ...getActiveDocuments().filter(d => fv(d.deadline)).map(d => ({ date: fv(d.deadline), name: d.name, kind: 'Document' })),
+    ...getActiveMissions().filter(m => fv(m.deadline)).map(m => ({ date: fv(m.deadline), name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
   ].sort((a, b) => String(a.date).localeCompare(String(b.date)));
   const groups = {};
   rows.forEach(r => (groups[r.date.slice(0, 7)] = groups[r.date.slice(0, 7)] || []).push(r));

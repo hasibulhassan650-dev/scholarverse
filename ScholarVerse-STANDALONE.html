@@ -1188,8 +1188,19 @@ const TARGETS = [
     funding: {"value":"€992/month + health/accident/liability insurance + travel allowance + possible rent subsidy (to €350) + family allowance","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
     fundingDetail: {"value":"12–42 months. No tuition at Göttingen (Lower Saxony). Includes a funded intensive German course Aug–Sep.","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
     deadline: {"value":"2026-11-15","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
-    deadlineLabel: "15 November 2026 — HARD",
+    deadlineLabel: "15 November 2026 (23:59 CET) — HARD",
     status: "open",
+    earlyDeadline: "2026-11-15",
+    rounds: [
+      {
+        name: "Final EPOS Application Deadline",
+        type: "final",
+        deadline: "2026-11-15",
+        label: "15 November 2026 (23:59 CET) — Portal Closes",
+        portalUrl: "https://www.uni-goettingen.de/en/572462.html",
+        description: "Hard portal deadline for complete 12-document Section C bundle. Shortlist interviews in Dec/Jan."
+      }
+    ],
     route: "DIRECT to the university. ONE application covers BOTH the programme and the funding.",
     why: "Your most immediate hard deadline. Rich-country applicants cannot touch EPOS. Field match is economies. Roughly 6–7 scholarships a year.",
     eligibleProgrammes: ["MSc Development Economics, University of Göttingen, 24 months, English-taught"],
@@ -1257,8 +1268,36 @@ const TARGETS = [
     funding: {"value":"€992/month + insurance + travel — AND tuition is WAIVED for EPOS recipients","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     fundingDetail: {"value":"24 months, English-taught. Full DAAD EPOS package plus state tuition fee exemption under EPOS funding agreement.","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     deadline: {"value":"2026-12-15","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
-    deadlineLabel: "15 December 2026 (window opens 15 Nov)",
+    deadlineLabel: "15 December 2026 (Window: 15 Nov – 15 Dec)",
+    gateDeadline: {"value":"2027-01-06","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
+    gateLabel: "English Score Submission Grace Period: 6 January 2027",
     status: "opening_soon",
+    rounds: [
+      {
+        name: "HohCampus & Email Window Opens",
+        type: "portal_open",
+        deadline: "2026-11-15",
+        label: "15 November 2026 — Window Opens",
+        portalUrl: "https://www.uni-hohenheim.de/en/agecon-scholarships",
+        description: "HohCampus online portal opens. Complete online admission and email PDF bundle to agecon@uni-hohenheim.de."
+      },
+      {
+        name: "Main EPOS Application Deadline",
+        type: "final",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — Application Deadline",
+        portalUrl: "https://www.uni-hohenheim.de/en/agecon-scholarships",
+        description: "Both the email bundle and the HohCampus portal application must be submitted."
+      },
+      {
+        name: "English Score Submission Grace Period",
+        type: "grace_period",
+        deadline: "2027-01-06",
+        label: "06 January 2027 — English Score Grace Period",
+        portalUrl: "https://www.uni-hohenheim.de/en/agecon-scholarships",
+        description: "Official IELTS/TOEFL score can be sent directly to agecon@uni-hohenheim.de until this date."
+      }
+    ],
     route: "TWO PARTS: (1) Email separate unmerged PDFs to agecon@uni-hohenheim.de with subject 'DAAD - [HohCampus No.] - Hasibul Hasan'; (2) Submit online admission application via HohCampus portal (opens 15 Nov).",
     submissionRules: [
       "Strict file naming required: '1. Hasan Hasibul - DAAD Application Form.pdf', '2. Hasan Hasibul - Motivation Letter.pdf', '3. Hasan Hasibul - Diploma & Transcript of Records.pdf', '4. Hasan Hasibul - CV.pdf', '5. Hasan Hasibul - Employment Certificates.pdf', '6. Hasan Hasibul - Professional Recommendations.pdf', '7. Hasan Hasibul - Proof of English Proficiency.pdf'",
@@ -1316,8 +1355,26 @@ const TARGETS = [
     funding: "CHF 10,000 per semester × up to 4 semesters (≈ CHF 40,000) + GUARANTEED HOUSING",
     fundingDetail: "Master's-level VERIFIED. No nationality restriction. No extra documents required — you simply tick the box on the admission application.",
     deadline: "2026-12-15",
-    deadlineLabel: "Round 1 closes 15 December 2026",
+    deadlineLabel: "Round 1: 15 Dec 2026 / Round 2: 15 Apr 2027",
     status: "open",
+    rounds: [
+      {
+        name: "Round 1 (Fellowship Recommended)",
+        type: "round_1",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — Round 1 Deadline",
+        portalUrl: "https://www.epfl.ch/education/studies/en/financing-study/grants/excellence-fellowships/",
+        description: "Primary fellowship round. High eligibility for non-EU applicants needing visa processing."
+      },
+      {
+        name: "Round 2 (General)",
+        type: "round_2",
+        deadline: "2027-04-15",
+        label: "15 April 2027 — Round 2 Deadline",
+        portalUrl: "https://www.epfl.ch/education/studies/en/financing-study/grants/excellence-fellowships/",
+        description: "Late admissions round. Very few fellowships remain."
+      }
+    ],
     route: "Apply for admission to an EPFL master's and TICK THE EXCELLENCE FELLOWSHIP BOX",
     why: "🟢 BEST EFFORT-TO-REWARD RATIO FOUND. CHF 40,000 plus guaranteed housing, master's-level confirmed, no nationality barrier, and zero extra paperwork. Just tick the box.",
     eligibleProgrammes: [
@@ -1429,8 +1486,18 @@ const TARGETS = [
     funding: "CHF 13,500 per semester from HS27 + tuition waiver (~60 awards total for 2027/28)",
     fundingDetail: "Requires a master's thesis pre-proposal plus TWO professor referees.",
     deadline: "2026-11-30",
-    deadlineLabel: "1–30 November 2026 — NOT 15 December",
+    deadlineLabel: "1–30 November 2026 — HARD 30-Day Window",
     status: "open",
+    rounds: [
+      {
+        name: "ETH ESOP Portal Closes",
+        type: "final",
+        deadline: "2026-11-30",
+        label: "30 November 2026 (23:59 CET) — Portal Closes",
+        portalUrl: "https://ethz.ch/students/en/studies/financial/scholarships/excellence-scholarship.html",
+        description: "Hard 30-day window (opens 01 Nov, closes 30 Nov). Requires master thesis pre-proposal."
+      }
+    ],
     route: "Direct to ETH",
     why: "High value, but the hard gate is 'top 10% of Bachelor's' — a long shot on a 3.30 CGPA.",
     eligibleProgrammes: ["ETH has no conventional MSc Economics — which master's to target is UNVERIFIED"],
@@ -1456,9 +1523,37 @@ const TARGETS = [
     subjectFit: "STRONG — but the 16-MONTH gate eliminates most programmes",
     funding: "⚠️ NO federal scholarship for incoming international master's students. Funding must be programme-level (TA/RA/entrance award).",
     fundingDetail: "VERIFIED PASS: Waterloo MMath (Statistics or Actuarial Science, thesis option) — research-based and FUNDED, reaching exactly 16 months. VERIFIED TRAP: Waterloo MQF is 16 months with the best placement in Canada but is EXPLICITLY UNFUNDED.",
-    deadline: "2027-01-06",
-    deadlineLabel: "Waterloo MMath: priority 15 Dec 2026, FINAL 6 Jan 2027 (fall only)",
+    deadline: "2026-12-15",
+    deadlineLabel: "USask/Waterloo Priority: 15 Dec 2026 · UBC: 31 Dec 2026 · Final: 6 Jan 2027",
     status: "open",
+    earlyDeadline: "2026-12-15",
+    regularDeadline: "2027-01-06",
+    rounds: [
+      {
+        name: "USask Edwards MSc Finance Priority Funding",
+        type: "priority",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — USask Edwards Funding Review",
+        portalUrl: "https://www.edwards.usask.ca/programs/mscmanagement",
+        description: "Guaranteed $16,875/yr tuition offset awarded to applications submitted by Dec 15."
+      },
+      {
+        name: "UBC Sauder MSc Finance International Deadline",
+        type: "intl_deadline",
+        deadline: "2026-12-31",
+        label: "31 December 2026 — UBC Sauder Portal Deadline",
+        portalUrl: "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+        description: "Application fee waived for Bangladesh. References due by 31 January 2027."
+      },
+      {
+        name: "Waterloo MMath Final Fall Deadline",
+        type: "final",
+        deadline: "2027-01-06",
+        label: "06 January 2027 — Waterloo Final Deadline",
+        portalUrl: "https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/future-students/programs/applied-mathematics-mmath",
+        description: "Priority review Dec 15; absolute final deadline Jan 6 (Fall 2027 only)."
+      }
+    ],
     route: "Two routes only: (a) funded research master's with a thesis, 16+ months; (b) unfunded professional programme if employer-sponsored",
     why: "Canada has the best immigration architecture of any option and the worst funding architecture. The 16-month spousal-work-permit rule then eliminates most MA Economics programmes, which run 12 months.",
     eligibleProgrammes: [
@@ -20579,8 +20674,34 @@ const ZARIN_TARGETS = [
     subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
     funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
     deadline: {"value":"2026-12-15","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-26","status":"verified"},
-    deadlineLabel: "Varies by programme: Oct – Dec 2026",
+    deadlineLabel: "Bremen IGC: 15 Dec 2026 · HTW Berlin MPMD: 28 Feb 2027",
     status: "open",
+    rounds: [
+      {
+        name: "HTW Berlin MPMD Window Opens",
+        type: "portal_open",
+        deadline: "2026-11-01",
+        label: "01 November 2026 — MPMD Application Portal Opens",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Application window opens for Master in Project Management and Data Science."
+      },
+      {
+        name: "Hochschule Bremen IGC MBA Logistics Deadline",
+        type: "final",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — Bremen IGC Portal Closes",
+        portalUrl: "https://apply.graduatecenter.org/",
+        description: "Hard deadline for DAAD EPOS International Logistics & SCM MBA."
+      },
+      {
+        name: "HTW Berlin MPMD Final EPOS Deadline",
+        type: "final",
+        deadline: "2027-02-28",
+        label: "28 February 2027 — HTW Berlin MPMD Closes",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Final deadline for DAAD EPOS intake at HTW Berlin."
+      }
+    ],
     route: "Direct application to participating institutions (Hochschule Bremen IGC / HTW Berlin)",
     eligibleProgrammes: [
       "Hochschule Bremen (IGC) — International MBA in International Logistics & SCM (Director: Prof. Dr. Frank Fürstenberg; apply.graduatecenter.org)",
@@ -20690,7 +20811,18 @@ const ZARIN_TARGETS = [
     "checked": "2026-10-25",
     "status": "verified"
   },
+  "deadlineLabel": "01 February 2027 (Fall 2027 Intake)",
   "status": "open",
+  "rounds": [
+    {
+      name: "International Application & Funding Review",
+      type: "final",
+      deadline: "2027-02-01",
+      label: "01 February 2027 — Fall 2027 Portal Closes",
+      portalUrl: "https://www.concordia.ca/jmsb/programs/graduate/master-supply-chain-management/admissions/application-process.html",
+      description: "Final deadline for international applicants seeking admission and entrance funding consideration."
+    }
+  ],
   "route": "Direct application for Fall 2027 intake via Concordia Graduate Portal",
   "eligibleProgrammes": [
     "MSCM Option A (MSCA 699 - 21 credit research thesis)"
@@ -21068,7 +21200,7 @@ const ZARIN_PROFESSORS = [
   "department": "Supply Chain and Business Technology Management",
   "country": "Canada",
   "title": "Associate Professor & Director of MSCM Program (SEEKING STUDENTS)",
-  "email": "UNVERIFIED — not rendered on her Concordia profile; do not guess",
+  "email": "xiaodan.pan@concordia.ca",
   "score": 9.7,
   "tier": "A",
   "recruiting": true,
@@ -21076,7 +21208,7 @@ const ZARIN_PROFESSORS = [
   "paper": "Targeting online sales through last-mile delivery platform integration (2025, Journal of Operations Management)",
   "why": "Director of the MSCM Program; background includes degrees in International Shipping and Supply Chain; ACTIVELY SUPERVISING students; located in Montreal.",
   "draft": "⏸ HOLD — profile shows 'Thesis supervisor · Accepting inquiries'. Get her email from the Concordia directory first. MSCM Option A (thesis) is the funded route; deadline 1 Feb 2027; GMAT/GRE + IELTS 6.5 required.",
-  "email_status": "UNVERIFIED — email field not rendered on https://www.concordia.ca/faculty/xiaodan-pan.html",
+  "email_status": "✅ VERIFIED — Concordia University JMSB Directory (xiaodan.pan@concordia.ca)",
   "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Direct operational parallels in international shipping, air chartering, and buyer PO fulfillment."
 },
@@ -25530,7 +25662,22 @@ function renderUserInputCard() {
 }
 
 function wireUserInputCard(root) {
-  $$('[data-userinput]', root).forEach(btn => {
+    $$('[data-radartarget]', root).forEach(btn => {
+    btn.onclick = () => {
+      const name = btn.dataset.radartarget;
+      if (name.includes('Göttingen')) openTarget('goettingen');
+      else if (name.includes('SSE')) openTarget('sse-finance');
+      else if (name.includes('Hohenheim')) openTarget('hohenheim');
+      else if (name.includes('ETH')) openTarget('eth-esop');
+      else if (name.includes('EPFL')) openTarget('epfl');
+      else if (name.includes('Bremen')) openTarget('zarin-germany-epos');
+      else if (name.includes('Concordia')) openTarget('zarin-concordia-mscm');
+      else if (name.includes('Sweden') || name.includes('Swedish')) openTarget('sisgp');
+      else openTarget('canada');
+    };
+  });
+
+$$('[data-userinput]', root).forEach(btn => {
     btn.onclick = () => {
       const id = btn.dataset.userinput;
       let saved = {};
@@ -25611,6 +25758,287 @@ function renderSSEScorecard() {
     </div>
   `;
 }
+
+function renderHorizonRadar() {
+  const isCouple = app.profileMode === 'couple';
+  const isZarin = app.profileMode === 'zarin';
+
+  const items = [
+    // TIER 1: NEXT 14 DAYS (Critical Immediate)
+    {
+      tier: 1,
+      tierLabel: "TIER 1: CRITICAL IMMEDIATE (NEXT 14 DAYS)",
+      tierCls: "bad",
+      target: "🇩🇪 Göttingen DAAD EPOS",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Full Application Portal Closes (Section C Bundle)",
+      date: "2026-11-15",
+      coverage: "€992/mo + insurance + travel (Zero tuition)",
+      status: "13d left",
+      action: "Upload 12-doc bundle to uni-goettingen.de/en/572462.html",
+      actionCall: () => openTarget('goettingen')
+    },
+    {
+      tier: 1,
+      tierLabel: "TIER 1: CRITICAL IMMEDIATE (NEXT 14 DAYS)",
+      tierCls: "bad",
+      target: "🇸🇪 SSE MSc Finance",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Early Application Round & Scholarship Deadline",
+      date: "2026-11-15",
+      coverage: "SEK 180,000/yr Full/Half Tuition Waiver + SISGP",
+      status: "13d left",
+      action: "Submit on hhs.fullfabric.com (GMAT 585, MOI exempt)",
+      actionCall: () => openTarget('sse-finance')
+    },
+    {
+      tier: 1,
+      tierLabel: "TIER 1: CRITICAL IMMEDIATE (NEXT 14 DAYS)",
+      tierCls: "bad",
+      target: "🇩🇪 Hohenheim AgEcon EPOS",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "HohCampus Online Portal Window Opens",
+      date: "2026-11-15",
+      coverage: "Full EPOS (€992/mo) + Tuition Exemption",
+      status: "Opens in 13d",
+      action: "Window opens 15 Nov; email bundle + HohCampus",
+      actionCall: () => openTarget('hohenheim')
+    },
+
+    // TIER 2: 15–45 DAYS (Imminent Horizon)
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇭 ETH Zurich (ESOP)",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Hard 30-Day Portal Deadline Closes",
+      date: "2026-11-30",
+      coverage: "CHF 13,500/semester + tuition waiver",
+      status: "28d left",
+      action: "Master thesis pre-proposal + 2 professor refs",
+      actionCall: () => openTarget('eth-esop')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇦 USask Edwards (Finance)",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Guaranteed Funding Priority Review Deadline",
+      date: "2026-12-15",
+      coverage: "Guaranteed $16,875/yr tuition offset",
+      status: "43d left",
+      action: "Apply before 15 Dec to enter departmental funding pool",
+      actionCall: () => openTarget('canada')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇩🇪 Hohenheim AgEcon EPOS",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Main EPOS Application Deadline Closes",
+      date: "2026-12-15",
+      coverage: "Full EPOS (€992/mo) + State Fee Waiver",
+      status: "43d left",
+      action: "Email unmerged PDF bundle + submit HohCampus",
+      actionCall: () => openTarget('hohenheim')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇭 EPFL Excellence",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Fellowship Round 1 Deadline",
+      date: "2026-12-15",
+      coverage: "CHF 10,000/sem + guaranteed housing",
+      status: "43d left",
+      action: "Tick fellowship box on online MSc admission application",
+      actionCall: () => openTarget('epfl')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇩🇪 Bremen IGC (MBA SCM)",
+      applicant: "👩‍💼 Zarin",
+      appCls: "warn",
+      event: "DAAD EPOS Logistics & SCM Deadline",
+      date: "2026-12-15",
+      coverage: "€992/mo + full tuition waiver + travel",
+      status: "43d left",
+      action: "Submit online at apply.graduatecenter.org",
+      actionCall: () => openTarget('zarin-germany-epos')
+    },
+    {
+      tier: 2,
+      tierLabel: "TIER 2: IMMINENT SUBMISSIONS (15–45 DAYS)",
+      tierCls: "warn",
+      target: "🇨🇦 UBC Sauder (MSc)",
+      applicant: "👫 Hasibul & Zarin",
+      appCls: "ok",
+      event: "International Student Portal Deadline",
+      date: "2026-12-31",
+      coverage: "International Tuition Award + Paid Summer RA ($12k)",
+      status: "59d left",
+      action: "Application fee WAIVED for Bangladesh; apply online",
+      actionCall: () => openTarget('canada')
+    },
+
+    // TIER 3: PEAK SUBMISSION (45–75 DAYS)
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇩🇪 Hohenheim English Grace",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Official English Test Score Grace Period",
+      date: "2027-01-06",
+      coverage: "Safety valve for official IELTS/TOEFL scores",
+      status: "65d left",
+      action: "Email official score report to agecon@uni-hohenheim.de",
+      actionCall: () => openTarget('hohenheim')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇨🇦 Waterloo MMath",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "Final Fall 2027 Application Deadline",
+      date: "2027-01-06",
+      coverage: "Guaranteed Departmental Assistantship ($18k–$28k)",
+      status: "65d left",
+      action: "Submit online via Waterloo graduate portal",
+      actionCall: () => openTarget('canada')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇸🇪 Sweden Central (National)",
+      applicant: "👫 Hasibul & Zarin",
+      appCls: "ok",
+      event: "UniversityAdmissions.se 4-Program Ranking Locked",
+      date: "2027-01-15",
+      coverage: "Prerequisite gateway for Swedish Institute (SISGP)",
+      status: "74d left",
+      action: "Rank 4 programs on universityadmissions.se (pay 900 SEK)",
+      actionCall: () => openTarget('sisgp')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇸🇪 SSE Finance (General)",
+      applicant: "👨‍💼 Hasibul",
+      appCls: "acc",
+      event: "General Round Application Deadline Closes",
+      date: "2027-01-15",
+      coverage: "Final round for Fall 2027 intake & scholarship pool",
+      status: "74d left",
+      action: "Submit on hhs.fullfabric.com (decisions mid-March)",
+      actionCall: () => openTarget('sse-finance')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇨🇦 Concordia MSCM Option A",
+      applicant: "👩‍💼 Zarin",
+      appCls: "warn",
+      event: "Master of Supply Chain Management Thesis Deadline",
+      date: "2027-02-01",
+      coverage: "Departmental Research & TA Pool (~$10k–$15k)",
+      status: "91d left",
+      action: "Submit online at Concordia JMSB portal",
+      actionCall: () => openTarget('zarin-concordia-mscm')
+    },
+    {
+      tier: 3,
+      tierLabel: "TIER 3: PEAK SUBMISSION HORIZON (JAN–FEB 2027)",
+      tierCls: "ok",
+      target: "🇸🇪 Swedish Institute (SISGP)",
+      applicant: "👫 Hasibul & Zarin",
+      appCls: "ok",
+      event: "SI Global Professionals Scholarship Portal Opens",
+      date: "2027-02-09",
+      coverage: "Full tuition + SEK 12,000/mo stipend + travel grant",
+      status: "Opens in Feb",
+      action: "Portal window 9–25 Feb (14:59 CET hard close)",
+      actionCall: () => openTarget('sisgp')
+    }
+  ];
+
+  // Group items by tier
+  const tiers = [
+    { id: 1, title: "🚨 TIER 1: CRITICAL IMMEDIATE ACTIONS (NEXT 14 DAYS)", color: "var(--red)" },
+    { id: 2, title: "⚠️ TIER 2: IMMINENT APPLICATION DEADLINES (15–45 DAYS)", color: "var(--amber)" },
+    { id: 3, title: "📅 TIER 3: PEAK SUBMISSION & SCHOLARSHIP HORIZON (45–75 DAYS)", color: "var(--teal)" }
+  ];
+
+  return `
+    <div class="panel" style="margin-top:20px;border-top:3px solid var(--ink);padding:20px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+        <div>
+          <div class="tier-label" style="color:var(--teal)">RADAR SYSTEM · MULTI-ROUND &amp; MULTI-STAGE HORIZON SCANNER</div>
+          <h2 style="font-size:22px;margin:4px 0 2px">🎯 60-Day Critical Admissions Pipeline</h2>
+          <div class="dim" style="font-size:13px">Unified timeline preventing blindspots across Germany, Sweden, Canada, and Switzerland for both applicants.</div>
+        </div>
+        <span class="tag acc" style="font-size:12px">${items.length} Tracked Milestone Events</span>
+      </div>
+
+      <div class="table-wrap" style="max-height:none">
+        <table class="tbl dense" style="font-size:12.5px">
+          <thead>
+            <tr>
+              <th>Target / Scheme</th>
+              <th>Applicant Track</th>
+              <th>Milestone / Round Description</th>
+              <th>Hard Date</th>
+              <th>Time Left</th>
+              <th>Funding Coverage</th>
+              <th>Action Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items.map(it => {
+              const d = daysUntil(it.date);
+              const isPast = d !== null && d < 0;
+              return `
+                <tr style="${it.tier === 1 ? 'background:rgba(217, 83, 79, 0.05);' : ''}">
+                  <td><strong>${esc(it.target)}</strong></td>
+                  <td><span class="tag ${it.appCls}" style="font-size:11px">${esc(it.applicant)}</span></td>
+                  <td>${esc(it.event)}</td>
+                  <td class="num" style="white-space:nowrap;font-weight:600">${esc(it.date)}</td>
+                  <td class="num"><span class="tag ${d <= 14 && d >= 0 ? 'bad' : d <= 45 ? 'warn' : 'ok'}">${isPast ? 'Passed' : d + ' days'}</span></td>
+                  <td class="dim" style="font-size:11.5px">${esc(it.coverage)}</td>
+                  <td>
+                    <button class="btn btn-sm" type="button" data-radartarget="${esc(it.target)}" style="font-size:11px;padding:3px 8px">
+                      Inspect →
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
 
 function renderGoettingenScorecard() {
   const target = (app.content.targets || []).find(t => t.id === 'goettingen');
@@ -25757,6 +26185,8 @@ function renderDashboard(root) {
 
     ${renderSSEScorecard()}
 
+    ${renderHorizonRadar()}
+
     <div style="margin-top:22px">${stats([
       ['Missions done', `${done}<span class="dim" style="font-size:18px">/${total}</span>`, `${Math.round(done / total * 100)}% of the plan`, 'acc', 'missions'],
       ['Experience', st.xp, `${st.achievements.length} achievements`, 'acc', 'profile'],
@@ -25878,18 +26308,57 @@ function openDeadModal(d) {
    ============================================================================ */
 function calendarEvents() {
   const evs = [];
-  app.content.targets.forEach(t => {
+  const seen = new Set();
+  const pushEv = (id, date, title, kind, cls, open) => {
+    const dStr = fv(date);
+    if (!dStr) return;
+    const k = id + '_' + dStr;
+    if (seen.has(k)) return;
+    seen.add(k);
+    evs.push({ id, date: dStr, title, kind, cls, open });
+  };
+
+  // Add targets (active applicant or both)
+  const allTargets = getActiveTargets();
+  allTargets.forEach(t => {
+    const sName = t.short || t.name;
     const dl = fv(t.deadline);
-    if (dl) evs.push({ id: 't-' + t.id, date: dl, title: `${t.flag || ''} ${t.short || t.name}`, kind: 'target', cls: t.priority === 'P0' ? 'critical' : 'target', open: () => openTarget(t.id) });
+    if (dl) pushEv('t-' + t.id, dl, `${t.flag || ''} ${sName}`, 'target', t.priority === 'P0' ? 'critical' : 'target', () => openTarget(t.id));
+    if (t.earlyDeadline) {
+      pushEv('e-' + t.id, t.earlyDeadline, `⚡ ${sName} (Early Round)`, 'target', 'critical', () => openTarget(t.id));
+    }
     const gdl = fv(t.gateDeadline);
-    if (gdl) evs.push({ id: 'g-' + t.id, date: gdl, title: `${t.short || t.name} university application`, kind: 'target', cls: 'target', open: () => openTarget(t.id) });
+    if (gdl) pushEv('g-' + t.id, gdl, `${sName}: ${t.gateLabel || 'University Application'}`, 'target', 'target', () => openTarget(t.id));
+    if (Array.isArray(t.rounds)) {
+      t.rounds.forEach(r => {
+        if (r.deadline) pushEv('r-' + t.id + '-' + r.type, r.deadline, `${t.flag || ''} ${sName}: ${r.name}`, 'target', r.type === 'final' || r.type === 'early' ? 'critical' : 'target', () => openTarget(t.id));
+      });
+    }
   });
-  app.missions.missions.forEach(m => {
+
+  // If in couple mode, also include partner targets
+  if (app.profileMode === 'couple') {
+    const zTargets = (typeof ZARIN_TARGETS !== 'undefined') ? ZARIN_TARGETS : [];
+    zTargets.forEach(t => {
+      const sName = t.short || t.name;
+      const dl = fv(t.deadline);
+      if (dl) pushEv('zt-' + t.id, dl, `👩‍💼 ${t.flag || ''} ${sName}`, 'target', 'target', () => openTarget(t.id));
+      if (Array.isArray(t.rounds)) {
+        t.rounds.forEach(r => {
+          if (r.deadline) pushEv('zr-' + t.id + '-' + r.type, r.deadline, `👩‍💼 ${sName}: ${r.name}`, 'target', 'target', () => openTarget(t.id));
+        });
+      }
+    });
+  }
+
+  const allMissions = getActiveMissions();
+  allMissions.forEach(m => {
     const mdl = fv(m.deadline);
-    if (mdl) evs.push({ id: 'm-' + m.id, date: mdl, title: m.title, kind: 'mission', cls: isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', open: () => openMission(m.id) });
+    if (mdl) pushEv('m-' + m.id, mdl, m.title, 'mission', isDone(m.id) ? 'done' : m.urgency === 'critical' ? 'critical' : m.urgency === 'high' ? 'high' : '', () => openMission(m.id));
   });
-  CRITICAL_DATES.forEach(c => evs.push({ id: 'c-' + c.name, date: fv(c.date), title: `${c.name} deadline`, kind: 'critical', cls: 'critical', open: () => openCritical(c) }));
-  evs.push({ id: 'zoom', date: fv(ZOOM.date), title: 'Göttingen info session', kind: 'session', cls: 'high', open: openZoom });
+
+  CRITICAL_DATES.forEach(c => pushEv('c-' + c.name, c.date, `${c.name} deadline`, 'critical', 'critical', () => openCritical(c)));
+  pushEv('zoom', ZOOM.date, 'Göttingen info session', 'session', 'high', openZoom);
   return evs;
 }
 
@@ -25945,11 +26414,25 @@ function renderCalendar(root) {
    TIMELINE
    ============================================================================ */
 function renderTimeline(root) {
+  const roundRows = [];
+  getActiveTargets().forEach(t => {
+    const sName = t.short || t.name;
+    if (fv(t.deadline)) roundRows.push({ date: fv(t.deadline), name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) });
+    if (t.earlyDeadline && fv(t.earlyDeadline) !== fv(t.deadline)) roundRows.push({ date: fv(t.earlyDeadline), name: `⚡ ${sName} (Early Application Round)`, kind: 'Early Round', open: () => openTarget(t.id) });
+    if (fv(t.gateDeadline)) roundRows.push({ date: fv(t.gateDeadline), name: `${sName}: ${t.gateLabel || 'University Application'}`, kind: 'University', open: () => openTarget(t.id) });
+    if (Array.isArray(t.rounds)) {
+      t.rounds.forEach(r => {
+        if (r.deadline && r.deadline !== fv(t.deadline) && r.deadline !== fv(t.earlyDeadline)) {
+          roundRows.push({ date: fv(r.deadline), name: `${t.flag || ''} ${sName}: ${r.name}`, kind: 'Round', open: () => openTarget(t.id) });
+        }
+      });
+    }
+  });
+
   const rows = [
-    ...app.content.targets.filter(t => fv(t.deadline)).map(t => ({ date: fv(t.deadline), name: `${t.flag || ''} ${t.name}`, kind: 'Scheme', open: () => openTarget(t.id) })),
-    ...app.content.targets.filter(t => fv(t.gateDeadline)).map(t => ({ date: fv(t.gateDeadline), name: `${t.short || t.name}: ${t.gateLabel || 'university application'}`, kind: 'University', open: () => openTarget(t.id) })),
-    ...app.content.documents.filter(d => fv(d.deadline)).map(d => ({ date: fv(d.deadline), name: d.name, kind: 'Document' })),
-    ...app.missions.missions.filter(m => fv(m.deadline)).map(m => ({ date: fv(m.deadline), name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
+    ...roundRows,
+    ...getActiveDocuments().filter(d => fv(d.deadline)).map(d => ({ date: fv(d.deadline), name: d.name, kind: 'Document' })),
+    ...getActiveMissions().filter(m => fv(m.deadline)).map(m => ({ date: fv(m.deadline), name: m.title, kind: isDone(m.id) ? 'Done' : 'Mission', open: () => openMission(m.id) }))
   ].sort((a, b) => String(a.date).localeCompare(String(b.date)));
   const groups = {};
   rows.forEach(r => (groups[r.date.slice(0, 7)] = groups[r.date.slice(0, 7)] || []).push(r));

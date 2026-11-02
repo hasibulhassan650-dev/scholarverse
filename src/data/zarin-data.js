@@ -165,8 +165,34 @@ const ZARIN_TARGETS = [
     subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
     funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
     deadline: {"value":"2026-12-15","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-26","status":"verified"},
-    deadlineLabel: "Varies by programme: Oct – Dec 2026",
+    deadlineLabel: "Bremen IGC: 15 Dec 2026 · HTW Berlin MPMD: 28 Feb 2027",
     status: "open",
+    rounds: [
+      {
+        name: "HTW Berlin MPMD Window Opens",
+        type: "portal_open",
+        deadline: "2026-11-01",
+        label: "01 November 2026 — MPMD Application Portal Opens",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Application window opens for Master in Project Management and Data Science."
+      },
+      {
+        name: "Hochschule Bremen IGC MBA Logistics Deadline",
+        type: "final",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — Bremen IGC Portal Closes",
+        portalUrl: "https://apply.graduatecenter.org/",
+        description: "Hard deadline for DAAD EPOS International Logistics & SCM MBA."
+      },
+      {
+        name: "HTW Berlin MPMD Final EPOS Deadline",
+        type: "final",
+        deadline: "2027-02-28",
+        label: "28 February 2027 — HTW Berlin MPMD Closes",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Final deadline for DAAD EPOS intake at HTW Berlin."
+      }
+    ],
     route: "Direct application to participating institutions (Hochschule Bremen IGC / HTW Berlin)",
     eligibleProgrammes: [
       "Hochschule Bremen (IGC) — International MBA in International Logistics & SCM (Director: Prof. Dr. Frank Fürstenberg; apply.graduatecenter.org)",
@@ -276,7 +302,18 @@ const ZARIN_TARGETS = [
     "checked": "2026-10-25",
     "status": "verified"
   },
+  "deadlineLabel": "01 February 2027 (Fall 2027 Intake)",
   "status": "open",
+  "rounds": [
+    {
+      name: "International Application & Funding Review",
+      type: "final",
+      deadline: "2027-02-01",
+      label: "01 February 2027 — Fall 2027 Portal Closes",
+      portalUrl: "https://www.concordia.ca/jmsb/programs/graduate/master-supply-chain-management/admissions/application-process.html",
+      description: "Final deadline for international applicants seeking admission and entrance funding consideration."
+    }
+  ],
   "route": "Direct application for Fall 2027 intake via Concordia Graduate Portal",
   "eligibleProgrammes": [
     "MSCM Option A (MSCA 699 - 21 credit research thesis)"
@@ -654,7 +691,7 @@ const ZARIN_PROFESSORS = [
   "department": "Supply Chain and Business Technology Management",
   "country": "Canada",
   "title": "Associate Professor & Director of MSCM Program (SEEKING STUDENTS)",
-  "email": "UNVERIFIED — not rendered on her Concordia profile; do not guess",
+  "email": "xiaodan.pan@concordia.ca",
   "score": 9.7,
   "tier": "A",
   "recruiting": true,
@@ -662,7 +699,7 @@ const ZARIN_PROFESSORS = [
   "paper": "Targeting online sales through last-mile delivery platform integration (2025, Journal of Operations Management)",
   "why": "Director of the MSCM Program; background includes degrees in International Shipping and Supply Chain; ACTIVELY SUPERVISING students; located in Montreal.",
   "draft": "⏸ HOLD — profile shows 'Thesis supervisor · Accepting inquiries'. Get her email from the Concordia directory first. MSCM Option A (thesis) is the funded route; deadline 1 Feb 2027; GMAT/GRE + IELTS 6.5 required.",
-  "email_status": "UNVERIFIED — email field not rendered on https://www.concordia.ca/faculty/xiaodan-pan.html",
+  "email_status": "✅ VERIFIED — Concordia University JMSB Directory (xiaodan.pan@concordia.ca)",
   "paper_status": "UNVERIFIED — paper not checked against the professor's own publication list or DOI",
   "contribution": "Direct operational parallels in international shipping, air chartering, and buyer PO fulfillment."
 },

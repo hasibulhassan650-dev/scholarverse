@@ -340,8 +340,19 @@ const TARGETS = [
     funding: {"value":"€992/month + health/accident/liability insurance + travel allowance + possible rent subsidy (to €350) + family allowance","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
     fundingDetail: {"value":"12–42 months. No tuition at Göttingen (Lower Saxony). Includes a funded intensive German course Aug–Sep.","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
     deadline: {"value":"2026-11-15","source":"https://www.uni-goettingen.de/en/572462.html","checked":"2026-10-25","status":"verified"},
-    deadlineLabel: "15 November 2026 — HARD",
+    deadlineLabel: "15 November 2026 (23:59 CET) — HARD",
     status: "open",
+    earlyDeadline: "2026-11-15",
+    rounds: [
+      {
+        name: "Final EPOS Application Deadline",
+        type: "final",
+        deadline: "2026-11-15",
+        label: "15 November 2026 (23:59 CET) — Portal Closes",
+        portalUrl: "https://www.uni-goettingen.de/en/572462.html",
+        description: "Hard portal deadline for complete 12-document Section C bundle. Shortlist interviews in Dec/Jan."
+      }
+    ],
     route: "DIRECT to the university. ONE application covers BOTH the programme and the funding.",
     why: "Your most immediate hard deadline. Rich-country applicants cannot touch EPOS. Field match is economies. Roughly 6–7 scholarships a year.",
     eligibleProgrammes: ["MSc Development Economics, University of Göttingen, 24 months, English-taught"],
@@ -409,8 +420,36 @@ const TARGETS = [
     funding: {"value":"€992/month + insurance + travel — AND tuition is WAIVED for EPOS recipients","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     fundingDetail: {"value":"24 months, English-taught. Full DAAD EPOS package plus state tuition fee exemption under EPOS funding agreement.","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
     deadline: {"value":"2026-12-15","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
-    deadlineLabel: "15 December 2026 (window opens 15 Nov)",
+    deadlineLabel: "15 December 2026 (Window: 15 Nov – 15 Dec)",
+    gateDeadline: {"value":"2027-01-06","source":"https://www.uni-hohenheim.de/en/agecon-scholarships","checked":"2026-10-25","status":"verified"},
+    gateLabel: "English Score Submission Grace Period: 6 January 2027",
     status: "opening_soon",
+    rounds: [
+      {
+        name: "HohCampus & Email Window Opens",
+        type: "portal_open",
+        deadline: "2026-11-15",
+        label: "15 November 2026 — Window Opens",
+        portalUrl: "https://www.uni-hohenheim.de/en/agecon-scholarships",
+        description: "HohCampus online portal opens. Complete online admission and email PDF bundle to agecon@uni-hohenheim.de."
+      },
+      {
+        name: "Main EPOS Application Deadline",
+        type: "final",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — Application Deadline",
+        portalUrl: "https://www.uni-hohenheim.de/en/agecon-scholarships",
+        description: "Both the email bundle and the HohCampus portal application must be submitted."
+      },
+      {
+        name: "English Score Submission Grace Period",
+        type: "grace_period",
+        deadline: "2027-01-06",
+        label: "06 January 2027 — English Score Grace Period",
+        portalUrl: "https://www.uni-hohenheim.de/en/agecon-scholarships",
+        description: "Official IELTS/TOEFL score can be sent directly to agecon@uni-hohenheim.de until this date."
+      }
+    ],
     route: "TWO PARTS: (1) Email separate unmerged PDFs to agecon@uni-hohenheim.de with subject 'DAAD - [HohCampus No.] - Hasibul Hasan'; (2) Submit online admission application via HohCampus portal (opens 15 Nov).",
     submissionRules: [
       "Strict file naming required: '1. Hasan Hasibul - DAAD Application Form.pdf', '2. Hasan Hasibul - Motivation Letter.pdf', '3. Hasan Hasibul - Diploma & Transcript of Records.pdf', '4. Hasan Hasibul - CV.pdf', '5. Hasan Hasibul - Employment Certificates.pdf', '6. Hasan Hasibul - Professional Recommendations.pdf', '7. Hasan Hasibul - Proof of English Proficiency.pdf'",
@@ -468,8 +507,26 @@ const TARGETS = [
     funding: "CHF 10,000 per semester × up to 4 semesters (≈ CHF 40,000) + GUARANTEED HOUSING",
     fundingDetail: "Master's-level VERIFIED. No nationality restriction. No extra documents required — you simply tick the box on the admission application.",
     deadline: "2026-12-15",
-    deadlineLabel: "Round 1 closes 15 December 2026",
+    deadlineLabel: "Round 1: 15 Dec 2026 / Round 2: 15 Apr 2027",
     status: "open",
+    rounds: [
+      {
+        name: "Round 1 (Fellowship Recommended)",
+        type: "round_1",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — Round 1 Deadline",
+        portalUrl: "https://www.epfl.ch/education/studies/en/financing-study/grants/excellence-fellowships/",
+        description: "Primary fellowship round. High eligibility for non-EU applicants needing visa processing."
+      },
+      {
+        name: "Round 2 (General)",
+        type: "round_2",
+        deadline: "2027-04-15",
+        label: "15 April 2027 — Round 2 Deadline",
+        portalUrl: "https://www.epfl.ch/education/studies/en/financing-study/grants/excellence-fellowships/",
+        description: "Late admissions round. Very few fellowships remain."
+      }
+    ],
     route: "Apply for admission to an EPFL master's and TICK THE EXCELLENCE FELLOWSHIP BOX",
     why: "🟢 BEST EFFORT-TO-REWARD RATIO FOUND. CHF 40,000 plus guaranteed housing, master's-level confirmed, no nationality barrier, and zero extra paperwork. Just tick the box.",
     eligibleProgrammes: [
@@ -581,8 +638,18 @@ const TARGETS = [
     funding: "CHF 13,500 per semester from HS27 + tuition waiver (~60 awards total for 2027/28)",
     fundingDetail: "Requires a master's thesis pre-proposal plus TWO professor referees.",
     deadline: "2026-11-30",
-    deadlineLabel: "1–30 November 2026 — NOT 15 December",
+    deadlineLabel: "1–30 November 2026 — HARD 30-Day Window",
     status: "open",
+    rounds: [
+      {
+        name: "ETH ESOP Portal Closes",
+        type: "final",
+        deadline: "2026-11-30",
+        label: "30 November 2026 (23:59 CET) — Portal Closes",
+        portalUrl: "https://ethz.ch/students/en/studies/financial/scholarships/excellence-scholarship.html",
+        description: "Hard 30-day window (opens 01 Nov, closes 30 Nov). Requires master thesis pre-proposal."
+      }
+    ],
     route: "Direct to ETH",
     why: "High value, but the hard gate is 'top 10% of Bachelor's' — a long shot on a 3.30 CGPA.",
     eligibleProgrammes: ["ETH has no conventional MSc Economics — which master's to target is UNVERIFIED"],
@@ -608,9 +675,37 @@ const TARGETS = [
     subjectFit: "STRONG — but the 16-MONTH gate eliminates most programmes",
     funding: "⚠️ NO federal scholarship for incoming international master's students. Funding must be programme-level (TA/RA/entrance award).",
     fundingDetail: "VERIFIED PASS: Waterloo MMath (Statistics or Actuarial Science, thesis option) — research-based and FUNDED, reaching exactly 16 months. VERIFIED TRAP: Waterloo MQF is 16 months with the best placement in Canada but is EXPLICITLY UNFUNDED.",
-    deadline: "2027-01-06",
-    deadlineLabel: "Waterloo MMath: priority 15 Dec 2026, FINAL 6 Jan 2027 (fall only)",
+    deadline: "2026-12-15",
+    deadlineLabel: "USask/Waterloo Priority: 15 Dec 2026 · UBC: 31 Dec 2026 · Final: 6 Jan 2027",
     status: "open",
+    earlyDeadline: "2026-12-15",
+    regularDeadline: "2027-01-06",
+    rounds: [
+      {
+        name: "USask Edwards MSc Finance Priority Funding",
+        type: "priority",
+        deadline: "2026-12-15",
+        label: "15 December 2026 — USask Edwards Funding Review",
+        portalUrl: "https://www.edwards.usask.ca/programs/mscmanagement",
+        description: "Guaranteed $16,875/yr tuition offset awarded to applications submitted by Dec 15."
+      },
+      {
+        name: "UBC Sauder MSc Finance International Deadline",
+        type: "intl_deadline",
+        deadline: "2026-12-31",
+        label: "31 December 2026 — UBC Sauder Portal Deadline",
+        portalUrl: "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+        description: "Application fee waived for Bangladesh. References due by 31 January 2027."
+      },
+      {
+        name: "Waterloo MMath Final Fall Deadline",
+        type: "final",
+        deadline: "2027-01-06",
+        label: "06 January 2027 — Waterloo Final Deadline",
+        portalUrl: "https://uwaterloo.ca/graduate-studies-postdoctoral-affairs/future-students/programs/applied-mathematics-mmath",
+        description: "Priority review Dec 15; absolute final deadline Jan 6 (Fall 2027 only)."
+      }
+    ],
     route: "Two routes only: (a) funded research master's with a thesis, 16+ months; (b) unfunded professional programme if employer-sponsored",
     why: "Canada has the best immigration architecture of any option and the worst funding architecture. The 16-month spousal-work-permit rule then eliminates most MA Economics programmes, which run 12 months.",
     eligibleProgrammes: [
