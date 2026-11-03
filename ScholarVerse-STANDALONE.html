@@ -857,8 +857,7 @@ var module = { exports: {} };
 const USER_INPUT_NEEDED = [
   { id: "zarin-ielts-subscores", person: "Zarin", label: "IELTS Writing, Speaking & Overall Scores", desc: "TRF scan only showed Listening 7.5 and Reading 6.5 legibly. Type exact scores from paper TRF.", status: "pending" },
   { id: "zarin-quant-grades", person: "Zarin", label: "Confirm 3 Quantitative Course Grades", desc: "Confirm Business Math (2.00), Business Stats (3.50), Quant Business Analysis (3.50) from paper transcript.", status: "pending" },
-  { id: "zarin-ssc-gpa", person: "Zarin", label: "SSC GPA Confirmation", desc: "Confirm BIAM Model School SSC GPA (OCR garbled as 'S_QQ' instead of 5.00).", status: "pending" },
-  { id: "hasibul-citybank-dates", person: "Hasibul", label: "City Bank HR Certificate Start Date", desc: "Exact official start date on City Bank letterhead (confirm Mar 2024 to avoid CV mismatch).", status: "pending" }
+  { id: "zarin-ssc-gpa", person: "Zarin", label: "SSC GPA Confirmation", desc: "Confirm BIAM Model School SSC GPA (OCR garbled as 'S_QQ' instead of 5.00).", status: "pending" }
 ];
 
 /* ---------------------------------------------------------------------------
@@ -934,9 +933,10 @@ const PROFILE = {
     {
       employer: "City Bank PLC",
       role: "Management Trainee",
-      start: "2024-03",
+      start: "2024-02",
       end: "2025-02",
       hoursPerWeek: 45,
+      note: "Official HR Certificate of Employment confirms start date as 28-Feb-2024 (Staff ID #20240197).",
       bullets: [
         "Top 10 graduate of the 2024 MT cohort; ranked Top 10 at BIBM Banking Foundation training",
         "Level 2 Reward & Recognition for building a cross-divisional MIS dashboard tracking front-office deal volumes and turnaround times",
@@ -956,7 +956,7 @@ const PROFILE = {
       ]
     }
   ],
-  workNote: "⚠️ February 2024 is a genuine GAP month between bKash and City Bank. Declare it honestly. Do not stretch dates — mismatched dates between CV and employment certificates are a stated rejection reason.",
+  workNote: "✅ CONFIRMED VIA HR CERTIFICATE: City Bank official start date is 28-Feb-2024. bKash concluded 31-Jan-2024. The 28-day transition period in February 2024 is accounted for. All CVs, DAAD forms, and portal entries must list February 2024 as City Bank start month.",
   achievements: [
     { year: "2021", text: "ISCEA Ptak Prize Global Case Competition — 70% Scholarship Winner (international management case competition)" },
     { year: "2022", text: "Guinness World Record Holder — longest single-line bicycle parade" },
@@ -1754,7 +1754,7 @@ const DOCUMENTS = [
   { id: "hsc", name: "HSC certificate + certified translation", type: "Academic", status: "partial", req: ["EPOS"], spec: "EPOS calls this the University Entrance Qualification. Almost certainly Bengali → certified English translation REQUIRED.", owner: "Translation service", blocker: true },
   { id: "ielts", name: "IELTS Academic or TOEFL iBT", type: "English", status: "missing", req: ["EPOS", "SISGP", "EMJM", "EPFL"], spec: "IELTS Academic 6.5 overall (Hohenheim) or TOEFL iBT 90. EMLE needs 7.0. Result must be no older than 3 years for DAAD.", owner: "You", blocker: true, critical: true },
   { id: "moi", name: "Medium of Instruction certificate", type: "English", status: "have", req: [], spec: "✅ ACCEPTED BY GÖTTINGEN — they confirmed in writing on 13 Oct 2026: 'Yes, your University attestating that your degree was entirely taught in English is sufficient and meets the language criteria.' You already hold this and it is already scanned. ⚠️ Hohenheim states the opposite for their programme ('NOT SUFFICIENT... There are no exceptions') and has NOT been asked — so this is Göttingen-specific.", owner: "You" },
-  { id: "emp-cert", name: "Certificate(s) of Employment", type: "Employment", status: "missing", req: ["EPOS", "SISGP"], spec: "MANDATORY. Must show you are currently employed AND meet the 2-year minimum. Letterhead, signature, official stamp, current date, UNSEALED. Dates must match your CV exactly.", owner: "City Bank HR", blocker: true, critical: true },
+  { id: "emp-cert", name: "Certificate(s) of Employment", type: "Employment", status: "have", req: ["EPOS", "SISGP"], spec: "✅ HELD & VERIFIED — Official City Bank PLC Certificate of Employment issued 29 Oct 2026 by Hasan Md. Lablu, Head of HR Operations. Staff ID: #20240197. Confirms full-time employment since 28-Feb-2024 as Associate Manager, ALM & Money Market, Treasury. ⚠️ NOTE: Start date is officially 28-Feb-2024 (align all CVs to Feb 2024). Combined with bKash (Oct 2023–Jan 2024), total post-degree experience is ~37 months (comfortably beats 24-month gate).", owner: "City Bank HR", blocker: false, critical: true },
   { id: "emp-letter", name: "Employer recommendation letter (Head of Treasury)", type: "Employment", status: "missing", req: ["EPOS"], spec: "MANDATORY. Official letterhead, position and referee contact details, signed and dated, unsealed. Ideally includes a re-employment guarantee.", owner: "City Bank manager", blocker: true, critical: true },
   { id: "karimul-letter", name: "DAAD Scholar Recommendation (Molla Karimul Islam, SAVP City Bank)", type: "References", status: "verify", req: ["EPOS", "SISGP", "EMJM"], spec: "⭐ HIGHEST LEVERAGE GERMAN REFERENCE. SAVP & Operational Head of Sustainable Finance Department, City Bank PLC | Adjunct Faculty, BRAC University | M.Sc. Germany (DAAD Scholar 2014, Universität Greifswald). Bridges your Treasury ALM & sovereign bond work with German sustainable development finance.", owner: "Molla Karimul Islam", critical: true },
   { id: "ranking", name: "Ranking letter (class standing)", type: "Academic", status: "missing", req: ["Göttingen"], spec: "Named explicitly by Hohenheim as acceptable evidence. Not required at Hohenheim (your 2.05 clears 2.5) but valuable for Göttingen's vaguer 'upper third' bar.", owner: "BUP" },
