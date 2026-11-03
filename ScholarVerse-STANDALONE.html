@@ -20664,56 +20664,115 @@ const ZARIN_TARGETS = [
     nextAction: "Create universityadmissions.se account and rank Lund, Gothenburg, and Jönköping MSc SCM."
   },
   {
-    id: "zarin-germany-epos",
-    name: "DAAD EPOS — International Logistics & Project Management",
-    short: "Germany EPOS SCM",
+    id: "zarin-bremen-igc",
+    name: "Hochschule Bremen (IGC) — International MBA in Logistics & SCM (DAAD EPOS)",
+    short: "Bremen MBA Logistics",
     country: "Germany",
     flag: "🇩🇪",
     tier: 1,
     priority: "P0",
-    subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
-    funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
-    deadline: {"value":"2026-12-15","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-26","status":"verified"},
-    deadlineLabel: "Bremen IGC: 15 Dec 2026 · HTW Berlin MPMD: 28 Feb 2027",
+    subjectFit: "PERFECT — International Logistics & Global Supply Chain Management MBA",
+    funding: {"value":"€992/month DAAD stipend + full tuition waiver + health insurance + travel grant","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-31","status":"verified"},
+    fundingDetail: {"value":"Full DAAD EPOS funding package (€992/month) plus full tuition coverage at International Graduate Center (IGC). Includes travel allowance and family allowance (€276/mo).","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-31","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://apply.graduatecenter.org/","checked":"2026-10-31","status":"verified"},
+    deadlineLabel: "15 December 2026 (23:59 CET) — Portal Closes",
     status: "open",
     rounds: [
       {
-        name: "HTW Berlin MPMD Window Opens",
-        type: "portal_open",
-        deadline: "2026-11-01",
-        label: "01 November 2026 — MPMD Application Portal Opens",
-        portalUrl: "https://mpmd.htw-berlin.de/applying/",
-        description: "Application window opens for Master in Project Management and Data Science."
-      },
-      {
-        name: "Hochschule Bremen IGC MBA Logistics Deadline",
+        name: "DAAD EPOS Application Deadline",
         type: "final",
         deadline: "2026-12-15",
         label: "15 December 2026 — Bremen IGC Portal Closes",
         portalUrl: "https://apply.graduatecenter.org/",
-        description: "Hard deadline for DAAD EPOS International Logistics & SCM MBA."
-      },
-      {
-        name: "HTW Berlin MPMD Final EPOS Deadline",
-        type: "final",
-        deadline: "2027-02-28",
-        label: "28 February 2027 — HTW Berlin MPMD Closes",
-        portalUrl: "https://mpmd.htw-berlin.de/applying/",
-        description: "Final deadline for DAAD EPOS intake at HTW Berlin."
+        description: "Hard portal deadline for complete DAAD EPOS International MBA in Logistics & SCM application."
       }
     ],
-    route: "Direct application to participating institutions (Hochschule Bremen IGC / HTW Berlin)",
+    route: "Direct application via Bremen IGC portal at https://apply.graduatecenter.org/ (Select MBA International Logistics & SCM with DAAD EPOS scholarship)",
     eligibleProgrammes: [
-      "Hochschule Bremen (IGC) — International MBA in International Logistics & SCM (Director: Prof. Dr. Frank Fürstenberg; apply.graduatecenter.org)",
-      "HTW Berlin — Master in Project Management and Data Science (MPMD; mpmd.htw-berlin.de/applying; Window: 1 Nov 2026 – 28 Feb 2027)"
+      "International MBA — Specialization in International Logistics & Supply Chain Management (Director: Prof. Dr. Frank Fürstenberg)"
     ],
+    scoring: {
+      admitOdds: 4,
+      admitRationale: "BBA 3.42 converts to German 1.87 (beats 2.0 cutoff); 3.5 yrs freight leadership at MGH/Akij exceeds 2-year gate.",
+      fundingOdds: 4,
+      fundingRationale: "Direct DAAD EPOS quota allocated to IGC Bremen cohort.",
+      fullCostCovered: "yes",
+      fullCostRationale: "€992/mo living stipend + full tuition waiver + health insurance + travel allowance.",
+      subjectFit: 5,
+      subjectRationale: "100% direct match with international shipping, air chartering, and freight forwarder operations.",
+      careerPR: 4,
+      careerPRRationale: "Germany 18-month jobseeker visa + EU Blue Card fast-track PR (21 months with B1 German).",
+      coupleFit: 5,
+      coupleFitRationale: "100% German co-location with Hasibul's Göttingen/Hohenheim targets + €276/mo DAAD family allowance.",
+      effort: 3,
+      effortRationale: "Standard portal application: degree, transcript, 2 references, motivation letter, CV."
+    },
     advantages: [
-      "Zarin's BBA 3.42 converts to German 1.87 (beats 2.0 competitive bar)",
+      "Zarin's BBA 3.42 converts to German 1.87 (comfortably beats 2.0 competitive bar)",
       "3.5 years of verifiable freight forwarding and commercial operations exceed 2-year EPOS gate",
-      "HTW Berlin MPMD explicitly recognizes English-taught degree as C1 English (zero IELTS expiration risk)",
+      "IELTS 7.0 valid and on file (clears language requirement)",
       "Same-country synergy with Hasibul's Göttingen/Hohenheim EPOS targets (DAAD €276/mo spousal allowance)"
     ],
-    nextAction: "Submit Bremen IGC application via apply.graduatecenter.org; prepare HTW Berlin MPMD application for 1 Nov opening."
+    nextAction: "Complete online application at https://apply.graduatecenter.org/ before 15 December 2026."
+  },
+  {
+    id: "zarin-htw-berlin",
+    name: "HTW Berlin — Master in Project Management and Data Science (MPMD, DAAD EPOS)",
+    short: "HTW Berlin MPMD",
+    country: "Germany",
+    flag: "🇩🇪",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "HIGH — Project Management, Logistics Analytics & Enterprise Data Science",
+    funding: {"value":"€992/month DAAD stipend + full tuition waiver + health insurance + travel grant","source":"https://mpmd.htw-berlin.de/applying/","checked":"2026-10-31","status":"verified"},
+    fundingDetail: {"value":"Full DAAD EPOS funding package (€992/month) plus full tuition coverage in Berlin. Includes travel allowance and family allowance (€276/mo).","source":"https://mpmd.htw-berlin.de/applying/","checked":"2026-10-31","status":"verified"},
+    deadline: {"value":"2027-02-28","source":"https://mpmd.htw-berlin.de/applying/","checked":"2026-10-31","status":"verified"},
+    deadlineLabel: "28 February 2027 (Window: 01 Nov 2026 – 28 Feb 2027)",
+    status: "open",
+    rounds: [
+      {
+        name: "Application Portal Opens",
+        type: "portal_open",
+        deadline: "2026-11-01",
+        label: "01 November 2026 — Application Window Opened",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Online application system is now open for Fall 2027 intake."
+      },
+      {
+        name: "Final DAAD EPOS Submission Deadline",
+        type: "final",
+        deadline: "2027-02-28",
+        label: "28 February 2027 (23:59 CET) — Portal Closes",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Final deadline to submit complete DAAD EPOS application."
+      }
+    ],
+    route: "Online application via HTW Berlin portal at https://mpmd.htw-berlin.de/applying/",
+    eligibleProgrammes: [
+      "Master in Project Management and Data Science (MPMD, English-taught, 4 semesters)"
+    ],
+    scoring: {
+      admitOdds: 4,
+      admitRationale: "BBA 3.42 / German 1.87; 3.5 yrs project management experience handling air cargo logistics & CargoWise/SAP ERP.",
+      fundingOdds: 4,
+      fundingRationale: "Direct DAAD EPOS quota assigned to HTW Berlin MPMD.",
+      fullCostCovered: "yes",
+      fullCostRationale: "€992/mo living stipend + full tuition waiver + health insurance + travel grant.",
+      subjectFit: 4,
+      subjectRationale: "Data science and project management directly complement enterprise logistics and digital freight operations.",
+      careerPR: 5,
+      careerPRRationale: "Berlin tech & supply chain capital; 18-month jobseeker visa + EU Blue Card.",
+      coupleFit: 5,
+      coupleFitRationale: "100% German co-location with Hasibul + DAAD family allowance.",
+      effort: 3,
+      effortRationale: "Straightforward online portal submission with verified documents."
+    },
+    advantages: [
+      "HTW Berlin MPMD explicitly recognizes English-taught degree as C1 English (zero IELTS expiration risk)",
+      "Window opened 01 Nov 2026 with comfortable deadline of 28 Feb 2027",
+      "Project management and data science skills are top shortage qualifications under German EU Blue Card rules"
+    ],
+    nextAction: "Create applicant account on mpmd.htw-berlin.de and assemble project portfolio."
   },
   {
     id: "zarin-italy-iyt",
@@ -20932,6 +20991,148 @@ const ZARIN_TARGETS = [
     "effortRationale": "Requires supervisor alignment and formal engineering department relevancy petition."
   },
   "nextAction": "Email resume to Prof. Fatma Gzara (fgzara@uwaterloo.ca)."
+},
+{
+  "id": "zarin-ubc-sauder",
+  "name": "University of British Columbia (Sauder) — MSc in Business Administration (Operations & Logistics)",
+  "short": "UBC Sauder MSc SCM",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "PERFECT — Air Cargo Logistics, Airport Operations & Supply Chain Analytics",
+  "funding": {
+    "value": "International Tuition Award ($3,200/yr) + Paid Summer RA ($12k) + TA ($37.53/hr); application fee waived",
+    "source": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "fundingDetail": {
+    "value": "24 months research thesis degree. Tuition net ~$6.9k CAD after universal International Tuition Award. Summer RA funding up to $12,000 + teaching assistantships ($37.53/hr). $168.25 application fee is WAIVED for Bangladesh.",
+    "source": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2026-12-31",
+    "source": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadlineLabel": "31 December 2026 (References by 31 Jan 2027)",
+  "status": "open",
+  "rounds": [
+    {
+      "name": "International Application Deadline",
+      "type": "final",
+      "deadline": "2026-12-31",
+      "label": "31 December 2026 — UBC Portal Closes",
+      "portalUrl": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+      "description": "Application fee waived for citizens of Bangladesh. Complete online submission by Dec 31."
+    },
+    {
+      "name": "Referee Submission Deadline",
+      "type": "referees",
+      "deadline": "2027-01-31",
+      "label": "31 January 2027 — Referee Letters Due",
+      "portalUrl": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+      "description": "Referees submit letters directly via electronic portal."
+    }
+  ],
+  "route": "Online application via UBC Graduate Portal (Select Master of Science in Business Administration, Operations & Logistics track). Note: Sauder policy bans faculty cold emails; name Prof. Anming Zhang and Prof. Harish Krishnan in Statement of Intent.",
+  "eligibleProgrammes": [
+    "MSc in Business Administration — Operations and Logistics Division (24 months, thesis-based)"
+  ],
+  "scoring": {
+    "admitOdds": 3,
+    "admitRationale": "Elite global business school; BBA 3.42 + 120 air cargo charter operations; strong fit with Air Transportation Chair.",
+    "fundingOdds": 4,
+    "fundingRationale": "Universal International Tuition Award + department guaranteed assistantship budget.",
+    "fullCostCovered": "yes",
+    "fullCostRationale": "Net tuition ~$6.9k covered by summer RA ($12k) and TA hours ($37.53/hr); spouse work permit allowed.",
+    "subjectFit": 5,
+    "subjectRationale": "Supervised by Prof. Anming Zhang (YVR Air Transport Chair); exact match for air cargo forwarding.",
+    "careerPR": 4,
+    "careerPRRationale": "Vancouver is Canada's Pacific air & sea cargo gateway (Expeditors, DB Schenker, DSV). 3-year PGWP.",
+    "coupleFit": 5,
+    "coupleFitRationale": "100% same campus co-location with Hasibul at UBC Sauder (MSc Finance).",
+    "effort": 3,
+    "effortRationale": "Standard online application; fee waived; statement of intent citing air transportation research."
+  },
+  "advantages": [
+    "Prof. Anming Zhang is Canada's #1 authority on air cargo logistics and airport slot allocations",
+    "UBC Sauder explicitly waives the $168.25 CAD application fee for citizens of Bangladesh",
+    "24-month research thesis degree 100% clears the IRCC C42 spousal open work permit gate",
+    "Vancouver Pacific gateway provides premier employment integration in international air freight"
+  ],
+  "nextAction": "Draft 2-page Statement of Intent citing Prof. Anming Zhang's ATRS air cargo research and submit before 31 December 2026."
+},
+{
+  "id": "zarin-hec-montreal",
+  "name": "HEC Montréal — MSc in Administration (Global Supply Chain Management, Thesis Stream)",
+  "short": "HEC Montreal MSc SCM",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "PERFECT — 100% English-Taught Research Thesis in Global Supply Chain Analytics",
+  "funding": {
+    "value": "Quebec Differential Fee Exemption (Tuition reduced to ~$4,000/yr) + NSERC/FRQNT Research Stipends",
+    "source": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "fundingDetail": {
+    "value": "16 to 24 months thesis-based degree taught entirely in English. Research thesis students are eligible for Quebec international tuition fee exemptions, reducing tuition to domestic rate (~$4k CAD/yr) + entrance scholarships.",
+    "source": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2027-02-01",
+    "source": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadlineLabel": "01 February 2027 (Fall 2027 Intake)",
+  "status": "open",
+  "rounds": [
+    {
+      "name": "Final Fall Application Deadline",
+      "type": "final",
+      "deadline": "2027-02-01",
+      "label": "01 February 2027 — HEC Portal Closes",
+      "portalUrl": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+      "description": "Final application deadline for international applicants seeking admission and tuition exemption."
+    }
+  ],
+  "route": "Online application via HEC Montréal portal (Select MSc in Administration — Global Supply Chain Management, Thesis stream). Inquire with Canada Research Chairholder Prof. Yossiri Adulyasak.",
+  "eligibleProgrammes": [
+    "MSc in Administration — Global Supply Chain Management (Thesis Option, 45 credits, 16–24 months, English-taught)"
+  ],
+  "scoring": {
+    "admitOdds": 4,
+    "admitRationale": "BBA 3.42 + 3.5 yrs logistics leadership; 100% English instruction; competitive profile.",
+    "fundingOdds": 4,
+    "fundingRationale": "Quebec international differential fee exemption available for research master's students.",
+    "fullCostCovered": "yes",
+    "fullCostRationale": "Low net tuition (~$4k CAD/yr) offset by research assistantships and low Montreal living costs.",
+    "subjectFit": 5,
+    "subjectRationale": "Canada Research Chair in Supply Chain Analytics under Prof. Yossiri Adulyasak.",
+    "careerPR": 4,
+    "careerPRRationale": "Montreal multimodal port & air logistics corridor; 3-year PGWP.",
+    "coupleFit": 5,
+    "coupleFitRationale": "100% same campus and city co-location with Hasibul at HEC Montréal (MSc Financial Engineering).",
+    "effort": 3,
+    "effortRationale": "Standard online university application with CV, transcript, and statement of research interests."
+  },
+  "advantages": [
+    "Canada Research Chair in Supply Chain Analytics (Prof. Yossiri Adulyasak) actively supervises MSc theses",
+    "100% taught in English (no French language prerequisite for admission or coursework)",
+    "16–24 month research thesis degree clears the IRCC C42 spousal open work permit gate",
+    "100% co-location with Hasibul at HEC Montréal (MSc Financial Engineering)"
+  ],
+  "nextAction": "Assemble transcript and statement of research interests for HEC Montréal portal submission before 01 February 2027."
 }
 ];
 
@@ -25383,47 +25584,196 @@ if (typeof window !== 'undefined' && window.addEventListener) {
 
 function renderZarinDashboard(root) {
   const Z = (typeof ZARIN_DATA !== 'undefined') ? ZARIN_DATA : (app.content && app.content.zarin) || {};
-  const tgts = Z.targets || [];
-  const mis = Z.missions || [];
-  const docs = Z.documents || [];
+  const tgts = (typeof ZARIN_TARGETS !== 'undefined') ? ZARIN_TARGETS : (Z.targets || []);
+  const mis = (typeof ZARIN_MISSIONS !== 'undefined') ? ZARIN_MISSIONS : (Z.missions || []);
+  const docs = (typeof ZARIN_DOCUMENTS !== 'undefined') ? ZARIN_DOCUMENTS : (Z.documents || []);
 
-  const zarinEvs = [
-    { name: 'Bremen MBA Logistics (EPOS)', date: '2026-12-15', kind: 'target', d: daysUntil('2026-12-15'), open: () => openTarget('zarin-germany-epos') },
-    { name: 'Sweden Universities SCM (Lund/Gothenburg)', date: '2027-01-15', kind: 'target', d: daysUntil('2027-01-15'), open: () => openTarget('zarin-sweden-sisgp') },
-    { name: 'Czech Govt VSE Prague Results', date: '2027-02-15', kind: 'milestone', d: daysUntil('2027-02-15'), open: () => openTarget('zarin-czech-vse') },
-    { name: 'Swedish Institute SISGP Scholarship', date: '2027-02-25', kind: 'critical', d: daysUntil('2027-02-25'), open: () => openTarget('zarin-sweden-sisgp') },
-    { name: 'Bologna Pre-Admission (IYT)', date: '2027-03-31', kind: 'target', d: daysUntil('2027-03-31'), open: () => openTarget('zarin-italy-iyt') },
-    { name: 'Italy IYT Scholarship Portal', date: '2027-05-11', kind: 'critical', d: daysUntil('2027-05-11'), open: () => openTarget('zarin-italy-iyt') },
-    { name: 'Canada Spousal OWP Filing', date: '2027-05-01', kind: 'target', d: daysUntil('2027-05-01'), open: () => openTarget('zarin-canada-spousal') }
-  ].sort((a,b) => a.date.localeCompare(b.date));
+  const zarinRadarItems = [
+    {
+      tier: 1,
+      target: "🇩🇪 HTW Berlin (MPMD EPOS)",
+      event: "Application Portal Opened (Fall 2027 Intake)",
+      date: "2026-11-01",
+      deadline: "2027-02-28",
+      status: "OPEN NOW",
+      cls: "ok",
+      coverage: "€992/mo + Full Tuition Waiver (DAAD EPOS)",
+      action: "Create applicant profile on mpmd.htw-berlin.de",
+      targetId: "zarin-htw-berlin"
+    },
+    {
+      tier: 1,
+      target: "🇸🇪 Sweden UniversityAdmissions.se",
+      event: "Portal Open · 13 Nov Official SI Programme List Release",
+      date: "2026-11-13",
+      deadline: "2027-01-15",
+      status: "10d to SI List",
+      cls: "bad",
+      coverage: "Full Tuition + SEK 12,000/mo Living Stipend (SISGP)",
+      action: "Review eligible SCM programs (Lund, Gothenburg, Jönköping)",
+      targetId: "zarin-sweden-sisgp"
+    },
+    {
+      tier: 2,
+      target: "🇩🇪 Bremen IGC (MBA Logistics)",
+      event: "DAAD EPOS International Logistics & SCM Deadline",
+      date: "2026-12-15",
+      deadline: "2026-12-15",
+      status: "42d left",
+      cls: "warn",
+      coverage: "€992/mo + Full Tuition Waiver + Family Allowance",
+      action: "Submit online at apply.graduatecenter.org",
+      targetId: "zarin-bremen-igc"
+    },
+    {
+      tier: 2,
+      target: "🇨🇦 USask Edwards (MSc OM)",
+      event: "Priority Funding & Tuition Offset Deadline",
+      date: "2026-12-15",
+      deadline: "2026-12-15",
+      status: "42d left",
+      cls: "warn",
+      coverage: "Guaranteed $16,875/yr Tuition Offset",
+      action: "Submit online via USask CGPS portal (100% Hasibul co-location)",
+      targetId: "zarin-usask-edwards"
+    },
+    {
+      tier: 2,
+      target: "🇨🇦 UBC Sauder (Operations & Logistics)",
+      event: "International Application Deadline (Fee Waived)",
+      date: "2026-12-31",
+      deadline: "2026-12-31",
+      status: "58d left",
+      cls: "warn",
+      coverage: "Intl Tuition Award + Summer RA ($12k) + TA ($37.53/hr)",
+      action: "Submit online citing Prof. Anming Zhang (Air Transport Chair)",
+      targetId: "zarin-ubc-sauder"
+    },
+    {
+      tier: 3,
+      target: "🇸🇪 Sweden 4-Program Ranking Lock",
+      event: "UniversityAdmissions.se 4-Program Selections Freeze",
+      date: "2027-01-15",
+      deadline: "2027-01-15",
+      status: "73d left",
+      cls: "ok",
+      coverage: "Prerequisite gateway for Swedish Institute (SISGP)",
+      action: "Lock 4 SCM programs in optimal ranking order",
+      targetId: "zarin-sweden-sisgp"
+    },
+    {
+      tier: 3,
+      target: "🇨🇦 Concordia MSCM Option A",
+      event: "MSCM Research Thesis Application Deadline",
+      date: "2027-02-01",
+      deadline: "2027-02-01",
+      status: "90d left",
+      cls: "ok",
+      coverage: "Departmental Research & TA Pool (~$10k–$15k)",
+      action: "Submit online citing Director Assoc. Prof. Xiaodan Pan",
+      targetId: "zarin-concordia-mscm"
+    },
+    {
+      tier: 3,
+      target: "🇨🇦 HEC Montréal (MSc Global SCM)",
+      event: "MSc Global Supply Chain Management Thesis Deadline",
+      date: "2027-02-01",
+      deadline: "2027-02-01",
+      status: "90d left",
+      cls: "ok",
+      coverage: "Quebec Fee Exemption (Tuition reduced to ~$4k/yr)",
+      action: "Submit online citing CRC Chair Prof. Yossiri Adulyasak",
+      targetId: "zarin-hec-montreal"
+    },
+    {
+      tier: 3,
+      target: "🇸🇪 Swedish Institute (SISGP)",
+      event: "SI Scholarship for Global Professionals Portal Window",
+      date: "2027-02-08",
+      deadline: "2027-02-24",
+      status: "Opens Feb 8",
+      cls: "ok",
+      coverage: "100% Tuition + SEK 12,000/mo Stipend + SEK 15,000 Travel",
+      action: "Submit SI CV & Proof of Work/Leadership (~7,000 hrs verified)",
+      targetId: "zarin-sweden-sisgp"
+    }
+  ];
+
+  const zarinEvs = zarinRadarItems.map(it => ({
+    name: it.target,
+    date: it.deadline || it.date,
+    kind: 'target',
+    d: daysUntil(it.deadline || it.date),
+    open: () => openTarget(it.targetId)
+  })).sort((a,b) => a.date.localeCompare(b.date));
 
   const upcoming = zarinEvs.filter(e => e.d >= 0);
   const next = upcoming[0];
   const nextEv = next;
 
   root.innerHTML = `
-    ${pageHead(`<button class="btn btn-sm btn-primary" type="button" data-goview="targets">View Her Targets</button>`)}
+    ${pageHead(`<div style="display:flex;gap:8px">
+      <button class="btn btn-sm btn-primary" type="button" data-goview="targets">View All Her Targets</button>
+      <button class="btn btn-sm" type="button" onclick="app.f.workshopTab='zarin'; go('workshop');">Her Essay Workshop →</button>
+    </div>`)}
 
     <section class="runway" aria-label="Zarin Deadline runway">
       <div class="runway-top">
         <div>
-          <div class="runway-label">Zarin's next deadline</div>
+          <div class="runway-label">Zarin's next application milestone</div>
           <div class="runway-big" style="cursor:pointer">
             <span class="runway-days num">${next ? next.d : '—'}</span>
             <span class="runway-unit">${next ? `days to ${esc(next.name)}` : 'No deadlines ahead'}<span>${next ? fmt(next.date, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : ''}</span></span>
           </div>
         </div>
-        <div class="runway-goal"><strong>Fully funded master's in Supply Chain Management, Logistics or Management</strong>Sweden SISGP, Germany EPOS, Italy IYT, or Canada Spousal Open Work Permit.</div>
+        <div class="runway-goal"><strong>Fully funded master's in Supply Chain Management, Logistics or Operations</strong>Sweden SISGP, Germany EPOS, Italy IYT, or Canada Research Thesis + Spousal Open Work Permit.</div>
       </div>
     </section>
 
-    <div class="pin" style="margin-top:20px;border-left:4px solid var(--amber)">
+    <!-- Sweden Admissions Official Notice -->
+    <div class="panel" style="margin-top:20px;border-top:3px solid #005293;padding:18px 22px;background:linear-gradient(135deg, rgba(0,82,147,0.04) 0%, rgba(254,204,0,0.04) 100%)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+        <div>
+          <div class="tier-label" style="color:#005293">🇸🇪 SWEDEN AUTUMN 2027 ADMISSIONS &amp; SISGP SCHOLARSHIP COMMAND</div>
+          <h2 style="font-size:20px;margin:4px 0 2px">UniversityAdmissions.se Open · 13 Nov Official SI List Dropping</h2>
+          <div class="dim" style="font-size:13px;line-height:1.5">
+            The Swedish national round is <strong>active now</strong> (16 Oct 2026 – 15 Jan 2027). On <strong>13 November 2026 (in 10 days)</strong>, the Swedish Institute publishes the official 2027/28 eligible programmes list and leadership/work certificate templates.
+          </div>
+        </div>
+        <span class="tag ok" style="font-size:12px">Zarin: ~7,000 hrs verified (clears 3k gate)</span>
+      </div>
+
+      <div style="margin-top:14px;background:var(--card-bg, #fff);padding:14px 16px;border-radius:8px;border:1px solid var(--rule)">
+        <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px">Zarin's Recommended 4-Program Ranking Strategy for Sweden (120 ECTS):</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:10px;font-size:12.5px">
+          <div style="padding:8px 10px;background:var(--sheet-2);border-radius:6px;border:1px solid var(--rule)">
+            <strong>Choice 1: Lund University</strong> (LU-18300)<br>
+            <span class="dim">MSc in Logistics &amp; SCM (120 cr) · Global Top 50 SCM department · Syncs with Hasibul's Lund target</span>
+          </div>
+          <div style="padding:8px 10px;background:var(--sheet-2);border-radius:6px;border:1px solid var(--rule)">
+            <strong>Choice 2: University of Gothenburg</strong> (GU-82014)<br>
+            <span class="dim">MSc in Logistics &amp; Transport Management (120 cr) · Scandinavia's largest maritime/freight port hub</span>
+          </div>
+          <div style="padding:8px 10px;background:var(--sheet-2);border-radius:6px;border:1px solid var(--rule)">
+            <strong>Choice 3: Jönköping University</strong> (HJ-MU111)<br>
+            <span class="dim">MSc in International Logistics &amp; SCM (120 cr) · Highly practical Nordic logistics cluster</span>
+          </div>
+          <div style="padding:8px 10px;background:var(--sheet-2);border-radius:6px;border:1px solid var(--rule)">
+            <strong>Choice 4: Stockholm University</strong> (SU-31002)<br>
+            <span class="dim">MSc in Operations Management (120 cr) · 100% city co-location if Hasibul attends SSE or SU</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verified Profile Pin -->
+    <div class="pin" style="margin-top:16px;border-left:4px solid var(--amber)">
       <div class="pin-ic" style="color:var(--amber)">${icon('shield')}</div>
       <div>
         <h3>Zarin Tasnim: Verified Academic &amp; Industry Profile on File</h3>
         <p>• <strong>IELTS Academic: 7.0 Overall / C1 Level</strong> (Listening 7.5, Reading 6.5) — British Council TRF 24BD047817TASZ001A, valid to 28 Dec 2026.<br>
         • <strong>BUP BBA Marketing: CGPA 3.42 / 4.00</strong> (converts to German <strong>1.87 / gut</strong>, comfortably beating 2.0/2.5 cutoffs).<br>
-        • <strong>Global Logistics Track Record:</strong> MGH Group &amp; Akij Logistics (~7,000 certified work hours, 120+ flights, ~4,000 tons, CargoWise &amp; SAP).<br>
+        • <strong>Global Logistics Leadership:</strong> MGH Group &amp; Akij Logistics (~7,000 certified work hours, 120+ flights, ~4,000 tons, CargoWise &amp; SAP ERP).<br>
         • <strong>Academic Referee:</strong> Official Letterhead Recommendation from Prof. Dr. Mohammad Zahedul Alam (BUP Marketing) on file.</p>
       </div>
       <div class="pin-act" style="display:flex;gap:8px;flex-wrap:wrap">
@@ -25439,11 +25789,58 @@ function renderZarinDashboard(root) {
       ['Documents Ready', docs.filter(d=>d.status==='have').length, `of ${docs.length} on file`, 'ok', 'documents']
     ])}</div>
 
-    <div class="grid split" style="margin-top:16px">
+    <!-- Zarin 60-Day Horizon Radar Critical Pipeline Table -->
+    <div class="panel" style="margin-top:20px;border-top:3px solid var(--teal);padding:20px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+        <div>
+          <div class="tier-label" style="color:var(--teal)">ZARIN ADMISSIONS RADAR · MULTI-ROUND TIMELINE</div>
+          <h2 style="font-size:22px;margin:4px 0 2px">🎯 Zarin's 60-Day Critical Admissions Pipeline</h2>
+          <div class="dim" style="font-size:13px">Tracking every open portal window, priority deadline, and funding gate across Germany, Sweden, Canada, and Italy.</div>
+        </div>
+        <span class="tag acc" style="font-size:12px">${zarinRadarItems.length} Milestones Tracked</span>
+      </div>
+
+      <div class="table-wrap" style="max-height:none">
+        <table class="tbl dense" style="font-size:12.5px">
+          <thead>
+            <tr>
+              <th>Target / Scheme</th>
+              <th>Milestone / Round Description</th>
+              <th>Hard Date</th>
+              <th>Time Left</th>
+              <th>Funding Coverage</th>
+              <th>Action Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${zarinRadarItems.map(it => {
+              const d = daysUntil(it.deadline || it.date);
+              const isPast = d !== null && d < 0;
+              return `
+                <tr style="${it.tier === 1 ? 'background:rgba(217, 83, 79, 0.05);' : ''}">
+                  <td><strong>${esc(it.target)}</strong></td>
+                  <td>${esc(it.event)}</td>
+                  <td class="num" style="white-space:nowrap;font-weight:600">${esc(it.date)}</td>
+                  <td class="num"><span class="tag ${d <= 14 && d >= 0 ? 'bad' : d <= 45 ? 'warn' : 'ok'}">${isPast ? 'Passed' : d + ' days'}</span></td>
+                  <td class="dim" style="font-size:11.5px">${esc(it.coverage)}</td>
+                  <td>
+                    <button class="btn btn-sm" type="button" data-zarintarget="${esc(it.targetId)}" style="font-size:11px;padding:3px 8px">
+                      Inspect →
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid split" style="margin-top:20px">
       <div class="panel">
         <div class="panel-head"><h2>Zarin's Priority Missions</h2><span class="aside">Next action steps</span></div>
         <div class="rows" style="margin-top:8px">
-          ${mis.slice(0, 5).map(m => {
+          ${mis.slice(0, 6).map(m => {
             const d = daysUntil(m.deadline);
             return `<div class="task">
               <button class="check" type="button" data-toggle="${esc(m.id)}" aria-label="Mark ${esc(m.title)} done">${icon('tick')}</button>
@@ -25457,7 +25854,7 @@ function renderZarinDashboard(root) {
       <div class="panel">
         <div class="panel-head"><h2>Upcoming Dates</h2><button class="btn btn-sm" type="button" data-goview="timeline">Timeline</button></div>
         <div class="rows" style="margin-top:8px">
-          ${upcoming.slice(0, 5).map((e, i) => `<button class="ladder-row ${dueCls(e.d)}" type="button" data-zup="${i}">
+          ${upcoming.slice(0, 6).map((e, i) => `<button class="ladder-row ${dueCls(e.d)}" type="button" data-zup="${i}">
             <span class="ladder-name">${esc(e.name)}</span><span class="ladder-d num">${e.d}<small>d</small></span>
             <span class="ladder-date">${fmt(e.date, { weekday: 'short', day: 'numeric', month: 'short' })}</span>
           </button>`).join('')}
@@ -25471,6 +25868,7 @@ function renderZarinDashboard(root) {
   $$('[data-zup]', root).forEach(b => b.onclick = () => upcoming[+b.dataset.zup]?.open?.());
   $$('[data-mission]', root).forEach(b => b.onclick = () => openMission(b.dataset.mission));
   $$('[data-goview]', root).forEach(b => b.onclick = () => go(b.dataset.goview));
+  $$('[data-zarintarget]', root).forEach(b => b.onclick = () => openTarget(b.dataset.zarintarget));
 }
 
 function renderCoupleDashboard(root) {
@@ -26499,9 +26897,11 @@ function renderMissions(root) {
    MOTIVATION LETTER ARCHITECTURE WORKSHOP (WS-F4 / Upgrade 2)
    ============================================================================ */
 function renderWorkshop(root) {
-  const curTab = app.f.workshopTab || 'goettingen';
+  const curTab = app.f.workshopTab || (app.profileMode === 'zarin' ? 'zarin-epos' : 'goettingen');
   if (curTab === 'sse') {
     renderSSEWorkshop(root);
+  } else if (curTab === 'zarin-epos' || curTab === 'zarin-sisgp') {
+    renderZarinWorkshop(root, curTab);
   } else {
     renderGoettingenWorkshop(root);
   }
@@ -26524,8 +26924,10 @@ function renderGoettingenWorkshop(root) {
 
     <div class="toolbar" style="margin-bottom:16px">
       ${chips('wTab', [
-        ['goettingen', '🇩🇪 Göttingen EPOS Uniform Letter (2 Pages)'],
-        ['sse', '🇸🇪 SSE Finance Application Workshop (Nov 15 Early Round)']
+        ['goettingen', '🇩🇪 Hasibul: Göttingen EPOS (2 Pages)'],
+        ['sse', '🇸🇪 Hasibul: SSE Finance (Nov 15 Early Round)'],
+        ['zarin-epos', '🇩🇪 Zarin: Bremen IGC & HTW Berlin EPOS'],
+        ['zarin-sisgp', '🇸🇪 Zarin: Sweden SISGP Leadership Essay']
       ], 'goettingen')}
     </div>
 
@@ -26686,8 +27088,10 @@ function renderSSEWorkshop(root) {
 
     <div class="toolbar" style="margin-bottom:16px">
       ${chips('wTab', [
-        ['goettingen', '🇩🇪 Göttingen EPOS Uniform Letter (2 Pages)'],
-        ['sse', '🇸🇪 SSE Finance Application Workshop (Nov 15 Early Round)']
+        ['goettingen', '🇩🇪 Hasibul: Göttingen EPOS (2 Pages)'],
+        ['sse', '🇸🇪 Hasibul: SSE Finance (Nov 15 Early Round)'],
+        ['zarin-epos', '🇩🇪 Zarin: Bremen IGC & HTW Berlin EPOS'],
+        ['zarin-sisgp', '🇸🇪 Zarin: Sweden SISGP Leadership Essay']
       ], 'sse')}
     </div>
 
@@ -26852,6 +27256,137 @@ function renderSSEWorkshop(root) {
       renderWorkshop(root);
     };
   });
+}
+
+function renderZarinWorkshop(root, mode) {
+  const isEpos = mode === 'zarin-epos';
+  let draftText = '';
+  const storageKey = isEpos ? 'sv-zarin-epos-draft' : 'sv-zarin-sisgp-draft';
+  try { draftText = localStorage.getItem(storageKey) || ''; } catch (e) {}
+  const wordCount = draftText.trim() ? draftText.trim().split(/\s+/).length : 0;
+
+  root.innerHTML = `
+    ${pageHead(`<div style="display:flex;gap:8px">
+      <button class="btn btn-sm btn-primary" type="button" data-goview="targets">View Her Targets →</button>
+      <button class="btn btn-sm" type="button" onclick="openRefereeBriefModal()">Referee Brief →</button>
+    </div>`)}
+
+    <div class="toolbar" style="margin-bottom:16px">
+      ${chips('wTab', [
+        ['goettingen', '🇩🇪 Hasibul: Göttingen EPOS (2 Pages)'],
+        ['sse', '🇸🇪 Hasibul: SSE Finance (Nov 15 Early Round)'],
+        ['zarin-epos', '🇩🇪 Zarin: Bremen IGC & HTW Berlin EPOS'],
+        ['zarin-sisgp', '🇸🇪 Zarin: Sweden SISGP Leadership Essay']
+      ], mode)}
+    </div>
+
+    <div class="note ok" style="margin-bottom:20px;border-left:4px solid var(--teal)">
+      <div>
+        <strong>${isEpos ? '🇩🇪 Zarin Tasnim: DAAD EPOS Logistics & Project Management Architecture' : '🇸🇪 Zarin Tasnim: Swedish Institute (SISGP) Leadership Narrative'}</strong>
+        <p style="font-size:13px;margin:4px 0 0;color:var(--ink-2);line-height:1.55">
+          ${isEpos
+            ? 'Structured for <strong>Hochschule Bremen IGC MBA in Logistics (Deadline: 15 Dec 2026)</strong> and <strong>HTW Berlin MPMD (Window: 01 Nov 2026 – 28 Feb 2027)</strong>. Capitalize on your 3.5 years of freight operations (120 air cargo charter flights, ~4,000 tons airlifted, CargoWise &amp; SAP).'
+            : 'Structured for the <strong>Swedish Institute Scholarship for Global Professionals (SI Portal: 8–24 Feb 2027)</strong>. Your ~7,000 certified hours at MGH Group and Akij Logistics comfortably exceed the 3,000-hour requirement.'}
+        </p>
+      </div>
+    </div>
+
+    ${stats([
+      ['Target Length', isEpos ? '2 Pages Max (~800–1,000 words)' : '1,000 Characters / Form Field', isEpos ? 'DAAD uniform guideline' : 'SI portal template constraint', 'acc'],
+      ['Your Words', wordCount, wordCount ? `${wordCount} words drafted` : 'Not drafted yet', wordCount ? 'ok' : 'plain'],
+      ['Work Experience', '~7,000 Hours', '3.5 yrs (MGH Group + Akij Logistics)', 'ok'],
+      ['IELTS English', '7.0 Overall (C1)', 'Valid to 28 Dec 2026 (Exemption on file)', 'ok']
+    ])}
+
+    <div class="grid split" style="margin-top:20px;gap:24px">
+      <!-- Left: Drafting Pad -->
+      <div>
+        <div class="panel" style="padding:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <h2 style="font-size:17px;margin:0">${isEpos ? 'Zarin\'s EPOS Logistics Motivation Draft' : 'Zarin\'s SISGP Leadership Narrative'}</h2>
+            <div class="dim num" style="font-size:12.5px" id="zWordCounter">${wordCount} words</div>
+          </div>
+          <textarea class="input" id="zDraftInput" rows="18" placeholder="Draft your statement here... (Auto-saves locally to browser)" style="width:100%;font-family:var(--f-body);line-height:1.6;font-size:13.5px;padding:14px;resize:vertical">${esc(draftText)}</textarea>
+        </div>
+      </div>
+
+      <!-- Right: Structural Guidelines & Evidence Injections -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        ${isEpos ? `
+          <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+            <h3 style="font-size:15px;margin:0">Section 1: Commercial &amp; Air Freight Scale (30%)</h3>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+              Quantify your hands-on leadership at MGH Group and Akij Logistics Ltd:
+            </p>
+            <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+              • Coordinated and executed <strong>over 120 dedicated air cargo charter flights</strong>, airlifting ~4,000 metric tons of export cargo through transit hubs in Dubai, Jeddah, and Hong Kong.<br>
+              • Managed multinational buyer purchase orders and freight forwarding contracts for global apparel brands (<strong>C&amp;A, Hugo Boss</strong>).<br>
+              • Enterprise software mastery: Daily operational dispatching in <strong>CargoWise One</strong> and <strong>SAP ERP</strong>.
+            </div>
+          </div>
+
+          <div class="panel" style="padding:18px 20px;border-left:3px solid var(--amber)">
+            <h3 style="font-size:15px;margin:0">Section 2: Academic Grounding &amp; Marketing Analytics (30%)</h3>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+              Highlight strong business and marketing analytics performance from BUP:
+            </p>
+            <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+              • Completed 126.0 credits at BUP with CGPA 3.42 / 4.00 (German grade <strong>1.87 / gut</strong>).<br>
+              • Top marks in analytical and quantitative coursework: <strong>Big Data in Marketing (4.00)</strong>, <strong>Brand Management (4.00)</strong>, <strong>Quantitative Business Analysis (3.50)</strong>, and <strong>Business Statistics (3.50)</strong>.
+            </div>
+          </div>
+
+          <div class="panel" style="padding:18px 20px;border-left:3px solid var(--green)">
+            <h3 style="font-size:15px;margin:0">Section 3: German Program Alignment &amp; Return Plan (40%)</h3>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+              Connect German logistics technology with South Asian trade corridors:
+            </p>
+            <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+              • <strong>Bremen IGC MBA (Logistics &amp; SCM):</strong> Focus on sustainable maritime/intermodal transport and port logistics (Germany's maritime trade gateway).<br>
+              • <strong>HTW Berlin MPMD:</strong> Mastering enterprise data science and AI applications in supply chain planning and predictive freight routing.<br>
+              • <strong>National Return Vision:</strong> Modernizing Bangladesh's multimodal cargo logistics infrastructure to reduce supply chain lead times for ready-made garment exports.
+            </div>
+          </div>
+        ` : `
+          <div class="panel" style="padding:18px 20px;border-left:3px solid var(--teal)">
+            <h3 style="font-size:15px;margin:0">Pillar 1: Professional Leadership &amp; Operational Autonomy</h3>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+              Demonstrate decision-making authority during supply chain bottlenecks:
+            </p>
+            <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+              • Led commercial negotiations with airline representatives to secure critical cargo space during severe pandemic and geopolitical air-freight capacity crunches.<br>
+              • Supervised operations teams handling warehouse receiving, customs clearance, and aircraft ramp loading in Dhaka and Chittagong.
+            </div>
+          </div>
+
+          <div class="panel" style="padding:18px 20px;border-left:3px solid var(--amber)">
+            <h3 style="font-size:15px;margin:0">Pillar 2: Swedish Master's Alignment (120 ECTS)</h3>
+            <p style="font-size:12.5px;color:var(--ink-2);margin:6px 0 10px;line-height:1.5">
+              Justify your 4-choice Swedish university sequence:
+            </p>
+            <div style="background:var(--sheet-2);padding:10px 12px;border-radius:6px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink)">
+              • <strong>Lund University (Choice 1):</strong> Global leadership in circular supply chains and packaging logistics.<br>
+              • <strong>University of Gothenburg (Choice 2):</strong> World-renowned maritime logistics and sustainable freight transport management.<br>
+              • <strong>Contribution to SDG 9 &amp; 12:</strong> Applying Swedish circular logistics models to reduce environmental waste in Asian manufacturing supply chains.
+            </div>
+          </div>
+        `}
+      </div>
+    </div>
+  `;
+
+  wireChips(root, 'wTab', k => { app.f.workshopTab = k; renderWorkshop(root); });
+
+  const zTa = $('#zDraftInput', root);
+  if (zTa) {
+    zTa.oninput = () => {
+      const val = zTa.value;
+      try { localStorage.setItem(storageKey, val); } catch (e) {}
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      const counter = $('#zWordCounter', root);
+      if (counter) counter.textContent = `${words} words`;
+    };
+  }
 }
 
 /* ============================================================================

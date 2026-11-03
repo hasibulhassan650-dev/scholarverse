@@ -155,56 +155,115 @@ const ZARIN_TARGETS = [
     nextAction: "Create universityadmissions.se account and rank Lund, Gothenburg, and Jönköping MSc SCM."
   },
   {
-    id: "zarin-germany-epos",
-    name: "DAAD EPOS — International Logistics & Project Management",
-    short: "Germany EPOS SCM",
+    id: "zarin-bremen-igc",
+    name: "Hochschule Bremen (IGC) — International MBA in Logistics & SCM (DAAD EPOS)",
+    short: "Bremen MBA Logistics",
     country: "Germany",
     flag: "🇩🇪",
     tier: 1,
     priority: "P0",
-    subjectFit: "HIGH — Logistics & Trade management degrees funded by DAAD",
-    funding: {"value":"€992/month stipend + full tuition waiver + health insurance + flights","source":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777","checked":"2026-10-25","status":"verified"},
-    deadline: {"value":"2026-12-15","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-26","status":"verified"},
-    deadlineLabel: "Bremen IGC: 15 Dec 2026 · HTW Berlin MPMD: 28 Feb 2027",
+    subjectFit: "PERFECT — International Logistics & Global Supply Chain Management MBA",
+    funding: {"value":"€992/month DAAD stipend + full tuition waiver + health insurance + travel grant","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-31","status":"verified"},
+    fundingDetail: {"value":"Full DAAD EPOS funding package (€992/month) plus full tuition coverage at International Graduate Center (IGC). Includes travel allowance and family allowance (€276/mo).","source":"https://www.graduatecenter.org/en/mba-master/international-logistics-supply-chain-management-focus.html","checked":"2026-10-31","status":"verified"},
+    deadline: {"value":"2026-12-15","source":"https://apply.graduatecenter.org/","checked":"2026-10-31","status":"verified"},
+    deadlineLabel: "15 December 2026 (23:59 CET) — Portal Closes",
     status: "open",
     rounds: [
       {
-        name: "HTW Berlin MPMD Window Opens",
-        type: "portal_open",
-        deadline: "2026-11-01",
-        label: "01 November 2026 — MPMD Application Portal Opens",
-        portalUrl: "https://mpmd.htw-berlin.de/applying/",
-        description: "Application window opens for Master in Project Management and Data Science."
-      },
-      {
-        name: "Hochschule Bremen IGC MBA Logistics Deadline",
+        name: "DAAD EPOS Application Deadline",
         type: "final",
         deadline: "2026-12-15",
         label: "15 December 2026 — Bremen IGC Portal Closes",
         portalUrl: "https://apply.graduatecenter.org/",
-        description: "Hard deadline for DAAD EPOS International Logistics & SCM MBA."
-      },
-      {
-        name: "HTW Berlin MPMD Final EPOS Deadline",
-        type: "final",
-        deadline: "2027-02-28",
-        label: "28 February 2027 — HTW Berlin MPMD Closes",
-        portalUrl: "https://mpmd.htw-berlin.de/applying/",
-        description: "Final deadline for DAAD EPOS intake at HTW Berlin."
+        description: "Hard portal deadline for complete DAAD EPOS International MBA in Logistics & SCM application."
       }
     ],
-    route: "Direct application to participating institutions (Hochschule Bremen IGC / HTW Berlin)",
+    route: "Direct application via Bremen IGC portal at https://apply.graduatecenter.org/ (Select MBA International Logistics & SCM with DAAD EPOS scholarship)",
     eligibleProgrammes: [
-      "Hochschule Bremen (IGC) — International MBA in International Logistics & SCM (Director: Prof. Dr. Frank Fürstenberg; apply.graduatecenter.org)",
-      "HTW Berlin — Master in Project Management and Data Science (MPMD; mpmd.htw-berlin.de/applying; Window: 1 Nov 2026 – 28 Feb 2027)"
+      "International MBA — Specialization in International Logistics & Supply Chain Management (Director: Prof. Dr. Frank Fürstenberg)"
     ],
+    scoring: {
+      admitOdds: 4,
+      admitRationale: "BBA 3.42 converts to German 1.87 (beats 2.0 cutoff); 3.5 yrs freight leadership at MGH/Akij exceeds 2-year gate.",
+      fundingOdds: 4,
+      fundingRationale: "Direct DAAD EPOS quota allocated to IGC Bremen cohort.",
+      fullCostCovered: "yes",
+      fullCostRationale: "€992/mo living stipend + full tuition waiver + health insurance + travel allowance.",
+      subjectFit: 5,
+      subjectRationale: "100% direct match with international shipping, air chartering, and freight forwarder operations.",
+      careerPR: 4,
+      careerPRRationale: "Germany 18-month jobseeker visa + EU Blue Card fast-track PR (21 months with B1 German).",
+      coupleFit: 5,
+      coupleFitRationale: "100% German co-location with Hasibul's Göttingen/Hohenheim targets + €276/mo DAAD family allowance.",
+      effort: 3,
+      effortRationale: "Standard portal application: degree, transcript, 2 references, motivation letter, CV."
+    },
     advantages: [
-      "Zarin's BBA 3.42 converts to German 1.87 (beats 2.0 competitive bar)",
+      "Zarin's BBA 3.42 converts to German 1.87 (comfortably beats 2.0 competitive bar)",
       "3.5 years of verifiable freight forwarding and commercial operations exceed 2-year EPOS gate",
-      "HTW Berlin MPMD explicitly recognizes English-taught degree as C1 English (zero IELTS expiration risk)",
+      "IELTS 7.0 valid and on file (clears language requirement)",
       "Same-country synergy with Hasibul's Göttingen/Hohenheim EPOS targets (DAAD €276/mo spousal allowance)"
     ],
-    nextAction: "Submit Bremen IGC application via apply.graduatecenter.org; prepare HTW Berlin MPMD application for 1 Nov opening."
+    nextAction: "Complete online application at https://apply.graduatecenter.org/ before 15 December 2026."
+  },
+  {
+    id: "zarin-htw-berlin",
+    name: "HTW Berlin — Master in Project Management and Data Science (MPMD, DAAD EPOS)",
+    short: "HTW Berlin MPMD",
+    country: "Germany",
+    flag: "🇩🇪",
+    tier: 1,
+    priority: "P0",
+    subjectFit: "HIGH — Project Management, Logistics Analytics & Enterprise Data Science",
+    funding: {"value":"€992/month DAAD stipend + full tuition waiver + health insurance + travel grant","source":"https://mpmd.htw-berlin.de/applying/","checked":"2026-10-31","status":"verified"},
+    fundingDetail: {"value":"Full DAAD EPOS funding package (€992/month) plus full tuition coverage in Berlin. Includes travel allowance and family allowance (€276/mo).","source":"https://mpmd.htw-berlin.de/applying/","checked":"2026-10-31","status":"verified"},
+    deadline: {"value":"2027-02-28","source":"https://mpmd.htw-berlin.de/applying/","checked":"2026-10-31","status":"verified"},
+    deadlineLabel: "28 February 2027 (Window: 01 Nov 2026 – 28 Feb 2027)",
+    status: "open",
+    rounds: [
+      {
+        name: "Application Portal Opens",
+        type: "portal_open",
+        deadline: "2026-11-01",
+        label: "01 November 2026 — Application Window Opened",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Online application system is now open for Fall 2027 intake."
+      },
+      {
+        name: "Final DAAD EPOS Submission Deadline",
+        type: "final",
+        deadline: "2027-02-28",
+        label: "28 February 2027 (23:59 CET) — Portal Closes",
+        portalUrl: "https://mpmd.htw-berlin.de/applying/",
+        description: "Final deadline to submit complete DAAD EPOS application."
+      }
+    ],
+    route: "Online application via HTW Berlin portal at https://mpmd.htw-berlin.de/applying/",
+    eligibleProgrammes: [
+      "Master in Project Management and Data Science (MPMD, English-taught, 4 semesters)"
+    ],
+    scoring: {
+      admitOdds: 4,
+      admitRationale: "BBA 3.42 / German 1.87; 3.5 yrs project management experience handling air cargo logistics & CargoWise/SAP ERP.",
+      fundingOdds: 4,
+      fundingRationale: "Direct DAAD EPOS quota assigned to HTW Berlin MPMD.",
+      fullCostCovered: "yes",
+      fullCostRationale: "€992/mo living stipend + full tuition waiver + health insurance + travel grant.",
+      subjectFit: 4,
+      subjectRationale: "Data science and project management directly complement enterprise logistics and digital freight operations.",
+      careerPR: 5,
+      careerPRRationale: "Berlin tech & supply chain capital; 18-month jobseeker visa + EU Blue Card.",
+      coupleFit: 5,
+      coupleFitRationale: "100% German co-location with Hasibul + DAAD family allowance.",
+      effort: 3,
+      effortRationale: "Straightforward online portal submission with verified documents."
+    },
+    advantages: [
+      "HTW Berlin MPMD explicitly recognizes English-taught degree as C1 English (zero IELTS expiration risk)",
+      "Window opened 01 Nov 2026 with comfortable deadline of 28 Feb 2027",
+      "Project management and data science skills are top shortage qualifications under German EU Blue Card rules"
+    ],
+    nextAction: "Create applicant account on mpmd.htw-berlin.de and assemble project portfolio."
   },
   {
     id: "zarin-italy-iyt",
@@ -423,6 +482,148 @@ const ZARIN_TARGETS = [
     "effortRationale": "Requires supervisor alignment and formal engineering department relevancy petition."
   },
   "nextAction": "Email resume to Prof. Fatma Gzara (fgzara@uwaterloo.ca)."
+},
+{
+  "id": "zarin-ubc-sauder",
+  "name": "University of British Columbia (Sauder) — MSc in Business Administration (Operations & Logistics)",
+  "short": "UBC Sauder MSc SCM",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "PERFECT — Air Cargo Logistics, Airport Operations & Supply Chain Analytics",
+  "funding": {
+    "value": "International Tuition Award ($3,200/yr) + Paid Summer RA ($12k) + TA ($37.53/hr); application fee waived",
+    "source": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "fundingDetail": {
+    "value": "24 months research thesis degree. Tuition net ~$6.9k CAD after universal International Tuition Award. Summer RA funding up to $12,000 + teaching assistantships ($37.53/hr). $168.25 application fee is WAIVED for Bangladesh.",
+    "source": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2026-12-31",
+    "source": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadlineLabel": "31 December 2026 (References by 31 Jan 2027)",
+  "status": "open",
+  "rounds": [
+    {
+      "name": "International Application Deadline",
+      "type": "final",
+      "deadline": "2026-12-31",
+      "label": "31 December 2026 — UBC Portal Closes",
+      "portalUrl": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+      "description": "Application fee waived for citizens of Bangladesh. Complete online submission by Dec 31."
+    },
+    {
+      "name": "Referee Submission Deadline",
+      "type": "referees",
+      "deadline": "2027-01-31",
+      "label": "31 January 2027 — Referee Letters Due",
+      "portalUrl": "https://www.sauder.ubc.ca/programs/msc/msc-business-administration",
+      "description": "Referees submit letters directly via electronic portal."
+    }
+  ],
+  "route": "Online application via UBC Graduate Portal (Select Master of Science in Business Administration, Operations & Logistics track). Note: Sauder policy bans faculty cold emails; name Prof. Anming Zhang and Prof. Harish Krishnan in Statement of Intent.",
+  "eligibleProgrammes": [
+    "MSc in Business Administration — Operations and Logistics Division (24 months, thesis-based)"
+  ],
+  "scoring": {
+    "admitOdds": 3,
+    "admitRationale": "Elite global business school; BBA 3.42 + 120 air cargo charter operations; strong fit with Air Transportation Chair.",
+    "fundingOdds": 4,
+    "fundingRationale": "Universal International Tuition Award + department guaranteed assistantship budget.",
+    "fullCostCovered": "yes",
+    "fullCostRationale": "Net tuition ~$6.9k covered by summer RA ($12k) and TA hours ($37.53/hr); spouse work permit allowed.",
+    "subjectFit": 5,
+    "subjectRationale": "Supervised by Prof. Anming Zhang (YVR Air Transport Chair); exact match for air cargo forwarding.",
+    "careerPR": 4,
+    "careerPRRationale": "Vancouver is Canada's Pacific air & sea cargo gateway (Expeditors, DB Schenker, DSV). 3-year PGWP.",
+    "coupleFit": 5,
+    "coupleFitRationale": "100% same campus co-location with Hasibul at UBC Sauder (MSc Finance).",
+    "effort": 3,
+    "effortRationale": "Standard online application; fee waived; statement of intent citing air transportation research."
+  },
+  "advantages": [
+    "Prof. Anming Zhang is Canada's #1 authority on air cargo logistics and airport slot allocations",
+    "UBC Sauder explicitly waives the $168.25 CAD application fee for citizens of Bangladesh",
+    "24-month research thesis degree 100% clears the IRCC C42 spousal open work permit gate",
+    "Vancouver Pacific gateway provides premier employment integration in international air freight"
+  ],
+  "nextAction": "Draft 2-page Statement of Intent citing Prof. Anming Zhang's ATRS air cargo research and submit before 31 December 2026."
+},
+{
+  "id": "zarin-hec-montreal",
+  "name": "HEC Montréal — MSc in Administration (Global Supply Chain Management, Thesis Stream)",
+  "short": "HEC Montreal MSc SCM",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "tier": 1,
+  "priority": "P0",
+  "subjectFit": "PERFECT — 100% English-Taught Research Thesis in Global Supply Chain Analytics",
+  "funding": {
+    "value": "Quebec Differential Fee Exemption (Tuition reduced to ~$4,000/yr) + NSERC/FRQNT Research Stipends",
+    "source": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "fundingDetail": {
+    "value": "16 to 24 months thesis-based degree taught entirely in English. Research thesis students are eligible for Quebec international tuition fee exemptions, reducing tuition to domestic rate (~$4k CAD/yr) + entrance scholarships.",
+    "source": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadline": {
+    "value": "2027-02-01",
+    "source": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+    "checked": "2026-10-31",
+    "status": "verified"
+  },
+  "deadlineLabel": "01 February 2027 (Fall 2027 Intake)",
+  "status": "open",
+  "rounds": [
+    {
+      "name": "Final Fall Application Deadline",
+      "type": "final",
+      "deadline": "2027-02-01",
+      "label": "01 February 2027 — HEC Portal Closes",
+      "portalUrl": "https://www.hec.ca/en/programs/masters/master-administration/global-supply-chain-management/",
+      "description": "Final application deadline for international applicants seeking admission and tuition exemption."
+    }
+  ],
+  "route": "Online application via HEC Montréal portal (Select MSc in Administration — Global Supply Chain Management, Thesis stream). Inquire with Canada Research Chairholder Prof. Yossiri Adulyasak.",
+  "eligibleProgrammes": [
+    "MSc in Administration — Global Supply Chain Management (Thesis Option, 45 credits, 16–24 months, English-taught)"
+  ],
+  "scoring": {
+    "admitOdds": 4,
+    "admitRationale": "BBA 3.42 + 3.5 yrs logistics leadership; 100% English instruction; competitive profile.",
+    "fundingOdds": 4,
+    "fundingRationale": "Quebec international differential fee exemption available for research master's students.",
+    "fullCostCovered": "yes",
+    "fullCostRationale": "Low net tuition (~$4k CAD/yr) offset by research assistantships and low Montreal living costs.",
+    "subjectFit": 5,
+    "subjectRationale": "Canada Research Chair in Supply Chain Analytics under Prof. Yossiri Adulyasak.",
+    "careerPR": 4,
+    "careerPRRationale": "Montreal multimodal port & air logistics corridor; 3-year PGWP.",
+    "coupleFit": 5,
+    "coupleFitRationale": "100% same campus and city co-location with Hasibul at HEC Montréal (MSc Financial Engineering).",
+    "effort": 3,
+    "effortRationale": "Standard online university application with CV, transcript, and statement of research interests."
+  },
+  "advantages": [
+    "Canada Research Chair in Supply Chain Analytics (Prof. Yossiri Adulyasak) actively supervises MSc theses",
+    "100% taught in English (no French language prerequisite for admission or coursework)",
+    "16–24 month research thesis degree clears the IRCC C42 spousal open work permit gate",
+    "100% co-location with Hasibul at HEC Montréal (MSc Financial Engineering)"
+  ],
+  "nextAction": "Assemble transcript and statement of research interests for HEC Montréal portal submission before 01 February 2027."
 }
 ];
 
